@@ -1,0 +1,9 @@
+[submodule "modules/chowdsp"]
+	path = modules/chowdsp
+	url = https://github.com/Chowdhury-DSP/chowdsp_utils.git
+[submodule "modules/RTNeural"]
+	path = modules/RTNeural
+	url = https://github.com/jatinchowdhury18/RTNeural.git
+[submodule "modules/json"]
+	path = modules/json
+	url = https://github.com/nlohmann/json.git
