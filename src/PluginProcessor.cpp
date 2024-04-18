@@ -130,9 +130,30 @@ void RolandCubeAudioProcessor::parameterChanged(const String& parameterID, float
     auto trebleValue = static_cast<float> (trebleParam->load());
     auto modelValue = static_cast<float> (modelParam->load());
 
-    equalizer1.setParameters(bassValue, midValue, trebleValue, 0.0);
-    equalizer2.setParameters(bassValue, midValue, trebleValue, 0.0);
+    set_ampEQ(bassValue,midValue,trebleValue);
+    setLSTM(parametrized, modelValue);
+}
+void RolandCubeAudioProcessor::setJsonModel(const char* jsonModel)
+{
+    this->suspendProcessing(true);
+    
+    LSTM.reset();
+    LSTM2.reset();
 
+    LSTM.load_json(jsonModel);
+    LSTM2.load_json(jsonModel);
+
+    if (LSTM.input_size == 1) {
+        conditioned = false;
+    }
+    else {
+        conditioned = true;
+    }
+
+    this->suspendProcessing(false);
+}
+void RolandCubeAudioProcessor::setLSTM(bool parametrized, float modelValue)
+{
     if (!parametrized) {
         switch (static_cast<int>(modelValue))
         {
@@ -227,25 +248,6 @@ void RolandCubeAudioProcessor::parameterChanged(const String& parameterID, float
             break;
         }
     }
-}
-void RolandCubeAudioProcessor::setJsonModel(const char* jsonModel)
-{
-    this->suspendProcessing(true);
-    
-    LSTM.reset();
-    LSTM2.reset();
-
-    LSTM.load_json(jsonModel);
-    LSTM2.load_json(jsonModel);
-
-    if (LSTM.input_size == 1) {
-        conditioned = false;
-    }
-    else {
-        conditioned = true;
-    }
-
-    this->suspendProcessing(false);
 }
 void RolandCubeAudioProcessor::applyLSTMtoChannels(dsp::AudioBlock<float>& block, int totalNumChannels, RT_LSTM& LSTM, RT_LSTM& LSTM2, bool conditioned, float driveValue )
 {
@@ -462,8 +464,8 @@ void RolandCubeAudioProcessor::setStateInformation (const void* data, int sizeIn
 
 void RolandCubeAudioProcessor::set_ampEQ(float bass_slider, float mid_slider, float treble_slider)
 {
-    //equalizer1.setParameters(bass_slider, mid_slider, treble_slider, 0.0f);
-    //equalizer2.setParameters(bass_slider, mid_slider, treble_slider, 0.0f);
+    equalizer1.setParameters(bass_slider, mid_slider, treble_slider, 0.0f);
+    equalizer2.setParameters(bass_slider, mid_slider, treble_slider, 0.0f);
 }
 
 //==============================================================================
