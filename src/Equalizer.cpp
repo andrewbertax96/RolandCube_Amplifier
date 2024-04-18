@@ -6,7 +6,7 @@
   ==============================================================================
 */
 
-#include "Eq4Band.h"
+#include "Equalizer.h"
 
 Equalizer::Equalizer()
 {

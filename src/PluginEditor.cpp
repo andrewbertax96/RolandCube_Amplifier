@@ -110,12 +110,28 @@ RolandCubeAudioProcessorEditor::~RolandCubeAudioProcessorEditor()
 void RolandCubeAudioProcessorEditor::paint (juce::Graphics& g)
 {
     
-    // (Our component is opaque, so we must completely fill the background with a solid colour)
-    g.fillAll (getLookAndFeel().findColour (juce::ResizableWindow::backgroundColourId));
+    // Workaround for graphics on Windows builds (clipping code doesn't work correctly on Windows)
+#if defined(WIN32) || defined(_WIN32) || defined(__WIN32__) || defined(__NT__)
+    //if (processor.fw_state == 0) {
+    //    g.drawImageAt(background_off, 0, 0);  // Debug Line: Redraw entire background image
+    if (audioProcessor.fw_state == 1 && audioProcessor.conditioned == true) {
+        g.drawImageAt(background_on, 0, 0);  // Debug Line: Redraw entire background image
+    }
+    else if (audioProcessor.fw_state == 1 && audioProcessor.conditioned == false) {
+        g.drawImageAt(background_on_blue, 0, 0);  // Debug Line: Redraw entire background image
+    }
+#else
+// Redraw only the clipped part of the background image
 
-    g.setColour (juce::Colours::white);
-    g.setFont (15.0f);
-    //g.drawFittedText ("Hello World!", getLocalBounds(), juce::Justification::centred, 1);
+    juce::Rectangle<int> ClipRect = g.getClipBounds();
+    //if (processor.fw_state == 0) {
+    //    g.drawImage(background_off, ClipRect.getX(), ClipRect.getY(), ClipRect.getWidth(), ClipRect.getHeight(), ClipRect.getX(), ClipRect.getY(), ClipRect.getWidth(), ClipRect.getHeight());
+    if (audioProcessor.fw_state == 1 && audioProcessor.conditioned == true) {
+        g.drawImage(background_on, ClipRect.getX(), ClipRect.getY(), ClipRect.getWidth(), ClipRect.getHeight(), ClipRect.getX(), ClipRect.getY(), ClipRect.getWidth(), ClipRect.getHeight());
+    }
+    else if (audioProcessor.fw_state == 1 && audioProcessor.conditioned == false)
+        g.drawImage(background_on_blue, ClipRect.getX(), ClipRect.getY(), ClipRect.getWidth(), ClipRect.getHeight(), ClipRect.getX(), ClipRect.getY(), ClipRect.getWidth(), ClipRect.getHeight());
+#endif
 }
 
 void RolandCubeAudioProcessorEditor::resized()
@@ -147,11 +163,7 @@ void RolandCubeAudioProcessorEditor::sliderValueChanged(Slider* slider)
 void RolandCubeAudioProcessorEditor::buttonClicked(juce::Button* button)
 {
     //if (button == &odFootSw) {
-    //    odFootSwClicked();
-    //if (button == &loadButton) {
-    //    loadButtonClicked();
-    //}
-    //else 
+    //    odFootSwClicked(); 
     if (button == &cabOnButton) {
         cabOnButtonClicked();
     }

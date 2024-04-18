@@ -77,22 +77,17 @@ public:
     void set_ampEQ(float bass_slider, float mid_slider, float treble_slider);
 
     void parameterChanged(const String& parameterID, float newValue) override;
+    void setJsonModel(const char* jsonModel);
     AudioProcessorValueTreeState treeState;
 
     // Files and configuration
-    //void loadConfig(File configFile);
 
     // Pedal/amp states
     int fw_state = 1;       // 0 = off, 1 = on
     int cab_state = 1; // 0 = off, 1 = on
 
     bool conditioned = false;
-
-    const char* char_filename = "";
-
     int pauseVolume = 3;
-
-    bool model_loaded = false;
 
 private:
 
