@@ -78,6 +78,7 @@ public:
 
     void parameterChanged(const String& parameterID, float newValue) override;
     void setJsonModel(const char* jsonModel);
+    void applyLSTMtoChannels(dsp::AudioBlock<float>& block, int totalNumChannels, RT_LSTM& LSTM, RT_LSTM& LSTM2, bool conditioned, float driveValue);
     AudioProcessorValueTreeState treeState;
 
     // Files and configuration
