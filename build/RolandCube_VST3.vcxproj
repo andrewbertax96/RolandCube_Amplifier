@@ -1,0 +1,518 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+  </PropertyGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="MinSizeRel|x64">
+      <Configuration>MinSizeRel</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|x64">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{0886B3FF-3319-37C4-B823-22AFFE932D10}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0.22000.0</WindowsTargetPlatformVersion>
+    <Platform>x64</Platform>
+    <ProjectName>RolandCube_VST3</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\andre\Desktop\RolandCube_Amplifier\build\RolandCube_artefacts\Debug\VST3\RolandCube.vst3\Contents\x86_64-win\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">RolandCube_VST3.dir\Debug\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">RolandCube</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.vst3</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\andre\Desktop\RolandCube_Amplifier\build\RolandCube_artefacts\Release\VST3\RolandCube.vst3\Contents\x86_64-win\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">RolandCube_VST3.dir\Release\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">RolandCube</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.vst3</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Users\andre\Desktop\RolandCube_Amplifier\build\RolandCube_artefacts\MinSizeRel\VST3\RolandCube.vst3\Contents\x86_64-win\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">RolandCube_VST3.dir\MinSizeRel\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">RolandCube</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">.vst3</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\andre\Desktop\RolandCube_Amplifier\build\RolandCube_artefacts\RelWithDebInfo\VST3\RolandCube.vst3\Contents\x86_64-win\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">RolandCube_VST3.dir\RelWithDebInfo\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">RolandCube</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">.vst3</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">true</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">true</GenerateManifest>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Users\andre\Desktop\RolandCube_Amplifier\modules\RTNeural;C:\Users\andre\Desktop\RolandCube_Amplifier\.\RTNeural;C:\Users\andre\Desktop\RolandCube_Amplifier\build\RolandCube_artefacts\JuceLibraryCode;C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\modules;C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\modules\juce_audio_processors\format_types\VST3_SDK;C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\modules\juce_audio_processors\format_types\LV2_SDK;C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\modules\juce_audio_processors\format_types\LV2_SDK\lv2;C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\modules\juce_audio_processors\format_types\LV2_SDK\serd;C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\modules\juce_audio_processors\format_types\LV2_SDK\sord;C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\modules\juce_audio_processors\format_types\LV2_SDK\sord\src;C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\modules\juce_audio_processors\format_types\LV2_SDK\sratom;C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\modules\juce_audio_processors\format_types\LV2_SDK\lilv;C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\modules\juce_audio_processors\format_types\LV2_SDK\lilv\src;C:\Users\andre\Desktop\RolandCube_Amplifier\build\juce_binarydata_BinaryData\JuceLibraryCode;C:\Users\andre\Desktop\RolandCube_Amplifier\modules\RTNeural\RTNeural\..\modules\json;C:\Users\andre\Desktop\RolandCube_Amplifier\modules\RTNeural\RTNeural\..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /bigobj</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level4</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;JUCE_GLOBAL_MODULE_SETTINGS_INCLUDED=1;DEBUG=1;_DEBUG=1;JucePlugin_IsSynth=0;JucePlugin_ManufacturerCode=0x42727478;JucePlugin_Manufacturer="Roland";JucePlugin_ManufacturerWebsite="";JucePlugin_ManufacturerEmail="";JucePlugin_PluginCode=0x526f4375;JucePlugin_ProducesMidiOutput=0;JucePlugin_IsMidiEffect=0;JucePlugin_WantsMidiInput=0;JucePlugin_EditorRequiresKeyboardFocus=0;JucePlugin_Name="RolandCube";JucePlugin_Desc="RolandCube";JucePlugin_Version=0.0.1;JucePlugin_VersionString="0.0.1";JucePlugin_VersionCode=0x1;JucePlugin_VSTUniqueID=JucePlugin_PluginCode;JucePlugin_VSTCategory=kPlugCategEffect;JucePlugin_Vst3Category="Fx";JucePlugin_AUMainType='aufx';JucePlugin_AUSubType=JucePlugin_PluginCode;JucePlugin_AUExportPrefix=RolandCubeAU;JucePlugin_AUExportPrefixQuoted="RolandCubeAU";JucePlugin_AUManufacturerCode=JucePlugin_ManufacturerCode;JucePlugin_CFBundleIdentifier=com.Roland.RolandCube;JucePlugin_AAXIdentifier=com.Roland.RolandCube;JucePlugin_AAXManufacturerCode=JucePlugin_ManufacturerCode;JucePlugin_AAXProductId=JucePlugin_PluginCode;JucePlugin_AAXCategory=0;JucePlugin_AAXDisableBypass=0;JucePlugin_AAXDisableMultiMono=0;JucePlugin_VSTNumMidiInputs=16;JucePlugin_VSTNumMidiOutputs=16;JucePlugin_Enable_ARA=0;JucePlugin_ARAFactoryID="com.Roland.RolandCube.arafactory.0.0.1";JucePlugin_ARADocumentArchiveID="com.Roland.RolandCube.aradocumentarchive.1";JucePlugin_ARACompatibleArchiveIDs="";JucePlugin_ARAContentTypes=0;JucePlugin_ARATransformationFlags=0;JUCE_DISPLAY_SPLASH_SCREEN=0;JUCE_REPORT_APP_USAGE=0;JUCE_ALSA=1;JUCE_DIRECTSOUND=1;JUCE_DISABLE_CAUTIOUS_PARAMETER_ID_CHECKING=1;JUCE_USE_OGGVORBIS=1;JUCE_WEB_BROWSER=0;JUCE_USE_CURL=0;JUCE_VST3_CAN_REPLACE_VST2=0;JUCE_MODULE_AVAILABLE_juce_audio_plugin_client=1;JUCE_MODULE_AVAILABLE_juce_audio_processors=1;JUCE_MODULE_AVAILABLE_juce_gui_extra=1;JUCE_MODULE_AVAILABLE_juce_gui_basics=1;JUCE_MODULE_AVAILABLE_juce_graphics=1;JUCE_MODULE_AVAILABLE_juce_events=1;JUCE_MODULE_AVAILABLE_juce_core=1;JUCE_MODULE_AVAILABLE_juce_data_structures=1;JUCE_MODULE_AVAILABLE_juce_audio_basics=1;JUCE_MODULE_AVAILABLE_juce_audio_utils=1;JUCE_MODULE_AVAILABLE_juce_audio_formats=1;JUCE_MODULE_AVAILABLE_juce_audio_devices=1;JUCE_MODULE_AVAILABLE_juce_dsp=1;JUCE_TARGET_HAS_BINARY_DATA=1;RTNEURAL_NAMESPACE=RTNeural;RTNEURAL_DEFAULT_ALIGNMENT=16;JUCE_STANDALONE_APPLICATION=JucePlugin_Build_Standalone;JucePlugin_Build_AU=0;JucePlugin_Build_AUv3=0;JucePlugin_Build_AAX=0;JucePlugin_Build_LV2=0;JucePlugin_Build_Standalone=0;JucePlugin_Build_Unity=0;JucePlugin_Build_VST=0;JucePlugin_Build_VST3=1;CMAKE_INTDIR="Debug";RolandCube_VST3_EXPORTS</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_DEBUG;_WINDOWS;JUCE_GLOBAL_MODULE_SETTINGS_INCLUDED=1;DEBUG=1;_DEBUG=1;JucePlugin_IsSynth=0;JucePlugin_ManufacturerCode=0x42727478;JucePlugin_Manufacturer=\"Roland\";JucePlugin_ManufacturerWebsite=\"\";JucePlugin_ManufacturerEmail=\"\";JucePlugin_PluginCode=0x526f4375;JucePlugin_ProducesMidiOutput=0;JucePlugin_IsMidiEffect=0;JucePlugin_WantsMidiInput=0;JucePlugin_EditorRequiresKeyboardFocus=0;JucePlugin_Name=\"RolandCube\";JucePlugin_Desc=\"RolandCube\";JucePlugin_Version=0.0.1;JucePlugin_VersionString=\"0.0.1\";JucePlugin_VersionCode=0x1;JucePlugin_VSTUniqueID=JucePlugin_PluginCode;JucePlugin_VSTCategory=kPlugCategEffect;JucePlugin_Vst3Category=\"Fx\";JucePlugin_AUMainType='aufx';JucePlugin_AUSubType=JucePlugin_PluginCode;JucePlugin_AUExportPrefix=RolandCubeAU;JucePlugin_AUExportPrefixQuoted=\"RolandCubeAU\";JucePlugin_AUManufacturerCode=JucePlugin_ManufacturerCode;JucePlugin_CFBundleIdentifier=com.Roland.RolandCube;JucePlugin_AAXIdentifier=com.Roland.RolandCube;JucePlugin_AAXManufacturerCode=JucePlugin_ManufacturerCode;JucePlugin_AAXProductId=JucePlugin_PluginCode;JucePlugin_AAXCategory=0;JucePlugin_AAXDisableBypass=0;JucePlugin_AAXDisableMultiMono=0;JucePlugin_VSTNumMidiInputs=16;JucePlugin_VSTNumMidiOutputs=16;JucePlugin_Enable_ARA=0;JucePlugin_ARAFactoryID=\"com.Roland.RolandCube.arafactory.0.0.1\";JucePlugin_ARADocumentArchiveID=\"com.Roland.RolandCube.aradocumentarchive.1\";JucePlugin_ARACompatibleArchiveIDs=\"\";JucePlugin_ARAContentTypes=0;JucePlugin_ARATransformationFlags=0;JUCE_DISPLAY_SPLASH_SCREEN=0;JUCE_REPORT_APP_USAGE=0;JUCE_ALSA=1;JUCE_DIRECTSOUND=1;JUCE_DISABLE_CAUTIOUS_PARAMETER_ID_CHECKING=1;JUCE_USE_OGGVORBIS=1;JUCE_WEB_BROWSER=0;JUCE_USE_CURL=0;JUCE_VST3_CAN_REPLACE_VST2=0;JUCE_MODULE_AVAILABLE_juce_audio_plugin_client=1;JUCE_MODULE_AVAILABLE_juce_audio_processors=1;JUCE_MODULE_AVAILABLE_juce_gui_extra=1;JUCE_MODULE_AVAILABLE_juce_gui_basics=1;JUCE_MODULE_AVAILABLE_juce_graphics=1;JUCE_MODULE_AVAILABLE_juce_events=1;JUCE_MODULE_AVAILABLE_juce_core=1;JUCE_MODULE_AVAILABLE_juce_data_structures=1;JUCE_MODULE_AVAILABLE_juce_audio_basics=1;JUCE_MODULE_AVAILABLE_juce_audio_utils=1;JUCE_MODULE_AVAILABLE_juce_audio_formats=1;JUCE_MODULE_AVAILABLE_juce_audio_devices=1;JUCE_MODULE_AVAILABLE_juce_dsp=1;JUCE_TARGET_HAS_BINARY_DATA=1;RTNEURAL_NAMESPACE=RTNeural;RTNEURAL_DEFAULT_ALIGNMENT=16;JUCE_STANDALONE_APPLICATION=JucePlugin_Build_Standalone;JucePlugin_Build_AU=0;JucePlugin_Build_AUv3=0;JucePlugin_Build_AAX=0;JucePlugin_Build_LV2=0;JucePlugin_Build_Standalone=0;JucePlugin_Build_Unity=0;JucePlugin_Build_VST=0;JucePlugin_Build_VST3=1;CMAKE_INTDIR=\"Debug\";RolandCube_VST3_EXPORTS</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\andre\Desktop\RolandCube_Amplifier\modules\RTNeural;C:\Users\andre\Desktop\RolandCube_Amplifier\.\RTNeural;C:\Users\andre\Desktop\RolandCube_Amplifier\build\RolandCube_artefacts\JuceLibraryCode;C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\modules;C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\modules\juce_audio_processors\format_types\VST3_SDK;C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\modules\juce_audio_processors\format_types\LV2_SDK;C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\modules\juce_audio_processors\format_types\LV2_SDK\lv2;C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\modules\juce_audio_processors\format_types\LV2_SDK\serd;C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\modules\juce_audio_processors\format_types\LV2_SDK\sord;C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\modules\juce_audio_processors\format_types\LV2_SDK\sord\src;C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\modules\juce_audio_processors\format_types\LV2_SDK\sratom;C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\modules\juce_audio_processors\format_types\LV2_SDK\lilv;C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\modules\juce_audio_processors\format_types\LV2_SDK\lilv\src;C:\Users\andre\Desktop\RolandCube_Amplifier\build\juce_binarydata_BinaryData\JuceLibraryCode;C:\Users\andre\Desktop\RolandCube_Amplifier\modules\RTNeural\RTNeural\..\modules\json;C:\Users\andre\Desktop\RolandCube_Amplifier\modules\RTNeural\RTNeural\..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Users\andre\Desktop\RolandCube_Amplifier\modules\RTNeural;C:\Users\andre\Desktop\RolandCube_Amplifier\.\RTNeural;C:\Users\andre\Desktop\RolandCube_Amplifier\build\RolandCube_artefacts\JuceLibraryCode;C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\modules;C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\modules\juce_audio_processors\format_types\VST3_SDK;C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\modules\juce_audio_processors\format_types\LV2_SDK;C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\modules\juce_audio_processors\format_types\LV2_SDK\lv2;C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\modules\juce_audio_processors\format_types\LV2_SDK\serd;C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\modules\juce_audio_processors\format_types\LV2_SDK\sord;C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\modules\juce_audio_processors\format_types\LV2_SDK\sord\src;C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\modules\juce_audio_processors\format_types\LV2_SDK\sratom;C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\modules\juce_audio_processors\format_types\LV2_SDK\lilv;C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\modules\juce_audio_processors\format_types\LV2_SDK\lilv\src;C:\Users\andre\Desktop\RolandCube_Amplifier\build\juce_binarydata_BinaryData\JuceLibraryCode;C:\Users\andre\Desktop\RolandCube_Amplifier\modules\RTNeural\RTNeural\..\modules\json;C:\Users\andre\Desktop\RolandCube_Amplifier\modules\RTNeural\RTNeural\..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <PostBuildEvent>
+      <Message>		</Message>
+      <Command>setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E echo "removing moduleinfo.json"
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E remove -f C:/Users/andre/Desktop/RolandCube_Amplifier/build/RolandCube_artefacts/Debug/VST3/RolandCube.vst3/Contents/moduleinfo.json C:/Users/andre/Desktop/RolandCube_Amplifier/build/RolandCube_artefacts/Debug/VST3/RolandCube.vst3/Contents/Resources/moduleinfo.json
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/Users/andre/Desktop/RolandCube_Amplifier/build/RolandCube_artefacts/Debug/VST3/RolandCube.vst3/Contents/Resources
+if %errorlevel% neq 0 goto :cmEnd
+Debug\juce_vst3_helper.exe -create -version 0.0.1 -path C:/Users/andre/Desktop/RolandCube_Amplifier/build/RolandCube_artefacts/Debug/VST3/RolandCube.vst3 -output C:/Users/andre/Desktop/RolandCube_Amplifier/build/RolandCube_artefacts/Debug/VST3/RolandCube.vst3/Contents/Resources/moduleinfo.json
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -Dsrc=C:/Users/andre/Desktop/RolandCube_Amplifier/build/RolandCube_artefacts/Debug/VST3/RolandCube.vst3 "-Ddest=C:\Program Files\Common Files/VST3" -P C:/Users/andre/Desktop/RolandCube_Amplifier/modules/JUCE/extras/Build/CMake/copyDir.cmake
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+    </PostBuildEvent>
+    <Link>
+      <AdditionalDependencies>RolandCube_artefacts\Debug\RolandCube_SharedCode.lib;Debug\BinaryData.lib;RTNeural\RTNeural\Debug\RTNeural.lib;chowdsp_dsp.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:/Users/andre/Desktop/RolandCube_Amplifier/modules/JUCE/modules/juce_audio_plugin_client/libs/VisualStudio2022/x64/MDd;C:/Users/andre/Desktop/RolandCube_Amplifier/modules/JUCE/modules/juce_audio_plugin_client/libs/VisualStudio2022/x64/MDd/$(Configuration);C:/Users/andre/Desktop/RolandCube_Amplifier/modules/JUCE/modules/juce_audio_processors/libs/VisualStudio2022/x64/MDd;C:/Users/andre/Desktop/RolandCube_Amplifier/modules/JUCE/modules/juce_audio_processors/libs/VisualStudio2022/x64/MDd/$(Configuration);C:/Users/andre/Desktop/RolandCube_Amplifier/modules/JUCE/modules/juce_gui_extra/libs/VisualStudio2022/x64/MDd;C:/Users/andre/Desktop/RolandCube_Amplifier/modules/JUCE/modules/juce_gui_extra/libs/VisualStudio2022/x64/MDd/$(Configuration);C:/Users/andre/Desktop/RolandCube_Amplifier/modules/JUCE/modules/juce_gui_basics/libs/VisualStudio2022/x64/MDd;C:/Users/andre/Desktop/RolandCube_Amplifier/modules/JUCE/modules/juce_gui_basics/libs/VisualStudio2022/x64/MDd/$(Configuration);C:/Users/andre/Desktop/RolandCube_Amplifier/modules/JUCE/modules/juce_graphics/libs/VisualStudio2022/x64/MDd;C:/Users/andre/Desktop/RolandCube_Amplifier/modules/JUCE/modules/juce_graphics/libs/VisualStudio2022/x64/MDd/$(Configuration);C:/Users/andre/Desktop/RolandCube_Amplifier/modules/JUCE/modules/juce_events/libs/VisualStudio2022/x64/MDd;C:/Users/andre/Desktop/RolandCube_Amplifier/modules/JUCE/modules/juce_events/libs/VisualStudio2022/x64/MDd/$(Configuration);C:/Users/andre/Desktop/RolandCube_Amplifier/modules/JUCE/modules/juce_core/libs/VisualStudio2022/x64/MDd;C:/Users/andre/Desktop/RolandCube_Amplifier/modules/JUCE/modules/juce_core/libs/VisualStudio2022/x64/MDd/$(Configuration);C:/Users/andre/Desktop/RolandCube_Amplifier/modules/JUCE/modules/juce_data_structures/libs/VisualStudio2022/x64/MDd;C:/Users/andre/Desktop/RolandCube_Amplifier/modules/JUCE/modules/juce_data_structures/libs/VisualStudio2022/x64/MDd/$(Configuration);C:/Users/andre/Desktop/RolandCube_Amplifier/modules/JUCE/modules/juce_audio_basics/libs/VisualStudio2022/x64/MDd;C:/Users/andre/Desktop/RolandCube_Amplifier/modules/JUCE/modules/juce_audio_basics/libs/VisualStudio2022/x64/MDd/$(Configuration);C:/Users/andre/Desktop/RolandCube_Amplifier/modules/JUCE/modules/juce_audio_utils/libs/VisualStudio2022/x64/MDd;C:/Users/andre/Desktop/RolandCube_Amplifier/modules/JUCE/modules/juce_audio_utils/libs/VisualStudio2022/x64/MDd/$(Configuration);C:/Users/andre/Desktop/RolandCube_Amplifier/modules/JUCE/modules/juce_audio_formats/libs/VisualStudio2022/x64/MDd;C:/Users/andre/Desktop/RolandCube_Amplifier/modules/JUCE/modules/juce_audio_formats/libs/VisualStudio2022/x64/MDd/$(Configuration);C:/Users/andre/Desktop/RolandCube_Amplifier/modules/JUCE/modules/juce_audio_devices/libs/VisualStudio2022/x64/MDd;C:/Users/andre/Desktop/RolandCube_Amplifier/modules/JUCE/modules/juce_audio_devices/libs/VisualStudio2022/x64/MDd/$(Configuration);C:/Users/andre/Desktop/RolandCube_Amplifier/modules/JUCE/modules/juce_dsp/libs/VisualStudio2022/x64/MDd;C:/Users/andre/Desktop/RolandCube_Amplifier/modules/JUCE/modules/juce_dsp/libs/VisualStudio2022/x64/MDd/$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>C:/Users/andre/Desktop/RolandCube_Amplifier/build/RolandCube_artefacts/Debug/VST3/RolandCube.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/Users/andre/Desktop/RolandCube_Amplifier/build/RolandCube_artefacts/Debug/VST3/RolandCube.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Users\andre\Desktop\RolandCube_Amplifier\modules\RTNeural;C:\Users\andre\Desktop\RolandCube_Amplifier\.\RTNeural;C:\Users\andre\Desktop\RolandCube_Amplifier\build\RolandCube_artefacts\JuceLibraryCode;C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\modules;C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\modules\juce_audio_processors\format_types\VST3_SDK;C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\modules\juce_audio_processors\format_types\LV2_SDK;C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\modules\juce_audio_processors\format_types\LV2_SDK\lv2;C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\modules\juce_audio_processors\format_types\LV2_SDK\serd;C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\modules\juce_audio_processors\format_types\LV2_SDK\sord;C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\modules\juce_audio_processors\format_types\LV2_SDK\sord\src;C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\modules\juce_audio_processors\format_types\LV2_SDK\sratom;C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\modules\juce_audio_processors\format_types\LV2_SDK\lilv;C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\modules\juce_audio_processors\format_types\LV2_SDK\lilv\src;C:\Users\andre\Desktop\RolandCube_Amplifier\build\juce_binarydata_BinaryData\JuceLibraryCode;C:\Users\andre\Desktop\RolandCube_Amplifier\modules\RTNeural\RTNeural\..\modules\json;C:\Users\andre\Desktop\RolandCube_Amplifier\modules\RTNeural\RTNeural\..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /bigobj</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>Full</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level4</WarningLevel>
+      <WholeProgramOptimization>true</WholeProgramOptimization>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;JUCE_GLOBAL_MODULE_SETTINGS_INCLUDED=1;NDEBUG=1;_NDEBUG=1;JucePlugin_IsSynth=0;JucePlugin_ManufacturerCode=0x42727478;JucePlugin_Manufacturer="Roland";JucePlugin_ManufacturerWebsite="";JucePlugin_ManufacturerEmail="";JucePlugin_PluginCode=0x526f4375;JucePlugin_ProducesMidiOutput=0;JucePlugin_IsMidiEffect=0;JucePlugin_WantsMidiInput=0;JucePlugin_EditorRequiresKeyboardFocus=0;JucePlugin_Name="RolandCube";JucePlugin_Desc="RolandCube";JucePlugin_Version=0.0.1;JucePlugin_VersionString="0.0.1";JucePlugin_VersionCode=0x1;JucePlugin_VSTUniqueID=JucePlugin_PluginCode;JucePlugin_VSTCategory=kPlugCategEffect;JucePlugin_Vst3Category="Fx";JucePlugin_AUMainType='aufx';JucePlugin_AUSubType=JucePlugin_PluginCode;JucePlugin_AUExportPrefix=RolandCubeAU;JucePlugin_AUExportPrefixQuoted="RolandCubeAU";JucePlugin_AUManufacturerCode=JucePlugin_ManufacturerCode;JucePlugin_CFBundleIdentifier=com.Roland.RolandCube;JucePlugin_AAXIdentifier=com.Roland.RolandCube;JucePlugin_AAXManufacturerCode=JucePlugin_ManufacturerCode;JucePlugin_AAXProductId=JucePlugin_PluginCode;JucePlugin_AAXCategory=0;JucePlugin_AAXDisableBypass=0;JucePlugin_AAXDisableMultiMono=0;JucePlugin_VSTNumMidiInputs=16;JucePlugin_VSTNumMidiOutputs=16;JucePlugin_Enable_ARA=0;JucePlugin_ARAFactoryID="com.Roland.RolandCube.arafactory.0.0.1";JucePlugin_ARADocumentArchiveID="com.Roland.RolandCube.aradocumentarchive.1";JucePlugin_ARACompatibleArchiveIDs="";JucePlugin_ARAContentTypes=0;JucePlugin_ARATransformationFlags=0;JUCE_DISPLAY_SPLASH_SCREEN=0;JUCE_REPORT_APP_USAGE=0;JUCE_ALSA=1;JUCE_DIRECTSOUND=1;JUCE_DISABLE_CAUTIOUS_PARAMETER_ID_CHECKING=1;JUCE_USE_OGGVORBIS=1;JUCE_WEB_BROWSER=0;JUCE_USE_CURL=0;JUCE_VST3_CAN_REPLACE_VST2=0;JUCE_MODULE_AVAILABLE_juce_audio_plugin_client=1;JUCE_MODULE_AVAILABLE_juce_audio_processors=1;JUCE_MODULE_AVAILABLE_juce_gui_extra=1;JUCE_MODULE_AVAILABLE_juce_gui_basics=1;JUCE_MODULE_AVAILABLE_juce_graphics=1;JUCE_MODULE_AVAILABLE_juce_events=1;JUCE_MODULE_AVAILABLE_juce_core=1;JUCE_MODULE_AVAILABLE_juce_data_structures=1;JUCE_MODULE_AVAILABLE_juce_audio_basics=1;JUCE_MODULE_AVAILABLE_juce_audio_utils=1;JUCE_MODULE_AVAILABLE_juce_audio_formats=1;JUCE_MODULE_AVAILABLE_juce_audio_devices=1;JUCE_MODULE_AVAILABLE_juce_dsp=1;JUCE_TARGET_HAS_BINARY_DATA=1;RTNEURAL_NAMESPACE=RTNeural;RTNEURAL_DEFAULT_ALIGNMENT=16;JUCE_STANDALONE_APPLICATION=JucePlugin_Build_Standalone;JucePlugin_Build_AU=0;JucePlugin_Build_AUv3=0;JucePlugin_Build_AAX=0;JucePlugin_Build_LV2=0;JucePlugin_Build_Standalone=0;JucePlugin_Build_Unity=0;JucePlugin_Build_VST=0;JucePlugin_Build_VST3=1;CMAKE_INTDIR="Release";RolandCube_VST3_EXPORTS</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;JUCE_GLOBAL_MODULE_SETTINGS_INCLUDED=1;NDEBUG=1;_NDEBUG=1;JucePlugin_IsSynth=0;JucePlugin_ManufacturerCode=0x42727478;JucePlugin_Manufacturer=\"Roland\";JucePlugin_ManufacturerWebsite=\"\";JucePlugin_ManufacturerEmail=\"\";JucePlugin_PluginCode=0x526f4375;JucePlugin_ProducesMidiOutput=0;JucePlugin_IsMidiEffect=0;JucePlugin_WantsMidiInput=0;JucePlugin_EditorRequiresKeyboardFocus=0;JucePlugin_Name=\"RolandCube\";JucePlugin_Desc=\"RolandCube\";JucePlugin_Version=0.0.1;JucePlugin_VersionString=\"0.0.1\";JucePlugin_VersionCode=0x1;JucePlugin_VSTUniqueID=JucePlugin_PluginCode;JucePlugin_VSTCategory=kPlugCategEffect;JucePlugin_Vst3Category=\"Fx\";JucePlugin_AUMainType='aufx';JucePlugin_AUSubType=JucePlugin_PluginCode;JucePlugin_AUExportPrefix=RolandCubeAU;JucePlugin_AUExportPrefixQuoted=\"RolandCubeAU\";JucePlugin_AUManufacturerCode=JucePlugin_ManufacturerCode;JucePlugin_CFBundleIdentifier=com.Roland.RolandCube;JucePlugin_AAXIdentifier=com.Roland.RolandCube;JucePlugin_AAXManufacturerCode=JucePlugin_ManufacturerCode;JucePlugin_AAXProductId=JucePlugin_PluginCode;JucePlugin_AAXCategory=0;JucePlugin_AAXDisableBypass=0;JucePlugin_AAXDisableMultiMono=0;JucePlugin_VSTNumMidiInputs=16;JucePlugin_VSTNumMidiOutputs=16;JucePlugin_Enable_ARA=0;JucePlugin_ARAFactoryID=\"com.Roland.RolandCube.arafactory.0.0.1\";JucePlugin_ARADocumentArchiveID=\"com.Roland.RolandCube.aradocumentarchive.1\";JucePlugin_ARACompatibleArchiveIDs=\"\";JucePlugin_ARAContentTypes=0;JucePlugin_ARATransformationFlags=0;JUCE_DISPLAY_SPLASH_SCREEN=0;JUCE_REPORT_APP_USAGE=0;JUCE_ALSA=1;JUCE_DIRECTSOUND=1;JUCE_DISABLE_CAUTIOUS_PARAMETER_ID_CHECKING=1;JUCE_USE_OGGVORBIS=1;JUCE_WEB_BROWSER=0;JUCE_USE_CURL=0;JUCE_VST3_CAN_REPLACE_VST2=0;JUCE_MODULE_AVAILABLE_juce_audio_plugin_client=1;JUCE_MODULE_AVAILABLE_juce_audio_processors=1;JUCE_MODULE_AVAILABLE_juce_gui_extra=1;JUCE_MODULE_AVAILABLE_juce_gui_basics=1;JUCE_MODULE_AVAILABLE_juce_graphics=1;JUCE_MODULE_AVAILABLE_juce_events=1;JUCE_MODULE_AVAILABLE_juce_core=1;JUCE_MODULE_AVAILABLE_juce_data_structures=1;JUCE_MODULE_AVAILABLE_juce_audio_basics=1;JUCE_MODULE_AVAILABLE_juce_audio_utils=1;JUCE_MODULE_AVAILABLE_juce_audio_formats=1;JUCE_MODULE_AVAILABLE_juce_audio_devices=1;JUCE_MODULE_AVAILABLE_juce_dsp=1;JUCE_TARGET_HAS_BINARY_DATA=1;RTNEURAL_NAMESPACE=RTNeural;RTNEURAL_DEFAULT_ALIGNMENT=16;JUCE_STANDALONE_APPLICATION=JucePlugin_Build_Standalone;JucePlugin_Build_AU=0;JucePlugin_Build_AUv3=0;JucePlugin_Build_AAX=0;JucePlugin_Build_LV2=0;JucePlugin_Build_Standalone=0;JucePlugin_Build_Unity=0;JucePlugin_Build_VST=0;JucePlugin_Build_VST3=1;CMAKE_INTDIR=\"Release\";RolandCube_VST3_EXPORTS</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\andre\Desktop\RolandCube_Amplifier\modules\RTNeural;C:\Users\andre\Desktop\RolandCube_Amplifier\.\RTNeural;C:\Users\andre\Desktop\RolandCube_Amplifier\build\RolandCube_artefacts\JuceLibraryCode;C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\modules;C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\modules\juce_audio_processors\format_types\VST3_SDK;C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\modules\juce_audio_processors\format_types\LV2_SDK;C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\modules\juce_audio_processors\format_types\LV2_SDK\lv2;C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\modules\juce_audio_processors\format_types\LV2_SDK\serd;C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\modules\juce_audio_processors\format_types\LV2_SDK\sord;C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\modules\juce_audio_processors\format_types\LV2_SDK\sord\src;C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\modules\juce_audio_processors\format_types\LV2_SDK\sratom;C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\modules\juce_audio_processors\format_types\LV2_SDK\lilv;C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\modules\juce_audio_processors\format_types\LV2_SDK\lilv\src;C:\Users\andre\Desktop\RolandCube_Amplifier\build\juce_binarydata_BinaryData\JuceLibraryCode;C:\Users\andre\Desktop\RolandCube_Amplifier\modules\RTNeural\RTNeural\..\modules\json;C:\Users\andre\Desktop\RolandCube_Amplifier\modules\RTNeural\RTNeural\..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Users\andre\Desktop\RolandCube_Amplifier\modules\RTNeural;C:\Users\andre\Desktop\RolandCube_Amplifier\.\RTNeural;C:\Users\andre\Desktop\RolandCube_Amplifier\build\RolandCube_artefacts\JuceLibraryCode;C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\modules;C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\modules\juce_audio_processors\format_types\VST3_SDK;C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\modules\juce_audio_processors\format_types\LV2_SDK;C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\modules\juce_audio_processors\format_types\LV2_SDK\lv2;C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\modules\juce_audio_processors\format_types\LV2_SDK\serd;C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\modules\juce_audio_processors\format_types\LV2_SDK\sord;C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\modules\juce_audio_processors\format_types\LV2_SDK\sord\src;C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\modules\juce_audio_processors\format_types\LV2_SDK\sratom;C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\modules\juce_audio_processors\format_types\LV2_SDK\lilv;C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\modules\juce_audio_processors\format_types\LV2_SDK\lilv\src;C:\Users\andre\Desktop\RolandCube_Amplifier\build\juce_binarydata_BinaryData\JuceLibraryCode;C:\Users\andre\Desktop\RolandCube_Amplifier\modules\RTNeural\RTNeural\..\modules\json;C:\Users\andre\Desktop\RolandCube_Amplifier\modules\RTNeural\RTNeural\..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <PostBuildEvent>
+      <Message>		</Message>
+      <Command>setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E echo "removing moduleinfo.json"
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E remove -f C:/Users/andre/Desktop/RolandCube_Amplifier/build/RolandCube_artefacts/Release/VST3/RolandCube.vst3/Contents/moduleinfo.json C:/Users/andre/Desktop/RolandCube_Amplifier/build/RolandCube_artefacts/Release/VST3/RolandCube.vst3/Contents/Resources/moduleinfo.json
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/Users/andre/Desktop/RolandCube_Amplifier/build/RolandCube_artefacts/Release/VST3/RolandCube.vst3/Contents/Resources
+if %errorlevel% neq 0 goto :cmEnd
+Release\juce_vst3_helper.exe -create -version 0.0.1 -path C:/Users/andre/Desktop/RolandCube_Amplifier/build/RolandCube_artefacts/Release/VST3/RolandCube.vst3 -output C:/Users/andre/Desktop/RolandCube_Amplifier/build/RolandCube_artefacts/Release/VST3/RolandCube.vst3/Contents/Resources/moduleinfo.json
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -Dsrc=C:/Users/andre/Desktop/RolandCube_Amplifier/build/RolandCube_artefacts/Release/VST3/RolandCube.vst3 "-Ddest=C:\Program Files\Common Files/VST3" -P C:/Users/andre/Desktop/RolandCube_Amplifier/modules/JUCE/extras/Build/CMake/copyDir.cmake
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+    </PostBuildEvent>
+    <Link>
+      <AdditionalDependencies>RolandCube_artefacts\Release\RolandCube_SharedCode.lib;Release\BinaryData.lib;RTNeural\RTNeural\Release\RTNeural.lib;chowdsp_dsp.lib;-LTCG;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:/Users/andre/Desktop/RolandCube_Amplifier/modules/JUCE/modules/juce_audio_plugin_client/libs/VisualStudio2022/x64/MDd;C:/Users/andre/Desktop/RolandCube_Amplifier/modules/JUCE/modules/juce_audio_plugin_client/libs/VisualStudio2022/x64/MDd/$(Configuration);C:/Users/andre/Desktop/RolandCube_Amplifier/modules/JUCE/modules/juce_audio_processors/libs/VisualStudio2022/x64/MDd;C:/Users/andre/Desktop/RolandCube_Amplifier/modules/JUCE/modules/juce_audio_processors/libs/VisualStudio2022/x64/MDd/$(Configuration);C:/Users/andre/Desktop/RolandCube_Amplifier/modules/JUCE/modules/juce_gui_extra/libs/VisualStudio2022/x64/MDd;C:/Users/andre/Desktop/RolandCube_Amplifier/modules/JUCE/modules/juce_gui_extra/libs/VisualStudio2022/x64/MDd/$(Configuration);C:/Users/andre/Desktop/RolandCube_Amplifier/modules/JUCE/modules/juce_gui_basics/libs/VisualStudio2022/x64/MDd;C:/Users/andre/Desktop/RolandCube_Amplifier/modules/JUCE/modules/juce_gui_basics/libs/VisualStudio2022/x64/MDd/$(Configuration);C:/Users/andre/Desktop/RolandCube_Amplifier/modules/JUCE/modules/juce_graphics/libs/VisualStudio2022/x64/MDd;C:/Users/andre/Desktop/RolandCube_Amplifier/modules/JUCE/modules/juce_graphics/libs/VisualStudio2022/x64/MDd/$(Configuration);C:/Users/andre/Desktop/RolandCube_Amplifier/modules/JUCE/modules/juce_events/libs/VisualStudio2022/x64/MDd;C:/Users/andre/Desktop/RolandCube_Amplifier/modules/JUCE/modules/juce_events/libs/VisualStudio2022/x64/MDd/$(Configuration);C:/Users/andre/Desktop/RolandCube_Amplifier/modules/JUCE/modules/juce_core/libs/VisualStudio2022/x64/MDd;C:/Users/andre/Desktop/RolandCube_Amplifier/modules/JUCE/modules/juce_core/libs/VisualStudio2022/x64/MDd/$(Configuration);C:/Users/andre/Desktop/RolandCube_Amplifier/modules/JUCE/modules/juce_data_structures/libs/VisualStudio2022/x64/MDd;C:/Users/andre/Desktop/RolandCube_Amplifier/modules/JUCE/modules/juce_data_structures/libs/VisualStudio2022/x64/MDd/$(Configuration);C:/Users/andre/Desktop/RolandCube_Amplifier/modules/JUCE/modules/juce_audio_basics/libs/VisualStudio2022/x64/MDd;C:/Users/andre/Desktop/RolandCube_Amplifier/modules/JUCE/modules/juce_audio_basics/libs/VisualStudio2022/x64/MDd/$(Configuration);C:/Users/andre/Desktop/RolandCube_Amplifier/modules/JUCE/modules/juce_audio_utils/libs/VisualStudio2022/x64/MDd;C:/Users/andre/Desktop/RolandCube_Amplifier/modules/JUCE/modules/juce_audio_utils/libs/VisualStudio2022/x64/MDd/$(Configuration);C:/Users/andre/Desktop/RolandCube_Amplifier/modules/JUCE/modules/juce_audio_formats/libs/VisualStudio2022/x64/MDd;C:/Users/andre/Desktop/RolandCube_Amplifier/modules/JUCE/modules/juce_audio_formats/libs/VisualStudio2022/x64/MDd/$(Configuration);C:/Users/andre/Desktop/RolandCube_Amplifier/modules/JUCE/modules/juce_audio_devices/libs/VisualStudio2022/x64/MDd;C:/Users/andre/Desktop/RolandCube_Amplifier/modules/JUCE/modules/juce_audio_devices/libs/VisualStudio2022/x64/MDd/$(Configuration);C:/Users/andre/Desktop/RolandCube_Amplifier/modules/JUCE/modules/juce_dsp/libs/VisualStudio2022/x64/MDd;C:/Users/andre/Desktop/RolandCube_Amplifier/modules/JUCE/modules/juce_dsp/libs/VisualStudio2022/x64/MDd/$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>C:/Users/andre/Desktop/RolandCube_Amplifier/build/RolandCube_artefacts/Release/VST3/RolandCube.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/Users/andre/Desktop/RolandCube_Amplifier/build/RolandCube_artefacts/Release/VST3/RolandCube.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Users\andre\Desktop\RolandCube_Amplifier\modules\RTNeural;C:\Users\andre\Desktop\RolandCube_Amplifier\.\RTNeural;C:\Users\andre\Desktop\RolandCube_Amplifier\build\RolandCube_artefacts\JuceLibraryCode;C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\modules;C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\modules\juce_audio_processors\format_types\VST3_SDK;C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\modules\juce_audio_processors\format_types\LV2_SDK;C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\modules\juce_audio_processors\format_types\LV2_SDK\lv2;C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\modules\juce_audio_processors\format_types\LV2_SDK\serd;C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\modules\juce_audio_processors\format_types\LV2_SDK\sord;C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\modules\juce_audio_processors\format_types\LV2_SDK\sord\src;C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\modules\juce_audio_processors\format_types\LV2_SDK\sratom;C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\modules\juce_audio_processors\format_types\LV2_SDK\lilv;C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\modules\juce_audio_processors\format_types\LV2_SDK\lilv\src;C:\Users\andre\Desktop\RolandCube_Amplifier\build\juce_binarydata_BinaryData\JuceLibraryCode;C:\Users\andre\Desktop\RolandCube_Amplifier\modules\RTNeural\RTNeural\..\modules\json;C:\Users\andre\Desktop\RolandCube_Amplifier\modules\RTNeural\RTNeural\..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /bigobj</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>Full</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level4</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;JUCE_GLOBAL_MODULE_SETTINGS_INCLUDED=1;NDEBUG=1;_NDEBUG=1;JucePlugin_IsSynth=0;JucePlugin_ManufacturerCode=0x42727478;JucePlugin_Manufacturer="Roland";JucePlugin_ManufacturerWebsite="";JucePlugin_ManufacturerEmail="";JucePlugin_PluginCode=0x526f4375;JucePlugin_ProducesMidiOutput=0;JucePlugin_IsMidiEffect=0;JucePlugin_WantsMidiInput=0;JucePlugin_EditorRequiresKeyboardFocus=0;JucePlugin_Name="RolandCube";JucePlugin_Desc="RolandCube";JucePlugin_Version=0.0.1;JucePlugin_VersionString="0.0.1";JucePlugin_VersionCode=0x1;JucePlugin_VSTUniqueID=JucePlugin_PluginCode;JucePlugin_VSTCategory=kPlugCategEffect;JucePlugin_Vst3Category="Fx";JucePlugin_AUMainType='aufx';JucePlugin_AUSubType=JucePlugin_PluginCode;JucePlugin_AUExportPrefix=RolandCubeAU;JucePlugin_AUExportPrefixQuoted="RolandCubeAU";JucePlugin_AUManufacturerCode=JucePlugin_ManufacturerCode;JucePlugin_CFBundleIdentifier=com.Roland.RolandCube;JucePlugin_AAXIdentifier=com.Roland.RolandCube;JucePlugin_AAXManufacturerCode=JucePlugin_ManufacturerCode;JucePlugin_AAXProductId=JucePlugin_PluginCode;JucePlugin_AAXCategory=0;JucePlugin_AAXDisableBypass=0;JucePlugin_AAXDisableMultiMono=0;JucePlugin_VSTNumMidiInputs=16;JucePlugin_VSTNumMidiOutputs=16;JucePlugin_Enable_ARA=0;JucePlugin_ARAFactoryID="com.Roland.RolandCube.arafactory.0.0.1";JucePlugin_ARADocumentArchiveID="com.Roland.RolandCube.aradocumentarchive.1";JucePlugin_ARACompatibleArchiveIDs="";JucePlugin_ARAContentTypes=0;JucePlugin_ARATransformationFlags=0;JUCE_DISPLAY_SPLASH_SCREEN=0;JUCE_REPORT_APP_USAGE=0;JUCE_ALSA=1;JUCE_DIRECTSOUND=1;JUCE_DISABLE_CAUTIOUS_PARAMETER_ID_CHECKING=1;JUCE_USE_OGGVORBIS=1;JUCE_WEB_BROWSER=0;JUCE_USE_CURL=0;JUCE_VST3_CAN_REPLACE_VST2=0;JUCE_MODULE_AVAILABLE_juce_audio_plugin_client=1;JUCE_MODULE_AVAILABLE_juce_audio_processors=1;JUCE_MODULE_AVAILABLE_juce_gui_extra=1;JUCE_MODULE_AVAILABLE_juce_gui_basics=1;JUCE_MODULE_AVAILABLE_juce_graphics=1;JUCE_MODULE_AVAILABLE_juce_events=1;JUCE_MODULE_AVAILABLE_juce_core=1;JUCE_MODULE_AVAILABLE_juce_data_structures=1;JUCE_MODULE_AVAILABLE_juce_audio_basics=1;JUCE_MODULE_AVAILABLE_juce_audio_utils=1;JUCE_MODULE_AVAILABLE_juce_audio_formats=1;JUCE_MODULE_AVAILABLE_juce_audio_devices=1;JUCE_MODULE_AVAILABLE_juce_dsp=1;JUCE_TARGET_HAS_BINARY_DATA=1;RTNEURAL_NAMESPACE=RTNeural;RTNEURAL_DEFAULT_ALIGNMENT=16;JUCE_STANDALONE_APPLICATION=JucePlugin_Build_Standalone;JucePlugin_Build_AU=0;JucePlugin_Build_AUv3=0;JucePlugin_Build_AAX=0;JucePlugin_Build_LV2=0;JucePlugin_Build_Standalone=0;JucePlugin_Build_Unity=0;JucePlugin_Build_VST=0;JucePlugin_Build_VST3=1;CMAKE_INTDIR="MinSizeRel";RolandCube_VST3_EXPORTS</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;JUCE_GLOBAL_MODULE_SETTINGS_INCLUDED=1;NDEBUG=1;_NDEBUG=1;JucePlugin_IsSynth=0;JucePlugin_ManufacturerCode=0x42727478;JucePlugin_Manufacturer=\"Roland\";JucePlugin_ManufacturerWebsite=\"\";JucePlugin_ManufacturerEmail=\"\";JucePlugin_PluginCode=0x526f4375;JucePlugin_ProducesMidiOutput=0;JucePlugin_IsMidiEffect=0;JucePlugin_WantsMidiInput=0;JucePlugin_EditorRequiresKeyboardFocus=0;JucePlugin_Name=\"RolandCube\";JucePlugin_Desc=\"RolandCube\";JucePlugin_Version=0.0.1;JucePlugin_VersionString=\"0.0.1\";JucePlugin_VersionCode=0x1;JucePlugin_VSTUniqueID=JucePlugin_PluginCode;JucePlugin_VSTCategory=kPlugCategEffect;JucePlugin_Vst3Category=\"Fx\";JucePlugin_AUMainType='aufx';JucePlugin_AUSubType=JucePlugin_PluginCode;JucePlugin_AUExportPrefix=RolandCubeAU;JucePlugin_AUExportPrefixQuoted=\"RolandCubeAU\";JucePlugin_AUManufacturerCode=JucePlugin_ManufacturerCode;JucePlugin_CFBundleIdentifier=com.Roland.RolandCube;JucePlugin_AAXIdentifier=com.Roland.RolandCube;JucePlugin_AAXManufacturerCode=JucePlugin_ManufacturerCode;JucePlugin_AAXProductId=JucePlugin_PluginCode;JucePlugin_AAXCategory=0;JucePlugin_AAXDisableBypass=0;JucePlugin_AAXDisableMultiMono=0;JucePlugin_VSTNumMidiInputs=16;JucePlugin_VSTNumMidiOutputs=16;JucePlugin_Enable_ARA=0;JucePlugin_ARAFactoryID=\"com.Roland.RolandCube.arafactory.0.0.1\";JucePlugin_ARADocumentArchiveID=\"com.Roland.RolandCube.aradocumentarchive.1\";JucePlugin_ARACompatibleArchiveIDs=\"\";JucePlugin_ARAContentTypes=0;JucePlugin_ARATransformationFlags=0;JUCE_DISPLAY_SPLASH_SCREEN=0;JUCE_REPORT_APP_USAGE=0;JUCE_ALSA=1;JUCE_DIRECTSOUND=1;JUCE_DISABLE_CAUTIOUS_PARAMETER_ID_CHECKING=1;JUCE_USE_OGGVORBIS=1;JUCE_WEB_BROWSER=0;JUCE_USE_CURL=0;JUCE_VST3_CAN_REPLACE_VST2=0;JUCE_MODULE_AVAILABLE_juce_audio_plugin_client=1;JUCE_MODULE_AVAILABLE_juce_audio_processors=1;JUCE_MODULE_AVAILABLE_juce_gui_extra=1;JUCE_MODULE_AVAILABLE_juce_gui_basics=1;JUCE_MODULE_AVAILABLE_juce_graphics=1;JUCE_MODULE_AVAILABLE_juce_events=1;JUCE_MODULE_AVAILABLE_juce_core=1;JUCE_MODULE_AVAILABLE_juce_data_structures=1;JUCE_MODULE_AVAILABLE_juce_audio_basics=1;JUCE_MODULE_AVAILABLE_juce_audio_utils=1;JUCE_MODULE_AVAILABLE_juce_audio_formats=1;JUCE_MODULE_AVAILABLE_juce_audio_devices=1;JUCE_MODULE_AVAILABLE_juce_dsp=1;JUCE_TARGET_HAS_BINARY_DATA=1;RTNEURAL_NAMESPACE=RTNeural;RTNEURAL_DEFAULT_ALIGNMENT=16;JUCE_STANDALONE_APPLICATION=JucePlugin_Build_Standalone;JucePlugin_Build_AU=0;JucePlugin_Build_AUv3=0;JucePlugin_Build_AAX=0;JucePlugin_Build_LV2=0;JucePlugin_Build_Standalone=0;JucePlugin_Build_Unity=0;JucePlugin_Build_VST=0;JucePlugin_Build_VST3=1;CMAKE_INTDIR=\"MinSizeRel\";RolandCube_VST3_EXPORTS</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\andre\Desktop\RolandCube_Amplifier\modules\RTNeural;C:\Users\andre\Desktop\RolandCube_Amplifier\.\RTNeural;C:\Users\andre\Desktop\RolandCube_Amplifier\build\RolandCube_artefacts\JuceLibraryCode;C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\modules;C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\modules\juce_audio_processors\format_types\VST3_SDK;C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\modules\juce_audio_processors\format_types\LV2_SDK;C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\modules\juce_audio_processors\format_types\LV2_SDK\lv2;C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\modules\juce_audio_processors\format_types\LV2_SDK\serd;C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\modules\juce_audio_processors\format_types\LV2_SDK\sord;C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\modules\juce_audio_processors\format_types\LV2_SDK\sord\src;C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\modules\juce_audio_processors\format_types\LV2_SDK\sratom;C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\modules\juce_audio_processors\format_types\LV2_SDK\lilv;C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\modules\juce_audio_processors\format_types\LV2_SDK\lilv\src;C:\Users\andre\Desktop\RolandCube_Amplifier\build\juce_binarydata_BinaryData\JuceLibraryCode;C:\Users\andre\Desktop\RolandCube_Amplifier\modules\RTNeural\RTNeural\..\modules\json;C:\Users\andre\Desktop\RolandCube_Amplifier\modules\RTNeural\RTNeural\..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Users\andre\Desktop\RolandCube_Amplifier\modules\RTNeural;C:\Users\andre\Desktop\RolandCube_Amplifier\.\RTNeural;C:\Users\andre\Desktop\RolandCube_Amplifier\build\RolandCube_artefacts\JuceLibraryCode;C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\modules;C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\modules\juce_audio_processors\format_types\VST3_SDK;C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\modules\juce_audio_processors\format_types\LV2_SDK;C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\modules\juce_audio_processors\format_types\LV2_SDK\lv2;C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\modules\juce_audio_processors\format_types\LV2_SDK\serd;C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\modules\juce_audio_processors\format_types\LV2_SDK\sord;C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\modules\juce_audio_processors\format_types\LV2_SDK\sord\src;C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\modules\juce_audio_processors\format_types\LV2_SDK\sratom;C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\modules\juce_audio_processors\format_types\LV2_SDK\lilv;C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\modules\juce_audio_processors\format_types\LV2_SDK\lilv\src;C:\Users\andre\Desktop\RolandCube_Amplifier\build\juce_binarydata_BinaryData\JuceLibraryCode;C:\Users\andre\Desktop\RolandCube_Amplifier\modules\RTNeural\RTNeural\..\modules\json;C:\Users\andre\Desktop\RolandCube_Amplifier\modules\RTNeural\RTNeural\..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <PostBuildEvent>
+      <Message>		</Message>
+      <Command>setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E echo "removing moduleinfo.json"
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E remove -f C:/Users/andre/Desktop/RolandCube_Amplifier/build/RolandCube_artefacts/MinSizeRel/VST3/RolandCube.vst3/Contents/moduleinfo.json C:/Users/andre/Desktop/RolandCube_Amplifier/build/RolandCube_artefacts/MinSizeRel/VST3/RolandCube.vst3/Contents/Resources/moduleinfo.json
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/Users/andre/Desktop/RolandCube_Amplifier/build/RolandCube_artefacts/MinSizeRel/VST3/RolandCube.vst3/Contents/Resources
+if %errorlevel% neq 0 goto :cmEnd
+MinSizeRel\juce_vst3_helper.exe -create -version 0.0.1 -path C:/Users/andre/Desktop/RolandCube_Amplifier/build/RolandCube_artefacts/MinSizeRel/VST3/RolandCube.vst3 -output C:/Users/andre/Desktop/RolandCube_Amplifier/build/RolandCube_artefacts/MinSizeRel/VST3/RolandCube.vst3/Contents/Resources/moduleinfo.json
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -Dsrc=C:/Users/andre/Desktop/RolandCube_Amplifier/build/RolandCube_artefacts/MinSizeRel/VST3/RolandCube.vst3 "-Ddest=C:\Program Files\Common Files/VST3" -P C:/Users/andre/Desktop/RolandCube_Amplifier/modules/JUCE/extras/Build/CMake/copyDir.cmake
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+    </PostBuildEvent>
+    <Link>
+      <AdditionalDependencies>RolandCube_artefacts\MinSizeRel\RolandCube_SharedCode.lib;MinSizeRel\BinaryData.lib;RTNeural\RTNeural\MinSizeRel\RTNeural.lib;chowdsp_dsp.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:/Users/andre/Desktop/RolandCube_Amplifier/modules/JUCE/modules/juce_audio_plugin_client/libs/VisualStudio2022/x64/MDd;C:/Users/andre/Desktop/RolandCube_Amplifier/modules/JUCE/modules/juce_audio_plugin_client/libs/VisualStudio2022/x64/MDd/$(Configuration);C:/Users/andre/Desktop/RolandCube_Amplifier/modules/JUCE/modules/juce_audio_processors/libs/VisualStudio2022/x64/MDd;C:/Users/andre/Desktop/RolandCube_Amplifier/modules/JUCE/modules/juce_audio_processors/libs/VisualStudio2022/x64/MDd/$(Configuration);C:/Users/andre/Desktop/RolandCube_Amplifier/modules/JUCE/modules/juce_gui_extra/libs/VisualStudio2022/x64/MDd;C:/Users/andre/Desktop/RolandCube_Amplifier/modules/JUCE/modules/juce_gui_extra/libs/VisualStudio2022/x64/MDd/$(Configuration);C:/Users/andre/Desktop/RolandCube_Amplifier/modules/JUCE/modules/juce_gui_basics/libs/VisualStudio2022/x64/MDd;C:/Users/andre/Desktop/RolandCube_Amplifier/modules/JUCE/modules/juce_gui_basics/libs/VisualStudio2022/x64/MDd/$(Configuration);C:/Users/andre/Desktop/RolandCube_Amplifier/modules/JUCE/modules/juce_graphics/libs/VisualStudio2022/x64/MDd;C:/Users/andre/Desktop/RolandCube_Amplifier/modules/JUCE/modules/juce_graphics/libs/VisualStudio2022/x64/MDd/$(Configuration);C:/Users/andre/Desktop/RolandCube_Amplifier/modules/JUCE/modules/juce_events/libs/VisualStudio2022/x64/MDd;C:/Users/andre/Desktop/RolandCube_Amplifier/modules/JUCE/modules/juce_events/libs/VisualStudio2022/x64/MDd/$(Configuration);C:/Users/andre/Desktop/RolandCube_Amplifier/modules/JUCE/modules/juce_core/libs/VisualStudio2022/x64/MDd;C:/Users/andre/Desktop/RolandCube_Amplifier/modules/JUCE/modules/juce_core/libs/VisualStudio2022/x64/MDd/$(Configuration);C:/Users/andre/Desktop/RolandCube_Amplifier/modules/JUCE/modules/juce_data_structures/libs/VisualStudio2022/x64/MDd;C:/Users/andre/Desktop/RolandCube_Amplifier/modules/JUCE/modules/juce_data_structures/libs/VisualStudio2022/x64/MDd/$(Configuration);C:/Users/andre/Desktop/RolandCube_Amplifier/modules/JUCE/modules/juce_audio_basics/libs/VisualStudio2022/x64/MDd;C:/Users/andre/Desktop/RolandCube_Amplifier/modules/JUCE/modules/juce_audio_basics/libs/VisualStudio2022/x64/MDd/$(Configuration);C:/Users/andre/Desktop/RolandCube_Amplifier/modules/JUCE/modules/juce_audio_utils/libs/VisualStudio2022/x64/MDd;C:/Users/andre/Desktop/RolandCube_Amplifier/modules/JUCE/modules/juce_audio_utils/libs/VisualStudio2022/x64/MDd/$(Configuration);C:/Users/andre/Desktop/RolandCube_Amplifier/modules/JUCE/modules/juce_audio_formats/libs/VisualStudio2022/x64/MDd;C:/Users/andre/Desktop/RolandCube_Amplifier/modules/JUCE/modules/juce_audio_formats/libs/VisualStudio2022/x64/MDd/$(Configuration);C:/Users/andre/Desktop/RolandCube_Amplifier/modules/JUCE/modules/juce_audio_devices/libs/VisualStudio2022/x64/MDd;C:/Users/andre/Desktop/RolandCube_Amplifier/modules/JUCE/modules/juce_audio_devices/libs/VisualStudio2022/x64/MDd/$(Configuration);C:/Users/andre/Desktop/RolandCube_Amplifier/modules/JUCE/modules/juce_dsp/libs/VisualStudio2022/x64/MDd;C:/Users/andre/Desktop/RolandCube_Amplifier/modules/JUCE/modules/juce_dsp/libs/VisualStudio2022/x64/MDd/$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>C:/Users/andre/Desktop/RolandCube_Amplifier/build/RolandCube_artefacts/MinSizeRel/VST3/RolandCube.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/Users/andre/Desktop/RolandCube_Amplifier/build/RolandCube_artefacts/MinSizeRel/VST3/RolandCube.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Users\andre\Desktop\RolandCube_Amplifier\modules\RTNeural;C:\Users\andre\Desktop\RolandCube_Amplifier\.\RTNeural;C:\Users\andre\Desktop\RolandCube_Amplifier\build\RolandCube_artefacts\JuceLibraryCode;C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\modules;C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\modules\juce_audio_processors\format_types\VST3_SDK;C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\modules\juce_audio_processors\format_types\LV2_SDK;C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\modules\juce_audio_processors\format_types\LV2_SDK\lv2;C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\modules\juce_audio_processors\format_types\LV2_SDK\serd;C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\modules\juce_audio_processors\format_types\LV2_SDK\sord;C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\modules\juce_audio_processors\format_types\LV2_SDK\sord\src;C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\modules\juce_audio_processors\format_types\LV2_SDK\sratom;C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\modules\juce_audio_processors\format_types\LV2_SDK\lilv;C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\modules\juce_audio_processors\format_types\LV2_SDK\lilv\src;C:\Users\andre\Desktop\RolandCube_Amplifier\build\juce_binarydata_BinaryData\JuceLibraryCode;C:\Users\andre\Desktop\RolandCube_Amplifier\modules\RTNeural\RTNeural\..\modules\json;C:\Users\andre\Desktop\RolandCube_Amplifier\modules\RTNeural\RTNeural\..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /bigobj</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>Full</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level4</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;JUCE_GLOBAL_MODULE_SETTINGS_INCLUDED=1;NDEBUG=1;_NDEBUG=1;JucePlugin_IsSynth=0;JucePlugin_ManufacturerCode=0x42727478;JucePlugin_Manufacturer="Roland";JucePlugin_ManufacturerWebsite="";JucePlugin_ManufacturerEmail="";JucePlugin_PluginCode=0x526f4375;JucePlugin_ProducesMidiOutput=0;JucePlugin_IsMidiEffect=0;JucePlugin_WantsMidiInput=0;JucePlugin_EditorRequiresKeyboardFocus=0;JucePlugin_Name="RolandCube";JucePlugin_Desc="RolandCube";JucePlugin_Version=0.0.1;JucePlugin_VersionString="0.0.1";JucePlugin_VersionCode=0x1;JucePlugin_VSTUniqueID=JucePlugin_PluginCode;JucePlugin_VSTCategory=kPlugCategEffect;JucePlugin_Vst3Category="Fx";JucePlugin_AUMainType='aufx';JucePlugin_AUSubType=JucePlugin_PluginCode;JucePlugin_AUExportPrefix=RolandCubeAU;JucePlugin_AUExportPrefixQuoted="RolandCubeAU";JucePlugin_AUManufacturerCode=JucePlugin_ManufacturerCode;JucePlugin_CFBundleIdentifier=com.Roland.RolandCube;JucePlugin_AAXIdentifier=com.Roland.RolandCube;JucePlugin_AAXManufacturerCode=JucePlugin_ManufacturerCode;JucePlugin_AAXProductId=JucePlugin_PluginCode;JucePlugin_AAXCategory=0;JucePlugin_AAXDisableBypass=0;JucePlugin_AAXDisableMultiMono=0;JucePlugin_VSTNumMidiInputs=16;JucePlugin_VSTNumMidiOutputs=16;JucePlugin_Enable_ARA=0;JucePlugin_ARAFactoryID="com.Roland.RolandCube.arafactory.0.0.1";JucePlugin_ARADocumentArchiveID="com.Roland.RolandCube.aradocumentarchive.1";JucePlugin_ARACompatibleArchiveIDs="";JucePlugin_ARAContentTypes=0;JucePlugin_ARATransformationFlags=0;JUCE_DISPLAY_SPLASH_SCREEN=0;JUCE_REPORT_APP_USAGE=0;JUCE_ALSA=1;JUCE_DIRECTSOUND=1;JUCE_DISABLE_CAUTIOUS_PARAMETER_ID_CHECKING=1;JUCE_USE_OGGVORBIS=1;JUCE_WEB_BROWSER=0;JUCE_USE_CURL=0;JUCE_VST3_CAN_REPLACE_VST2=0;JUCE_MODULE_AVAILABLE_juce_audio_plugin_client=1;JUCE_MODULE_AVAILABLE_juce_audio_processors=1;JUCE_MODULE_AVAILABLE_juce_gui_extra=1;JUCE_MODULE_AVAILABLE_juce_gui_basics=1;JUCE_MODULE_AVAILABLE_juce_graphics=1;JUCE_MODULE_AVAILABLE_juce_events=1;JUCE_MODULE_AVAILABLE_juce_core=1;JUCE_MODULE_AVAILABLE_juce_data_structures=1;JUCE_MODULE_AVAILABLE_juce_audio_basics=1;JUCE_MODULE_AVAILABLE_juce_audio_utils=1;JUCE_MODULE_AVAILABLE_juce_audio_formats=1;JUCE_MODULE_AVAILABLE_juce_audio_devices=1;JUCE_MODULE_AVAILABLE_juce_dsp=1;JUCE_TARGET_HAS_BINARY_DATA=1;RTNEURAL_NAMESPACE=RTNeural;RTNEURAL_DEFAULT_ALIGNMENT=16;JUCE_STANDALONE_APPLICATION=JucePlugin_Build_Standalone;JucePlugin_Build_AU=0;JucePlugin_Build_AUv3=0;JucePlugin_Build_AAX=0;JucePlugin_Build_LV2=0;JucePlugin_Build_Standalone=0;JucePlugin_Build_Unity=0;JucePlugin_Build_VST=0;JucePlugin_Build_VST3=1;CMAKE_INTDIR="RelWithDebInfo";RolandCube_VST3_EXPORTS</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;JUCE_GLOBAL_MODULE_SETTINGS_INCLUDED=1;NDEBUG=1;_NDEBUG=1;JucePlugin_IsSynth=0;JucePlugin_ManufacturerCode=0x42727478;JucePlugin_Manufacturer=\"Roland\";JucePlugin_ManufacturerWebsite=\"\";JucePlugin_ManufacturerEmail=\"\";JucePlugin_PluginCode=0x526f4375;JucePlugin_ProducesMidiOutput=0;JucePlugin_IsMidiEffect=0;JucePlugin_WantsMidiInput=0;JucePlugin_EditorRequiresKeyboardFocus=0;JucePlugin_Name=\"RolandCube\";JucePlugin_Desc=\"RolandCube\";JucePlugin_Version=0.0.1;JucePlugin_VersionString=\"0.0.1\";JucePlugin_VersionCode=0x1;JucePlugin_VSTUniqueID=JucePlugin_PluginCode;JucePlugin_VSTCategory=kPlugCategEffect;JucePlugin_Vst3Category=\"Fx\";JucePlugin_AUMainType='aufx';JucePlugin_AUSubType=JucePlugin_PluginCode;JucePlugin_AUExportPrefix=RolandCubeAU;JucePlugin_AUExportPrefixQuoted=\"RolandCubeAU\";JucePlugin_AUManufacturerCode=JucePlugin_ManufacturerCode;JucePlugin_CFBundleIdentifier=com.Roland.RolandCube;JucePlugin_AAXIdentifier=com.Roland.RolandCube;JucePlugin_AAXManufacturerCode=JucePlugin_ManufacturerCode;JucePlugin_AAXProductId=JucePlugin_PluginCode;JucePlugin_AAXCategory=0;JucePlugin_AAXDisableBypass=0;JucePlugin_AAXDisableMultiMono=0;JucePlugin_VSTNumMidiInputs=16;JucePlugin_VSTNumMidiOutputs=16;JucePlugin_Enable_ARA=0;JucePlugin_ARAFactoryID=\"com.Roland.RolandCube.arafactory.0.0.1\";JucePlugin_ARADocumentArchiveID=\"com.Roland.RolandCube.aradocumentarchive.1\";JucePlugin_ARACompatibleArchiveIDs=\"\";JucePlugin_ARAContentTypes=0;JucePlugin_ARATransformationFlags=0;JUCE_DISPLAY_SPLASH_SCREEN=0;JUCE_REPORT_APP_USAGE=0;JUCE_ALSA=1;JUCE_DIRECTSOUND=1;JUCE_DISABLE_CAUTIOUS_PARAMETER_ID_CHECKING=1;JUCE_USE_OGGVORBIS=1;JUCE_WEB_BROWSER=0;JUCE_USE_CURL=0;JUCE_VST3_CAN_REPLACE_VST2=0;JUCE_MODULE_AVAILABLE_juce_audio_plugin_client=1;JUCE_MODULE_AVAILABLE_juce_audio_processors=1;JUCE_MODULE_AVAILABLE_juce_gui_extra=1;JUCE_MODULE_AVAILABLE_juce_gui_basics=1;JUCE_MODULE_AVAILABLE_juce_graphics=1;JUCE_MODULE_AVAILABLE_juce_events=1;JUCE_MODULE_AVAILABLE_juce_core=1;JUCE_MODULE_AVAILABLE_juce_data_structures=1;JUCE_MODULE_AVAILABLE_juce_audio_basics=1;JUCE_MODULE_AVAILABLE_juce_audio_utils=1;JUCE_MODULE_AVAILABLE_juce_audio_formats=1;JUCE_MODULE_AVAILABLE_juce_audio_devices=1;JUCE_MODULE_AVAILABLE_juce_dsp=1;JUCE_TARGET_HAS_BINARY_DATA=1;RTNEURAL_NAMESPACE=RTNeural;RTNEURAL_DEFAULT_ALIGNMENT=16;JUCE_STANDALONE_APPLICATION=JucePlugin_Build_Standalone;JucePlugin_Build_AU=0;JucePlugin_Build_AUv3=0;JucePlugin_Build_AAX=0;JucePlugin_Build_LV2=0;JucePlugin_Build_Standalone=0;JucePlugin_Build_Unity=0;JucePlugin_Build_VST=0;JucePlugin_Build_VST3=1;CMAKE_INTDIR=\"RelWithDebInfo\";RolandCube_VST3_EXPORTS</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\andre\Desktop\RolandCube_Amplifier\modules\RTNeural;C:\Users\andre\Desktop\RolandCube_Amplifier\.\RTNeural;C:\Users\andre\Desktop\RolandCube_Amplifier\build\RolandCube_artefacts\JuceLibraryCode;C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\modules;C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\modules\juce_audio_processors\format_types\VST3_SDK;C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\modules\juce_audio_processors\format_types\LV2_SDK;C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\modules\juce_audio_processors\format_types\LV2_SDK\lv2;C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\modules\juce_audio_processors\format_types\LV2_SDK\serd;C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\modules\juce_audio_processors\format_types\LV2_SDK\sord;C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\modules\juce_audio_processors\format_types\LV2_SDK\sord\src;C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\modules\juce_audio_processors\format_types\LV2_SDK\sratom;C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\modules\juce_audio_processors\format_types\LV2_SDK\lilv;C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\modules\juce_audio_processors\format_types\LV2_SDK\lilv\src;C:\Users\andre\Desktop\RolandCube_Amplifier\build\juce_binarydata_BinaryData\JuceLibraryCode;C:\Users\andre\Desktop\RolandCube_Amplifier\modules\RTNeural\RTNeural\..\modules\json;C:\Users\andre\Desktop\RolandCube_Amplifier\modules\RTNeural\RTNeural\..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Users\andre\Desktop\RolandCube_Amplifier\modules\RTNeural;C:\Users\andre\Desktop\RolandCube_Amplifier\.\RTNeural;C:\Users\andre\Desktop\RolandCube_Amplifier\build\RolandCube_artefacts\JuceLibraryCode;C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\modules;C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\modules\juce_audio_processors\format_types\VST3_SDK;C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\modules\juce_audio_processors\format_types\LV2_SDK;C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\modules\juce_audio_processors\format_types\LV2_SDK\lv2;C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\modules\juce_audio_processors\format_types\LV2_SDK\serd;C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\modules\juce_audio_processors\format_types\LV2_SDK\sord;C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\modules\juce_audio_processors\format_types\LV2_SDK\sord\src;C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\modules\juce_audio_processors\format_types\LV2_SDK\sratom;C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\modules\juce_audio_processors\format_types\LV2_SDK\lilv;C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\modules\juce_audio_processors\format_types\LV2_SDK\lilv\src;C:\Users\andre\Desktop\RolandCube_Amplifier\build\juce_binarydata_BinaryData\JuceLibraryCode;C:\Users\andre\Desktop\RolandCube_Amplifier\modules\RTNeural\RTNeural\..\modules\json;C:\Users\andre\Desktop\RolandCube_Amplifier\modules\RTNeural\RTNeural\..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <PostBuildEvent>
+      <Message>		</Message>
+      <Command>setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E echo "removing moduleinfo.json"
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E remove -f C:/Users/andre/Desktop/RolandCube_Amplifier/build/RolandCube_artefacts/RelWithDebInfo/VST3/RolandCube.vst3/Contents/moduleinfo.json C:/Users/andre/Desktop/RolandCube_Amplifier/build/RolandCube_artefacts/RelWithDebInfo/VST3/RolandCube.vst3/Contents/Resources/moduleinfo.json
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/Users/andre/Desktop/RolandCube_Amplifier/build/RolandCube_artefacts/RelWithDebInfo/VST3/RolandCube.vst3/Contents/Resources
+if %errorlevel% neq 0 goto :cmEnd
+RelWithDebInfo\juce_vst3_helper.exe -create -version 0.0.1 -path C:/Users/andre/Desktop/RolandCube_Amplifier/build/RolandCube_artefacts/RelWithDebInfo/VST3/RolandCube.vst3 -output C:/Users/andre/Desktop/RolandCube_Amplifier/build/RolandCube_artefacts/RelWithDebInfo/VST3/RolandCube.vst3/Contents/Resources/moduleinfo.json
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -Dsrc=C:/Users/andre/Desktop/RolandCube_Amplifier/build/RolandCube_artefacts/RelWithDebInfo/VST3/RolandCube.vst3 "-Ddest=C:\Program Files\Common Files/VST3" -P C:/Users/andre/Desktop/RolandCube_Amplifier/modules/JUCE/extras/Build/CMake/copyDir.cmake
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+    </PostBuildEvent>
+    <Link>
+      <AdditionalDependencies>RolandCube_artefacts\RelWithDebInfo\RolandCube_SharedCode.lib;RelWithDebInfo\BinaryData.lib;RTNeural\RTNeural\RelWithDebInfo\RTNeural.lib;chowdsp_dsp.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:/Users/andre/Desktop/RolandCube_Amplifier/modules/JUCE/modules/juce_audio_plugin_client/libs/VisualStudio2022/x64/MDd;C:/Users/andre/Desktop/RolandCube_Amplifier/modules/JUCE/modules/juce_audio_plugin_client/libs/VisualStudio2022/x64/MDd/$(Configuration);C:/Users/andre/Desktop/RolandCube_Amplifier/modules/JUCE/modules/juce_audio_processors/libs/VisualStudio2022/x64/MDd;C:/Users/andre/Desktop/RolandCube_Amplifier/modules/JUCE/modules/juce_audio_processors/libs/VisualStudio2022/x64/MDd/$(Configuration);C:/Users/andre/Desktop/RolandCube_Amplifier/modules/JUCE/modules/juce_gui_extra/libs/VisualStudio2022/x64/MDd;C:/Users/andre/Desktop/RolandCube_Amplifier/modules/JUCE/modules/juce_gui_extra/libs/VisualStudio2022/x64/MDd/$(Configuration);C:/Users/andre/Desktop/RolandCube_Amplifier/modules/JUCE/modules/juce_gui_basics/libs/VisualStudio2022/x64/MDd;C:/Users/andre/Desktop/RolandCube_Amplifier/modules/JUCE/modules/juce_gui_basics/libs/VisualStudio2022/x64/MDd/$(Configuration);C:/Users/andre/Desktop/RolandCube_Amplifier/modules/JUCE/modules/juce_graphics/libs/VisualStudio2022/x64/MDd;C:/Users/andre/Desktop/RolandCube_Amplifier/modules/JUCE/modules/juce_graphics/libs/VisualStudio2022/x64/MDd/$(Configuration);C:/Users/andre/Desktop/RolandCube_Amplifier/modules/JUCE/modules/juce_events/libs/VisualStudio2022/x64/MDd;C:/Users/andre/Desktop/RolandCube_Amplifier/modules/JUCE/modules/juce_events/libs/VisualStudio2022/x64/MDd/$(Configuration);C:/Users/andre/Desktop/RolandCube_Amplifier/modules/JUCE/modules/juce_core/libs/VisualStudio2022/x64/MDd;C:/Users/andre/Desktop/RolandCube_Amplifier/modules/JUCE/modules/juce_core/libs/VisualStudio2022/x64/MDd/$(Configuration);C:/Users/andre/Desktop/RolandCube_Amplifier/modules/JUCE/modules/juce_data_structures/libs/VisualStudio2022/x64/MDd;C:/Users/andre/Desktop/RolandCube_Amplifier/modules/JUCE/modules/juce_data_structures/libs/VisualStudio2022/x64/MDd/$(Configuration);C:/Users/andre/Desktop/RolandCube_Amplifier/modules/JUCE/modules/juce_audio_basics/libs/VisualStudio2022/x64/MDd;C:/Users/andre/Desktop/RolandCube_Amplifier/modules/JUCE/modules/juce_audio_basics/libs/VisualStudio2022/x64/MDd/$(Configuration);C:/Users/andre/Desktop/RolandCube_Amplifier/modules/JUCE/modules/juce_audio_utils/libs/VisualStudio2022/x64/MDd;C:/Users/andre/Desktop/RolandCube_Amplifier/modules/JUCE/modules/juce_audio_utils/libs/VisualStudio2022/x64/MDd/$(Configuration);C:/Users/andre/Desktop/RolandCube_Amplifier/modules/JUCE/modules/juce_audio_formats/libs/VisualStudio2022/x64/MDd;C:/Users/andre/Desktop/RolandCube_Amplifier/modules/JUCE/modules/juce_audio_formats/libs/VisualStudio2022/x64/MDd/$(Configuration);C:/Users/andre/Desktop/RolandCube_Amplifier/modules/JUCE/modules/juce_audio_devices/libs/VisualStudio2022/x64/MDd;C:/Users/andre/Desktop/RolandCube_Amplifier/modules/JUCE/modules/juce_audio_devices/libs/VisualStudio2022/x64/MDd/$(Configuration);C:/Users/andre/Desktop/RolandCube_Amplifier/modules/JUCE/modules/juce_dsp/libs/VisualStudio2022/x64/MDd;C:/Users/andre/Desktop/RolandCube_Amplifier/modules/JUCE/modules/juce_dsp/libs/VisualStudio2022/x64/MDd/$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>C:/Users/andre/Desktop/RolandCube_Amplifier/build/RolandCube_artefacts/RelWithDebInfo/VST3/RolandCube.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/Users/andre/Desktop/RolandCube_Amplifier/build/RolandCube_artefacts/RelWithDebInfo/VST3/RolandCube.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\andre\Desktop\RolandCube_Amplifier\CMakeLists.txt">
+      <UseUtf8Encoding>Always</UseUtf8Encoding>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule C:/Users/andre/Desktop/RolandCube_Amplifier/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/andre/Desktop/RolandCube_Amplifier -BC:/Users/andre/Desktop/RolandCube_Amplifier/build --check-stamp-file C:/Users/andre/Desktop/RolandCube_Amplifier/build/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Program Files\CMake\share\cmake-3.27\Modules\CMakeCInformation.cmake;C:\Program Files\CMake\share\cmake-3.27\Modules\CMakeCXXInformation.cmake;C:\Program Files\CMake\share\cmake-3.27\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\CMake\share\cmake-3.27\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-3.27\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\CMake\share\cmake-3.27\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-3.27\Modules\CMakeRCInformation.cmake;C:\Program Files\CMake\share\cmake-3.27\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-3.27\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\CMake\share\cmake-3.27\Modules\CheckCSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-3.27\Modules\CheckIncludeFile.cmake;C:\Program Files\CMake\share\cmake-3.27\Modules\CheckLibraryExists.cmake;C:\Program Files\CMake\share\cmake-3.27\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Program Files\CMake\share\cmake-3.27\Modules\Compiler\MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.27\Modules\Compiler\MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.27\Modules\Compiler\MSVC.cmake;C:\Program Files\CMake\share\cmake-3.27\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.27\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-3.27\Modules\FindThreads.cmake;C:\Program Files\CMake\share\cmake-3.27\Modules\Internal\CheckSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-3.27\Modules\Platform\Windows-Initialize.cmake;C:\Program Files\CMake\share\cmake-3.27\Modules\Platform\Windows-MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.27\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.27\Modules\Platform\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-3.27\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-3.27\Modules\Platform\WindowsPaths.cmake;C:\Users\andre\Desktop\RolandCube_Amplifier\build\CMakeFiles\3.27.0\CMakeCCompiler.cmake;C:\Users\andre\Desktop\RolandCube_Amplifier\build\CMakeFiles\3.27.0\CMakeCXXCompiler.cmake;C:\Users\andre\Desktop\RolandCube_Amplifier\build\CMakeFiles\3.27.0\CMakeRCCompiler.cmake;C:\Users\andre\Desktop\RolandCube_Amplifier\build\CMakeFiles\3.27.0\CMakeSystem.cmake;C:\Users\andre\Desktop\RolandCube_Amplifier\build\CMakeFiles\cmake.verify_globs;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\andre\Desktop\RolandCube_Amplifier\build\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule C:/Users/andre/Desktop/RolandCube_Amplifier/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/andre/Desktop/RolandCube_Amplifier -BC:/Users/andre/Desktop/RolandCube_Amplifier/build --check-stamp-file C:/Users/andre/Desktop/RolandCube_Amplifier/build/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Program Files\CMake\share\cmake-3.27\Modules\CMakeCInformation.cmake;C:\Program Files\CMake\share\cmake-3.27\Modules\CMakeCXXInformation.cmake;C:\Program Files\CMake\share\cmake-3.27\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\CMake\share\cmake-3.27\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-3.27\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\CMake\share\cmake-3.27\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-3.27\Modules\CMakeRCInformation.cmake;C:\Program Files\CMake\share\cmake-3.27\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-3.27\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\CMake\share\cmake-3.27\Modules\CheckCSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-3.27\Modules\CheckIncludeFile.cmake;C:\Program Files\CMake\share\cmake-3.27\Modules\CheckLibraryExists.cmake;C:\Program Files\CMake\share\cmake-3.27\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Program Files\CMake\share\cmake-3.27\Modules\Compiler\MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.27\Modules\Compiler\MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.27\Modules\Compiler\MSVC.cmake;C:\Program Files\CMake\share\cmake-3.27\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.27\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-3.27\Modules\FindThreads.cmake;C:\Program Files\CMake\share\cmake-3.27\Modules\Internal\CheckSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-3.27\Modules\Platform\Windows-Initialize.cmake;C:\Program Files\CMake\share\cmake-3.27\Modules\Platform\Windows-MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.27\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.27\Modules\Platform\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-3.27\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-3.27\Modules\Platform\WindowsPaths.cmake;C:\Users\andre\Desktop\RolandCube_Amplifier\build\CMakeFiles\3.27.0\CMakeCCompiler.cmake;C:\Users\andre\Desktop\RolandCube_Amplifier\build\CMakeFiles\3.27.0\CMakeCXXCompiler.cmake;C:\Users\andre\Desktop\RolandCube_Amplifier\build\CMakeFiles\3.27.0\CMakeRCCompiler.cmake;C:\Users\andre\Desktop\RolandCube_Amplifier\build\CMakeFiles\3.27.0\CMakeSystem.cmake;C:\Users\andre\Desktop\RolandCube_Amplifier\build\CMakeFiles\cmake.verify_globs;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\andre\Desktop\RolandCube_Amplifier\build\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule C:/Users/andre/Desktop/RolandCube_Amplifier/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/andre/Desktop/RolandCube_Amplifier -BC:/Users/andre/Desktop/RolandCube_Amplifier/build --check-stamp-file C:/Users/andre/Desktop/RolandCube_Amplifier/build/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Program Files\CMake\share\cmake-3.27\Modules\CMakeCInformation.cmake;C:\Program Files\CMake\share\cmake-3.27\Modules\CMakeCXXInformation.cmake;C:\Program Files\CMake\share\cmake-3.27\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\CMake\share\cmake-3.27\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-3.27\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\CMake\share\cmake-3.27\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-3.27\Modules\CMakeRCInformation.cmake;C:\Program Files\CMake\share\cmake-3.27\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-3.27\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\CMake\share\cmake-3.27\Modules\CheckCSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-3.27\Modules\CheckIncludeFile.cmake;C:\Program Files\CMake\share\cmake-3.27\Modules\CheckLibraryExists.cmake;C:\Program Files\CMake\share\cmake-3.27\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Program Files\CMake\share\cmake-3.27\Modules\Compiler\MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.27\Modules\Compiler\MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.27\Modules\Compiler\MSVC.cmake;C:\Program Files\CMake\share\cmake-3.27\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.27\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-3.27\Modules\FindThreads.cmake;C:\Program Files\CMake\share\cmake-3.27\Modules\Internal\CheckSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-3.27\Modules\Platform\Windows-Initialize.cmake;C:\Program Files\CMake\share\cmake-3.27\Modules\Platform\Windows-MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.27\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.27\Modules\Platform\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-3.27\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-3.27\Modules\Platform\WindowsPaths.cmake;C:\Users\andre\Desktop\RolandCube_Amplifier\build\CMakeFiles\3.27.0\CMakeCCompiler.cmake;C:\Users\andre\Desktop\RolandCube_Amplifier\build\CMakeFiles\3.27.0\CMakeCXXCompiler.cmake;C:\Users\andre\Desktop\RolandCube_Amplifier\build\CMakeFiles\3.27.0\CMakeRCCompiler.cmake;C:\Users\andre\Desktop\RolandCube_Amplifier\build\CMakeFiles\3.27.0\CMakeSystem.cmake;C:\Users\andre\Desktop\RolandCube_Amplifier\build\CMakeFiles\cmake.verify_globs;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Users\andre\Desktop\RolandCube_Amplifier\build\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule C:/Users/andre/Desktop/RolandCube_Amplifier/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/andre/Desktop/RolandCube_Amplifier -BC:/Users/andre/Desktop/RolandCube_Amplifier/build --check-stamp-file C:/Users/andre/Desktop/RolandCube_Amplifier/build/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Program Files\CMake\share\cmake-3.27\Modules\CMakeCInformation.cmake;C:\Program Files\CMake\share\cmake-3.27\Modules\CMakeCXXInformation.cmake;C:\Program Files\CMake\share\cmake-3.27\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\CMake\share\cmake-3.27\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-3.27\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\CMake\share\cmake-3.27\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-3.27\Modules\CMakeRCInformation.cmake;C:\Program Files\CMake\share\cmake-3.27\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-3.27\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\CMake\share\cmake-3.27\Modules\CheckCSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-3.27\Modules\CheckIncludeFile.cmake;C:\Program Files\CMake\share\cmake-3.27\Modules\CheckLibraryExists.cmake;C:\Program Files\CMake\share\cmake-3.27\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Program Files\CMake\share\cmake-3.27\Modules\Compiler\MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.27\Modules\Compiler\MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.27\Modules\Compiler\MSVC.cmake;C:\Program Files\CMake\share\cmake-3.27\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.27\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-3.27\Modules\FindThreads.cmake;C:\Program Files\CMake\share\cmake-3.27\Modules\Internal\CheckSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-3.27\Modules\Platform\Windows-Initialize.cmake;C:\Program Files\CMake\share\cmake-3.27\Modules\Platform\Windows-MSVC-C.cmake;C:\Program Files\CMake\share\cmake-3.27\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.27\Modules\Platform\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-3.27\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-3.27\Modules\Platform\WindowsPaths.cmake;C:\Users\andre\Desktop\RolandCube_Amplifier\build\CMakeFiles\3.27.0\CMakeCCompiler.cmake;C:\Users\andre\Desktop\RolandCube_Amplifier\build\CMakeFiles\3.27.0\CMakeCXXCompiler.cmake;C:\Users\andre\Desktop\RolandCube_Amplifier\build\CMakeFiles\3.27.0\CMakeRCCompiler.cmake;C:\Users\andre\Desktop\RolandCube_Amplifier\build\CMakeFiles\3.27.0\CMakeSystem.cmake;C:\Users\andre\Desktop\RolandCube_Amplifier\build\CMakeFiles\cmake.verify_globs;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\andre\Desktop\RolandCube_Amplifier\build\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\modules\juce_audio_processors\juce_audio_processors.cpp" />
+    <ClCompile Include="C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\modules\juce_audio_processors\juce_audio_processors_ara.cpp" />
+    <ClCompile Include="C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\modules\juce_audio_processors\juce_audio_processors_lv2_libs.cpp" />
+    <ClCompile Include="C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\modules\juce_gui_extra\juce_gui_extra.cpp" />
+    <ClCompile Include="C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\modules\juce_gui_basics\juce_gui_basics.cpp" />
+    <ClCompile Include="C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\modules\juce_graphics\juce_graphics.cpp" />
+    <ClCompile Include="C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\modules\juce_events\juce_events.cpp" />
+    <ClCompile Include="C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\modules\juce_core\juce_core.cpp" />
+    <ClCompile Include="C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\modules\juce_data_structures\juce_data_structures.cpp" />
+    <ClCompile Include="C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\modules\juce_audio_basics\juce_audio_basics.cpp" />
+    <ClCompile Include="C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\modules\juce_audio_plugin_client\juce_audio_plugin_client_AAX.cpp" />
+    <ClCompile Include="C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\modules\juce_audio_plugin_client\juce_audio_plugin_client_AAX_utils.cpp" />
+    <ClCompile Include="C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\modules\juce_audio_plugin_client\juce_audio_plugin_client_ARA.cpp" />
+    <ClCompile Include="C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\modules\juce_audio_plugin_client\juce_audio_plugin_client_LV2.cpp" />
+    <ClCompile Include="C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\modules\juce_audio_plugin_client\juce_audio_plugin_client_Standalone.cpp" />
+    <ClCompile Include="C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\modules\juce_audio_plugin_client\juce_audio_plugin_client_Unity.cpp" />
+    <ClCompile Include="C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\modules\juce_audio_plugin_client\juce_audio_plugin_client_VST2.cpp" />
+    <ClCompile Include="C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\modules\juce_audio_plugin_client\juce_audio_plugin_client_VST3.cpp" />
+    <Object Include="C:\Users\andre\Desktop\RolandCube_Amplifier\build\RolandCube_rc_lib.dir\$(Configuration)\RolandCube_resources.res" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="C:\Users\andre\Desktop\RolandCube_Amplifier\build\ZERO_CHECK.vcxproj">
+      <Project>{1C7A2B34-1073-37C0-875F-D6E0437532FA}</Project>
+      <Name>ZERO_CHECK</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\andre\Desktop\RolandCube_Amplifier\build\BinaryData.vcxproj">
+      <Project>{4E19CF95-09E4-326F-B1AF-D22E9759D982}</Project>
+      <Name>BinaryData</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\andre\Desktop\RolandCube_Amplifier\build\RTNeural\RTNeural\RTNeural.vcxproj">
+      <Project>{9FDF803B-9714-39A9-BA3D-8F0BEAE856F4}</Project>
+      <Name>RTNeural</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\andre\Desktop\RolandCube_Amplifier\build\RolandCube.vcxproj">
+      <Project>{812E0C3B-18FE-3DD2-8D7E-6987F9BF5B38}</Project>
+      <Name>RolandCube</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\andre\Desktop\RolandCube_Amplifier\build\RolandCube_rc_lib.vcxproj">
+      <Project>{1BE9E010-9842-36A2-9B38-01F487E3842D}</Project>
+      <Name>RolandCube_rc_lib</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\andre\Desktop\RolandCube_Amplifier\build\juce_vst3_helper.vcxproj">
+      <Project>{A94AC87A-E269-38B8-8BD5-434435EE89B5}</Project>
+      <Name>juce_vst3_helper</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

@@ -19,19 +19,19 @@ RolandCubeAudioProcessorEditor::RolandCubeAudioProcessorEditor (RolandCubeAudioP
 
     
     // Set Widget Graphics
-    //bigKnobLAF.setLookAndFeel(ImageCache::getFromMemory(BinaryData::big_knob_png, BinaryData::big_knob_pngSize));
-    //smallKnobLAF.setLookAndFeel(ImageCache::getFromMemory(BinaryData::small_knob_png, BinaryData::small_knob_pngSize));
+    bigKnobLAF.setLookAndFeel(ImageCache::getFromMemory(BinaryData::big_knob_png, BinaryData::big_knob_pngSize));
+    smallKnobLAF.setLookAndFeel(ImageCache::getFromMemory(BinaryData::small_knob_png, BinaryData::small_knob_pngSize));
 
     // Pre Amp Pedal Widgets
 
     
     // Overdrive
    
-    /* cabOnButton.setImages(true, true, true,
+    cabOnButton.setImages(true, true, true,
         ImageCache::getFromMemory(BinaryData::cab_switch_on_png, BinaryData::cab_switch_on_pngSize), 1.0, Colours::transparentWhite,
         Image(), 1.0, Colours::transparentWhite,
         ImageCache::getFromMemory(BinaryData::cab_switch_on_png, BinaryData::cab_switch_on_pngSize), 1.0, Colours::transparentWhite,
-        0.0);*/
+        0.0);
 
     addAndMakeVisible(cabOnButton);
     cabOnButton.addListener(this);
@@ -76,6 +76,14 @@ RolandCubeAudioProcessorEditor::RolandCubeAudioProcessorEditor (RolandCubeAudioP
     ampTrebleKnob.setTextBoxStyle(juce::Slider::TextEntryBoxPosition::NoTextBox, false, 50, 20);
     ampTrebleKnob.setDoubleClickReturnValue(true, 0.0);
 
+    modelSelectorSliderAttach.reset(new AudioProcessorValueTreeState::SliderAttachment(treeState, TREBLE_ID, ampTrebleKnob));
+    addAndMakeVisible(ampTrebleKnob);
+    //ampTrebleKnob.setLookAndFeel(&smallKnobLAF);
+    modelSelectorKnob.addListener(this);
+    modelSelectorKnob.setSliderStyle(juce::Slider::SliderStyle::RotaryVerticalDrag);
+    modelSelectorKnob.setTextBoxStyle(juce::Slider::TextEntryBoxPosition::NoTextBox, false, 50, 20);
+    modelSelectorKnob.setDoubleClickReturnValue(true, 0.0);
+
     /*addAndMakeVisible(versionLabel);
     versionLabel.setText("v1.2", juce::NotificationType::dontSendNotification);
     versionLabel.setJustificationType(juce::Justification::left);
@@ -95,6 +103,7 @@ RolandCubeAudioProcessorEditor::~RolandCubeAudioProcessorEditor()
     ampBassKnob.setLookAndFeel(nullptr);
     ampMidKnob.setLookAndFeel(nullptr);
     ampTrebleKnob.setLookAndFeel(nullptr);
+    modelSelectorKnob.setLookAndFeel(nullptr);
 }
 
 //==============================================================================
@@ -126,6 +135,7 @@ void RolandCubeAudioProcessorEditor::resized()
     ampBassKnob.setBounds(113, 131, 62, 62);
     ampMidKnob.setBounds(227, 131, 62, 62);
     ampTrebleKnob.setBounds(340, 131, 62, 62);
+    modelSelectorKnob.setBounds(350, 140, 62, 62);
 }
 void RolandCubeAudioProcessorEditor::sliderValueChanged(Slider* slider)
 {
@@ -148,12 +158,12 @@ void RolandCubeAudioProcessorEditor::buttonClicked(juce::Button* button)
 }
 void RolandCubeAudioProcessorEditor::cabOnButtonClicked() {
     
-    /*if (processor.cab_state == 0) {
-        processor.cab_state = 1;
+    if (audioProcessor.cab_state == 0) {
+        audioProcessor.cab_state = 1;
     }
     else {
-        processor.cab_state = 0;
-    }*/
+        audioProcessor.cab_state = 0;
+    }
     resetImages();
     repaint();
 }
@@ -174,12 +184,12 @@ void RolandCubeAudioProcessorEditor::resetImages()
             Image(), 1.0, Colours::transparentWhite,
             ImageCache::getFromMemory(BinaryData::footswitch_down_png, BinaryData::footswitch_down_pngSize), 1.0, Colours::transparentWhite,
             0.0);
-    }
-    */
+    }*/
     
-    /*
+    
+    
     // Set On/Off cab graphic
-    if (processor.cab_state == 0) {
+    if (audioProcessor.cab_state == 0) {
         cabOnButton.setImages(true, true, true,
             ImageCache::getFromMemory(BinaryData::cab_switch_off_png, BinaryData::cab_switch_off_pngSize), 1.0, Colours::transparentWhite,
             Image(), 1.0, Colours::transparentWhite,
@@ -192,5 +202,5 @@ void RolandCubeAudioProcessorEditor::resetImages()
             Image(), 1.0, Colours::transparentWhite,
             ImageCache::getFromMemory(BinaryData::cab_switch_on_png, BinaryData::cab_switch_on_pngSize), 1.0, Colours::transparentWhite,
             0.0);
-    }*/
+    }
 }

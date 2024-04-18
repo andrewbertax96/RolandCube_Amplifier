@@ -1,0 +1,12 @@
+# CMake generation dependency list for this directory.
+C:/Program Files/CMake/share/cmake-3.27/Modules/ExternalProject/shared_internal_commands.cmake
+C:/Program Files/CMake/share/cmake-3.27/Modules/FetchContent.cmake
+C:/Users/andre/Desktop/RolandCube_Amplifier/build/CMakeFiles/cmake.verify_globs
+C:/Users/andre/Desktop/RolandCube_Amplifier/build/cmake/CPM_0.38.6.cmake
+C:/Users/andre/Desktop/RolandCube_Amplifier/modules/RTNeural/CMakeLists.txt
+C:/Users/andre/Desktop/RolandCube_Amplifier/modules/RTNeural/cmake/CPM.cmake
+C:/Users/andre/Desktop/RolandCube_Amplifier/modules/RTNeural/cmake/CXXStandard.cmake
+C:/Users/andre/Desktop/RolandCube_Amplifier/modules/RTNeural/cmake/ChooseBackend.cmake
+C:/Users/andre/Desktop/RolandCube_Amplifier/modules/RTNeural/cmake/SIMDExtensions.cmake
+C:/Users/andre/Desktop/RolandCube_Amplifier/modules/RTNeural/cmake/Sanitizers.cmake
+C:/Users/andre/Desktop/RolandCube_Amplifier/modules/RTNeural/cmake/Testing.cmake

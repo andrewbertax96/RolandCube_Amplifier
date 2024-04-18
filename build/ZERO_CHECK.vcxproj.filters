@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\andre\Desktop\RolandCube_Amplifier\build\CMakeFiles\a1884d5db5c0ca55b7088bfc79633505\generate.stamp.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="C:\Users\andre\Desktop\RolandCube_Amplifier\build\JUCE\tools\JUCEToolsExport.cmake">
+      <Filter>Buildsystem Input Files\build\JUCE\tools</Filter>
+    </None>
+    <None Include="C:\Users\andre\Desktop\RolandCube_Amplifier\build\cmake\CPM_0.38.6.cmake">
+      <Filter>Buildsystem Input Files\build\cmake</Filter>
+    </None>
+    <None Include="C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\CMakeLists.txt">
+      <Filter>Buildsystem Input Files\modules\JUCE</Filter>
+    </None>
+    <None Include="C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\extras\Build\CMake\JUCECheckAtomic.cmake">
+      <Filter>Buildsystem Input Files\modules\JUCE\extras\Build\CMake</Filter>
+    </None>
+    <None Include="C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\extras\Build\CMake\JUCEConfig.cmake.in">
+      <Filter>Buildsystem Input Files\modules\JUCE\extras\Build\CMake</Filter>
+    </None>
+    <None Include="C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\extras\Build\CMake\JUCEHelperTargets.cmake">
+      <Filter>Buildsystem Input Files\modules\JUCE\extras\Build\CMake</Filter>
+    </None>
+    <None Include="C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\extras\Build\CMake\JUCEModuleSupport.cmake">
+      <Filter>Buildsystem Input Files\modules\JUCE\extras\Build\CMake</Filter>
+    </None>
+    <None Include="C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\extras\Build\CMake\JUCEUtils.cmake">
+      <Filter>Buildsystem Input Files\modules\JUCE\extras\Build\CMake</Filter>
+    </None>
+    <None Include="C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\extras\Build\CMakeLists.txt">
+      <Filter>Buildsystem Input Files\modules\JUCE\extras\Build</Filter>
+    </None>
+    <None Include="C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\extras\Build\juceaide\CMakeLists.txt">
+      <Filter>Buildsystem Input Files\modules\JUCE\extras\Build\juceaide</Filter>
+    </None>
+    <None Include="C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\modules\CMakeLists.txt">
+      <Filter>Buildsystem Input Files\modules\JUCE\modules</Filter>
+    </None>
+    <None Include="C:\Users\andre\Desktop\RolandCube_Amplifier\modules\RTNeural\CMakeLists.txt">
+      <Filter>Buildsystem Input Files\modules\RTNeural</Filter>
+    </None>
+    <None Include="C:\Users\andre\Desktop\RolandCube_Amplifier\modules\RTNeural\RTNeural\CMakeLists.txt">
+      <Filter>Buildsystem Input Files\modules\RTNeural\RTNeural</Filter>
+    </None>
+    <None Include="C:\Users\andre\Desktop\RolandCube_Amplifier\modules\RTNeural\cmake\CPM.cmake">
+      <Filter>Buildsystem Input Files\modules\RTNeural\cmake</Filter>
+    </None>
+    <None Include="C:\Users\andre\Desktop\RolandCube_Amplifier\modules\RTNeural\cmake\CXXStandard.cmake">
+      <Filter>Buildsystem Input Files\modules\RTNeural\cmake</Filter>
+    </None>
+    <None Include="C:\Users\andre\Desktop\RolandCube_Amplifier\modules\RTNeural\cmake\ChooseBackend.cmake">
+      <Filter>Buildsystem Input Files\modules\RTNeural\cmake</Filter>
+    </None>
+    <None Include="C:\Users\andre\Desktop\RolandCube_Amplifier\modules\RTNeural\cmake\SIMDExtensions.cmake">
+      <Filter>Buildsystem Input Files\modules\RTNeural\cmake</Filter>
+    </None>
+    <None Include="C:\Users\andre\Desktop\RolandCube_Amplifier\modules\RTNeural\cmake\Sanitizers.cmake">
+      <Filter>Buildsystem Input Files\modules\RTNeural\cmake</Filter>
+    </None>
+    <None Include="C:\Users\andre\Desktop\RolandCube_Amplifier\modules\RTNeural\cmake\Testing.cmake">
+      <Filter>Buildsystem Input Files\modules\RTNeural\cmake</Filter>
+    </None>
+    <None Include="C:\Users\andre\Desktop\RolandCube_Amplifier\modules\chowdsp_utils\CMakeLists.txt">
+      <Filter>Buildsystem Input Files\modules\chowdsp_utils</Filter>
+    </None>
+    <None Include="C:\Users\andre\Desktop\RolandCube_Amplifier\modules\chowdsp_utils\cmake\AddDiagnosticInfo.cmake">
+      <Filter>Buildsystem Input Files\modules\chowdsp_utils\cmake</Filter>
+    </None>
+    <None Include="C:\Users\andre\Desktop\RolandCube_Amplifier\modules\chowdsp_utils\cmake\AddJUCEModules.cmake">
+      <Filter>Buildsystem Input Files\modules\chowdsp_utils\cmake</Filter>
+    </None>
+    <None Include="C:\Users\andre\Desktop\RolandCube_Amplifier\modules\chowdsp_utils\cmake\SubprojectVersion.cmake">
+      <Filter>Buildsystem Input Files\modules\chowdsp_utils\cmake</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{51162B1D-A54F-3F81-9DFB-B7E683FC52AB}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{8EF525F5-90CE-3CAE-9215-4A1AC160500B}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Buildsystem Input Files\build\JUCE\tools">
+      <UniqueIdentifier>{CC11E8F6-0BFE-35D5-B11B-2A705821D706}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Buildsystem Input Files\build\cmake">
+      <UniqueIdentifier>{BB60DE86-F9E8-335B-A766-9974168D69AF}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Buildsystem Input Files\modules\JUCE">
+      <UniqueIdentifier>{7AA21C31-1435-35A1-BE6F-82323D22B50E}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Buildsystem Input Files\modules\JUCE\extras\Build">
+      <UniqueIdentifier>{B20ED2A4-F83C-3711-A51F-99ED65BC20FC}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Buildsystem Input Files\modules\JUCE\extras\Build\CMake">
+      <UniqueIdentifier>{43AA598F-17EF-31E9-B096-CB5AAA835914}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Buildsystem Input Files\modules\JUCE\extras\Build\juceaide">
+      <UniqueIdentifier>{888422ED-8A41-3364-8C2A-3943121E977A}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Buildsystem Input Files\modules\JUCE\modules">
+      <UniqueIdentifier>{1AE0DEEC-C8EE-3219-A5CE-915E5BE06D9B}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Buildsystem Input Files\modules\RTNeural">
+      <UniqueIdentifier>{933A623F-D48D-30AC-8B44-D267859F7C8F}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Buildsystem Input Files\modules\RTNeural\RTNeural">
+      <UniqueIdentifier>{24620F2C-E43D-328A-B228-4FA0E7DFC4C1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Buildsystem Input Files\modules\RTNeural\cmake">
+      <UniqueIdentifier>{585F178E-ECBD-3EEC-AE09-8F0749DE17AF}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Buildsystem Input Files\modules\chowdsp_utils">
+      <UniqueIdentifier>{73C55450-AA06-354E-9893-A86501343082}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Buildsystem Input Files\modules\chowdsp_utils\cmake">
+      <UniqueIdentifier>{5D5F52B3-2CA4-3FFD-AAB0-FDAA00FF8AAD}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

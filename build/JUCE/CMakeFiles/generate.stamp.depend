@@ -1,0 +1,12 @@
+# CMake generation dependency list for this directory.
+C:/Program Files/CMake/share/cmake-3.27/Modules/BasicConfigVersion-ExactVersion.cmake.in
+C:/Program Files/CMake/share/cmake-3.27/Modules/CMakeDependentOption.cmake
+C:/Program Files/CMake/share/cmake-3.27/Modules/CMakePackageConfigHelpers.cmake
+C:/Program Files/CMake/share/cmake-3.27/Modules/WriteBasicConfigVersionFile.cmake
+C:/Users/andre/Desktop/RolandCube_Amplifier/build/CMakeFiles/cmake.verify_globs
+C:/Users/andre/Desktop/RolandCube_Amplifier/modules/JUCE/CMakeLists.txt
+C:/Users/andre/Desktop/RolandCube_Amplifier/modules/JUCE/extras/Build/CMake/JUCECheckAtomic.cmake
+C:/Users/andre/Desktop/RolandCube_Amplifier/modules/JUCE/extras/Build/CMake/JUCEConfig.cmake.in
+C:/Users/andre/Desktop/RolandCube_Amplifier/modules/JUCE/extras/Build/CMake/JUCEHelperTargets.cmake
+C:/Users/andre/Desktop/RolandCube_Amplifier/modules/JUCE/extras/Build/CMake/JUCEModuleSupport.cmake
+C:/Users/andre/Desktop/RolandCube_Amplifier/modules/JUCE/extras/Build/CMake/JUCEUtils.cmake

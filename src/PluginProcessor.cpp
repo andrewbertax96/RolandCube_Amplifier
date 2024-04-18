@@ -25,7 +25,8 @@ RolandCubeAudioProcessor::RolandCubeAudioProcessor()
                         std::make_unique<AudioParameterFloat>(BASS_ID, BASS_NAME, NormalisableRange<float>(-8.0f, 8.0f, 0.01f), 0.0f),
                         std::make_unique<AudioParameterFloat>(MID_ID, MID_NAME, NormalisableRange<float>(-8.0f, 8.0f, 0.01f), 0.0f),
                         std::make_unique<AudioParameterFloat>(TREBLE_ID, TREBLE_NAME, NormalisableRange<float>(-8.0f, 8.0f, 0.01f), 0.0f),
-                        std::make_unique<AudioParameterFloat>(MASTER_ID, MASTER_NAME, NormalisableRange<float>(0.0f, 1.0f, 0.01f), 0.5) })
+                        std::make_unique<AudioParameterFloat>(MASTER_ID, MASTER_NAME, NormalisableRange<float>(0.0f, 1.0f, 0.01f), 0.5),
+                        std::make_unique<AudioParameterFloat>(MODEL_ID, MODEL_NAME, NormalisableRange<float>(0.0f, 8.0f, 1.0f), 0.0) })
 
 #endif
 {
@@ -34,6 +35,7 @@ RolandCubeAudioProcessor::RolandCubeAudioProcessor()
     treeState.addParameterListener(MID_ID, this);
     treeState.addParameterListener(TREBLE_ID, this);
     treeState.addParameterListener(MASTER_ID, this);
+    treeState.addParameterListener(MODEL_ID, this);
 
     /*driveParam = treeState.getRawParameterValue(GAIN_ID);
     masterParam = treeState.getRawParameterValue(MASTER_ID);

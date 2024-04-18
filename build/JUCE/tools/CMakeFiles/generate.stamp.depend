@@ -1,0 +1,35 @@
+# CMake generation dependency list for this directory.
+C:/Program Files/CMake/share/cmake-3.27/Modules/BasicConfigVersion-ExactVersion.cmake.in
+C:/Program Files/CMake/share/cmake-3.27/Modules/CMakeCInformation.cmake
+C:/Program Files/CMake/share/cmake-3.27/Modules/CMakeCXXInformation.cmake
+C:/Program Files/CMake/share/cmake-3.27/Modules/CMakeCommonLanguageInclude.cmake
+C:/Program Files/CMake/share/cmake-3.27/Modules/CMakeDependentOption.cmake
+C:/Program Files/CMake/share/cmake-3.27/Modules/CMakeGenericSystem.cmake
+C:/Program Files/CMake/share/cmake-3.27/Modules/CMakeInitializeConfigs.cmake
+C:/Program Files/CMake/share/cmake-3.27/Modules/CMakeLanguageInformation.cmake
+C:/Program Files/CMake/share/cmake-3.27/Modules/CMakePackageConfigHelpers.cmake
+C:/Program Files/CMake/share/cmake-3.27/Modules/CMakeRCInformation.cmake
+C:/Program Files/CMake/share/cmake-3.27/Modules/CMakeSystemSpecificInformation.cmake
+C:/Program Files/CMake/share/cmake-3.27/Modules/CMakeSystemSpecificInitialize.cmake
+C:/Program Files/CMake/share/cmake-3.27/Modules/Compiler/CMakeCommonCompilerMacros.cmake
+C:/Program Files/CMake/share/cmake-3.27/Modules/Compiler/MSVC-C.cmake
+C:/Program Files/CMake/share/cmake-3.27/Modules/Compiler/MSVC-CXX.cmake
+C:/Program Files/CMake/share/cmake-3.27/Modules/Compiler/MSVC.cmake
+C:/Program Files/CMake/share/cmake-3.27/Modules/Platform/Windows-Initialize.cmake
+C:/Program Files/CMake/share/cmake-3.27/Modules/Platform/Windows-MSVC-C.cmake
+C:/Program Files/CMake/share/cmake-3.27/Modules/Platform/Windows-MSVC-CXX.cmake
+C:/Program Files/CMake/share/cmake-3.27/Modules/Platform/Windows-MSVC.cmake
+C:/Program Files/CMake/share/cmake-3.27/Modules/Platform/Windows.cmake
+C:/Program Files/CMake/share/cmake-3.27/Modules/Platform/WindowsPaths.cmake
+C:/Program Files/CMake/share/cmake-3.27/Modules/WriteBasicConfigVersionFile.cmake
+C:/Users/andre/Desktop/RolandCube_Amplifier/build/JUCE/tools/CMakeFiles/3.27.0/CMakeCCompiler.cmake
+C:/Users/andre/Desktop/RolandCube_Amplifier/build/JUCE/tools/CMakeFiles/3.27.0/CMakeCXXCompiler.cmake
+C:/Users/andre/Desktop/RolandCube_Amplifier/build/JUCE/tools/CMakeFiles/3.27.0/CMakeRCCompiler.cmake
+C:/Users/andre/Desktop/RolandCube_Amplifier/build/JUCE/tools/CMakeFiles/3.27.0/CMakeSystem.cmake
+C:/Users/andre/Desktop/RolandCube_Amplifier/build/JUCE/tools/CMakeFiles/cmake.verify_globs
+C:/Users/andre/Desktop/RolandCube_Amplifier/modules/JUCE/CMakeLists.txt
+C:/Users/andre/Desktop/RolandCube_Amplifier/modules/JUCE/extras/Build/CMake/JUCECheckAtomic.cmake
+C:/Users/andre/Desktop/RolandCube_Amplifier/modules/JUCE/extras/Build/CMake/JUCEConfig.cmake.in
+C:/Users/andre/Desktop/RolandCube_Amplifier/modules/JUCE/extras/Build/CMake/JUCEHelperTargets.cmake
+C:/Users/andre/Desktop/RolandCube_Amplifier/modules/JUCE/extras/Build/CMake/JUCEModuleSupport.cmake
+C:/Users/andre/Desktop/RolandCube_Amplifier/modules/JUCE/extras/Build/CMake/JUCEUtils.cmake

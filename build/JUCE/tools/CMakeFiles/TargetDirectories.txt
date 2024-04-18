@@ -1,0 +1,7 @@
+C:/Users/andre/Desktop/RolandCube_Amplifier/build/JUCE/tools/CMakeFiles/INSTALL.dir
+C:/Users/andre/Desktop/RolandCube_Amplifier/build/JUCE/tools/CMakeFiles/ALL_BUILD.dir
+C:/Users/andre/Desktop/RolandCube_Amplifier/build/JUCE/tools/CMakeFiles/ZERO_CHECK.dir
+C:/Users/andre/Desktop/RolandCube_Amplifier/build/JUCE/tools/modules/CMakeFiles/INSTALL.dir
+C:/Users/andre/Desktop/RolandCube_Amplifier/build/JUCE/tools/extras/Build/CMakeFiles/INSTALL.dir
+C:/Users/andre/Desktop/RolandCube_Amplifier/build/JUCE/tools/extras/Build/juceaide/CMakeFiles/juceaide.dir
+C:/Users/andre/Desktop/RolandCube_Amplifier/build/JUCE/tools/extras/Build/juceaide/CMakeFiles/INSTALL.dir

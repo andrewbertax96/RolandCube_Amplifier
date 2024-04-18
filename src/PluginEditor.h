@@ -32,6 +32,7 @@ public:
     std::unique_ptr <AudioProcessorValueTreeState::SliderAttachment> trebleSliderAttach;
     std::unique_ptr <AudioProcessorValueTreeState::SliderAttachment> driveSliderAttach;
     std::unique_ptr <AudioProcessorValueTreeState::SliderAttachment> masterSliderAttach;
+    std::unique_ptr <AudioProcessorValueTreeState::SliderAttachment> modelSelectorSliderAttach;
     
 private:
     // This reference is provided as a quick way for your editor to
@@ -45,7 +46,7 @@ private:
     // LookandFeels and Graphics
     //Image background_on = ImageCache::getFromMemory(BinaryData::background_on_jpg, BinaryData::background_on_jpgSize);
     //Image background_on_blue = ImageCache::getFromMemory(BinaryData::background_on_blue_jpg, BinaryData::background_on_blue_jpgSize);
-    //Image background_off = ImageCache::getFromMemory(BinaryData::background_off_jpg, BinaryData::background_off_jpgSize);
+    // background_off = ImageCache::getFromMemory(BinaryData::background_off_jpg, BinaryData::background_off_jpgSize);
 
     //Amp Widgets
     Slider ampBassKnob;
@@ -53,15 +54,16 @@ private:
     Slider ampTrebleKnob;
     Slider odDriveKnob;
     Slider odLevelKnob;
-    //ImageButton odFootSw;
-    //ImageButton odLED;
+    Slider modelSelectorKnob;
+    ImageButton odFootSw;
+    ImageButton odLED;
     ImageButton cabOnButton;
 
 
     // LookandFeels of the knobs 
-    //myLookAndFeel blackHexKnobLAF;
-    //myLookAndFeel bigKnobLAF;
-    //myLookAndFeel smallKnobLAF;
+    myLookAndFeel blackHexKnobLAF;
+    myLookAndFeel bigKnobLAF;
+    myLookAndFeel smallKnobLAF;
 
     //AudioProcessorParameter* getParameter(const String& paramId);
     AudioProcessorValueTreeState& treeState;
