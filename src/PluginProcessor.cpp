@@ -130,8 +130,8 @@ void RolandCubeAudioProcessor::parameterChanged(const String& parameterID, float
     auto midValue = static_cast<float> (midParam->load());
     auto trebleValue = static_cast<float> (trebleParam->load());
 
-    eq4band.setParameters(bassValue, midValue, trebleValue, 0.0);
-    eq4band2.setParameters(bassValue, midValue, trebleValue, 0.0);
+    equalizer1.setParameters(bassValue, midValue, trebleValue, 0.0);
+    equalizer2.setParameters(bassValue, midValue, trebleValue, 0.0);
     
     //Parameters update  when sliders moved
 }
@@ -393,11 +393,11 @@ void RolandCubeAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, j
         {
             // Apply EQ
             if (ch == 0) {
-                eq4band.process(buffer.getReadPointer(0), buffer.getWritePointer(0), midiMessages, buffer.getNumSamples(), totalNumInputChannels, getSampleRate());
+                equalizer1.process(buffer.getReadPointer(0), buffer.getWritePointer(0), midiMessages, buffer.getNumSamples(), totalNumInputChannels, getSampleRate());
 
             }
             else if (ch == 1) {
-                eq4band2.process(buffer.getReadPointer(1), buffer.getWritePointer(1), midiMessages, buffer.getNumSamples(), totalNumInputChannels, getSampleRate());
+                equalizer2.process(buffer.getReadPointer(1), buffer.getWritePointer(1), midiMessages, buffer.getNumSamples(), totalNumInputChannels, getSampleRate());
             }
         }
 
@@ -467,8 +467,8 @@ void RolandCubeAudioProcessor::setStateInformation (const void* data, int sizeIn
 
 void RolandCubeAudioProcessor::set_ampEQ(float bass_slider, float mid_slider, float treble_slider)
 {
-    //eq4band.setParameters(bass_slider, mid_slider, treble_slider, 0.0f);
-    //eq4band2.setParameters(bass_slider, mid_slider, treble_slider, 0.0f);
+    //equalizer1.setParameters(bass_slider, mid_slider, treble_slider, 0.0f);
+    //equalizer2.setParameters(bass_slider, mid_slider, treble_slider, 0.0f);
 }
 
 //==============================================================================

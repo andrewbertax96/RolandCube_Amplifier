@@ -91,8 +91,8 @@ public:
 
 private:
 
-    Equalizer eq4band; // Amp EQ
-    Equalizer eq4band2; // Amp EQ
+    Equalizer equalizer1; // Amp EQ
+    Equalizer equalizer2; // Amp EQ
 
     std::atomic<float>* driveParam = nullptr;
     std::atomic<float>* masterParam = nullptr;
