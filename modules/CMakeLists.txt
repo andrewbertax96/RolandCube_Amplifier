@@ -9,6 +9,9 @@ add_library(juce_plugin_modules STATIC)
 add_subdirectory(json)
 add_subdirectory(chowdsp_utils)
 
+set(BUILD_TESTING OFF CACHE BOOL "Don't build libsamplerate tests!")
+add_subdirectory(libsamplerate)
+
 target_link_libraries(juce_plugin_modules
     PRIVATE
         BinaryData
@@ -17,7 +20,8 @@ target_link_libraries(juce_plugin_modules
         juce::juce_dsp
 	nlohmann_json::nlohmann_json
 	RTNeural
-	#samplerate
+	samplerate
+	chowdsp_dsp_utils
 	chowdsp_dsp
     PUBLIC
         juce::juce_recommended_config_flags
@@ -35,7 +39,7 @@ target_compile_definitions(juce_plugin_modules
         JucePlugin_Manufacturer="GuitarML"
         JucePlugin_VersionString="${CMAKE_PROJECT_VERSION}"
         JucePlugin_Name="${CMAKE_PROJECT_NAME}"
-	#CHOWDSP_USE_LIBSAMPLERATE=1
+	CHOWDSP_USE_LIBSAMPLERATE=1
     INTERFACE
         $<TARGET_PROPERTY:juce_plugin_modules,COMPILE_DEFINITIONS>
 )
@@ -44,7 +48,7 @@ target_include_directories(juce_plugin_modules
     PUBLIC
         RTNeural
         RTNeural/modules/xsimd/include
-        #libsamplerate/include
+        libsamplerate/include
     INTERFACE
         $<TARGET_PROPERTY:juce_plugin_modules,INCLUDE_DIRECTORIES>
 )

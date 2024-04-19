@@ -29,9 +29,8 @@ juce_generate_juce_header(RolandCube)
 add_subdirectory(src)
 include_directories(src)
 add_subdirectory(resources)
-add_subdirectory(train)
 
-target_compile_definitions(Proteus
+target_compile_definitions(RolandCube
     PUBLIC
     JUCE_DISPLAY_SPLASH_SCREEN=0
     JUCE_REPORT_APP_USAGE=0
@@ -41,7 +40,7 @@ target_compile_definitions(Proteus
     JUCE_MODAL_LOOPS_PERMITTED=1
 )
 
-target_link_libraries(Proteus PUBLIC
+target_link_libraries(RolandCube PUBLIC
     juce_plugin_modules
 )
 
