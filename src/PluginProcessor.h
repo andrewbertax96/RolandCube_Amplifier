@@ -112,8 +112,7 @@ private:
 
     dsp::ProcessorDuplicator<dsp::IIR::Filter<float>, dsp::IIR::Coefficients<float>> dcBlocker;
 
-    //chowdsp::ResampledProcess<chowdsp::ResamplingTypes::SRCResampler<>> resampler;
-
+    chowdsp::ResampledProcess<chowdsp::ResamplingTypes::SRCResampler> resampler;
     // IR processing
     CabSimulation cabSimIRa;
      
