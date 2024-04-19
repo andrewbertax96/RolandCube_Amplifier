@@ -6,6 +6,7 @@ project(RolandCube VERSION 0.0.1)
 set(CMAKE_CXX_STANDARD 17)  #aggiunto
 add_subdirectory(modules/JUCE ./JUCE)
 add_subdirectory(modules/chowdsp_utils ./chowdsp_utils)
+add_subdirectory(modules/json ./json)
 
 set(RTNEURAL_STL ON CACHE BOOL "Use RTNeural with XSMID backend" FORCE)
 add_subdirectory(modules/RTNeural ./RTNeural)
@@ -92,7 +93,7 @@ target_link_libraries(RolandCube
 	BinaryData
 	RTNeural
 	chowdsp_dsp
-	#nlohmann_json::nlohmann_json
+	nlohmann_json::nlohmann_json
         juce::juce_audio_plugin_client
         juce::juce_recommended_config_flags
         juce::juce_recommended_lto_flags

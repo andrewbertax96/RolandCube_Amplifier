@@ -10,7 +10,7 @@
 
 #include <JuceHeader.h>
 
-//#include <nlohmann/json.hpp>
+#include <nlohmann/json.hpp>
 #include "RTNeuralLSTM.h"
 #include "cabSimulation.h"
 #include "Equalizer.h"
