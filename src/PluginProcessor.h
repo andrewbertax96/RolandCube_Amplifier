@@ -32,14 +32,14 @@
 //==============================================================================
 /**
 */
-class RolandCubeAudioProcessor  : public juce::AudioProcessor                       
+class RolandCubeAudioProcessor  : public juce::AudioProcessor,
+                                  public AudioProcessorValueTreeState::Listener
 {
 public:
     //==============================================================================
     RolandCubeAudioProcessor();
     ~RolandCubeAudioProcessor() override;
-
-
+    
     //==============================================================================
     void prepareToPlay(double sampleRate, int samplesPerBlock) override;
     void releaseResources() override;
@@ -74,7 +74,9 @@ public:
     void setStateInformation(const void* data, int sizeInBytes) override;
 
     void set_ampEQ(float bass_slider, float mid_slider, float treble_slider);
-    //void parameterChanged(const String& parameterID, float newValue) override;
+
+    void parameterChanged(const String& parameterID, float newValue) override;
+
     void setJsonModel(const char* jsonModel);
     void setLSTM(float modelValue);
     void applyLSTMtoChannels(chowdsp::BufferView<float>& block, int totalNumChannels, RT_LSTM& LSTM, RT_LSTM& LSTM2, bool conditioned, float driveValue);
@@ -95,12 +97,12 @@ private:
     Equalizer equalizer1; // Amp EQ
     Equalizer equalizer2; // Amp EQ
 
-    std::atomic<float>* driveParam = nullptr;
-    std::atomic<float>* masterParam = nullptr;
-    std::atomic<float>* bassParam = nullptr;
-    std::atomic<float>* midParam = nullptr;
-    std::atomic<float>* trebleParam = nullptr;
-    std::atomic<float>* modelParam = nullptr;
+    std::atomic<float> driveParam = {0.0};
+    std::atomic<float> masterParam = { 0.0 };
+    std::atomic<float> bassParam = { 0.0 };
+    std::atomic<float> midParam = { 0.0 };
+    std::atomic<float> trebleParam = { 0.0 };
+    std::atomic<float> modelParam = { 0.0 };
 
     bool parametrized = false;
     float previousDriveValue = 0.5;

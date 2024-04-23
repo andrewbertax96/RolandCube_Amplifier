@@ -19,21 +19,13 @@ class RolandCubeAudioProcessorEditor  : public juce::AudioProcessorEditor,
                                         private Slider::Listener
 {
 public:
-    RolandCubeAudioProcessorEditor (RolandCubeAudioProcessor&);
+    RolandCubeAudioProcessorEditor (RolandCubeAudioProcessor&, AudioProcessorValueTreeState&);
     ~RolandCubeAudioProcessorEditor() override;
     
-
     //==============================================================================
     void paint (juce::Graphics&) override;
     void resized() override;
     void resetImages();
-
-    std::unique_ptr <AudioProcessorValueTreeState::SliderAttachment> bassSliderAttach;
-    std::unique_ptr <AudioProcessorValueTreeState::SliderAttachment> midSliderAttach;
-    std::unique_ptr <AudioProcessorValueTreeState::SliderAttachment> trebleSliderAttach;
-    std::unique_ptr <AudioProcessorValueTreeState::SliderAttachment> driveSliderAttach;
-    std::unique_ptr <AudioProcessorValueTreeState::SliderAttachment> masterSliderAttach;
-    std::unique_ptr <AudioProcessorValueTreeState::SliderAttachment> modelSelectorSliderAttach;
     
 private:
     // This reference is provided as a quick way for your editor to
@@ -81,6 +73,13 @@ private:
     virtual void sliderValueChanged(Slider* slider) override;
     virtual void buttonClicked(Button* button) override;
 
+
+    std::unique_ptr <AudioProcessorValueTreeState::SliderAttachment> bassSliderAttach;
+    std::unique_ptr <AudioProcessorValueTreeState::SliderAttachment> midSliderAttach;
+    std::unique_ptr <AudioProcessorValueTreeState::SliderAttachment> trebleSliderAttach;
+    std::unique_ptr <AudioProcessorValueTreeState::SliderAttachment> driveSliderAttach;
+    std::unique_ptr <AudioProcessorValueTreeState::SliderAttachment> masterSliderAttach;
+    std::unique_ptr <AudioProcessorValueTreeState::SliderAttachment> modelSelectorSliderAttach;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (RolandCubeAudioProcessorEditor)
 };
