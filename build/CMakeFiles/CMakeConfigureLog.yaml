@@ -5,7 +5,7 @@ events:
     kind: "message-v1"
     backtrace:
       - "C:/Program Files/CMake/share/cmake-3.27/Modules/CMakeDetermineSystem.cmake:211 (message)"
-      - "CMakeLists.txt:4 (project)"
+      - "CMakeLists.txt:3 (project)"
     message: |
       The system is: Windows - 10.0.22631 - AMD64
   -
@@ -14,7 +14,7 @@ events:
       - "C:/Program Files/CMake/share/cmake-3.27/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
       - "C:/Program Files/CMake/share/cmake-3.27/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
       - "C:/Program Files/CMake/share/cmake-3.27/Modules/CMakeDetermineCCompiler.cmake:123 (CMAKE_DETERMINE_COMPILER_ID)"
-      - "CMakeLists.txt:4 (project)"
+      - "CMakeLists.txt:3 (project)"
     message: |
       Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
       Compiler:  
@@ -24,7 +24,7 @@ events:
       The output was:
       0
       MSBuild version 17.6.3+07e294721 for .NET Framework
-      Compilazione avviata 18/04/2024 14.24.02.
+      Compilazione avviata 23/04/2024 14.15.51.
       
       Progetto "C:\\Users\\andre\\Desktop\\RolandCube_Amplifier\\build\\CMakeFiles\\3.27.0\\CompilerIdC\\CompilerIdC.vcxproj" sul nodo 1 (destinazioni predefinite).
       PrepareForBuild:
@@ -51,7 +51,7 @@ events:
           Avvisi: 0
           Errori: 0
       
-      Tempo trascorso 00:00:01.21
+      Tempo trascorso 00:00:01.01
       
       
       Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CompilerIdC.exe"
@@ -67,7 +67,7 @@ events:
       - "C:/Program Files/CMake/share/cmake-3.27/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
       - "C:/Program Files/CMake/share/cmake-3.27/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
       - "C:/Program Files/CMake/share/cmake-3.27/Modules/CMakeDetermineCXXCompiler.cmake:126 (CMAKE_DETERMINE_COMPILER_ID)"
-      - "CMakeLists.txt:4 (project)"
+      - "CMakeLists.txt:3 (project)"
     message: |
       Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
       Compiler:  
@@ -77,7 +77,7 @@ events:
       The output was:
       0
       MSBuild version 17.6.3+07e294721 for .NET Framework
-      Compilazione avviata 18/04/2024 14.24.03.
+      Compilazione avviata 23/04/2024 14.15.53.
       
       Progetto "C:\\Users\\andre\\Desktop\\RolandCube_Amplifier\\build\\CMakeFiles\\3.27.0\\CompilerIdCXX\\CompilerIdCXX.vcxproj" sul nodo 1 (destinazioni predefinite).
       PrepareForBuild:
@@ -104,7 +104,7 @@ events:
           Avvisi: 0
           Errori: 0
       
-      Tempo trascorso 00:00:00.77
+      Tempo trascorso 00:00:00.73
       
       
       Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CompilerIdCXX.exe"
@@ -119,12 +119,12 @@ events:
     backtrace:
       - "C:/Program Files/CMake/share/cmake-3.27/Modules/CMakeDetermineCompilerABI.cmake:57 (try_compile)"
       - "C:/Program Files/CMake/share/cmake-3.27/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
-      - "CMakeLists.txt:4 (project)"
+      - "CMakeLists.txt:3 (project)"
     checks:
       - "Detecting C compiler ABI info"
     directories:
-      source: "C:/Users/andre/Desktop/RolandCube_Amplifier/build/CMakeFiles/CMakeScratch/TryCompile-u3e74i"
-      binary: "C:/Users/andre/Desktop/RolandCube_Amplifier/build/CMakeFiles/CMakeScratch/TryCompile-u3e74i"
+      source: "C:/Users/andre/Desktop/RolandCube_Amplifier/build/CMakeFiles/CMakeScratch/TryCompile-fxzo88"
+      binary: "C:/Users/andre/Desktop/RolandCube_Amplifier/build/CMakeFiles/CMakeScratch/TryCompile-fxzo88"
     cmakeVariables:
       CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
       CMAKE_C_FLAGS_DEBUG: "/Zi /Ob0 /Od /RTC1"
@@ -134,38 +134,38 @@ events:
       variable: "CMAKE_C_ABI_COMPILED"
       cached: true
       stdout: |
-        Change Dir: 'C:/Users/andre/Desktop/RolandCube_Amplifier/build/CMakeFiles/CMakeScratch/TryCompile-u3e74i'
+        Change Dir: 'C:/Users/andre/Desktop/RolandCube_Amplifier/build/CMakeFiles/CMakeScratch/TryCompile-fxzo88'
         
-        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_1ceb7.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_d34a2.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
         MSBuild version 17.6.3+07e294721 for .NET Framework
-        Compilazione avviata 18/04/2024 14.24.04.
+        Compilazione avviata 23/04/2024 14.15.54.
         
-        Progetto "C:\\Users\\andre\\Desktop\\RolandCube_Amplifier\\build\\CMakeFiles\\CMakeScratch\\TryCompile-u3e74i\\cmTC_1ceb7.vcxproj" sul nodo 1 (destinazioni predefinite).
+        Progetto "C:\\Users\\andre\\Desktop\\RolandCube_Amplifier\\build\\CMakeFiles\\CMakeScratch\\TryCompile-fxzo88\\cmTC_d34a2.vcxproj" sul nodo 1 (destinazioni predefinite).
         PrepareForBuild:
-          Creazione directory "cmTC_1ceb7.dir\\Debug\\".
-          Creazione directory "C:\\Users\\andre\\Desktop\\RolandCube_Amplifier\\build\\CMakeFiles\\CMakeScratch\\TryCompile-u3e74i\\Debug\\".
-          Creazione directory "cmTC_1ceb7.dir\\Debug\\cmTC_1ceb7.tlog\\".
+          Creazione directory "cmTC_d34a2.dir\\Debug\\".
+          Creazione directory "C:\\Users\\andre\\Desktop\\RolandCube_Amplifier\\build\\CMakeFiles\\CMakeScratch\\TryCompile-fxzo88\\Debug\\".
+          Creazione directory "cmTC_d34a2.dir\\Debug\\cmTC_d34a2.tlog\\".
         InitializeBuildStatus:
-          Creazione di "cmTC_1ceb7.dir\\Debug\\cmTC_1ceb7.tlog\\unsuccessfulbuild". È stato specificato "AlwaysCreate".
+          Creazione di "cmTC_d34a2.dir\\Debug\\cmTC_d34a2.tlog\\unsuccessfulbuild". È stato specificato "AlwaysCreate".
         ClCompile:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.36.32532\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_1ceb7.dir\\Debug\\\\" /Fd"cmTC_1ceb7.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-3.27\\Modules\\CMakeCCompilerABI.c"
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.36.32532\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_d34a2.dir\\Debug\\\\" /Fd"cmTC_d34a2.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-3.27\\Modules\\CMakeCCompilerABI.c"
           Microsoft (R) C/C++ Optimizing Compiler versione 19.36.32537 per x64
           CMakeCCompilerABI.c
           Copyright (C) Microsoft Corporation. Tutti i diritti  sono riservati.
-          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_1ceb7.dir\\Debug\\\\" /Fd"cmTC_1ceb7.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-3.27\\Modules\\CMakeCCompilerABI.c"
+          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_d34a2.dir\\Debug\\\\" /Fd"cmTC_d34a2.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-3.27\\Modules\\CMakeCCompilerABI.c"
         Link:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.36.32532\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"C:\\Users\\andre\\Desktop\\RolandCube_Amplifier\\build\\CMakeFiles\\CMakeScratch\\TryCompile-u3e74i\\Debug\\cmTC_1ceb7.exe" /INCREMENTAL /ILK:"cmTC_1ceb7.dir\\Debug\\cmTC_1ceb7.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/andre/Desktop/RolandCube_Amplifier/build/CMakeFiles/CMakeScratch/TryCompile-u3e74i/Debug/cmTC_1ceb7.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/Users/andre/Desktop/RolandCube_Amplifier/build/CMakeFiles/CMakeScratch/TryCompile-u3e74i/Debug/cmTC_1ceb7.lib" /MACHINE:X64  /machine:x64 cmTC_1ceb7.dir\\Debug\\CMakeCCompilerABI.obj
-          cmTC_1ceb7.vcxproj -> C:\\Users\\andre\\Desktop\\RolandCube_Amplifier\\build\\CMakeFiles\\CMakeScratch\\TryCompile-u3e74i\\Debug\\cmTC_1ceb7.exe
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.36.32532\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"C:\\Users\\andre\\Desktop\\RolandCube_Amplifier\\build\\CMakeFiles\\CMakeScratch\\TryCompile-fxzo88\\Debug\\cmTC_d34a2.exe" /INCREMENTAL /ILK:"cmTC_d34a2.dir\\Debug\\cmTC_d34a2.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/andre/Desktop/RolandCube_Amplifier/build/CMakeFiles/CMakeScratch/TryCompile-fxzo88/Debug/cmTC_d34a2.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/Users/andre/Desktop/RolandCube_Amplifier/build/CMakeFiles/CMakeScratch/TryCompile-fxzo88/Debug/cmTC_d34a2.lib" /MACHINE:X64  /machine:x64 cmTC_d34a2.dir\\Debug\\CMakeCCompilerABI.obj
+          cmTC_d34a2.vcxproj -> C:\\Users\\andre\\Desktop\\RolandCube_Amplifier\\build\\CMakeFiles\\CMakeScratch\\TryCompile-fxzo88\\Debug\\cmTC_d34a2.exe
         FinalizeBuildStatus:
-          Eliminazione del file "cmTC_1ceb7.dir\\Debug\\cmTC_1ceb7.tlog\\unsuccessfulbuild" in corso.
-          Aggiornamento timestamp di "cmTC_1ceb7.dir\\Debug\\cmTC_1ceb7.tlog\\cmTC_1ceb7.lastbuildstate".
-        Compilazione progetto "C:\\Users\\andre\\Desktop\\RolandCube_Amplifier\\build\\CMakeFiles\\CMakeScratch\\TryCompile-u3e74i\\cmTC_1ceb7.vcxproj" (destinazioni predefinite) completata.
+          Eliminazione del file "cmTC_d34a2.dir\\Debug\\cmTC_d34a2.tlog\\unsuccessfulbuild" in corso.
+          Aggiornamento timestamp di "cmTC_d34a2.dir\\Debug\\cmTC_d34a2.tlog\\cmTC_d34a2.lastbuildstate".
+        Compilazione progetto "C:\\Users\\andre\\Desktop\\RolandCube_Amplifier\\build\\CMakeFiles\\CMakeScratch\\TryCompile-fxzo88\\cmTC_d34a2.vcxproj" (destinazioni predefinite) completata.
         
         Compilazione completata.
             Avvisi: 0
             Errori: 0
         
-        Tempo trascorso 00:00:00.93
+        Tempo trascorso 00:00:00.73
         
       exitCode: 0
   -
@@ -173,12 +173,12 @@ events:
     backtrace:
       - "C:/Program Files/CMake/share/cmake-3.27/Modules/CMakeDetermineCompilerABI.cmake:57 (try_compile)"
       - "C:/Program Files/CMake/share/cmake-3.27/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
-      - "CMakeLists.txt:4 (project)"
+      - "CMakeLists.txt:3 (project)"
     checks:
       - "Detecting CXX compiler ABI info"
     directories:
-      source: "C:/Users/andre/Desktop/RolandCube_Amplifier/build/CMakeFiles/CMakeScratch/TryCompile-foii52"
-      binary: "C:/Users/andre/Desktop/RolandCube_Amplifier/build/CMakeFiles/CMakeScratch/TryCompile-foii52"
+      source: "C:/Users/andre/Desktop/RolandCube_Amplifier/build/CMakeFiles/CMakeScratch/TryCompile-qtvqqj"
+      binary: "C:/Users/andre/Desktop/RolandCube_Amplifier/build/CMakeFiles/CMakeScratch/TryCompile-qtvqqj"
     cmakeVariables:
       CMAKE_CXX_FLAGS: "/DWIN32 /D_WINDOWS /GR /EHsc"
       CMAKE_CXX_FLAGS_DEBUG: "/Zi /Ob0 /Od /RTC1"
@@ -188,40 +188,369 @@ events:
       variable: "CMAKE_CXX_ABI_COMPILED"
       cached: true
       stdout: |
-        Change Dir: 'C:/Users/andre/Desktop/RolandCube_Amplifier/build/CMakeFiles/CMakeScratch/TryCompile-foii52'
+        Change Dir: 'C:/Users/andre/Desktop/RolandCube_Amplifier/build/CMakeFiles/CMakeScratch/TryCompile-qtvqqj'
         
-        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_14f07.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_517ec.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
         MSBuild version 17.6.3+07e294721 for .NET Framework
-        Compilazione avviata 18/04/2024 14.24.06.
+        Compilazione avviata 23/04/2024 14.15.55.
         
-        Progetto "C:\\Users\\andre\\Desktop\\RolandCube_Amplifier\\build\\CMakeFiles\\CMakeScratch\\TryCompile-foii52\\cmTC_14f07.vcxproj" sul nodo 1 (destinazioni predefinite).
+        Progetto "C:\\Users\\andre\\Desktop\\RolandCube_Amplifier\\build\\CMakeFiles\\CMakeScratch\\TryCompile-qtvqqj\\cmTC_517ec.vcxproj" sul nodo 1 (destinazioni predefinite).
         PrepareForBuild:
-          Creazione directory "cmTC_14f07.dir\\Debug\\".
-          Creazione directory "C:\\Users\\andre\\Desktop\\RolandCube_Amplifier\\build\\CMakeFiles\\CMakeScratch\\TryCompile-foii52\\Debug\\".
-          Creazione directory "cmTC_14f07.dir\\Debug\\cmTC_14f07.tlog\\".
+          Creazione directory "cmTC_517ec.dir\\Debug\\".
+          Creazione directory "C:\\Users\\andre\\Desktop\\RolandCube_Amplifier\\build\\CMakeFiles\\CMakeScratch\\TryCompile-qtvqqj\\Debug\\".
+          Creazione directory "cmTC_517ec.dir\\Debug\\cmTC_517ec.tlog\\".
         InitializeBuildStatus:
-          Creazione di "cmTC_14f07.dir\\Debug\\cmTC_14f07.tlog\\unsuccessfulbuild". È stato specificato "AlwaysCreate".
+          Creazione di "cmTC_517ec.dir\\Debug\\cmTC_517ec.tlog\\unsuccessfulbuild". È stato specificato "AlwaysCreate".
         ClCompile:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.36.32532\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_14f07.dir\\Debug\\\\" /Fd"cmTC_14f07.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TP /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-3.27\\Modules\\CMakeCXXCompilerABI.cpp"
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.36.32532\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_517ec.dir\\Debug\\\\" /Fd"cmTC_517ec.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TP /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-3.27\\Modules\\CMakeCXXCompilerABI.cpp"
           Microsoft (R) C/C++ Optimizing Compiler versione 19.36.32537 per x64
-          CMakeCXXCompilerABI.cpp
           Copyright (C) Microsoft Corporation. Tutti i diritti  sono riservati.
-          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_14f07.dir\\Debug\\\\" /Fd"cmTC_14f07.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TP /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-3.27\\Modules\\CMakeCXXCompilerABI.cpp"
+          CMakeCXXCompilerABI.cpp
+          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_517ec.dir\\Debug\\\\" /Fd"cmTC_517ec.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TP /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-3.27\\Modules\\CMakeCXXCompilerABI.cpp"
         Link:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.36.32532\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"C:\\Users\\andre\\Desktop\\RolandCube_Amplifier\\build\\CMakeFiles\\CMakeScratch\\TryCompile-foii52\\Debug\\cmTC_14f07.exe" /INCREMENTAL /ILK:"cmTC_14f07.dir\\Debug\\cmTC_14f07.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/andre/Desktop/RolandCube_Amplifier/build/CMakeFiles/CMakeScratch/TryCompile-foii52/Debug/cmTC_14f07.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/Users/andre/Desktop/RolandCube_Amplifier/build/CMakeFiles/CMakeScratch/TryCompile-foii52/Debug/cmTC_14f07.lib" /MACHINE:X64  /machine:x64 cmTC_14f07.dir\\Debug\\CMakeCXXCompilerABI.obj
-          cmTC_14f07.vcxproj -> C:\\Users\\andre\\Desktop\\RolandCube_Amplifier\\build\\CMakeFiles\\CMakeScratch\\TryCompile-foii52\\Debug\\cmTC_14f07.exe
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.36.32532\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"C:\\Users\\andre\\Desktop\\RolandCube_Amplifier\\build\\CMakeFiles\\CMakeScratch\\TryCompile-qtvqqj\\Debug\\cmTC_517ec.exe" /INCREMENTAL /ILK:"cmTC_517ec.dir\\Debug\\cmTC_517ec.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/andre/Desktop/RolandCube_Amplifier/build/CMakeFiles/CMakeScratch/TryCompile-qtvqqj/Debug/cmTC_517ec.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/Users/andre/Desktop/RolandCube_Amplifier/build/CMakeFiles/CMakeScratch/TryCompile-qtvqqj/Debug/cmTC_517ec.lib" /MACHINE:X64  /machine:x64 cmTC_517ec.dir\\Debug\\CMakeCXXCompilerABI.obj
+          cmTC_517ec.vcxproj -> C:\\Users\\andre\\Desktop\\RolandCube_Amplifier\\build\\CMakeFiles\\CMakeScratch\\TryCompile-qtvqqj\\Debug\\cmTC_517ec.exe
         FinalizeBuildStatus:
-          Eliminazione del file "cmTC_14f07.dir\\Debug\\cmTC_14f07.tlog\\unsuccessfulbuild" in corso.
-          Aggiornamento timestamp di "cmTC_14f07.dir\\Debug\\cmTC_14f07.tlog\\cmTC_14f07.lastbuildstate".
-        Compilazione progetto "C:\\Users\\andre\\Desktop\\RolandCube_Amplifier\\build\\CMakeFiles\\CMakeScratch\\TryCompile-foii52\\cmTC_14f07.vcxproj" (destinazioni predefinite) completata.
+          Eliminazione del file "cmTC_517ec.dir\\Debug\\cmTC_517ec.tlog\\unsuccessfulbuild" in corso.
+          Aggiornamento timestamp di "cmTC_517ec.dir\\Debug\\cmTC_517ec.tlog\\cmTC_517ec.lastbuildstate".
+        Compilazione progetto "C:\\Users\\andre\\Desktop\\RolandCube_Amplifier\\build\\CMakeFiles\\CMakeScratch\\TryCompile-qtvqqj\\cmTC_517ec.vcxproj" (destinazioni predefinite) completata.
         
         Compilazione completata.
             Avvisi: 0
             Errori: 0
         
-        Tempo trascorso 00:00:01.05
+        Tempo trascorso 00:00:00.76
         
       exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.27/Modules/CheckIncludeFile.cmake:90 (try_compile)"
+      - "modules/libsamplerate/CMakeLists.txt:94 (check_include_file)"
+    checks:
+      - "Looking for stdbool.h"
+    directories:
+      source: "C:/Users/andre/Desktop/RolandCube_Amplifier/build/CMakeFiles/CMakeScratch/TryCompile-cn55yw"
+      binary: "C:/Users/andre/Desktop/RolandCube_Amplifier/build/CMakeFiles/CMakeScratch/TryCompile-cn55yw"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
+      CMAKE_MODULE_PATH: "C:/Users/andre/Desktop/RolandCube_Amplifier/modules/libsamplerate/cmake"
+      CMAKE_OSX_DEPLOYMENT_TARGET: "10.12"
+    buildResult:
+      variable: "HAVE_STDBOOL_H"
+      cached: true
+      stdout: |
+        Change Dir: 'C:/Users/andre/Desktop/RolandCube_Amplifier/build/CMakeFiles/CMakeScratch/TryCompile-cn55yw'
+        
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_9bfbd.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        MSBuild version 17.6.3+07e294721 for .NET Framework
+        Compilazione avviata 23/04/2024 14.16.21.
+        
+        Progetto "C:\\Users\\andre\\Desktop\\RolandCube_Amplifier\\build\\CMakeFiles\\CMakeScratch\\TryCompile-cn55yw\\cmTC_9bfbd.vcxproj" sul nodo 1 (destinazioni predefinite).
+        PrepareForBuild:
+          Creazione directory "cmTC_9bfbd.dir\\Debug\\".
+          Creazione directory "C:\\Users\\andre\\Desktop\\RolandCube_Amplifier\\build\\CMakeFiles\\CMakeScratch\\TryCompile-cn55yw\\Debug\\".
+          Creazione directory "cmTC_9bfbd.dir\\Debug\\cmTC_9bfbd.tlog\\".
+        InitializeBuildStatus:
+          Creazione di "cmTC_9bfbd.dir\\Debug\\cmTC_9bfbd.tlog\\unsuccessfulbuild". È stato specificato "AlwaysCreate".
+        ClCompile:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.36.32532\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_9bfbd.dir\\Debug\\\\" /Fd"cmTC_9bfbd.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "C:\\Users\\andre\\Desktop\\RolandCube_Amplifier\\build\\CMakeFiles\\CMakeScratch\\TryCompile-cn55yw\\CheckIncludeFile.c"
+          Microsoft (R) C/C++ Optimizing Compiler versione 19.36.32537 per x64
+          CheckIncludeFile.c
+          Copyright (C) Microsoft Corporation. Tutti i diritti  sono riservati.
+          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_9bfbd.dir\\Debug\\\\" /Fd"cmTC_9bfbd.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "C:\\Users\\andre\\Desktop\\RolandCube_Amplifier\\build\\CMakeFiles\\CMakeScratch\\TryCompile-cn55yw\\CheckIncludeFile.c"
+        Link:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.36.32532\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"C:\\Users\\andre\\Desktop\\RolandCube_Amplifier\\build\\CMakeFiles\\CMakeScratch\\TryCompile-cn55yw\\Debug\\cmTC_9bfbd.exe" /INCREMENTAL /ILK:"cmTC_9bfbd.dir\\Debug\\cmTC_9bfbd.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/andre/Desktop/RolandCube_Amplifier/build/CMakeFiles/CMakeScratch/TryCompile-cn55yw/Debug/cmTC_9bfbd.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/Users/andre/Desktop/RolandCube_Amplifier/build/CMakeFiles/CMakeScratch/TryCompile-cn55yw/Debug/cmTC_9bfbd.lib" /MACHINE:X64  /machine:x64 cmTC_9bfbd.dir\\Debug\\CheckIncludeFile.obj
+          cmTC_9bfbd.vcxproj -> C:\\Users\\andre\\Desktop\\RolandCube_Amplifier\\build\\CMakeFiles\\CMakeScratch\\TryCompile-cn55yw\\Debug\\cmTC_9bfbd.exe
+        FinalizeBuildStatus:
+          Eliminazione del file "cmTC_9bfbd.dir\\Debug\\cmTC_9bfbd.tlog\\unsuccessfulbuild" in corso.
+          Aggiornamento timestamp di "cmTC_9bfbd.dir\\Debug\\cmTC_9bfbd.tlog\\cmTC_9bfbd.lastbuildstate".
+        Compilazione progetto "C:\\Users\\andre\\Desktop\\RolandCube_Amplifier\\build\\CMakeFiles\\CMakeScratch\\TryCompile-cn55yw\\cmTC_9bfbd.vcxproj" (destinazioni predefinite) completata.
+        
+        Compilazione completata.
+            Avvisi: 0
+            Errori: 0
+        
+        Tempo trascorso 00:00:00.92
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.27/Modules/CheckIncludeFile.cmake:90 (try_compile)"
+      - "modules/libsamplerate/CMakeLists.txt:95 (check_include_file)"
+    checks:
+      - "Looking for unistd.h"
+    directories:
+      source: "C:/Users/andre/Desktop/RolandCube_Amplifier/build/CMakeFiles/CMakeScratch/TryCompile-r4enok"
+      binary: "C:/Users/andre/Desktop/RolandCube_Amplifier/build/CMakeFiles/CMakeScratch/TryCompile-r4enok"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
+      CMAKE_MODULE_PATH: "C:/Users/andre/Desktop/RolandCube_Amplifier/modules/libsamplerate/cmake"
+      CMAKE_OSX_DEPLOYMENT_TARGET: "10.12"
+    buildResult:
+      variable: "HAVE_UNISTD_H"
+      cached: true
+      stdout: |
+        Change Dir: 'C:/Users/andre/Desktop/RolandCube_Amplifier/build/CMakeFiles/CMakeScratch/TryCompile-r4enok'
+        
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_bdcf3.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        MSBuild version 17.6.3+07e294721 for .NET Framework
+        Compilazione avviata 23/04/2024 14.16.22.
+        
+        Progetto "C:\\Users\\andre\\Desktop\\RolandCube_Amplifier\\build\\CMakeFiles\\CMakeScratch\\TryCompile-r4enok\\cmTC_bdcf3.vcxproj" sul nodo 1 (destinazioni predefinite).
+        PrepareForBuild:
+          Creazione directory "cmTC_bdcf3.dir\\Debug\\".
+          Creazione directory "C:\\Users\\andre\\Desktop\\RolandCube_Amplifier\\build\\CMakeFiles\\CMakeScratch\\TryCompile-r4enok\\Debug\\".
+          Creazione directory "cmTC_bdcf3.dir\\Debug\\cmTC_bdcf3.tlog\\".
+        InitializeBuildStatus:
+          Creazione di "cmTC_bdcf3.dir\\Debug\\cmTC_bdcf3.tlog\\unsuccessfulbuild". È stato specificato "AlwaysCreate".
+        ClCompile:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.36.32532\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_bdcf3.dir\\Debug\\\\" /Fd"cmTC_bdcf3.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "C:\\Users\\andre\\Desktop\\RolandCube_Amplifier\\build\\CMakeFiles\\CMakeScratch\\TryCompile-r4enok\\CheckIncludeFile.c"
+          Microsoft (R) C/C++ Optimizing Compiler versione 19.36.32537 per x64
+          CheckIncludeFile.c
+          Copyright (C) Microsoft Corporation. Tutti i diritti  sono riservati.
+          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_bdcf3.dir\\Debug\\\\" /Fd"cmTC_bdcf3.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "C:\\Users\\andre\\Desktop\\RolandCube_Amplifier\\build\\CMakeFiles\\CMakeScratch\\TryCompile-r4enok\\CheckIncludeFile.c"
+        C:\\Users\\andre\\Desktop\\RolandCube_Amplifier\\build\\CMakeFiles\\CMakeScratch\\TryCompile-r4enok\\CheckIncludeFile.c(1,10): fatal  error C1083: Non è possibile aprire il file inclusione: 'unistd.h': No such file or directory [C:\\Users\\andre\\Desktop\\RolandCube_Amplifier\\build\\CMakeFiles\\CMakeScratch\\TryCompile-r4enok\\cmTC_bdcf3.vcxproj]
+        Compilazione progetto "C:\\Users\\andre\\Desktop\\RolandCube_Amplifier\\build\\CMakeFiles\\CMakeScratch\\TryCompile-r4enok\\cmTC_bdcf3.vcxproj" (destinazioni predefinite) NON COMPLETATA.
+        
+        Compilazione NON RIUSCITA.
+        
+        "C:\\Users\\andre\\Desktop\\RolandCube_Amplifier\\build\\CMakeFiles\\CMakeScratch\\TryCompile-r4enok\\cmTC_bdcf3.vcxproj" (destinazione predefinita) (1) ->
+        (destinazione: ClCompile) -> 
+          C:\\Users\\andre\\Desktop\\RolandCube_Amplifier\\build\\CMakeFiles\\CMakeScratch\\TryCompile-r4enok\\CheckIncludeFile.c(1,10): fatal  error C1083: Non è possibile aprire il file inclusione: 'unistd.h': No such file or directory [C:\\Users\\andre\\Desktop\\RolandCube_Amplifier\\build\\CMakeFiles\\CMakeScratch\\TryCompile-r4enok\\cmTC_bdcf3.vcxproj]
+        
+            Avvisi: 0
+            Errori: 1
+        
+        Tempo trascorso 00:00:00.60
+        
+      exitCode: 1
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.27/Modules/CheckIncludeFile.cmake:90 (try_compile)"
+      - "modules/libsamplerate/CMakeLists.txt:96 (check_include_file)"
+    checks:
+      - "Looking for immintrin.h"
+    directories:
+      source: "C:/Users/andre/Desktop/RolandCube_Amplifier/build/CMakeFiles/CMakeScratch/TryCompile-g03l4a"
+      binary: "C:/Users/andre/Desktop/RolandCube_Amplifier/build/CMakeFiles/CMakeScratch/TryCompile-g03l4a"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
+      CMAKE_MODULE_PATH: "C:/Users/andre/Desktop/RolandCube_Amplifier/modules/libsamplerate/cmake"
+      CMAKE_OSX_DEPLOYMENT_TARGET: "10.12"
+    buildResult:
+      variable: "HAVE_IMMINTRIN_H"
+      cached: true
+      stdout: |
+        Change Dir: 'C:/Users/andre/Desktop/RolandCube_Amplifier/build/CMakeFiles/CMakeScratch/TryCompile-g03l4a'
+        
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_b890f.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        MSBuild version 17.6.3+07e294721 for .NET Framework
+        Compilazione avviata 23/04/2024 14.16.23.
+        
+        Progetto "C:\\Users\\andre\\Desktop\\RolandCube_Amplifier\\build\\CMakeFiles\\CMakeScratch\\TryCompile-g03l4a\\cmTC_b890f.vcxproj" sul nodo 1 (destinazioni predefinite).
+        PrepareForBuild:
+          Creazione directory "cmTC_b890f.dir\\Debug\\".
+          Creazione directory "C:\\Users\\andre\\Desktop\\RolandCube_Amplifier\\build\\CMakeFiles\\CMakeScratch\\TryCompile-g03l4a\\Debug\\".
+          Creazione directory "cmTC_b890f.dir\\Debug\\cmTC_b890f.tlog\\".
+        InitializeBuildStatus:
+          Creazione di "cmTC_b890f.dir\\Debug\\cmTC_b890f.tlog\\unsuccessfulbuild". È stato specificato "AlwaysCreate".
+        ClCompile:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.36.32532\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_b890f.dir\\Debug\\\\" /Fd"cmTC_b890f.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "C:\\Users\\andre\\Desktop\\RolandCube_Amplifier\\build\\CMakeFiles\\CMakeScratch\\TryCompile-g03l4a\\CheckIncludeFile.c"
+          Microsoft (R) C/C++ Optimizing Compiler versione 19.36.32537 per x64
+          CheckIncludeFile.c
+          Copyright (C) Microsoft Corporation. Tutti i diritti  sono riservati.
+          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_b890f.dir\\Debug\\\\" /Fd"cmTC_b890f.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "C:\\Users\\andre\\Desktop\\RolandCube_Amplifier\\build\\CMakeFiles\\CMakeScratch\\TryCompile-g03l4a\\CheckIncludeFile.c"
+        Link:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.36.32532\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"C:\\Users\\andre\\Desktop\\RolandCube_Amplifier\\build\\CMakeFiles\\CMakeScratch\\TryCompile-g03l4a\\Debug\\cmTC_b890f.exe" /INCREMENTAL /ILK:"cmTC_b890f.dir\\Debug\\cmTC_b890f.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/andre/Desktop/RolandCube_Amplifier/build/CMakeFiles/CMakeScratch/TryCompile-g03l4a/Debug/cmTC_b890f.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/Users/andre/Desktop/RolandCube_Amplifier/build/CMakeFiles/CMakeScratch/TryCompile-g03l4a/Debug/cmTC_b890f.lib" /MACHINE:X64  /machine:x64 cmTC_b890f.dir\\Debug\\CheckIncludeFile.obj
+          cmTC_b890f.vcxproj -> C:\\Users\\andre\\Desktop\\RolandCube_Amplifier\\build\\CMakeFiles\\CMakeScratch\\TryCompile-g03l4a\\Debug\\cmTC_b890f.exe
+        FinalizeBuildStatus:
+          Eliminazione del file "cmTC_b890f.dir\\Debug\\cmTC_b890f.tlog\\unsuccessfulbuild" in corso.
+          Aggiornamento timestamp di "cmTC_b890f.dir\\Debug\\cmTC_b890f.tlog\\cmTC_b890f.lastbuildstate".
+        Compilazione progetto "C:\\Users\\andre\\Desktop\\RolandCube_Amplifier\\build\\CMakeFiles\\CMakeScratch\\TryCompile-g03l4a\\cmTC_b890f.vcxproj" (destinazioni predefinite) completata.
+        
+        Compilazione completata.
+            Avvisi: 0
+            Errori: 0
+        
+        Tempo trascorso 00:00:01.99
+        
+      exitCode: 0
+  -
+    kind: "try_run-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.27/Modules/Internal/CheckSourceRuns.cmake:93 (try_run)"
+      - "C:/Program Files/CMake/share/cmake-3.27/Modules/CheckCSourceRuns.cmake:52 (cmake_check_source_runs)"
+      - "modules/libsamplerate/cmake/ClipMode.cmake:23 (check_c_source_runs)"
+      - "modules/libsamplerate/src/CMakeLists.txt:19 (clip_mode)"
+    checks:
+      - "Performing Test CPU_CLIPS_POSITIVE"
+    directories:
+      source: "C:/Users/andre/Desktop/RolandCube_Amplifier/build/CMakeFiles/CMakeScratch/TryCompile-4ku5l5"
+      binary: "C:/Users/andre/Desktop/RolandCube_Amplifier/build/CMakeFiles/CMakeScratch/TryCompile-4ku5l5"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
+      CMAKE_MODULE_PATH: "C:/Users/andre/Desktop/RolandCube_Amplifier/modules/libsamplerate/cmake"
+      CMAKE_OSX_DEPLOYMENT_TARGET: "10.12"
+    buildResult:
+      variable: "CPU_CLIPS_POSITIVE_COMPILED"
+      cached: true
+      stdout: |
+        Change Dir: 'C:/Users/andre/Desktop/RolandCube_Amplifier/build/CMakeFiles/CMakeScratch/TryCompile-4ku5l5'
+        
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_2641d.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        MSBuild version 17.6.3+07e294721 for .NET Framework
+        Compilazione avviata 23/04/2024 14.16.26.
+        
+        Progetto "C:\\Users\\andre\\Desktop\\RolandCube_Amplifier\\build\\CMakeFiles\\CMakeScratch\\TryCompile-4ku5l5\\cmTC_2641d.vcxproj" sul nodo 1 (destinazioni predefinite).
+        PrepareForBuild:
+          Creazione directory "cmTC_2641d.dir\\Debug\\".
+          Creazione directory "C:\\Users\\andre\\Desktop\\RolandCube_Amplifier\\build\\CMakeFiles\\CMakeScratch\\TryCompile-4ku5l5\\Debug\\".
+          Creazione directory "cmTC_2641d.dir\\Debug\\cmTC_2641d.tlog\\".
+        InitializeBuildStatus:
+          Creazione di "cmTC_2641d.dir\\Debug\\cmTC_2641d.tlog\\unsuccessfulbuild". È stato specificato "AlwaysCreate".
+        ClCompile:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.36.32532\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CPU_CLIPS_POSITIVE /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_2641d.dir\\Debug\\\\" /Fd"cmTC_2641d.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "C:\\Users\\andre\\Desktop\\RolandCube_Amplifier\\build\\CMakeFiles\\CMakeScratch\\TryCompile-4ku5l5\\src.c"
+          Microsoft (R) C/C++ Optimizing Compiler versione 19.36.32537 per x64
+          Copyright (C) Microsoft Corporation. Tutti i diritti  sono riservati.
+          src.c
+          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CPU_CLIPS_POSITIVE /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_2641d.dir\\Debug\\\\" /Fd"cmTC_2641d.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "C:\\Users\\andre\\Desktop\\RolandCube_Amplifier\\build\\CMakeFiles\\CMakeScratch\\TryCompile-4ku5l5\\src.c"
+        Link:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.36.32532\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"C:\\Users\\andre\\Desktop\\RolandCube_Amplifier\\build\\CMakeFiles\\CMakeScratch\\TryCompile-4ku5l5\\Debug\\cmTC_2641d.exe" /INCREMENTAL /ILK:"cmTC_2641d.dir\\Debug\\cmTC_2641d.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/andre/Desktop/RolandCube_Amplifier/build/CMakeFiles/CMakeScratch/TryCompile-4ku5l5/Debug/cmTC_2641d.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/Users/andre/Desktop/RolandCube_Amplifier/build/CMakeFiles/CMakeScratch/TryCompile-4ku5l5/Debug/cmTC_2641d.lib" /MACHINE:X64  /machine:x64 cmTC_2641d.dir\\Debug\\src.obj
+          cmTC_2641d.vcxproj -> C:\\Users\\andre\\Desktop\\RolandCube_Amplifier\\build\\CMakeFiles\\CMakeScratch\\TryCompile-4ku5l5\\Debug\\cmTC_2641d.exe
+        FinalizeBuildStatus:
+          Eliminazione del file "cmTC_2641d.dir\\Debug\\cmTC_2641d.tlog\\unsuccessfulbuild" in corso.
+          Aggiornamento timestamp di "cmTC_2641d.dir\\Debug\\cmTC_2641d.tlog\\cmTC_2641d.lastbuildstate".
+        Compilazione progetto "C:\\Users\\andre\\Desktop\\RolandCube_Amplifier\\build\\CMakeFiles\\CMakeScratch\\TryCompile-4ku5l5\\cmTC_2641d.vcxproj" (destinazioni predefinite) completata.
+        
+        Compilazione completata.
+            Avvisi: 0
+            Errori: 0
+        
+        Tempo trascorso 00:00:01.07
+        
+      exitCode: 0
+    runResult:
+      variable: "CPU_CLIPS_POSITIVE_EXITCODE"
+      cached: true
+      stdout: |
+      stderr: |
+      exitCode: 1
+  -
+    kind: "try_run-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.27/Modules/Internal/CheckSourceRuns.cmake:93 (try_run)"
+      - "C:/Program Files/CMake/share/cmake-3.27/Modules/CheckCSourceRuns.cmake:52 (cmake_check_source_runs)"
+      - "modules/libsamplerate/cmake/ClipMode.cmake:44 (check_c_source_runs)"
+      - "modules/libsamplerate/src/CMakeLists.txt:19 (clip_mode)"
+    checks:
+      - "Performing Test CPU_CLIPS_NEGATIVE"
+    directories:
+      source: "C:/Users/andre/Desktop/RolandCube_Amplifier/build/CMakeFiles/CMakeScratch/TryCompile-6mjnn4"
+      binary: "C:/Users/andre/Desktop/RolandCube_Amplifier/build/CMakeFiles/CMakeScratch/TryCompile-6mjnn4"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
+      CMAKE_MODULE_PATH: "C:/Users/andre/Desktop/RolandCube_Amplifier/modules/libsamplerate/cmake"
+      CMAKE_OSX_DEPLOYMENT_TARGET: "10.12"
+    buildResult:
+      variable: "CPU_CLIPS_NEGATIVE_COMPILED"
+      cached: true
+      stdout: |
+        Change Dir: 'C:/Users/andre/Desktop/RolandCube_Amplifier/build/CMakeFiles/CMakeScratch/TryCompile-6mjnn4'
+        
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_04c59.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        MSBuild version 17.6.3+07e294721 for .NET Framework
+        Compilazione avviata 23/04/2024 14.16.27.
+        
+        Progetto "C:\\Users\\andre\\Desktop\\RolandCube_Amplifier\\build\\CMakeFiles\\CMakeScratch\\TryCompile-6mjnn4\\cmTC_04c59.vcxproj" sul nodo 1 (destinazioni predefinite).
+        PrepareForBuild:
+          Creazione directory "cmTC_04c59.dir\\Debug\\".
+          Creazione directory "C:\\Users\\andre\\Desktop\\RolandCube_Amplifier\\build\\CMakeFiles\\CMakeScratch\\TryCompile-6mjnn4\\Debug\\".
+          Creazione directory "cmTC_04c59.dir\\Debug\\cmTC_04c59.tlog\\".
+        InitializeBuildStatus:
+          Creazione di "cmTC_04c59.dir\\Debug\\cmTC_04c59.tlog\\unsuccessfulbuild". È stato specificato "AlwaysCreate".
+        ClCompile:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.36.32532\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CPU_CLIPS_NEGATIVE /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_04c59.dir\\Debug\\\\" /Fd"cmTC_04c59.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "C:\\Users\\andre\\Desktop\\RolandCube_Amplifier\\build\\CMakeFiles\\CMakeScratch\\TryCompile-6mjnn4\\src.c"
+          Microsoft (R) C/C++ Optimizing Compiler versione 19.36.32537 per x64
+          src.c
+          Copyright (C) Microsoft Corporation. Tutti i diritti  sono riservati.
+          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CPU_CLIPS_NEGATIVE /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_04c59.dir\\Debug\\\\" /Fd"cmTC_04c59.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "C:\\Users\\andre\\Desktop\\RolandCube_Amplifier\\build\\CMakeFiles\\CMakeScratch\\TryCompile-6mjnn4\\src.c"
+        Link:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.36.32532\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"C:\\Users\\andre\\Desktop\\RolandCube_Amplifier\\build\\CMakeFiles\\CMakeScratch\\TryCompile-6mjnn4\\Debug\\cmTC_04c59.exe" /INCREMENTAL /ILK:"cmTC_04c59.dir\\Debug\\cmTC_04c59.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/andre/Desktop/RolandCube_Amplifier/build/CMakeFiles/CMakeScratch/TryCompile-6mjnn4/Debug/cmTC_04c59.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/Users/andre/Desktop/RolandCube_Amplifier/build/CMakeFiles/CMakeScratch/TryCompile-6mjnn4/Debug/cmTC_04c59.lib" /MACHINE:X64  /machine:x64 cmTC_04c59.dir\\Debug\\src.obj
+          cmTC_04c59.vcxproj -> C:\\Users\\andre\\Desktop\\RolandCube_Amplifier\\build\\CMakeFiles\\CMakeScratch\\TryCompile-6mjnn4\\Debug\\cmTC_04c59.exe
+        FinalizeBuildStatus:
+          Eliminazione del file "cmTC_04c59.dir\\Debug\\cmTC_04c59.tlog\\unsuccessfulbuild" in corso.
+          Aggiornamento timestamp di "cmTC_04c59.dir\\Debug\\cmTC_04c59.tlog\\cmTC_04c59.lastbuildstate".
+        Compilazione progetto "C:\\Users\\andre\\Desktop\\RolandCube_Amplifier\\build\\CMakeFiles\\CMakeScratch\\TryCompile-6mjnn4\\cmTC_04c59.vcxproj" (destinazioni predefinite) completata.
+        
+        Compilazione completata.
+            Avvisi: 0
+            Errori: 0
+        
+        Tempo trascorso 00:00:00.82
+        
+      exitCode: 0
+    runResult:
+      variable: "CPU_CLIPS_NEGATIVE_EXITCODE"
+      cached: true
+      stdout: |
+      stderr: |
+      exitCode: 1
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.27/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "C:/Program Files/CMake/share/cmake-3.27/Modules/CheckCSourceCompiles.cmake:52 (cmake_check_source_compiles)"
+      - "modules/libsamplerate/src/CMakeLists.txt:24 (check_c_source_compiles)"
+    checks:
+      - "Performing Test HAVE_VISIBILITY"
+    directories:
+      source: "C:/Users/andre/Desktop/RolandCube_Amplifier/build/CMakeFiles/CMakeScratch/TryCompile-bz3zeo"
+      binary: "C:/Users/andre/Desktop/RolandCube_Amplifier/build/CMakeFiles/CMakeScratch/TryCompile-bz3zeo"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
+      CMAKE_MODULE_PATH: "C:/Users/andre/Desktop/RolandCube_Amplifier/modules/libsamplerate/cmake"
+      CMAKE_OSX_DEPLOYMENT_TARGET: "10.12"
+    buildResult:
+      variable: "HAVE_VISIBILITY"
+      cached: true
+      stdout: |
+        Change Dir: 'C:/Users/andre/Desktop/RolandCube_Amplifier/build/CMakeFiles/CMakeScratch/TryCompile-bz3zeo'
+        
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_06a11.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        MSBuild version 17.6.3+07e294721 for .NET Framework
+        Compilazione avviata 23/04/2024 14.16.29.
+        
+        Progetto "C:\\Users\\andre\\Desktop\\RolandCube_Amplifier\\build\\CMakeFiles\\CMakeScratch\\TryCompile-bz3zeo\\cmTC_06a11.vcxproj" sul nodo 1 (destinazioni predefinite).
+        PrepareForBuild:
+          Creazione directory "cmTC_06a11.dir\\Debug\\".
+          Creazione directory "C:\\Users\\andre\\Desktop\\RolandCube_Amplifier\\build\\CMakeFiles\\CMakeScratch\\TryCompile-bz3zeo\\Debug\\".
+          Creazione directory "cmTC_06a11.dir\\Debug\\cmTC_06a11.tlog\\".
+        InitializeBuildStatus:
+          Creazione di "cmTC_06a11.dir\\Debug\\cmTC_06a11.tlog\\unsuccessfulbuild". È stato specificato "AlwaysCreate".
+        ClCompile:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.36.32532\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D HAVE_VISIBILITY /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_06a11.dir\\Debug\\\\" /Fd"cmTC_06a11.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue  -fvisibility=hidden -Werror "C:\\Users\\andre\\Desktop\\RolandCube_Amplifier\\build\\CMakeFiles\\CMakeScratch\\TryCompile-bz3zeo\\src.c"
+          Microsoft (R) C/C++ Optimizing Compiler versione 19.36.32537 per x64
+          Copyright (C) Microsoft Corporation. Tutti i diritti  sono riservati.
+          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D HAVE_VISIBILITY /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_06a11.dir\\Debug\\\\" /Fd"cmTC_06a11.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue  -fvisibility=hidden -Werror "C:\\Users\\andre\\Desktop\\RolandCube_Amplifier\\build\\CMakeFiles\\CMakeScratch\\TryCompile-bz3zeo\\src.c"
+          cl : error della riga di comando D8021 : argomento numerico '/Werror' non valido
+        C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Microsoft\\VC\\v170\\Microsoft.CppCommon.targets(734,5): error MSB6006: "CL.exe" terminato con il codice 2. [C:\\Users\\andre\\Desktop\\RolandCube_Amplifier\\build\\CMakeFiles\\CMakeScratch\\TryCompile-bz3zeo\\cmTC_06a11.vcxproj]
+        Compilazione progetto "C:\\Users\\andre\\Desktop\\RolandCube_Amplifier\\build\\CMakeFiles\\CMakeScratch\\TryCompile-bz3zeo\\cmTC_06a11.vcxproj" (destinazioni predefinite) NON COMPLETATA.
+        
+        Compilazione NON RIUSCITA.
+        
+        "C:\\Users\\andre\\Desktop\\RolandCube_Amplifier\\build\\CMakeFiles\\CMakeScratch\\TryCompile-bz3zeo\\cmTC_06a11.vcxproj" (destinazione predefinita) (1) ->
+        (destinazione: ClCompile) -> 
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Microsoft\\VC\\v170\\Microsoft.CppCommon.targets(734,5): error MSB6006: "CL.exe" terminato con il codice 2. [C:\\Users\\andre\\Desktop\\RolandCube_Amplifier\\build\\CMakeFiles\\CMakeScratch\\TryCompile-bz3zeo\\cmTC_06a11.vcxproj]
+        
+            Avvisi: 0
+            Errori: 1
+        
+        Tempo trascorso 00:00:00.86
+        
+      exitCode: 1
   -
     kind: "try_compile-v1"
     backtrace:
@@ -239,49 +568,47 @@ events:
     checks:
       - "Performing Test CMAKE_HAVE_LIBC_PTHREAD"
     directories:
-      source: "C:/Users/andre/Desktop/RolandCube_Amplifier/build/CMakeFiles/CMakeScratch/TryCompile-1f49ci"
-      binary: "C:/Users/andre/Desktop/RolandCube_Amplifier/build/CMakeFiles/CMakeScratch/TryCompile-1f49ci"
+      source: "C:/Users/andre/Desktop/RolandCube_Amplifier/build/CMakeFiles/CMakeScratch/TryCompile-gqn9ws"
+      binary: "C:/Users/andre/Desktop/RolandCube_Amplifier/build/CMakeFiles/CMakeScratch/TryCompile-gqn9ws"
     cmakeVariables:
       CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
-      CMAKE_C_FLAGS_DEBUG: "/Zi /Ob0 /Od /RTC1"
-      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
       CMAKE_OSX_DEPLOYMENT_TARGET: "10.12"
     buildResult:
       variable: "CMAKE_HAVE_LIBC_PTHREAD"
       cached: true
       stdout: |
-        Change Dir: 'C:/Users/andre/Desktop/RolandCube_Amplifier/build/CMakeFiles/CMakeScratch/TryCompile-1f49ci'
+        Change Dir: 'C:/Users/andre/Desktop/RolandCube_Amplifier/build/CMakeFiles/CMakeScratch/TryCompile-gqn9ws'
         
-        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_7e186.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_6a636.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
         MSBuild version 17.6.3+07e294721 for .NET Framework
-        Compilazione avviata 18/04/2024 14.24.40.
+        Compilazione avviata 23/04/2024 14.16.32.
         
-        Progetto "C:\\Users\\andre\\Desktop\\RolandCube_Amplifier\\build\\CMakeFiles\\CMakeScratch\\TryCompile-1f49ci\\cmTC_7e186.vcxproj" sul nodo 1 (destinazioni predefinite).
+        Progetto "C:\\Users\\andre\\Desktop\\RolandCube_Amplifier\\build\\CMakeFiles\\CMakeScratch\\TryCompile-gqn9ws\\cmTC_6a636.vcxproj" sul nodo 1 (destinazioni predefinite).
         PrepareForBuild:
-          Creazione directory "cmTC_7e186.dir\\Debug\\".
-          Creazione directory "C:\\Users\\andre\\Desktop\\RolandCube_Amplifier\\build\\CMakeFiles\\CMakeScratch\\TryCompile-1f49ci\\Debug\\".
-          Creazione directory "cmTC_7e186.dir\\Debug\\cmTC_7e186.tlog\\".
+          Creazione directory "cmTC_6a636.dir\\Debug\\".
+          Creazione directory "C:\\Users\\andre\\Desktop\\RolandCube_Amplifier\\build\\CMakeFiles\\CMakeScratch\\TryCompile-gqn9ws\\Debug\\".
+          Creazione directory "cmTC_6a636.dir\\Debug\\cmTC_6a636.tlog\\".
         InitializeBuildStatus:
-          Creazione di "cmTC_7e186.dir\\Debug\\cmTC_7e186.tlog\\unsuccessfulbuild". È stato specificato "AlwaysCreate".
+          Creazione di "cmTC_6a636.dir\\Debug\\cmTC_6a636.tlog\\unsuccessfulbuild". È stato specificato "AlwaysCreate".
         ClCompile:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.36.32532\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CMAKE_HAVE_LIBC_PTHREAD /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_7e186.dir\\Debug\\\\" /Fd"cmTC_7e186.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "C:\\Users\\andre\\Desktop\\RolandCube_Amplifier\\build\\CMakeFiles\\CMakeScratch\\TryCompile-1f49ci\\src.c"
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.36.32532\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CMAKE_HAVE_LIBC_PTHREAD /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_6a636.dir\\Debug\\\\" /Fd"cmTC_6a636.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "C:\\Users\\andre\\Desktop\\RolandCube_Amplifier\\build\\CMakeFiles\\CMakeScratch\\TryCompile-gqn9ws\\src.c"
           Microsoft (R) C/C++ Optimizing Compiler versione 19.36.32537 per x64
           src.c
           Copyright (C) Microsoft Corporation. Tutti i diritti  sono riservati.
-          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CMAKE_HAVE_LIBC_PTHREAD /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_7e186.dir\\Debug\\\\" /Fd"cmTC_7e186.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "C:\\Users\\andre\\Desktop\\RolandCube_Amplifier\\build\\CMakeFiles\\CMakeScratch\\TryCompile-1f49ci\\src.c"
-        C:\\Users\\andre\\Desktop\\RolandCube_Amplifier\\build\\CMakeFiles\\CMakeScratch\\TryCompile-1f49ci\\src.c(1,10): fatal  error C1083: Non è possibile aprire il file inclusione: 'pthread.h': No such file or directory [C:\\Users\\andre\\Desktop\\RolandCube_Amplifier\\build\\CMakeFiles\\CMakeScratch\\TryCompile-1f49ci\\cmTC_7e186.vcxproj]
-        Compilazione progetto "C:\\Users\\andre\\Desktop\\RolandCube_Amplifier\\build\\CMakeFiles\\CMakeScratch\\TryCompile-1f49ci\\cmTC_7e186.vcxproj" (destinazioni predefinite) NON COMPLETATA.
+          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CMAKE_HAVE_LIBC_PTHREAD /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_6a636.dir\\Debug\\\\" /Fd"cmTC_6a636.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "C:\\Users\\andre\\Desktop\\RolandCube_Amplifier\\build\\CMakeFiles\\CMakeScratch\\TryCompile-gqn9ws\\src.c"
+        C:\\Users\\andre\\Desktop\\RolandCube_Amplifier\\build\\CMakeFiles\\CMakeScratch\\TryCompile-gqn9ws\\src.c(1,10): fatal  error C1083: Non è possibile aprire il file inclusione: 'pthread.h': No such file or directory [C:\\Users\\andre\\Desktop\\RolandCube_Amplifier\\build\\CMakeFiles\\CMakeScratch\\TryCompile-gqn9ws\\cmTC_6a636.vcxproj]
+        Compilazione progetto "C:\\Users\\andre\\Desktop\\RolandCube_Amplifier\\build\\CMakeFiles\\CMakeScratch\\TryCompile-gqn9ws\\cmTC_6a636.vcxproj" (destinazioni predefinite) NON COMPLETATA.
         
         Compilazione NON RIUSCITA.
         
-        "C:\\Users\\andre\\Desktop\\RolandCube_Amplifier\\build\\CMakeFiles\\CMakeScratch\\TryCompile-1f49ci\\cmTC_7e186.vcxproj" (destinazione predefinita) (1) ->
+        "C:\\Users\\andre\\Desktop\\RolandCube_Amplifier\\build\\CMakeFiles\\CMakeScratch\\TryCompile-gqn9ws\\cmTC_6a636.vcxproj" (destinazione predefinita) (1) ->
         (destinazione: ClCompile) -> 
-          C:\\Users\\andre\\Desktop\\RolandCube_Amplifier\\build\\CMakeFiles\\CMakeScratch\\TryCompile-1f49ci\\src.c(1,10): fatal  error C1083: Non è possibile aprire il file inclusione: 'pthread.h': No such file or directory [C:\\Users\\andre\\Desktop\\RolandCube_Amplifier\\build\\CMakeFiles\\CMakeScratch\\TryCompile-1f49ci\\cmTC_7e186.vcxproj]
+          C:\\Users\\andre\\Desktop\\RolandCube_Amplifier\\build\\CMakeFiles\\CMakeScratch\\TryCompile-gqn9ws\\src.c(1,10): fatal  error C1083: Non è possibile aprire il file inclusione: 'pthread.h': No such file or directory [C:\\Users\\andre\\Desktop\\RolandCube_Amplifier\\build\\CMakeFiles\\CMakeScratch\\TryCompile-gqn9ws\\cmTC_6a636.vcxproj]
         
             Avvisi: 0
             Errori: 1
         
-        Tempo trascorso 00:00:00.65
+        Tempo trascorso 00:00:00.52
         
       exitCode: 1
   -
@@ -300,51 +627,49 @@ events:
     checks:
       - "Looking for pthread_create in pthreads"
     directories:
-      source: "C:/Users/andre/Desktop/RolandCube_Amplifier/build/CMakeFiles/CMakeScratch/TryCompile-3cm0aq"
-      binary: "C:/Users/andre/Desktop/RolandCube_Amplifier/build/CMakeFiles/CMakeScratch/TryCompile-3cm0aq"
+      source: "C:/Users/andre/Desktop/RolandCube_Amplifier/build/CMakeFiles/CMakeScratch/TryCompile-7pl2jm"
+      binary: "C:/Users/andre/Desktop/RolandCube_Amplifier/build/CMakeFiles/CMakeScratch/TryCompile-7pl2jm"
     cmakeVariables:
       CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
-      CMAKE_C_FLAGS_DEBUG: "/Zi /Ob0 /Od /RTC1"
-      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
       CMAKE_OSX_DEPLOYMENT_TARGET: "10.12"
     buildResult:
       variable: "CMAKE_HAVE_PTHREADS_CREATE"
       cached: true
       stdout: |
-        Change Dir: 'C:/Users/andre/Desktop/RolandCube_Amplifier/build/CMakeFiles/CMakeScratch/TryCompile-3cm0aq'
+        Change Dir: 'C:/Users/andre/Desktop/RolandCube_Amplifier/build/CMakeFiles/CMakeScratch/TryCompile-7pl2jm'
         
-        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_456df.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_a7d9d.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
         MSBuild version 17.6.3+07e294721 for .NET Framework
-        Compilazione avviata 18/04/2024 14.24.41.
+        Compilazione avviata 23/04/2024 14.16.33.
         
-        Progetto "C:\\Users\\andre\\Desktop\\RolandCube_Amplifier\\build\\CMakeFiles\\CMakeScratch\\TryCompile-3cm0aq\\cmTC_456df.vcxproj" sul nodo 1 (destinazioni predefinite).
+        Progetto "C:\\Users\\andre\\Desktop\\RolandCube_Amplifier\\build\\CMakeFiles\\CMakeScratch\\TryCompile-7pl2jm\\cmTC_a7d9d.vcxproj" sul nodo 1 (destinazioni predefinite).
         PrepareForBuild:
-          Creazione directory "cmTC_456df.dir\\Debug\\".
-          Creazione directory "C:\\Users\\andre\\Desktop\\RolandCube_Amplifier\\build\\CMakeFiles\\CMakeScratch\\TryCompile-3cm0aq\\Debug\\".
-          Creazione directory "cmTC_456df.dir\\Debug\\cmTC_456df.tlog\\".
+          Creazione directory "cmTC_a7d9d.dir\\Debug\\".
+          Creazione directory "C:\\Users\\andre\\Desktop\\RolandCube_Amplifier\\build\\CMakeFiles\\CMakeScratch\\TryCompile-7pl2jm\\Debug\\".
+          Creazione directory "cmTC_a7d9d.dir\\Debug\\cmTC_a7d9d.tlog\\".
         InitializeBuildStatus:
-          Creazione di "cmTC_456df.dir\\Debug\\cmTC_456df.tlog\\unsuccessfulbuild". È stato specificato "AlwaysCreate".
+          Creazione di "cmTC_a7d9d.dir\\Debug\\cmTC_a7d9d.tlog\\unsuccessfulbuild". È stato specificato "AlwaysCreate".
         ClCompile:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.36.32532\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=pthread_create /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_456df.dir\\Debug\\\\" /Fd"cmTC_456df.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "C:\\Users\\andre\\Desktop\\RolandCube_Amplifier\\build\\CMakeFiles\\CMakeScratch\\TryCompile-3cm0aq\\CheckFunctionExists.c"
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.36.32532\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=pthread_create /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_a7d9d.dir\\Debug\\\\" /Fd"cmTC_a7d9d.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "C:\\Users\\andre\\Desktop\\RolandCube_Amplifier\\build\\CMakeFiles\\CMakeScratch\\TryCompile-7pl2jm\\CheckFunctionExists.c"
           Microsoft (R) C/C++ Optimizing Compiler versione 19.36.32537 per x64
           CheckFunctionExists.c
           Copyright (C) Microsoft Corporation. Tutti i diritti  sono riservati.
-          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=pthread_create /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_456df.dir\\Debug\\\\" /Fd"cmTC_456df.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "C:\\Users\\andre\\Desktop\\RolandCube_Amplifier\\build\\CMakeFiles\\CMakeScratch\\TryCompile-3cm0aq\\CheckFunctionExists.c"
+          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=pthread_create /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_a7d9d.dir\\Debug\\\\" /Fd"cmTC_a7d9d.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "C:\\Users\\andre\\Desktop\\RolandCube_Amplifier\\build\\CMakeFiles\\CMakeScratch\\TryCompile-7pl2jm\\CheckFunctionExists.c"
         Link:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.36.32532\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"C:\\Users\\andre\\Desktop\\RolandCube_Amplifier\\build\\CMakeFiles\\CMakeScratch\\TryCompile-3cm0aq\\Debug\\cmTC_456df.exe" /INCREMENTAL /ILK:"cmTC_456df.dir\\Debug\\cmTC_456df.ilk" /NOLOGO pthreads.lib kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/andre/Desktop/RolandCube_Amplifier/build/CMakeFiles/CMakeScratch/TryCompile-3cm0aq/Debug/cmTC_456df.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/Users/andre/Desktop/RolandCube_Amplifier/build/CMakeFiles/CMakeScratch/TryCompile-3cm0aq/Debug/cmTC_456df.lib" /MACHINE:X64  /machine:x64 cmTC_456df.dir\\Debug\\CheckFunctionExists.obj
-        LINK : fatal error LNK1104: impossibile aprire il file 'pthreads.lib' [C:\\Users\\andre\\Desktop\\RolandCube_Amplifier\\build\\CMakeFiles\\CMakeScratch\\TryCompile-3cm0aq\\cmTC_456df.vcxproj]
-        Compilazione progetto "C:\\Users\\andre\\Desktop\\RolandCube_Amplifier\\build\\CMakeFiles\\CMakeScratch\\TryCompile-3cm0aq\\cmTC_456df.vcxproj" (destinazioni predefinite) NON COMPLETATA.
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.36.32532\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"C:\\Users\\andre\\Desktop\\RolandCube_Amplifier\\build\\CMakeFiles\\CMakeScratch\\TryCompile-7pl2jm\\Debug\\cmTC_a7d9d.exe" /INCREMENTAL /ILK:"cmTC_a7d9d.dir\\Debug\\cmTC_a7d9d.ilk" /NOLOGO pthreads.lib kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/andre/Desktop/RolandCube_Amplifier/build/CMakeFiles/CMakeScratch/TryCompile-7pl2jm/Debug/cmTC_a7d9d.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/Users/andre/Desktop/RolandCube_Amplifier/build/CMakeFiles/CMakeScratch/TryCompile-7pl2jm/Debug/cmTC_a7d9d.lib" /MACHINE:X64  /machine:x64 cmTC_a7d9d.dir\\Debug\\CheckFunctionExists.obj
+        LINK : fatal error LNK1104: impossibile aprire il file 'pthreads.lib' [C:\\Users\\andre\\Desktop\\RolandCube_Amplifier\\build\\CMakeFiles\\CMakeScratch\\TryCompile-7pl2jm\\cmTC_a7d9d.vcxproj]
+        Compilazione progetto "C:\\Users\\andre\\Desktop\\RolandCube_Amplifier\\build\\CMakeFiles\\CMakeScratch\\TryCompile-7pl2jm\\cmTC_a7d9d.vcxproj" (destinazioni predefinite) NON COMPLETATA.
         
         Compilazione NON RIUSCITA.
         
-        "C:\\Users\\andre\\Desktop\\RolandCube_Amplifier\\build\\CMakeFiles\\CMakeScratch\\TryCompile-3cm0aq\\cmTC_456df.vcxproj" (destinazione predefinita) (1) ->
+        "C:\\Users\\andre\\Desktop\\RolandCube_Amplifier\\build\\CMakeFiles\\CMakeScratch\\TryCompile-7pl2jm\\cmTC_a7d9d.vcxproj" (destinazione predefinita) (1) ->
         (destinazione: Link) -> 
-          LINK : fatal error LNK1104: impossibile aprire il file 'pthreads.lib' [C:\\Users\\andre\\Desktop\\RolandCube_Amplifier\\build\\CMakeFiles\\CMakeScratch\\TryCompile-3cm0aq\\cmTC_456df.vcxproj]
+          LINK : fatal error LNK1104: impossibile aprire il file 'pthreads.lib' [C:\\Users\\andre\\Desktop\\RolandCube_Amplifier\\build\\CMakeFiles\\CMakeScratch\\TryCompile-7pl2jm\\cmTC_a7d9d.vcxproj]
         
             Avvisi: 0
             Errori: 1
         
-        Tempo trascorso 00:00:00.64
+        Tempo trascorso 00:00:01.02
         
       exitCode: 1
   -
@@ -363,51 +688,49 @@ events:
     checks:
       - "Looking for pthread_create in pthread"
     directories:
-      source: "C:/Users/andre/Desktop/RolandCube_Amplifier/build/CMakeFiles/CMakeScratch/TryCompile-zmej3o"
-      binary: "C:/Users/andre/Desktop/RolandCube_Amplifier/build/CMakeFiles/CMakeScratch/TryCompile-zmej3o"
+      source: "C:/Users/andre/Desktop/RolandCube_Amplifier/build/CMakeFiles/CMakeScratch/TryCompile-jmle53"
+      binary: "C:/Users/andre/Desktop/RolandCube_Amplifier/build/CMakeFiles/CMakeScratch/TryCompile-jmle53"
     cmakeVariables:
       CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
-      CMAKE_C_FLAGS_DEBUG: "/Zi /Ob0 /Od /RTC1"
-      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
       CMAKE_OSX_DEPLOYMENT_TARGET: "10.12"
     buildResult:
       variable: "CMAKE_HAVE_PTHREAD_CREATE"
       cached: true
       stdout: |
-        Change Dir: 'C:/Users/andre/Desktop/RolandCube_Amplifier/build/CMakeFiles/CMakeScratch/TryCompile-zmej3o'
+        Change Dir: 'C:/Users/andre/Desktop/RolandCube_Amplifier/build/CMakeFiles/CMakeScratch/TryCompile-jmle53'
         
-        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_91cc7.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_61594.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
         MSBuild version 17.6.3+07e294721 for .NET Framework
-        Compilazione avviata 18/04/2024 14.24.42.
+        Compilazione avviata 23/04/2024 14.16.35.
         
-        Progetto "C:\\Users\\andre\\Desktop\\RolandCube_Amplifier\\build\\CMakeFiles\\CMakeScratch\\TryCompile-zmej3o\\cmTC_91cc7.vcxproj" sul nodo 1 (destinazioni predefinite).
+        Progetto "C:\\Users\\andre\\Desktop\\RolandCube_Amplifier\\build\\CMakeFiles\\CMakeScratch\\TryCompile-jmle53\\cmTC_61594.vcxproj" sul nodo 1 (destinazioni predefinite).
         PrepareForBuild:
-          Creazione directory "cmTC_91cc7.dir\\Debug\\".
-          Creazione directory "C:\\Users\\andre\\Desktop\\RolandCube_Amplifier\\build\\CMakeFiles\\CMakeScratch\\TryCompile-zmej3o\\Debug\\".
-          Creazione directory "cmTC_91cc7.dir\\Debug\\cmTC_91cc7.tlog\\".
+          Creazione directory "cmTC_61594.dir\\Debug\\".
+          Creazione directory "C:\\Users\\andre\\Desktop\\RolandCube_Amplifier\\build\\CMakeFiles\\CMakeScratch\\TryCompile-jmle53\\Debug\\".
+          Creazione directory "cmTC_61594.dir\\Debug\\cmTC_61594.tlog\\".
         InitializeBuildStatus:
-          Creazione di "cmTC_91cc7.dir\\Debug\\cmTC_91cc7.tlog\\unsuccessfulbuild". È stato specificato "AlwaysCreate".
+          Creazione di "cmTC_61594.dir\\Debug\\cmTC_61594.tlog\\unsuccessfulbuild". È stato specificato "AlwaysCreate".
         ClCompile:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.36.32532\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=pthread_create /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_91cc7.dir\\Debug\\\\" /Fd"cmTC_91cc7.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "C:\\Users\\andre\\Desktop\\RolandCube_Amplifier\\build\\CMakeFiles\\CMakeScratch\\TryCompile-zmej3o\\CheckFunctionExists.c"
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.36.32532\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=pthread_create /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_61594.dir\\Debug\\\\" /Fd"cmTC_61594.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "C:\\Users\\andre\\Desktop\\RolandCube_Amplifier\\build\\CMakeFiles\\CMakeScratch\\TryCompile-jmle53\\CheckFunctionExists.c"
           Microsoft (R) C/C++ Optimizing Compiler versione 19.36.32537 per x64
           CheckFunctionExists.c
           Copyright (C) Microsoft Corporation. Tutti i diritti  sono riservati.
-          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=pthread_create /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_91cc7.dir\\Debug\\\\" /Fd"cmTC_91cc7.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "C:\\Users\\andre\\Desktop\\RolandCube_Amplifier\\build\\CMakeFiles\\CMakeScratch\\TryCompile-zmej3o\\CheckFunctionExists.c"
+          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=pthread_create /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_61594.dir\\Debug\\\\" /Fd"cmTC_61594.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "C:\\Users\\andre\\Desktop\\RolandCube_Amplifier\\build\\CMakeFiles\\CMakeScratch\\TryCompile-jmle53\\CheckFunctionExists.c"
         Link:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.36.32532\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"C:\\Users\\andre\\Desktop\\RolandCube_Amplifier\\build\\CMakeFiles\\CMakeScratch\\TryCompile-zmej3o\\Debug\\cmTC_91cc7.exe" /INCREMENTAL /ILK:"cmTC_91cc7.dir\\Debug\\cmTC_91cc7.ilk" /NOLOGO pthread.lib kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/andre/Desktop/RolandCube_Amplifier/build/CMakeFiles/CMakeScratch/TryCompile-zmej3o/Debug/cmTC_91cc7.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/Users/andre/Desktop/RolandCube_Amplifier/build/CMakeFiles/CMakeScratch/TryCompile-zmej3o/Debug/cmTC_91cc7.lib" /MACHINE:X64  /machine:x64 cmTC_91cc7.dir\\Debug\\CheckFunctionExists.obj
-        LINK : fatal error LNK1104: impossibile aprire il file 'pthread.lib' [C:\\Users\\andre\\Desktop\\RolandCube_Amplifier\\build\\CMakeFiles\\CMakeScratch\\TryCompile-zmej3o\\cmTC_91cc7.vcxproj]
-        Compilazione progetto "C:\\Users\\andre\\Desktop\\RolandCube_Amplifier\\build\\CMakeFiles\\CMakeScratch\\TryCompile-zmej3o\\cmTC_91cc7.vcxproj" (destinazioni predefinite) NON COMPLETATA.
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.36.32532\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"C:\\Users\\andre\\Desktop\\RolandCube_Amplifier\\build\\CMakeFiles\\CMakeScratch\\TryCompile-jmle53\\Debug\\cmTC_61594.exe" /INCREMENTAL /ILK:"cmTC_61594.dir\\Debug\\cmTC_61594.ilk" /NOLOGO pthread.lib kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/andre/Desktop/RolandCube_Amplifier/build/CMakeFiles/CMakeScratch/TryCompile-jmle53/Debug/cmTC_61594.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/Users/andre/Desktop/RolandCube_Amplifier/build/CMakeFiles/CMakeScratch/TryCompile-jmle53/Debug/cmTC_61594.lib" /MACHINE:X64  /machine:x64 cmTC_61594.dir\\Debug\\CheckFunctionExists.obj
+        LINK : fatal error LNK1104: impossibile aprire il file 'pthread.lib' [C:\\Users\\andre\\Desktop\\RolandCube_Amplifier\\build\\CMakeFiles\\CMakeScratch\\TryCompile-jmle53\\cmTC_61594.vcxproj]
+        Compilazione progetto "C:\\Users\\andre\\Desktop\\RolandCube_Amplifier\\build\\CMakeFiles\\CMakeScratch\\TryCompile-jmle53\\cmTC_61594.vcxproj" (destinazioni predefinite) NON COMPLETATA.
         
         Compilazione NON RIUSCITA.
         
-        "C:\\Users\\andre\\Desktop\\RolandCube_Amplifier\\build\\CMakeFiles\\CMakeScratch\\TryCompile-zmej3o\\cmTC_91cc7.vcxproj" (destinazione predefinita) (1) ->
+        "C:\\Users\\andre\\Desktop\\RolandCube_Amplifier\\build\\CMakeFiles\\CMakeScratch\\TryCompile-jmle53\\cmTC_61594.vcxproj" (destinazione predefinita) (1) ->
         (destinazione: Link) -> 
-          LINK : fatal error LNK1104: impossibile aprire il file 'pthread.lib' [C:\\Users\\andre\\Desktop\\RolandCube_Amplifier\\build\\CMakeFiles\\CMakeScratch\\TryCompile-zmej3o\\cmTC_91cc7.vcxproj]
+          LINK : fatal error LNK1104: impossibile aprire il file 'pthread.lib' [C:\\Users\\andre\\Desktop\\RolandCube_Amplifier\\build\\CMakeFiles\\CMakeScratch\\TryCompile-jmle53\\cmTC_61594.vcxproj]
         
             Avvisi: 0
             Errori: 1
         
-        Tempo trascorso 00:00:00.71
+        Tempo trascorso 00:00:00.82
         
       exitCode: 1
 ...

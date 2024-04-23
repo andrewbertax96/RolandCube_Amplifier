@@ -396,3 +396,5 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+*.vcxproj
+build/modules/JUCE/tools/extras/Build/INSTALL.vcxproj.filters

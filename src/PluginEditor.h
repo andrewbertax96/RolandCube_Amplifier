@@ -19,7 +19,7 @@ class RolandCubeAudioProcessorEditor  : public juce::AudioProcessorEditor,
                                         private Slider::Listener
 {
 public:
-    RolandCubeAudioProcessorEditor (RolandCubeAudioProcessor&, AudioProcessorValueTreeState&);
+    RolandCubeAudioProcessorEditor (RolandCubeAudioProcessor&);
     ~RolandCubeAudioProcessorEditor() override;
     
 
@@ -27,6 +27,7 @@ public:
     void paint (juce::Graphics&) override;
     void resized() override;
     void resetImages();
+
     std::unique_ptr <AudioProcessorValueTreeState::SliderAttachment> bassSliderAttach;
     std::unique_ptr <AudioProcessorValueTreeState::SliderAttachment> midSliderAttach;
     std::unique_ptr <AudioProcessorValueTreeState::SliderAttachment> trebleSliderAttach;
@@ -47,6 +48,10 @@ private:
     Image background_on = ImageCache::getFromMemory(BinaryData::background_on_jpg, BinaryData::background_on_jpgSize);
     Image background_on_blue = ImageCache::getFromMemory(BinaryData::background_on_blue_jpg, BinaryData::background_on_blue_jpgSize);
     // background_off = ImageCache::getFromMemory(BinaryData::background_off_jpg, BinaryData::background_off_jpgSize);
+
+    // Global Widgets
+    Label modelLabel;
+    Label versionLabel;
 
     //Amp Widgets
     Slider ampBassKnob;

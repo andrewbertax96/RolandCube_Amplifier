@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\andre\Desktop\RolandCube_Amplifier\build\modules\JUCE\tools\CMakeFiles\dc18411b5de51e5de58a7ed2ef75da7f\INSTALL_force.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{6BAD0433-0B2A-3FC5-8B7F-E3789577BCFB}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

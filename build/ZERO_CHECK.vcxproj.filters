@@ -6,11 +6,14 @@
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <None Include="C:\Users\andre\Desktop\RolandCube_Amplifier\build\JUCE\tools\JUCEToolsExport.cmake">
-      <Filter>Buildsystem Input Files\build\JUCE\tools</Filter>
-    </None>
     <None Include="C:\Users\andre\Desktop\RolandCube_Amplifier\build\cmake\CPM_0.38.6.cmake">
       <Filter>Buildsystem Input Files\build\cmake</Filter>
+    </None>
+    <None Include="C:\Users\andre\Desktop\RolandCube_Amplifier\build\modules\JUCE\tools\JUCEToolsExport.cmake">
+      <Filter>Buildsystem Input Files\build\modules\JUCE\tools</Filter>
+    </None>
+    <None Include="C:\Users\andre\Desktop\RolandCube_Amplifier\modules\CMakeLists.txt">
+      <Filter>Buildsystem Input Files\modules</Filter>
     </None>
     <None Include="C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\CMakeLists.txt">
       <Filter>Buildsystem Input Files\modules\JUCE</Filter>
@@ -75,6 +78,42 @@
     <None Include="C:\Users\andre\Desktop\RolandCube_Amplifier\modules\chowdsp_utils\cmake\SubprojectVersion.cmake">
       <Filter>Buildsystem Input Files\modules\chowdsp_utils\cmake</Filter>
     </None>
+    <None Include="C:\Users\andre\Desktop\RolandCube_Amplifier\modules\cmake\SubprojectVersion.cmake">
+      <Filter>Buildsystem Input Files\modules\cmake</Filter>
+    </None>
+    <None Include="C:\Users\andre\Desktop\RolandCube_Amplifier\modules\cmake\WarningFlags.cmake">
+      <Filter>Buildsystem Input Files\modules\cmake</Filter>
+    </None>
+    <None Include="C:\Users\andre\Desktop\RolandCube_Amplifier\modules\json\CMakeLists.txt">
+      <Filter>Buildsystem Input Files\modules\json</Filter>
+    </None>
+    <None Include="C:\Users\andre\Desktop\RolandCube_Amplifier\modules\json\cmake\config.cmake.in">
+      <Filter>Buildsystem Input Files\modules\json\cmake</Filter>
+    </None>
+    <None Include="C:\Users\andre\Desktop\RolandCube_Amplifier\modules\json\cmake\nlohmann_jsonConfigVersion.cmake.in">
+      <Filter>Buildsystem Input Files\modules\json\cmake</Filter>
+    </None>
+    <None Include="C:\Users\andre\Desktop\RolandCube_Amplifier\modules\json\cmake\pkg-config.pc.in">
+      <Filter>Buildsystem Input Files\modules\json\cmake</Filter>
+    </None>
+    <None Include="C:\Users\andre\Desktop\RolandCube_Amplifier\modules\libsamplerate\CMakeLists.txt">
+      <Filter>Buildsystem Input Files\modules\libsamplerate</Filter>
+    </None>
+    <None Include="C:\Users\andre\Desktop\RolandCube_Amplifier\modules\libsamplerate\cmake\ClipMode.cmake">
+      <Filter>Buildsystem Input Files\modules\libsamplerate\cmake</Filter>
+    </None>
+    <None Include="C:\Users\andre\Desktop\RolandCube_Amplifier\modules\libsamplerate\config.h.cmake">
+      <Filter>Buildsystem Input Files\modules\libsamplerate</Filter>
+    </None>
+    <None Include="C:\Users\andre\Desktop\RolandCube_Amplifier\modules\libsamplerate\src\CMakeLists.txt">
+      <Filter>Buildsystem Input Files\modules\libsamplerate\src</Filter>
+    </None>
+    <None Include="C:\Users\andre\Desktop\RolandCube_Amplifier\resources\CMakeLists.txt">
+      <Filter>Buildsystem Input Files\resources</Filter>
+    </None>
+    <None Include="C:\Users\andre\Desktop\RolandCube_Amplifier\src\CMakeLists.txt">
+      <Filter>Buildsystem Input Files\src</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="CMake Rules">
@@ -83,11 +122,14 @@
     <Filter Include="Header Files">
       <UniqueIdentifier>{8EF525F5-90CE-3CAE-9215-4A1AC160500B}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Buildsystem Input Files\build\JUCE\tools">
-      <UniqueIdentifier>{CC11E8F6-0BFE-35D5-B11B-2A705821D706}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Buildsystem Input Files\build\cmake">
       <UniqueIdentifier>{BB60DE86-F9E8-335B-A766-9974168D69AF}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Buildsystem Input Files\build\modules\JUCE\tools">
+      <UniqueIdentifier>{0F64C45E-B6C9-3664-8E54-559FE88725D3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Buildsystem Input Files\modules">
+      <UniqueIdentifier>{2C6E64BE-04DE-36C3-B99D-286C31C7BC98}</UniqueIdentifier>
     </Filter>
     <Filter Include="Buildsystem Input Files\modules\JUCE">
       <UniqueIdentifier>{7AA21C31-1435-35A1-BE6F-82323D22B50E}</UniqueIdentifier>
@@ -118,6 +160,30 @@
     </Filter>
     <Filter Include="Buildsystem Input Files\modules\chowdsp_utils\cmake">
       <UniqueIdentifier>{5D5F52B3-2CA4-3FFD-AAB0-FDAA00FF8AAD}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Buildsystem Input Files\modules\cmake">
+      <UniqueIdentifier>{DC58B308-3BBE-34AC-838A-4C9BD07AFD54}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Buildsystem Input Files\modules\json">
+      <UniqueIdentifier>{9D4FE70A-2D68-31EF-898F-49CC1FC4ABF7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Buildsystem Input Files\modules\json\cmake">
+      <UniqueIdentifier>{326EBCE2-B6C1-366A-B4C5-8C98E0133851}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Buildsystem Input Files\modules\libsamplerate">
+      <UniqueIdentifier>{0AC02DB9-000C-33E6-B734-48D36BDA8E61}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Buildsystem Input Files\modules\libsamplerate\cmake">
+      <UniqueIdentifier>{A8F4E779-29C2-36A6-B607-4A46647DB50E}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Buildsystem Input Files\modules\libsamplerate\src">
+      <UniqueIdentifier>{FE59CBE6-A1DC-3A51-B9C6-3DDBBE9D9169}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Buildsystem Input Files\resources">
+      <UniqueIdentifier>{A47E6C90-D1AA-34C9-9E1B-748214F28228}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Buildsystem Input Files\src">
+      <UniqueIdentifier>{D63CBFF1-F2C7-3CA4-A69F-E8C24A25D82E}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

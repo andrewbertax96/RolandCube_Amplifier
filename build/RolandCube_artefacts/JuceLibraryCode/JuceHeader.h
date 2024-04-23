@@ -24,6 +24,14 @@
 #include <juce_audio_formats/juce_audio_formats.h>
 #include <juce_audio_devices/juce_audio_devices.h>
 #include <juce_dsp/juce_dsp.h>
+#include <chowdsp_dsp_utils/chowdsp_dsp_utils.h>
+#include <chowdsp_filters/chowdsp_filters.h>
+#include <chowdsp_data_structures/chowdsp_data_structures.h>
+#include <chowdsp_core/chowdsp_core.h>
+#include <chowdsp_dsp_data_structures/chowdsp_dsp_data_structures.h>
+#include <chowdsp_simd/chowdsp_simd.h>
+#include <chowdsp_buffers/chowdsp_buffers.h>
+#include <chowdsp_math/chowdsp_math.h>
 
 
 #if JUCE_TARGET_HAS_BINARY_DATA

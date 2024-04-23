@@ -21,7 +21,7 @@ BUILD_BENCH:BOOL=OFF
 BUILD_EXAMPLES:BOOL=OFF
 
 //Build the testing tree.
-BUILD_TESTING:BOOL=ON
+BUILD_TESTING:BOOL=OFF
 
 //Build RTNeural accuracy tests
 BUILD_TESTS:BOOL=OFF
@@ -97,8 +97,56 @@ CMAKE_EXE_LINKER_FLAGS_RELWITHDEBINFO:STRING=/debug /INCREMENTAL
 //Value Computed by CMake.
 CMAKE_FIND_PACKAGE_REDIRECTS_DIR:STATIC=C:/Users/andre/Desktop/RolandCube_Amplifier/build/CMakeFiles/pkgRedirects
 
+//User executables (bin)
+CMAKE_INSTALL_BINDIR:PATH=bin
+
+//Read-only architecture-independent data (DATAROOTDIR)
+CMAKE_INSTALL_DATADIR:PATH=
+
+//Read-only architecture-independent data root (share)
+CMAKE_INSTALL_DATAROOTDIR:PATH=share
+
+//Documentation root (DATAROOTDIR/doc/PROJECT_NAME)
+CMAKE_INSTALL_DOCDIR:PATH=
+
+//C header files (include)
+CMAKE_INSTALL_INCLUDEDIR:PATH=include
+
+//Info documentation (DATAROOTDIR/info)
+CMAKE_INSTALL_INFODIR:PATH=
+
+//Object code libraries (lib)
+CMAKE_INSTALL_LIBDIR:PATH=lib
+
+//Program executables (libexec)
+CMAKE_INSTALL_LIBEXECDIR:PATH=libexec
+
+//Locale-dependent data (DATAROOTDIR/locale)
+CMAKE_INSTALL_LOCALEDIR:PATH=
+
+//Modifiable single-machine data (var)
+CMAKE_INSTALL_LOCALSTATEDIR:PATH=var
+
+//Man documentation (DATAROOTDIR/man)
+CMAKE_INSTALL_MANDIR:PATH=
+
+//C header files for non-gcc (/usr/include)
+CMAKE_INSTALL_OLDINCLUDEDIR:PATH=/usr/include
+
 //Install path prefix, prepended onto install directories.
 CMAKE_INSTALL_PREFIX:PATH=C:/Program Files (x86)/RolandCube
+
+//Run-time variable data (LOCALSTATEDIR/run)
+CMAKE_INSTALL_RUNSTATEDIR:PATH=
+
+//System admin executables (sbin)
+CMAKE_INSTALL_SBINDIR:PATH=sbin
+
+//Modifiable architecture-independent data (com)
+CMAKE_INSTALL_SHAREDSTATEDIR:PATH=com
+
+//Read-only single-machine data (etc)
+CMAKE_INSTALL_SYSCONFDIR:PATH=etc
 
 //Path to a program.
 CMAKE_LINKER:FILEPATH=C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.36.32532/bin/Hostx64/x64/link.exe
@@ -224,12 +272,32 @@ CMAKE_STATIC_LINKER_FLAGS_RELWITHDEBINFO:STRING=
 // Studio IDE projects all commands are done without /nologo.
 CMAKE_VERBOSE_MAKEFILE:BOOL=FALSE
 
-//Path to the coverage program that CTest uses for performing coverage
-// inspection
-COVERAGE_COMMAND:FILEPATH=COVERAGE_COMMAND-NOTFOUND
+//Enable to build 7-Zip packages
+CPACK_BINARY_7Z:BOOL=OFF
 
-//Extra command line flags to pass to the coverage tool
-COVERAGE_EXTRA_FLAGS:STRING=-l
+//Enable to build IFW packages
+CPACK_BINARY_IFW:BOOL=OFF
+
+//Enable to build Inno Setup packages
+CPACK_BINARY_INNOSETUP:BOOL=OFF
+
+//Enable to build NSIS packages
+CPACK_BINARY_NSIS:BOOL=ON
+
+//Enable to build NuGet packages
+CPACK_BINARY_NUGET:BOOL=OFF
+
+//Enable to build WiX packages
+CPACK_BINARY_WIX:BOOL=OFF
+
+//Enable to build ZIP packages
+CPACK_BINARY_ZIP:BOOL=OFF
+
+//Enable to build 7-Zip source packages
+CPACK_SOURCE_7Z:BOOL=ON
+
+//Enable to build ZIP source packages
+CPACK_SOURCE_ZIP:BOOL=ON
 
 //Don't create a package lock file in the binary path
 CPM_DONT_CREATE_PACKAGE_LOCK:BOOL=OFF
@@ -256,15 +324,6 @@ CPM_USE_LOCAL_PACKAGES:BOOL=OFF
 // nested level.
 CPM_USE_NAMED_CACHE_DIRECTORIES:BOOL=OFF
 
-//How many times to retry timed-out CTest submissions.
-CTEST_SUBMIT_RETRY_COUNT:STRING=3
-
-//How long to wait between timed-out CTest submissions.
-CTEST_SUBMIT_RETRY_DELAY:STRING=5
-
-//Maximum time allowed before CTest will kill the test.
-DART_TESTING_TIMEOUT:STRING=1500
-
 //Directory under which to collect all populated content
 FETCHCONTENT_BASE_DIR:PATH=C:/Users/andre/Desktop/RolandCube_Amplifier/build/_deps
 
@@ -278,11 +337,38 @@ FETCHCONTENT_QUIET:BOOL=ON
 //Enables UPDATE_DISCONNECTED behavior for all content population
 FETCHCONTENT_UPDATES_DISCONNECTED:BOOL=OFF
 
-//Path to a program.
-GITCOMMAND:FILEPATH=C:/Program Files/Git/cmd/git.exe
+//Build the unit tests when BUILD_TESTING is enabled.
+JSON_BuildTests:BOOL=OFF
+
+//Enable CI build targets.
+JSON_CI:BOOL=OFF
+
+//Use extended diagnostic messages.
+JSON_Diagnostics:BOOL=OFF
+
+//Disable default integer enum serialization.
+JSON_DisableEnumSerialization:BOOL=OFF
+
+//Place use-defined string literals in the global namespace.
+JSON_GlobalUDLs:BOOL=ON
+
+//Enable implicit conversions.
+JSON_ImplicitConversions:BOOL=ON
+
+//Install CMake targets during install step.
+JSON_Install:BOOL=OFF
+
+//Enable legacy discarded value comparison.
+JSON_LegacyDiscardedValueComparison:BOOL=OFF
+
+//Use non-amalgamated version of the library.
+JSON_MultipleHeaders:BOOL=ON
+
+//Include as system headers (skip for clang-tidy).
+JSON_SystemInclude:BOOL=OFF
 
 //Value Computed by CMake
-JUCE_BINARY_DIR:STATIC=C:/Users/andre/Desktop/RolandCube_Amplifier/build/JUCE
+JUCE_BINARY_DIR:STATIC=C:/Users/andre/Desktop/RolandCube_Amplifier/build/modules/JUCE
 
 //Add build targets for the DemoRunner and PIPs
 JUCE_BUILD_EXAMPLES:BOOL=OFF
@@ -314,14 +400,35 @@ JUCE_SOURCE_DIR:STATIC=C:/Users/andre/Desktop/RolandCube_Amplifier/modules/JUCE
 // will be installed
 JUCE_TOOL_INSTALL_DIR:STRING=bin/JUCE-7.0.12
 
-//Command to build the project
-MAKECOMMAND:STRING="C:\Program Files\CMake\bin\cmake.exe" --build . --config "${CTEST_CONFIGURATION_TYPE}"
+//Use old dll name on Windows platform
+LIBSAMPLERATE_COMPATIBLE_NAME:BOOL=OFF
 
-//Path to the memory checking command, used for memory error detection.
-MEMORYCHECK_COMMAND:FILEPATH=MEMORYCHECK_COMMAND-NOTFOUND
+//Enable Best Sinc Interpolator converter
+LIBSAMPLERATE_ENABLE_SINC_BEST_CONVERTER:BOOL=ON
 
-//File that contains suppressions for the memory checker
-MEMORYCHECK_SUPPRESSIONS_FILE:FILEPATH=
+//Enable Fastest Sinc Interpolator converter
+LIBSAMPLERATE_ENABLE_SINC_FAST_CONVERTER:BOOL=ON
+
+//Enable Medium Sinc Interpolator converter
+LIBSAMPLERATE_ENABLE_SINC_MEDIUM_CONVERTER:BOOL=ON
+
+//Enable to generate examples
+LIBSAMPLERATE_EXAMPLES:BOOL=OFF
+
+//Enable to add install directives
+LIBSAMPLERATE_INSTALL:BOOL=OFF
+
+//Install samplerate.pc PkgConfig module.
+LIBSAMPLERATE_INSTALL_PKGCONFIG_MODULE:BOOL=ON
+
+//Implement lrintf using SSE2 on x86 CPUs if possible
+LIBSAMPLERATE_SSE2_LRINT:BOOL=OFF
+
+//Arguments to supply to pkg-config
+PKG_CONFIG_ARGN:STRING=
+
+//pkg-config executable
+PKG_CONFIG_EXECUTABLE:FILEPATH=PKG_CONFIG_EXECUTABLE-NOTFOUND
 
 //Use Eigen library for vector operations
 RTNEURAL_EIGEN:BOOL=OFF
@@ -333,7 +440,7 @@ RTNEURAL_ENABLE_RADSAN:BOOL=OFF
 RTNEURAL_NAMESPACE:STRING=RTNeural
 
 //Use STL for all operations
-RTNEURAL_STL:BOOL=ON
+RTNEURAL_STL:BOOL=OFF
 
 //Output test reports to XML files
 RTNEURAL_TEST_REPORTS:BOOL=OFF
@@ -342,10 +449,10 @@ RTNEURAL_TEST_REPORTS:BOOL=OFF
 RTNEURAL_USE_AVX:BOOL=OFF
 
 //Use xsimd library for vector operations
-RTNEURAL_XSIMD:BOOL=OFF
+RTNEURAL_XSIMD:BOOL=ON
 
 //Value Computed by CMake
-RTNeural_BINARY_DIR:STATIC=C:/Users/andre/Desktop/RolandCube_Amplifier/build/RTNeural
+RTNeural_BINARY_DIR:STATIC=C:/Users/andre/Desktop/RolandCube_Amplifier/build/modules/RTNeural
 
 //Value Computed by CMake
 RTNeural_IS_TOP_LEVEL:STATIC=OFF
@@ -362,17 +469,32 @@ RolandCube_IS_TOP_LEVEL:STATIC=ON
 //Value Computed by CMake
 RolandCube_SOURCE_DIR:STATIC=C:/Users/andre/Desktop/RolandCube_Amplifier
 
-//Name of the computer/site where compile is being run
-SITE:STRING=PC-AndrewBertax
-
 //Value Computed by CMake
-chowdsp_utils_BINARY_DIR:STATIC=C:/Users/andre/Desktop/RolandCube_Amplifier/build/chowdsp_utils
+chowdsp_utils_BINARY_DIR:STATIC=C:/Users/andre/Desktop/RolandCube_Amplifier/build/modules/chowdsp_utils
 
 //Value Computed by CMake
 chowdsp_utils_IS_TOP_LEVEL:STATIC=OFF
 
 //Value Computed by CMake
 chowdsp_utils_SOURCE_DIR:STATIC=C:/Users/andre/Desktop/RolandCube_Amplifier/modules/chowdsp_utils
+
+//Value Computed by CMake
+libsamplerate_BINARY_DIR:STATIC=C:/Users/andre/Desktop/RolandCube_Amplifier/build/modules/libsamplerate
+
+//Value Computed by CMake
+libsamplerate_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+libsamplerate_SOURCE_DIR:STATIC=C:/Users/andre/Desktop/RolandCube_Amplifier/modules/libsamplerate
+
+//Value Computed by CMake
+nlohmann_json_BINARY_DIR:STATIC=C:/Users/andre/Desktop/RolandCube_Amplifier/build/modules/json
+
+//Value Computed by CMake
+nlohmann_json_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+nlohmann_json_SOURCE_DIR:STATIC=C:/Users/andre/Desktop/RolandCube_Amplifier/modules/json
 
 
 ########################
@@ -393,8 +515,6 @@ CMAKE_CACHE_PATCH_VERSION:INTERNAL=0
 CMAKE_COMMAND:INTERNAL=C:/Program Files/CMake/bin/cmake.exe
 //Path to cpack program executable.
 CMAKE_CPACK_COMMAND:INTERNAL=C:/Program Files/CMake/bin/cpack.exe
-//ADVANCED property for variable: CMAKE_CTEST_COMMAND
-CMAKE_CTEST_COMMAND-ADVANCED:INTERNAL=1
 //Path to ctest program executable.
 CMAKE_CTEST_COMMAND:INTERNAL=C:/Program Files/CMake/bin/ctest.exe
 //ADVANCED property for variable: CMAKE_CXX_FLAGS
@@ -452,6 +572,38 @@ CMAKE_HAVE_PTHREAD_CREATE:INTERNAL=
 //Source directory with the top level CMakeLists.txt file for this
 // project
 CMAKE_HOME_DIRECTORY:INTERNAL=C:/Users/andre/Desktop/RolandCube_Amplifier
+//ADVANCED property for variable: CMAKE_INSTALL_BINDIR
+CMAKE_INSTALL_BINDIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CMAKE_INSTALL_DATADIR
+CMAKE_INSTALL_DATADIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CMAKE_INSTALL_DATAROOTDIR
+CMAKE_INSTALL_DATAROOTDIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CMAKE_INSTALL_DOCDIR
+CMAKE_INSTALL_DOCDIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CMAKE_INSTALL_INCLUDEDIR
+CMAKE_INSTALL_INCLUDEDIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CMAKE_INSTALL_INFODIR
+CMAKE_INSTALL_INFODIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CMAKE_INSTALL_LIBDIR
+CMAKE_INSTALL_LIBDIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CMAKE_INSTALL_LIBEXECDIR
+CMAKE_INSTALL_LIBEXECDIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CMAKE_INSTALL_LOCALEDIR
+CMAKE_INSTALL_LOCALEDIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CMAKE_INSTALL_LOCALSTATEDIR
+CMAKE_INSTALL_LOCALSTATEDIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CMAKE_INSTALL_MANDIR
+CMAKE_INSTALL_MANDIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CMAKE_INSTALL_OLDINCLUDEDIR
+CMAKE_INSTALL_OLDINCLUDEDIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CMAKE_INSTALL_RUNSTATEDIR
+CMAKE_INSTALL_RUNSTATEDIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CMAKE_INSTALL_SBINDIR
+CMAKE_INSTALL_SBINDIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CMAKE_INSTALL_SHAREDSTATEDIR
+CMAKE_INSTALL_SHAREDSTATEDIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CMAKE_INSTALL_SYSCONFDIR
+CMAKE_INSTALL_SYSCONFDIR-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_LINKER
 CMAKE_LINKER-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_MODULE_LINKER_FLAGS
@@ -467,7 +619,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_MT
 CMAKE_MT-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=8
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=14
 //Platform information initialized
 CMAKE_PLATFORM_INFO_INITIALIZED:INTERNAL=1
 //noop for ranlib
@@ -513,10 +665,24 @@ CMAKE_STATIC_LINKER_FLAGS_RELEASE-ADVANCED:INTERNAL=1
 CMAKE_STATIC_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_VERBOSE_MAKEFILE
 CMAKE_VERBOSE_MAKEFILE-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: COVERAGE_COMMAND
-COVERAGE_COMMAND-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: COVERAGE_EXTRA_FLAGS
-COVERAGE_EXTRA_FLAGS-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CPACK_BINARY_7Z
+CPACK_BINARY_7Z-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CPACK_BINARY_IFW
+CPACK_BINARY_IFW-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CPACK_BINARY_INNOSETUP
+CPACK_BINARY_INNOSETUP-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CPACK_BINARY_NSIS
+CPACK_BINARY_NSIS-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CPACK_BINARY_NUGET
+CPACK_BINARY_NUGET-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CPACK_BINARY_WIX
+CPACK_BINARY_WIX-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CPACK_BINARY_ZIP
+CPACK_BINARY_ZIP-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CPACK_SOURCE_7Z
+CPACK_SOURCE_7Z-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CPACK_SOURCE_ZIP
+CPACK_SOURCE_ZIP-ADVANCED:INTERNAL=1
 CPM_DIRECTORY:INTERNAL=C:/Users/andre/Desktop/RolandCube_Amplifier/build/cmake
 //Don't download or configure dependencies (for testing)
 CPM_DRY_RUN:INTERNAL=OFF
@@ -526,28 +692,39 @@ CPM_MODULE_PATH:INTERNAL=C:/Users/andre/Desktop/RolandCube_Amplifier/build/CPM_m
 CPM_PACKAGES:INTERNAL=
 CPM_PACKAGE_LOCK_FILE:INTERNAL=C:/Users/andre/Desktop/RolandCube_Amplifier/build/cpm-package-lock.cmake
 CPM_VERSION:INTERNAL=0.38.6
-//ADVANCED property for variable: CTEST_SUBMIT_RETRY_COUNT
-CTEST_SUBMIT_RETRY_COUNT-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: CTEST_SUBMIT_RETRY_DELAY
-CTEST_SUBMIT_RETRY_DELAY-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: DART_TESTING_TIMEOUT
-DART_TESTING_TIMEOUT-ADVANCED:INTERNAL=1
+//Test CPU_CLIPS_NEGATIVE
+CPU_CLIPS_NEGATIVE:INTERNAL=
+//Result of TRY_COMPILE
+CPU_CLIPS_NEGATIVE_COMPILED:INTERNAL=TRUE
+//Result of try_run()
+CPU_CLIPS_NEGATIVE_EXITCODE:INTERNAL=1
+//Test CPU_CLIPS_POSITIVE
+CPU_CLIPS_POSITIVE:INTERNAL=
+//Result of TRY_COMPILE
+CPU_CLIPS_POSITIVE_COMPILED:INTERNAL=TRUE
+//Result of try_run()
+CPU_CLIPS_POSITIVE_EXITCODE:INTERNAL=1
 //Details about finding Threads
 FIND_PACKAGE_MESSAGE_DETAILS_Threads:INTERNAL=[TRUE][v()]
-//ADVANCED property for variable: GITCOMMAND
-GITCOMMAND-ADVANCED:INTERNAL=1
+//Have include immintrin.h
+HAVE_IMMINTRIN_H:INTERNAL=1
+//Have include stdbool.h
+HAVE_STDBOOL_H:INTERNAL=1
+//Have include unistd.h
+HAVE_UNISTD_H:INTERNAL=
+//Test HAVE_VISIBILITY
+HAVE_VISIBILITY:INTERNAL=
 //The path to the folder holding this file and other resources
 JUCE_CMAKE_UTILS_DIR:INTERNAL=C:/Users/andre/Desktop/RolandCube_Amplifier/modules/JUCE/extras/Build/CMake
 //The name of the juceaide program
 JUCE_JUCEAIDE_NAME:INTERNAL=juceaide.exe
 //The path to JUCE modules
 JUCE_MODULES_DIR:INTERNAL=C:/Users/andre/Desktop/RolandCube_Amplifier/modules/JUCE/modules
-//ADVANCED property for variable: MAKECOMMAND
-MAKECOMMAND-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: MEMORYCHECK_COMMAND
-MEMORYCHECK_COMMAND-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: MEMORYCHECK_SUPPRESSIONS_FILE
-MEMORYCHECK_SUPPRESSIONS_FILE-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: SITE
-SITE-ADVANCED:INTERNAL=1
+NLOHMANN_JSON_CONFIG_INSTALL_DIR:INTERNAL=share/cmake/nlohmann_json
+//ADVANCED property for variable: PKG_CONFIG_ARGN
+PKG_CONFIG_ARGN-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: PKG_CONFIG_EXECUTABLE
+PKG_CONFIG_EXECUTABLE-ADVANCED:INTERNAL=1
+//CMAKE_INSTALL_PREFIX during last run
+_GNUInstallDirs_LAST_CMAKE_INSTALL_PREFIX:INTERNAL=C:/Program Files (x86)/RolandCube
 

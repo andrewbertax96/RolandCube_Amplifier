@@ -10,10 +10,10 @@
     <ClCompile Include="C:\Users\andre\Desktop\RolandCube_Amplifier\src\PluginProcessor.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\andre\Desktop\RolandCube_Amplifier\src\Equalizer.cpp">
+    <ClCompile Include="C:\Users\andre\Desktop\RolandCube_Amplifier\src\RTNeuralLSTM.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\andre\Desktop\RolandCube_Amplifier\src\RTNeuralLSTM.cpp">
+    <ClCompile Include="C:\Users\andre\Desktop\RolandCube_Amplifier\src\Equalizer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\modules\juce_audio_processors\juce_audio_processors.cpp">
@@ -46,18 +46,6 @@
     <ClCompile Include="C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\modules\juce_audio_basics\juce_audio_basics.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\modules\juce_audio_utils\juce_audio_utils.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\modules\juce_audio_formats\juce_audio_formats.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\modules\juce_audio_devices\juce_audio_devices.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="C:\Users\andre\Desktop\RolandCube_Amplifier\modules\JUCE\modules\juce_dsp\juce_dsp.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="C:\Users\andre\Desktop\RolandCube_Amplifier\build\RolandCube_artefacts\JuceLibraryCode\JuceHeader.h">
@@ -72,13 +60,13 @@
     <ClInclude Include="C:\Users\andre\Desktop\RolandCube_Amplifier\src\PluginProcessor.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="C:\Users\andre\Desktop\RolandCube_Amplifier\src\RTNeuralLSTM.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="C:\Users\andre\Desktop\RolandCube_Amplifier\src\CabSimulation.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="C:\Users\andre\Desktop\RolandCube_Amplifier\src\Equalizer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="C:\Users\andre\Desktop\RolandCube_Amplifier\src\RTNeuralLSTM.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -1,16 +1,23 @@
 add_subdirectory(JUCE)
 
+include(cmake/SubprojectVersion.cmake)
+subproject_version(JUCE juce_version)
+message(STATUS "VERSION for JUCE: ${juce_version}")
+
+# Link to libsamplerate
+set(BUILD_TESTING OFF CACHE BOOL "Don't build libsamplerate tests!")
+add_subdirectory(libsamplerate)
+subproject_version(libsamplerate libsamplerate_version)
+message(STATUS "VERSION for libsamplerate: ${libsamplerate_version}")
+
 # link to RTNeural
 set(RTNEURAL_XSIMD ON CACHE BOOL "Use RTNeural with this backend" FORCE)
 add_subdirectory(RTNeural)
 
-
+include(cmake/WarningFlags.cmake)
 add_library(juce_plugin_modules STATIC)
 add_subdirectory(json)
 add_subdirectory(chowdsp_utils)
-
-set(BUILD_TESTING OFF CACHE BOOL "Don't build libsamplerate tests!")
-add_subdirectory(libsamplerate)
 
 target_link_libraries(juce_plugin_modules
     PRIVATE
@@ -22,11 +29,10 @@ target_link_libraries(juce_plugin_modules
 	RTNeural
 	samplerate
 	chowdsp_dsp_utils
-	#chowdsp_dsp
     PUBLIC
         juce::juce_recommended_config_flags
         juce::juce_recommended_lto_flags
-        juce::juce_recommended_warning_flags
+        warning_flags
 )
 
 target_compile_definitions(juce_plugin_modules
@@ -36,7 +42,7 @@ target_compile_definitions(juce_plugin_modules
         JUCE_WEB_BROWSER=0
         JUCE_USE_CURL=0
         JUCE_VST3_CAN_REPLACE_VST2=0
-        JucePlugin_Manufacturer="GuitarML"
+        JucePlugin_Manufacturer="AndrewRoland"
         JucePlugin_VersionString="${CMAKE_PROJECT_VERSION}"
         JucePlugin_Name="${CMAKE_PROJECT_NAME}"
 	CHOWDSP_USE_LIBSAMPLERATE=1

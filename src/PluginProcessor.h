@@ -32,8 +32,7 @@
 //==============================================================================
 /**
 */
-class RolandCubeAudioProcessor  : public juce::AudioProcessor,
-                                  public AudioProcessorValueTreeState::Listener
+class RolandCubeAudioProcessor  : public juce::AudioProcessor                       
 {
 public:
     //==============================================================================
@@ -75,10 +74,11 @@ public:
     void setStateInformation(const void* data, int sizeInBytes) override;
 
     void set_ampEQ(float bass_slider, float mid_slider, float treble_slider);
-    void parameterChanged(const String& parameterID, float newValue) override;
+    //void parameterChanged(const String& parameterID, float newValue) override;
     void setJsonModel(const char* jsonModel);
-    void setLSTM(bool parametrized, float modelValue);
-    void applyLSTMtoChannels(dsp::AudioBlock<float>& block, int totalNumChannels, RT_LSTM& LSTM, RT_LSTM& LSTM2, bool conditioned, float driveValue);
+    void setLSTM(float modelValue);
+    void applyLSTMtoChannels(chowdsp::BufferView<float>& block, int totalNumChannels, RT_LSTM& LSTM, RT_LSTM& LSTM2, bool conditioned, float driveValue);
+    
     AudioProcessorValueTreeState treeState;
 
     // Files and configuration
