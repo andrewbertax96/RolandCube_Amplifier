@@ -75,6 +75,8 @@ public:
 
     void set_ampEQ(float bass_slider, float mid_slider, float treble_slider);
 
+    void applyEQ(AudioBuffer<float>& buffer, Equalizer& equalizer1, Equalizer& equalizer2, MidiBuffer& midiMessages, int totalNumInputChannels, double sampleRate);
+
     void parameterChanged(const String& parameterID, float newValue) override;
 
     void setJsonModel(const char* jsonModel);

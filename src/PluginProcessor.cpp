@@ -37,7 +37,7 @@ RolandCubeAudioProcessor::RolandCubeAudioProcessor()
    treeState.addParameterListener(MID_ID, this);
    treeState.addParameterListener(TREBLE_ID, this);
    treeState.addParameterListener(MODEL_ID, this);
-    cabSimIRa.load(BinaryData::default_ir_wav, BinaryData::default_ir_wavSize);
+    
 
     pauseVolume = 3;
 }
@@ -130,14 +130,14 @@ void RolandCubeAudioProcessor::parameterChanged(const String& parameterID, float
     }
 
     set_ampEQ(bassParam, midParam, trebleParam);
-    setLSTM(modelParam);
+    //setLSTM(modelParam);
 }
 //==============================================================================
 void RolandCubeAudioProcessor::prepareToPlay (double sampleRate, int samplesPerBlock)
 {
     // Use this method as the place to do any pre-playback
     // initialisation that you need..
-
+    cabSimIRa.load(BinaryData::default_ir_wav, BinaryData::default_ir_wavSize);
     *dcBlocker.state = *dsp::IIR::Coefficients<float>::makeHighPass(sampleRate, 35.0f);
 
     // prepare resampler for target sample rate: 44.1 kHz
@@ -200,28 +200,14 @@ void RolandCubeAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, j
     dsp::AudioBlock<float> block(buffer);
     dsp::ProcessContextReplacing<float> context(block);
 
-    // In case we have more outputs than inputs, this code clears any output
-    // channels that didn't contain input data, (because these aren't
-    // guaranteed to be empty - they may contain garbage).
-    // This is here to avoid people getting screaming feedback
-    // when they first compile a plugin, but obviously you don't need to keep
-    // this code if your algorithm always overwrites all the output channels.
     for (auto i = totalNumInputChannels; i < totalNumOutputChannels; ++i)
         buffer.clear (i, 0, buffer.getNumSamples());
 
-    // This is the place where you'd normally do the guts of your plugin's
-    // audio processing...
-    // Make sure to reset the state if your inner loop is processing
-    // the samples and the outer loop is handling the channels.
-    // Alternatively, you can process the samples with the channels
-    // interleaved by keeping the same state.
-    
     if (fw_state == 1) {
 
         if (conditioned == false) {
             // Apply ramped changes for gain smoothing
-            if (driveParam == previousDriveValue)
-            {
+            if (driveParam == previousDriveValue){
                 buffer.applyGain(driveParam * 2.5);
             }
             else {
@@ -242,17 +228,7 @@ void RolandCubeAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, j
         }
 
         dcBlocker.process(context);
-
-        for (int channel = 0; channel < buffer.getNumChannels(); ++channel){
-            // Apply EQ
-            if (channel == 0) {
-                equalizer1.process(buffer.getReadPointer(0), buffer.getWritePointer(0), midiMessages, buffer.getNumSamples(), totalNumInputChannels, getSampleRate());
-
-            }
-            else if (channel == 1) {
-                equalizer2.process(buffer.getReadPointer(1), buffer.getWritePointer(1), midiMessages, buffer.getNumSamples(), totalNumInputChannels, getSampleRate());
-            }
-        }
+        applyEQ(buffer, equalizer1, equalizer2, midiMessages, totalNumInputChannels, getSampleRate());
 
         if (cab_state == 1) {
             cabSimIRa.process(context); // Process IR a on channel 0
@@ -307,6 +283,7 @@ void RolandCubeAudioProcessor::setStateInformation (const void* data, int sizeIn
 {
     // You should use this method to restore your parameters from this memory block,
     // whose contents will have been created by the getStateInformation() call.
+    setLSTM(modelParam);
 }
 
 void RolandCubeAudioProcessor::setJsonModel(const char* jsonModel)
@@ -459,6 +436,21 @@ void RolandCubeAudioProcessor::set_ampEQ(float bass_slider, float mid_slider, fl
     equalizer1.setParameters(bass_slider, mid_slider, treble_slider, 0.0f);
     equalizer2.setParameters(bass_slider, mid_slider, treble_slider, 0.0f);
 }
+
+void RolandCubeAudioProcessor::applyEQ(AudioBuffer<float>& buffer, Equalizer& equalizer1, Equalizer& equalizer2, MidiBuffer& midiMessages, int totalNumInputChannels, double sampleRate) {
+    
+    for (int channel = 0; channel < buffer.getNumChannels(); ++channel) {
+        // Apply EQ
+        if (channel == 0) {
+            equalizer1.process(buffer.getReadPointer(channel), buffer.getWritePointer(channel), midiMessages, buffer.getNumSamples(), totalNumInputChannels, sampleRate);
+
+        }
+        else if (channel == 1) {
+            equalizer2.process(buffer.getReadPointer(channel), buffer.getWritePointer(channel), midiMessages, buffer.getNumSamples(), totalNumInputChannels, sampleRate);
+        }
+    }
+}
+
 
 //==============================================================================
 // This creates new instances of the plugin..
