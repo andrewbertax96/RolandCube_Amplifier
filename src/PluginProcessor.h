@@ -82,7 +82,7 @@ public:
 
     void initializeJsonFiles();
     void loadConfig(File configFile);
-    void applyLSTM(AudioBuffer<float>& buffer, int totalNumInputChannels, RT_LSTM& LSTM, RT_LSTM& LSTM2, bool conditioned, const float driveParam, float& previousDriveValue, Resampler& resampler);
+    void applyLSTM(AudioBuffer<float>& buffer, int totalNumInputChannels, RT_LSTM& LSTM, RT_LSTM& LSTM2, bool conditioned, const float driveParam, float& previousDriveValue, chowdsp::ResampledProcess<chowdsp::ResamplingTypes::SRCResampler<>>& resampler);
     void applyLSTMtoChannels(chowdsp::BufferView<float>& block, int totalNumChannels, RT_LSTM& LSTM, RT_LSTM& LSTM2, bool conditioned, float driveValue);
     
     AudioProcessorValueTreeState treeState;

@@ -333,7 +333,7 @@ void RolandCubeAudioProcessor::loadConfig(File configFile)
     this->suspendProcessing(false);
 }
 
-void RolandCubeAudioProcessor::applyLSTM(AudioBuffer<float>& buffer, int totalNumInputChannels, RT_LSTM& LSTM, RT_LSTM& LSTM2, bool conditioned, const float driveParam, float& previousDriveValue, Resampler& resampler)
+void RolandCubeAudioProcessor::applyLSTM(AudioBuffer<float>& buffer, int totalNumInputChannels, RT_LSTM& LSTM, RT_LSTM& LSTM2, bool conditioned, const float driveParam, float& previousDriveValue, chowdsp::ResampledProcess<chowdsp::ResamplingTypes::SRCResampler<>>& resampler)
 {
     if (conditioned == false)
     {
@@ -347,7 +347,7 @@ void RolandCubeAudioProcessor::applyLSTM(AudioBuffer<float>& buffer, int totalNu
             buffer.applyGainRamp(0, (int)buffer.getNumSamples(), previousDriveValue * 2.5, driveParam * 2.5);
             previousDriveValue = driveParam;
         }
-
+        
         auto block44k = resampler.processIn(buffer);
         applyLSTMtoChannels(block44k, totalNumInputChannels, LSTM, LSTM2, conditioned, driveParam);
         resampler.processOut(block44k, buffer);
