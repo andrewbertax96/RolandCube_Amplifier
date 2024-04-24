@@ -223,9 +223,6 @@ void RolandCubeAudioProcessorEditor::cabOnButtonClicked() {
     if (audioProcessor.cab_state == 0) {
         audioProcessor.cab_state = 1;
     }
-    else {
-        audioProcessor.cab_state = 0;
-    }
     resetImages();
     repaint();
 }

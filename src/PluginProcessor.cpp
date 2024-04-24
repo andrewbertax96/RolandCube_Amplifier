@@ -209,13 +209,9 @@ void RolandCubeAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, j
         dcBlocker.process(context);
         applyEQ(buffer, equalizer1, equalizer2, midiMessages, totalNumInputChannels, getSampleRate());
 
-        if (cab_state == 1) {
-            cabSimIRa.process(context); // Process IR a on channel 0
-            buffer.applyGain(2.0);
-            //} else {
-            //    buffer.applyGain(0.7);
-        }
-
+        cabSimIRa.process(context); // Process IR a on channel 0
+        buffer.applyGain(2.0);
+        
         // Master Volume 
         applyGainSmoothing(buffer, masterParam, previousMasterValue); // Apply ramped changes for gain smoothing
         smoothPopSound(buffer, masterParam, pauseVolume); // Smooth pop sound when changing models
