@@ -73,14 +73,16 @@ public:
     void getStateInformation(MemoryBlock& destData) override;
     void setStateInformation(const void* data, int sizeInBytes) override;
 
+    void parameterChanged(const String& parameterID, float newValue) override;
     void set_ampEQ(float bass_slider, float mid_slider, float treble_slider);
-
     void applyEQ(AudioBuffer<float>& buffer, Equalizer& equalizer1, Equalizer& equalizer2, MidiBuffer& midiMessages, int totalNumInputChannels, double sampleRate);
 
-    void parameterChanged(const String& parameterID, float newValue) override;
+    void applyGainSmoothing(AudioBuffer<float>& buffer, const float masterParam, float& previousMasterValue);
+    void smoothPopSound(AudioBuffer<float>& buffer, const float masterParam, int& pauseVolume);
 
-    void setJsonModel(const char* jsonModel);
-    void setLSTM(float modelValue);
+    void initializeJsonFiles();
+    void loadConfig(File configFile);
+    void applyLSTM(AudioBuffer<float>& buffer, int totalNumInputChannels, RT_LSTM& LSTM, RT_LSTM& LSTM2, bool conditioned, const float driveParam, float& previousDriveValue, Resampler& resampler);
     void applyLSTMtoChannels(chowdsp::BufferView<float>& block, int totalNumChannels, RT_LSTM& LSTM, RT_LSTM& LSTM2, bool conditioned, float driveValue);
     
     AudioProcessorValueTreeState treeState;
@@ -93,6 +95,11 @@ public:
 
     bool conditioned = false;
     int pauseVolume = 3;
+    const char* char_filename = "";
+
+    int current_model_index = 0;
+    std::vector<File> jsonFiles;
+    File saved_model;
 
 private:
 

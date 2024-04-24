@@ -71,6 +71,7 @@ private:
     bool model_loaded = false;
 
     virtual void sliderValueChanged(Slider* slider) override;
+    bool isValidFormat(File configFile);
     virtual void buttonClicked(Button* button) override;
 
 

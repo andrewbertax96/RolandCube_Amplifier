@@ -39,7 +39,6 @@ RolandCubeAudioProcessorEditor::RolandCubeAudioProcessorEditor (RolandCubeAudioP
     addAndMakeVisible(cabOnButton);
     cabOnButton.addListener(this);
 
-    //driveSliderAttach = std::make_unique<AudioProcessorValueTreeState::SliderAttachment>(audioProcessor.treeState, GAIN_ID, odDriveKnob);
     driveSliderAttach.reset(new AudioProcessorValueTreeState::SliderAttachment(treeState, GAIN_ID, odDriveKnob));
     addAndMakeVisible(odDriveKnob);
     odDriveKnob.setLookAndFeel(&bigKnobLAF);
@@ -48,7 +47,6 @@ RolandCubeAudioProcessorEditor::RolandCubeAudioProcessorEditor (RolandCubeAudioP
     odDriveKnob.setTextBoxStyle(juce::Slider::TextEntryBoxPosition::NoTextBox, false, 50, 20);
     odDriveKnob.setDoubleClickReturnValue(true, 0.5);
 
-    //masterSliderAttach = std::make_unique<AudioProcessorValueTreeState::SliderAttachment>(audioProcessor.treeState, MASTER_ID, odLevelKnob);
     masterSliderAttach.reset(new AudioProcessorValueTreeState::SliderAttachment(treeState, MASTER_ID, odLevelKnob));
     addAndMakeVisible(odLevelKnob);
     odLevelKnob.setLookAndFeel(&smallKnobLAF);
@@ -57,7 +55,6 @@ RolandCubeAudioProcessorEditor::RolandCubeAudioProcessorEditor (RolandCubeAudioP
     odLevelKnob.setTextBoxStyle(juce::Slider::TextEntryBoxPosition::NoTextBox, false, 50, 20);
     odLevelKnob.setDoubleClickReturnValue(true, 0.5);
 
-    //bassSliderAttach = std::make_unique<AudioProcessorValueTreeState::SliderAttachment>(audioProcessor.treeState, BASS_ID, ampBassKnob);
 
     bassSliderAttach.reset(new AudioProcessorValueTreeState::SliderAttachment(treeState, BASS_ID, ampBassKnob));
     addAndMakeVisible(ampBassKnob);
@@ -67,7 +64,6 @@ RolandCubeAudioProcessorEditor::RolandCubeAudioProcessorEditor (RolandCubeAudioP
     ampBassKnob.setTextBoxStyle(juce::Slider::TextEntryBoxPosition::NoTextBox, false, 50, 20);
     ampBassKnob.setDoubleClickReturnValue(true, 0.0);
 
-    //midSliderAttach = std::make_unique<AudioProcessorValueTreeState::SliderAttachment>(audioProcessor.treeState, MID_ID, ampMidKnob);
 
     midSliderAttach.reset(new AudioProcessorValueTreeState::SliderAttachment(treeState, MID_ID, ampMidKnob));
     addAndMakeVisible(ampMidKnob);
@@ -77,7 +73,6 @@ RolandCubeAudioProcessorEditor::RolandCubeAudioProcessorEditor (RolandCubeAudioP
     ampMidKnob.setTextBoxStyle(juce::Slider::TextEntryBoxPosition::NoTextBox, false, 50, 20);
     ampMidKnob.setDoubleClickReturnValue(true, 0.0);
 
-    //trebleSliderAttach = std::make_unique<AudioProcessorValueTreeState::SliderAttachment>(audioProcessor.treeState, TREBLE_ID, ampTrebleKnob);
 
     trebleSliderAttach.reset(new AudioProcessorValueTreeState::SliderAttachment(treeState, TREBLE_ID, ampTrebleKnob));
     addAndMakeVisible(ampTrebleKnob);
@@ -87,9 +82,9 @@ RolandCubeAudioProcessorEditor::RolandCubeAudioProcessorEditor (RolandCubeAudioP
     ampTrebleKnob.setTextBoxStyle(juce::Slider::TextEntryBoxPosition::NoTextBox, false, 50, 20);
     ampTrebleKnob.setDoubleClickReturnValue(true, 0.0);
 
-    modelSelectorSliderAttach.reset(new AudioProcessorValueTreeState::SliderAttachment(treeState, TREBLE_ID, ampTrebleKnob));
-    addAndMakeVisible(ampTrebleKnob);
-    ampTrebleKnob.setLookAndFeel(&smallKnobLAF);
+    modelSelectorSliderAttach.reset(new AudioProcessorValueTreeState::SliderAttachment(treeState, MODEL_ID, modelSelectorKnob));
+    addAndMakeVisible(modelSelectorKnob);
+    modelSelectorKnob.setLookAndFeel(&smallKnobLAF);
     modelSelectorKnob.addListener(this);
     modelSelectorKnob.setSliderStyle(juce::Slider::SliderStyle::RotaryVerticalDrag);
     modelSelectorKnob.setTextBoxStyle(juce::Slider::TextEntryBoxPosition::NoTextBox, false, 50, 20);
@@ -162,7 +157,7 @@ void RolandCubeAudioProcessorEditor::resized()
     ampBassKnob.setBounds(113, 131, 62, 62);
     ampMidKnob.setBounds(227, 131, 62, 62);
     ampTrebleKnob.setBounds(340, 131, 62, 62);
-    modelSelectorKnob.setBounds(350, 140, 62, 62);
+    modelSelectorKnob.setBounds(227, 400, 62, 62);
 }
 void RolandCubeAudioProcessorEditor::sliderValueChanged(Slider* slider)
 {
@@ -170,9 +165,51 @@ void RolandCubeAudioProcessorEditor::sliderValueChanged(Slider* slider)
        audioProcessor.set_ampEQ(ampBassKnob.getValue(), ampMidKnob.getValue(), ampTrebleKnob.getValue());
     }
     if (slider == &modelSelectorKnob) {
-        audioProcessor.setLSTM(modelSelectorKnob.getValue());
+        const int selectedFileIndex = modelSelectorKnob.getValue();
+        if (selectedFileIndex >= 0 && selectedFileIndex < audioProcessor.jsonFiles.size() && audioProcessor.jsonFiles.empty() == false) { //check if correct 
+            if (audioProcessor.jsonFiles[selectedFileIndex].existsAsFile() && isValidFormat(audioProcessor.jsonFiles[selectedFileIndex])) {
+                audioProcessor.loadConfig(audioProcessor.jsonFiles[selectedFileIndex]);
+                audioProcessor.current_model_index = selectedFileIndex;
+                audioProcessor.saved_model = audioProcessor.jsonFiles[selectedFileIndex];
+            }
+        }
+    }
+    repaint();
+}
+bool RolandCubeAudioProcessorEditor::isValidFormat(File configFile)
+{
+    // Read in the JSON file
+    String path = configFile.getFullPathName();
+    const char* char_filename = path.toUTF8();
+
+    std::ifstream i2(char_filename);
+    nlohmann::json weights_json;
+    i2 >> weights_json;
+
+    int hidden_size_temp = 0;
+    std::string network = "";
+
+    // Check that the hidden_size and unit_type fields exist and are correct
+    if (weights_json.contains("/model_data/unit_type"_json_pointer) == true && weights_json.contains("/model_data/hidden_size"_json_pointer) == true) {
+        // Get the input size of the JSON file
+        int input_size_json = weights_json["/model_data/hidden_size"_json_pointer];
+        std::string network_temp = weights_json["/model_data/unit_type"_json_pointer];
+
+        network = network_temp;
+        hidden_size_temp = input_size_json;
+    }
+    else {
+        return false;
+    }
+
+    if (hidden_size_temp == 40 && network == "LSTM") {
+        return true;
+    }
+    else {
+        return false;
     }
 }
+
 void RolandCubeAudioProcessorEditor::buttonClicked(juce::Button* button)
 {
     //if (button == &odFootSw) {
