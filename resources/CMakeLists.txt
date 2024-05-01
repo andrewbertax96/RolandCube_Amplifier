@@ -1,7 +1,7 @@
 juce_add_binary_data(BinaryData SOURCES
     images/backgroundCube.ong
     images/leadChannelCube.png
-    images/logo&EQ_Cube.png
+    images/logoAndEq_Cube.png
     images/knobCube.png
     images/default_ir.wav
 

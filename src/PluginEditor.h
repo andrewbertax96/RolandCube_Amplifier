@@ -33,7 +33,9 @@ private:
     RolandCubeAudioProcessor& audioProcessor;
     
     //Inserisci le immagini
-    //Image background = ImageCache::getFromMemory(BinaryData::, BinaryData::);
+    Image background = ImageCache::getFromMemory(BinaryData::backgroungCube_png, BinaryData::backgroungCube_pngSize);
+    Image logo_Eq = ImageCache::getFromMemory(BinaryData::logoAndEQ_Cube_png, BinaryData::logoAndEQ_Cube_pngSize);
+    Image lead = ImageCache::getFromMemory(BinaryData::leadChannelCube_png, BinaryData::leadChannelCube_pngSize);
 
     // Global Widgets
     Label modelLabel;
@@ -46,25 +48,17 @@ private:
     Slider odDriveKnob;
     Slider odLevelKnob;
     Slider modelSelectorKnob;
-    ImageButton odFootSw;
-    ImageButton odLED;
-    ImageButton cabOnButton;
-
-
+ 
     // LookandFeels of the knobs 
     myLookAndFeel knob;
 
     //AudioProcessorParameter* getParameter(const String& paramId);
     AudioProcessorValueTreeState& treeState;
 
-    //void odFootSwClicked();
-    void cabOnButtonClicked();
-
     bool model_loaded = false;
 
     virtual void sliderValueChanged(Slider* slider) override;
     bool isValidFormat(File configFile);
-    virtual void buttonClicked(Button* button) override;
 
 
     std::unique_ptr <AudioProcessorValueTreeState::SliderAttachment> bassSliderAttach;
