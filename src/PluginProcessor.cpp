@@ -142,7 +142,6 @@ void RolandCubeAudioProcessor::prepareToPlay (double sampleRate, int samplesPerB
 
     // prepare resampler for target sample rate: 44.1 kHz
     constexpr double targetSampleRate = 44100.0;
-    //resampler.prepareWithTargetSampleRate ({ sampleRate, (uint32) samplesPerBlock, 1 }, targetSampleRate);
     resampler.prepareWithTargetSampleRate({ sampleRate, (uint32)samplesPerBlock, 2 }, targetSampleRate);
 
 
@@ -238,7 +237,6 @@ void RolandCubeAudioProcessor::getStateInformation (juce::MemoryBlock& destData)
     auto state = treeState.copyState();
     std::unique_ptr<XmlElement> xml(state.createXml());
     xml->setAttribute("fw_state", fw_state);
-    //xml->setAttribute("folder", folder.getFullPathName().toStdString());
     xml->setAttribute("saved_model", saved_model.getFullPathName().toStdString());
     xml->setAttribute("current_model_index", current_model_index);
     xml->setAttribute("cab_state", cab_state);
@@ -262,8 +260,6 @@ void RolandCubeAudioProcessor::setStateInformation (const void* data, int sizeIn
             cab_state = xmlState->getBoolAttribute("cab_state");
 
             current_model_index = xmlState->getIntAttribute("current_model_index");
-            //File temp = xmlState->getStringAttribute("folder");
-            //folder = temp;
             if (auto* editor = dynamic_cast<RolandCubeAudioProcessorEditor*> (getActiveEditor()))
                 editor->resetImages();
 

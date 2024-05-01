@@ -116,7 +116,6 @@ private:
     bool parametrized = false;
     float previousDriveValue = 0.5;
     float previousMasterValue = 0.5;
-    //float steppedValue1 = 0.0;
 
     RT_LSTM LSTM;
     RT_LSTM LSTM2;

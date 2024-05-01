@@ -33,8 +33,8 @@ private:
     RolandCubeAudioProcessor& audioProcessor;
     
     //Inserisci le immagini
-    Image background = ImageCache::getFromMemory(BinaryData::backgroungCube_png, BinaryData::backgroungCube_pngSize);
-    Image logo_Eq = ImageCache::getFromMemory(BinaryData::logoAndEQ_Cube_png, BinaryData::logoAndEQ_Cube_pngSize);
+    Image background = ImageCache::getFromMemory(BinaryData::backgroundCube_png, BinaryData::backgroundCube_pngSize);
+    Image logo_Eq = ImageCache::getFromMemory(BinaryData::logoAndEq_Cube_png, BinaryData::logoAndEq_Cube_pngSize);
     Image lead = ImageCache::getFromMemory(BinaryData::leadChannelCube_png, BinaryData::leadChannelCube_pngSize);
 
     // Global Widgets
@@ -56,7 +56,7 @@ private:
     AudioProcessorValueTreeState& treeState;
 
     bool model_loaded = false;
-
+    virtual void buttonClicked(Button* button) override;
     virtual void sliderValueChanged(Slider* slider) override;
     bool isValidFormat(File configFile);
 

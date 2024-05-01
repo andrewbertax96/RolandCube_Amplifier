@@ -22,7 +22,7 @@ RolandCubeAudioProcessorEditor::RolandCubeAudioProcessorEditor (RolandCubeAudioP
     font.setHeight(height);
 
     // Set Widget Graphics
-    knob.setLookAndFeel(ImageCache::getFromMemory(BinaryData::knob_Cube_png, BinaryData::knob_Cube_pngSize));
+    knob.setLookAndFeel(ImageCache::getFromMemory(BinaryData::knobCube_png, BinaryData::knobCube_pngSize));
     
     // Overdrive
 
@@ -105,8 +105,6 @@ void RolandCubeAudioProcessorEditor::paint (juce::Graphics& g)
     
     // Workaround for graphics on Windows builds (clipping code doesn't work correctly on Windows)
 #if defined(WIN32) || defined(_WIN32) || defined(__WIN32__) || defined(__NT__)
-    //if (processor.fw_state == 0) {
-    //    g.drawImageAt(background_off, 0, 0);  // Debug Line: Redraw entire background image
     g.drawImageAt(background, 0, 0);  // Debug Line: Redraw entire background image
     g.drawImageAt(logo_Eq, 0, 0);  // Debug Line: Redraw entire background image
     g.drawImageAt(lead, 0, 0);  // Debug Line: Redraw entire background image
@@ -187,6 +185,9 @@ bool RolandCubeAudioProcessorEditor::isValidFormat(File configFile)
     else {
         return false;
     }
+}
+void RolandCubeAudioProcessorEditor::buttonClicked(juce::Button* button)
+{
 }
 void RolandCubeAudioProcessorEditor::resetImages()
 {
