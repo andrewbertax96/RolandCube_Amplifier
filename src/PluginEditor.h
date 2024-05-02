@@ -30,7 +30,8 @@ private:
     // This reference is provided as a quick way for your editor to
     // access the processor object that created it.
     RolandCubeAudioProcessor& audioProcessor;
-    
+    AudioProcessorValueTreeState& treeState;
+
     //Inserisci le immagini
     Image background = ImageCache::getFromMemory(BinaryData::backgroundCube_png, BinaryData::backgroundCube_pngSize);
     Image logo_Eq = ImageCache::getFromMemory(BinaryData::logoAndEq_Cube_png, BinaryData::logoAndEq_Cube_pngSize);
@@ -46,8 +47,6 @@ private:
  
     // LookandFeels of the knobs 
     myLookAndFeel knobLookAndFeel;
-
-    AudioProcessorValueTreeState& treeState;
 
     virtual void sliderValueChanged(Slider* slider) override;
     bool isValidFormat(File configFile);

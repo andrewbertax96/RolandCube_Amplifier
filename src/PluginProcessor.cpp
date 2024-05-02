@@ -201,20 +201,18 @@ void RolandCubeAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, j
 
     for (auto i = totalNumInputChannels; i < totalNumOutputChannels; ++i)
         buffer.clear (i, 0, buffer.getNumSamples());
+    
+    //Apply Model & EQ
+    applyLSTM(buffer, getTotalNumInputChannels(), LSTM, LSTM2, conditioned, driveParam, previousDriveValue, resampler);
+    dcBlocker.process(context);
+    applyEQ(buffer, equalizer1, equalizer2, midiMessages, totalNumInputChannels, getSampleRate());
 
-   // if (fw_state == 1) {
-
-        applyLSTM(buffer, getTotalNumInputChannels(), LSTM, LSTM2, conditioned, driveParam, previousDriveValue, resampler);
-        dcBlocker.process(context);
-        applyEQ(buffer, equalizer1, equalizer2, midiMessages, totalNumInputChannels, getSampleRate());
-
-        cabSimIRa.process(context); // Process IR a on channel 0
-        buffer.applyGain(2.0);
+    cabSimIRa.process(context); // Process IR a on channel 0
+    buffer.applyGain(2.0);
         
-        // Master Volume 
-        applyGainSmoothing(buffer, masterParam, previousMasterValue); // Apply ramped changes for gain smoothing
-        smoothPopSound(buffer, masterParam, pauseVolume); // Smooth pop sound when changing models
-   // }
+    // Master Volume 
+    applyGainSmoothing(buffer, masterParam, previousMasterValue); // Apply ramped changes for gain smoothing
+    smoothPopSound(buffer, masterParam, pauseVolume); // Smooth pop sound when changing models
 }
 
 //==============================================================================
@@ -236,10 +234,8 @@ void RolandCubeAudioProcessor::getStateInformation (juce::MemoryBlock& destData)
     // as intermediaries to make it easy to save and load complex data.
     auto state = treeState.copyState();
     std::unique_ptr<XmlElement> xml(state.createXml());
-    //xml->setAttribute("fw_state", fw_state);
     xml->setAttribute("saved_model", saved_model.getFullPathName().toStdString());
     xml->setAttribute("current_model_index", current_model_index);
-    //xml->setAttribute("cab_state", cab_state);
     copyXmlToBinary(*xml, destData);
 }
 
@@ -254,10 +250,8 @@ void RolandCubeAudioProcessor::setStateInformation (const void* data, int sizeIn
         if (xmlState->hasTagName(treeState.state.getType()))
         {
             treeState.replaceState(juce::ValueTree::fromXml(*xmlState));
-            //fw_state = xmlState->getBoolAttribute("fw_state");
             File temp_saved_model = xmlState->getStringAttribute("saved_model");
             saved_model = temp_saved_model;
-            //cab_state = xmlState->getBoolAttribute("cab_state");
 
             current_model_index = xmlState->getIntAttribute("current_model_index");
             if (auto* editor = dynamic_cast<RolandCubeAudioProcessorEditor*> (getActiveEditor()))
