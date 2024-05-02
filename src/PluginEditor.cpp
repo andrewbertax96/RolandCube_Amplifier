@@ -196,9 +196,6 @@ bool RolandCubeAudioProcessorEditor::isValidFormat(File configFile)
         return false;
     }
 }
-void RolandCubeAudioProcessorEditor::buttonClicked(juce::Button* button)
-{
-}
 void RolandCubeAudioProcessorEditor::resetImages()
 {
     repaint();

@@ -15,7 +15,6 @@
 /**
 */
 class RolandCubeAudioProcessorEditor  : public juce::AudioProcessorEditor,
-                                        private Button::Listener,
                                         private Slider::Listener
 {
 public:
@@ -50,7 +49,6 @@ private:
 
     AudioProcessorValueTreeState& treeState;
 
-    virtual void buttonClicked(Button* button) override;
     virtual void sliderValueChanged(Slider* slider) override;
     bool isValidFormat(File configFile);
 
