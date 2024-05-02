@@ -3,6 +3,7 @@ juce_add_binary_data(BinaryData SOURCES
     images/leadChannelCube.png
     images/logoAndEq_Cube.png
     images/knobCube.png
+    images/knobCubeLead.png
     images/default_ir.wav
 
     #Add all the json models

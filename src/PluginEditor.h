@@ -46,6 +46,7 @@ private:
  
     // LookandFeels of the knobs 
     myLookAndFeel knobLookAndFeel;
+    myLookAndFeel knobLead_LookAndFeel;
 
     std::unique_ptr <AudioProcessorValueTreeState::SliderAttachment> bassSliderAttach;
     std::unique_ptr <AudioProcessorValueTreeState::SliderAttachment> midSliderAttach;

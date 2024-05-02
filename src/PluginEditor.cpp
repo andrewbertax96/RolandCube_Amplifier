@@ -17,6 +17,7 @@ RolandCubeAudioProcessorEditor::RolandCubeAudioProcessorEditor (RolandCubeAudioP
     // editor's size to whatever you need it to be.
 
     knobLookAndFeel.setLookAndFeel(ImageCache::getFromMemory(BinaryData::knobCube_png, BinaryData::knobCube_pngSize));
+    knobLead_LookAndFeel.setLookAndFeel(ImageCache::getFromMemory(BinaryData::knobCubeLead_png, BinaryData::knobCubeLead_pngSize));
     
     //EQ
 
@@ -47,7 +48,7 @@ RolandCubeAudioProcessorEditor::RolandCubeAudioProcessorEditor (RolandCubeAudioP
 
     modelSelectorSliderAttach.reset(new AudioProcessorValueTreeState::SliderAttachment(treeState, MODEL_ID, modelSelectorKnob));
     addAndMakeVisible(modelSelectorKnob);
-    modelSelectorKnob.setLookAndFeel(&knobLookAndFeel);
+    modelSelectorKnob.setLookAndFeel(&knobLead_LookAndFeel);
     modelSelectorKnob.setSliderStyle(juce::Slider::SliderStyle::RotaryVerticalDrag);
     modelSelectorKnob.setTextBoxStyle(juce::Slider::TextEntryBoxPosition::NoTextBox, false, 50, 20);
     modelSelectorKnob.setDoubleClickReturnValue(true, 0.0);
@@ -132,7 +133,7 @@ void RolandCubeAudioProcessorEditor::resized()
     auto height = 62;
     auto heightLead = height + 11.5;
 
-    modelSelectorKnob.setBounds(773, heightLead, knobWidth, knobHeight);//aggiustare l'immagine con la maschera giusta.
+    modelSelectorKnob.setBounds(769, heightLead-5.5, knobWidth+10, knobHeight+10);
     gainKnob.setBounds(959, heightLead, knobWidth, knobHeight);
     volumeKnob.setBounds(1073, heightLead, knobWidth, knobHeight);
 
