@@ -14,8 +14,7 @@
 //==============================================================================
 /**
 */
-class RolandCubeAudioProcessorEditor  : public juce::AudioProcessorEditor,
-                                        private Slider::Listener
+class RolandCubeAudioProcessorEditor  : public juce::AudioProcessorEditor                                    
 {
 public:
     RolandCubeAudioProcessorEditor (RolandCubeAudioProcessor&, AudioProcessorValueTreeState&);
@@ -47,10 +46,6 @@ private:
  
     // LookandFeels of the knobs 
     myLookAndFeel knobLookAndFeel;
-
-    virtual void sliderValueChanged(Slider* slider) override;
-    bool isValidFormat(File configFile);
-
 
     std::unique_ptr <AudioProcessorValueTreeState::SliderAttachment> bassSliderAttach;
     std::unique_ptr <AudioProcessorValueTreeState::SliderAttachment> midSliderAttach;

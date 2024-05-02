@@ -81,6 +81,7 @@ public:
     void smoothPopSound(AudioBuffer<float>& buffer, const float masterParam, int& pauseVolume);
 
     void initializeJsonFiles();
+    bool isValidFormat(File configFile);
     void loadConfig(File configFile);
     void applyLSTM(AudioBuffer<float>& buffer, int totalNumInputChannels, RT_LSTM& LSTM, RT_LSTM& LSTM2, bool conditioned, const float driveParam, float& previousDriveValue, chowdsp::ResampledProcess<chowdsp::ResamplingTypes::SRCResampler<>>& resampler);
     void applyLSTMtoChannels(chowdsp::BufferView<float>& block, int totalNumChannels, RT_LSTM& LSTM, RT_LSTM& LSTM2, bool conditioned, float driveValue);
@@ -88,10 +89,6 @@ public:
     AudioProcessorValueTreeState treeState;
 
     // Files and configuration
-
-    // Pedal/amp states
-    //int fw_state = 1;       // 0 = off, 1 = on
-    //int cab_state = 1; // 0 = off, 1 = on
 
     bool conditioned = false;
     int pauseVolume = 3;

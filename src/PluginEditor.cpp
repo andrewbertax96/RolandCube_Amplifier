@@ -23,7 +23,6 @@ RolandCubeAudioProcessorEditor::RolandCubeAudioProcessorEditor (RolandCubeAudioP
     bassSliderAttach.reset(new AudioProcessorValueTreeState::SliderAttachment(treeState, BASS_ID, ampBassKnob));
     addAndMakeVisible(ampBassKnob);
     ampBassKnob.setLookAndFeel(&knobLookAndFeel);
-    ampBassKnob.addListener(this);
     ampBassKnob.setSliderStyle(juce::Slider::SliderStyle::RotaryVerticalDrag);
     ampBassKnob.setTextBoxStyle(juce::Slider::TextEntryBoxPosition::NoTextBox, false, 50, 20);
     ampBassKnob.setDoubleClickReturnValue(true, 0.0);
@@ -32,7 +31,6 @@ RolandCubeAudioProcessorEditor::RolandCubeAudioProcessorEditor (RolandCubeAudioP
     midSliderAttach.reset(new AudioProcessorValueTreeState::SliderAttachment(treeState, MID_ID, ampMidKnob));
     addAndMakeVisible(ampMidKnob);
     ampMidKnob.setLookAndFeel(&knobLookAndFeel);
-    ampMidKnob.addListener(this);
     ampMidKnob.setSliderStyle(juce::Slider::SliderStyle::RotaryVerticalDrag);
     ampMidKnob.setTextBoxStyle(juce::Slider::TextEntryBoxPosition::NoTextBox, false, 50, 20);
     ampMidKnob.setDoubleClickReturnValue(true, 0.0);
@@ -41,7 +39,6 @@ RolandCubeAudioProcessorEditor::RolandCubeAudioProcessorEditor (RolandCubeAudioP
     trebleSliderAttach.reset(new AudioProcessorValueTreeState::SliderAttachment(treeState, TREBLE_ID, ampTrebleKnob));
     addAndMakeVisible(ampTrebleKnob);
     ampTrebleKnob.setLookAndFeel(&knobLookAndFeel);
-    ampTrebleKnob.addListener(this);
     ampTrebleKnob.setSliderStyle(juce::Slider::SliderStyle::RotaryVerticalDrag);
     ampTrebleKnob.setTextBoxStyle(juce::Slider::TextEntryBoxPosition::NoTextBox, false, 50, 20);
     ampTrebleKnob.setDoubleClickReturnValue(true, 0.0);
@@ -51,7 +48,6 @@ RolandCubeAudioProcessorEditor::RolandCubeAudioProcessorEditor (RolandCubeAudioP
     modelSelectorSliderAttach.reset(new AudioProcessorValueTreeState::SliderAttachment(treeState, MODEL_ID, modelSelectorKnob));
     addAndMakeVisible(modelSelectorKnob);
     modelSelectorKnob.setLookAndFeel(&knobLookAndFeel);
-    modelSelectorKnob.addListener(this);
     modelSelectorKnob.setSliderStyle(juce::Slider::SliderStyle::RotaryVerticalDrag);
     modelSelectorKnob.setTextBoxStyle(juce::Slider::TextEntryBoxPosition::NoTextBox, false, 50, 20);
     modelSelectorKnob.setDoubleClickReturnValue(true, 0.0);
@@ -59,7 +55,6 @@ RolandCubeAudioProcessorEditor::RolandCubeAudioProcessorEditor (RolandCubeAudioP
     gainSliderAttach.reset(new AudioProcessorValueTreeState::SliderAttachment(treeState, GAIN_ID, gainKnob));
     addAndMakeVisible(gainKnob);
     gainKnob.setLookAndFeel(&knobLookAndFeel);
-    gainKnob.addListener(this);
     gainKnob.setSliderStyle(juce::Slider::SliderStyle::RotaryVerticalDrag);
     gainKnob.setTextBoxStyle(juce::Slider::TextEntryBoxPosition::NoTextBox, false, 50, 20);
     gainKnob.setDoubleClickReturnValue(true, 0.5);
@@ -67,7 +62,6 @@ RolandCubeAudioProcessorEditor::RolandCubeAudioProcessorEditor (RolandCubeAudioP
     volumeSliderAttach.reset(new AudioProcessorValueTreeState::SliderAttachment(treeState, MASTER_ID, volumeKnob));
     addAndMakeVisible(volumeKnob);
     volumeKnob.setLookAndFeel(&knobLookAndFeel);
-    volumeKnob.addListener(this);
     volumeKnob.setSliderStyle(juce::Slider::SliderStyle::RotaryVerticalDrag);
     volumeKnob.setTextBoxStyle(juce::Slider::TextEntryBoxPosition::NoTextBox, false, 50, 20);
     volumeKnob.setDoubleClickReturnValue(true, 0.5);
@@ -146,56 +140,7 @@ void RolandCubeAudioProcessorEditor::resized()
     ampMidKnob.setBounds(388, height, knobWidth, knobHeight);
     ampTrebleKnob.setBounds(501, height, knobWidth, knobHeight);
 }
-void RolandCubeAudioProcessorEditor::sliderValueChanged(Slider* slider)
-{
-    if (slider == &ampBassKnob || slider == &ampMidKnob || slider == &ampTrebleKnob) {
-       audioProcessor.set_ampEQ(ampBassKnob.getValue(), ampMidKnob.getValue(), ampTrebleKnob.getValue());
-    }
-    if (slider == &modelSelectorKnob) {
-        const int selectedFileIndex = modelSelectorKnob.getValue();
-        if (selectedFileIndex >= 0 && selectedFileIndex < audioProcessor.jsonFiles.size() && audioProcessor.jsonFiles.empty() == false) { //check if correct 
-            if (audioProcessor.jsonFiles[selectedFileIndex].existsAsFile() && isValidFormat(audioProcessor.jsonFiles[selectedFileIndex])) {
-                audioProcessor.loadConfig(audioProcessor.jsonFiles[selectedFileIndex]);
-                audioProcessor.current_model_index = selectedFileIndex;
-                audioProcessor.saved_model = audioProcessor.jsonFiles[selectedFileIndex];
-            }
-        }
-    }
-    repaint();
-}
-bool RolandCubeAudioProcessorEditor::isValidFormat(File configFile)
-{
-    // Read in the JSON file
-    String path = configFile.getFullPathName();
-    const char* char_filename = path.toUTF8();
 
-    std::ifstream i2(char_filename);
-    nlohmann::json weights_json;
-    i2 >> weights_json;
-
-    int hidden_size_temp = 0;
-    std::string network = "";
-
-    // Check that the hidden_size and unit_type fields exist and are correct
-    if (weights_json.contains("/model_data/unit_type"_json_pointer) == true && weights_json.contains("/model_data/hidden_size"_json_pointer) == true) {
-        // Get the input size of the JSON file
-        int input_size_json = weights_json["/model_data/hidden_size"_json_pointer];
-        std::string network_temp = weights_json["/model_data/unit_type"_json_pointer];
-
-        network = network_temp;
-        hidden_size_temp = input_size_json;
-    }
-    else {
-        return false;
-    }
-
-    if (hidden_size_temp == 40 && network == "LSTM") {
-        return true;
-    }
-    else {
-        return false;
-    }
-}
 void RolandCubeAudioProcessorEditor::resetImages()
 {
     repaint();
