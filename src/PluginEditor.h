@@ -41,12 +41,12 @@ private:
     Slider ampBassKnob;
     Slider ampMidKnob;
     Slider ampTrebleKnob;
-    Slider odDriveKnob;
-    Slider odLevelKnob;
+    Slider gainKnob;
+    Slider volumeKnob;
     Slider modelSelectorKnob;
  
     // LookandFeels of the knobs 
-    myLookAndFeel knob;
+    myLookAndFeel knobLookAndFeel;
 
     AudioProcessorValueTreeState& treeState;
 
@@ -58,8 +58,8 @@ private:
     std::unique_ptr <AudioProcessorValueTreeState::SliderAttachment> bassSliderAttach;
     std::unique_ptr <AudioProcessorValueTreeState::SliderAttachment> midSliderAttach;
     std::unique_ptr <AudioProcessorValueTreeState::SliderAttachment> trebleSliderAttach;
-    std::unique_ptr <AudioProcessorValueTreeState::SliderAttachment> driveSliderAttach;
-    std::unique_ptr <AudioProcessorValueTreeState::SliderAttachment> masterSliderAttach;
+    std::unique_ptr <AudioProcessorValueTreeState::SliderAttachment> gainSliderAttach;
+    std::unique_ptr <AudioProcessorValueTreeState::SliderAttachment> volumeSliderAttach;
     std::unique_ptr <AudioProcessorValueTreeState::SliderAttachment> modelSelectorSliderAttach;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (RolandCubeAudioProcessorEditor)

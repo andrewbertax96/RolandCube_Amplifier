@@ -16,31 +16,13 @@ RolandCubeAudioProcessorEditor::RolandCubeAudioProcessorEditor (RolandCubeAudioP
     // Make sure that before the constructor has finished, you've set the
     // editor's size to whatever you need it to be.
 
-    // Set Widget Graphics
-    knob.setLookAndFeel(ImageCache::getFromMemory(BinaryData::knobCube_png, BinaryData::knobCube_pngSize));
+    knobLookAndFeel.setLookAndFeel(ImageCache::getFromMemory(BinaryData::knobCube_png, BinaryData::knobCube_pngSize));
     
-    // Overdrive
-
-    driveSliderAttach.reset(new AudioProcessorValueTreeState::SliderAttachment(treeState, GAIN_ID, odDriveKnob));
-    //addAndMakeVisible(odDriveKnob);
-    odDriveKnob.setLookAndFeel(&knob);
-    odDriveKnob.addListener(this);
-    odDriveKnob.setSliderStyle(juce::Slider::SliderStyle::RotaryVerticalDrag);
-    odDriveKnob.setTextBoxStyle(juce::Slider::TextEntryBoxPosition::NoTextBox, false, 50, 20);
-    odDriveKnob.setDoubleClickReturnValue(true, 0.5);
-
-    masterSliderAttach.reset(new AudioProcessorValueTreeState::SliderAttachment(treeState, MASTER_ID, odLevelKnob));
-    //addAndMakeVisible(odLevelKnob);
-    odLevelKnob.setLookAndFeel(&knob);
-    odLevelKnob.addListener(this);
-    odLevelKnob.setSliderStyle(juce::Slider::SliderStyle::RotaryVerticalDrag);
-    odLevelKnob.setTextBoxStyle(juce::Slider::TextEntryBoxPosition::NoTextBox, false, 50, 20);
-    odLevelKnob.setDoubleClickReturnValue(true, 0.5);
-
+    //EQ
 
     bassSliderAttach.reset(new AudioProcessorValueTreeState::SliderAttachment(treeState, BASS_ID, ampBassKnob));
-    //addAndMakeVisible(ampBassKnob);
-    ampBassKnob.setLookAndFeel(&knob);
+    addAndMakeVisible(ampBassKnob);
+    ampBassKnob.setLookAndFeel(&knobLookAndFeel);
     ampBassKnob.addListener(this);
     ampBassKnob.setSliderStyle(juce::Slider::SliderStyle::RotaryVerticalDrag);
     ampBassKnob.setTextBoxStyle(juce::Slider::TextEntryBoxPosition::NoTextBox, false, 50, 20);
@@ -48,8 +30,8 @@ RolandCubeAudioProcessorEditor::RolandCubeAudioProcessorEditor (RolandCubeAudioP
 
 
     midSliderAttach.reset(new AudioProcessorValueTreeState::SliderAttachment(treeState, MID_ID, ampMidKnob));
-    //addAndMakeVisible(ampMidKnob);
-    ampMidKnob.setLookAndFeel(&knob);
+    addAndMakeVisible(ampMidKnob);
+    ampMidKnob.setLookAndFeel(&knobLookAndFeel);
     ampMidKnob.addListener(this);
     ampMidKnob.setSliderStyle(juce::Slider::SliderStyle::RotaryVerticalDrag);
     ampMidKnob.setTextBoxStyle(juce::Slider::TextEntryBoxPosition::NoTextBox, false, 50, 20);
@@ -57,20 +39,38 @@ RolandCubeAudioProcessorEditor::RolandCubeAudioProcessorEditor (RolandCubeAudioP
 
 
     trebleSliderAttach.reset(new AudioProcessorValueTreeState::SliderAttachment(treeState, TREBLE_ID, ampTrebleKnob));
-    //addAndMakeVisible(ampTrebleKnob);
-    ampTrebleKnob.setLookAndFeel(&knob);
+    addAndMakeVisible(ampTrebleKnob);
+    ampTrebleKnob.setLookAndFeel(&knobLookAndFeel);
     ampTrebleKnob.addListener(this);
     ampTrebleKnob.setSliderStyle(juce::Slider::SliderStyle::RotaryVerticalDrag);
     ampTrebleKnob.setTextBoxStyle(juce::Slider::TextEntryBoxPosition::NoTextBox, false, 50, 20);
     ampTrebleKnob.setDoubleClickReturnValue(true, 0.0);
 
+    // Overdrive
+
     modelSelectorSliderAttach.reset(new AudioProcessorValueTreeState::SliderAttachment(treeState, MODEL_ID, modelSelectorKnob));
-    //addAndMakeVisible(modelSelectorKnob);
-    modelSelectorKnob.setLookAndFeel(&knob);
+    addAndMakeVisible(modelSelectorKnob);
+    modelSelectorKnob.setLookAndFeel(&knobLookAndFeel);
     modelSelectorKnob.addListener(this);
     modelSelectorKnob.setSliderStyle(juce::Slider::SliderStyle::RotaryVerticalDrag);
     modelSelectorKnob.setTextBoxStyle(juce::Slider::TextEntryBoxPosition::NoTextBox, false, 50, 20);
     modelSelectorKnob.setDoubleClickReturnValue(true, 0.0);
+    
+    gainSliderAttach.reset(new AudioProcessorValueTreeState::SliderAttachment(treeState, GAIN_ID, gainKnob));
+    addAndMakeVisible(gainKnob);
+    gainKnob.setLookAndFeel(&knobLookAndFeel);
+    gainKnob.addListener(this);
+    gainKnob.setSliderStyle(juce::Slider::SliderStyle::RotaryVerticalDrag);
+    gainKnob.setTextBoxStyle(juce::Slider::TextEntryBoxPosition::NoTextBox, false, 50, 20);
+    gainKnob.setDoubleClickReturnValue(true, 0.5);
+
+    volumeSliderAttach.reset(new AudioProcessorValueTreeState::SliderAttachment(treeState, MASTER_ID, volumeKnob));
+    addAndMakeVisible(volumeKnob);
+    volumeKnob.setLookAndFeel(&knobLookAndFeel);
+    volumeKnob.addListener(this);
+    volumeKnob.setSliderStyle(juce::Slider::SliderStyle::RotaryVerticalDrag);
+    volumeKnob.setTextBoxStyle(juce::Slider::TextEntryBoxPosition::NoTextBox, false, 50, 20);
+    volumeKnob.setDoubleClickReturnValue(true, 0.5);
 
     // Size of plugin GUI
     setSize(background.getWidth(), background.getHeight());
@@ -80,8 +80,8 @@ RolandCubeAudioProcessorEditor::RolandCubeAudioProcessorEditor (RolandCubeAudioP
 
 RolandCubeAudioProcessorEditor::~RolandCubeAudioProcessorEditor()
 {
-    odDriveKnob.setLookAndFeel(nullptr);
-    odLevelKnob.setLookAndFeel(nullptr);
+    gainKnob.setLookAndFeel(nullptr);
+    volumeKnob.setLookAndFeel(nullptr);
     ampBassKnob.setLookAndFeel(nullptr);
     ampMidKnob.setLookAndFeel(nullptr);
     ampTrebleKnob.setLookAndFeel(nullptr);
@@ -121,6 +121,7 @@ void RolandCubeAudioProcessorEditor::paint (juce::Graphics& g)
     g.drawImage(background_on, ClipRect.getX(), ClipRect.getY(), ClipRect.getWidth(), ClipRect.getHeight(), ClipRect.getX(), ClipRect.getY(), ClipRect.getWidth(), ClipRect.getHeight());
     g.drawImage(logo_Eq, ClipRect.getX(), ClipRect.getY(), ClipRect.getWidth(), ClipRect.getHeight(), ClipRect.getX(), ClipRect.getY(), ClipRect.getWidth(), ClipRect.getHeight());
     g.drawImage(lead, ClipRect.getX(), ClipRect.getY(), ClipRect.getWidth(), ClipRect.getHeight(), ClipRect.getX(), ClipRect.getY(), ClipRect.getWidth(), ClipRect.getHeight());
+    
 #endif
 }
 
@@ -130,13 +131,20 @@ void RolandCubeAudioProcessorEditor::resized()
     // subcomponents in your editor..
 
     // Overdrive Widgets
-    odDriveKnob.setBounds(168, 242, 190, 190);
-    odLevelKnob.setBounds(340, 225, 62, 62);
+    auto commonValue = 98.5;
+    auto knobWidth = commonValue;
+    auto knobHeight = commonValue;
 
-    ampBassKnob.setBounds(113, 131, 62, 62);
-    ampMidKnob.setBounds(227, 131, 62, 62);
-    ampTrebleKnob.setBounds(340, 131, 62, 62);
-    modelSelectorKnob.setBounds(227, 400, 62, 62);
+    auto height = 62;
+    auto heightLead = height + 11.5;
+
+    modelSelectorKnob.setBounds(773, heightLead, knobWidth, knobHeight);//aggiustare l'immagine con la maschera giusta.
+    gainKnob.setBounds(959, heightLead, knobWidth, knobHeight);
+    volumeKnob.setBounds(1073, heightLead, knobWidth, knobHeight);
+
+    ampBassKnob.setBounds(275, height, knobWidth, knobHeight);
+    ampMidKnob.setBounds(388, height, knobWidth, knobHeight);
+    ampTrebleKnob.setBounds(501, height, knobWidth, knobHeight);
 }
 void RolandCubeAudioProcessorEditor::sliderValueChanged(Slider* slider)
 {
