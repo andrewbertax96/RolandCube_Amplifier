@@ -90,8 +90,8 @@ public:
     // Files and configuration
 
     // Pedal/amp states
-    int fw_state = 1;       // 0 = off, 1 = on
-    int cab_state = 1; // 0 = off, 1 = on
+    //int fw_state = 1;       // 0 = off, 1 = on
+    //int cab_state = 1; // 0 = off, 1 = on
 
     bool conditioned = false;
     int pauseVolume = 3;

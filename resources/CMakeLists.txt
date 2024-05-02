@@ -5,14 +5,6 @@ juce_add_binary_data(BinaryData SOURCES
     images/knobCube.png
     images/default_ir.wav
 
-    #images/background_on.jpg
-    #images/background_on_blue.jpg
-    #images/default_ir.wav
-    #images/cab_switch_off.png
-    #images/cab_switch_on.png
-    #images/big_knob.png
-    #images/small_knob.png
-
     #Add all the json models
     jSonModels/gainStable/acousticModelGainStable.json
     jSonModels/gainStable/blackPanelModelGainStable.json

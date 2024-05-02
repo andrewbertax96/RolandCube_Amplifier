@@ -37,10 +37,6 @@ private:
     Image logo_Eq = ImageCache::getFromMemory(BinaryData::logoAndEq_Cube_png, BinaryData::logoAndEq_Cube_pngSize);
     Image lead = ImageCache::getFromMemory(BinaryData::leadChannelCube_png, BinaryData::leadChannelCube_pngSize);
 
-    // Global Widgets
-    Label modelLabel;
-    Label versionLabel;
-
     //Amp Widgets
     Slider ampBassKnob;
     Slider ampMidKnob;
@@ -52,10 +48,8 @@ private:
     // LookandFeels of the knobs 
     myLookAndFeel knob;
 
-    //AudioProcessorParameter* getParameter(const String& paramId);
     AudioProcessorValueTreeState& treeState;
 
-    bool model_loaded = false;
     virtual void buttonClicked(Button* button) override;
     virtual void sliderValueChanged(Slider* slider) override;
     bool isValidFormat(File configFile);

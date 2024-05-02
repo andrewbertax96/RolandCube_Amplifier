@@ -15,11 +15,6 @@ RolandCubeAudioProcessorEditor::RolandCubeAudioProcessorEditor (RolandCubeAudioP
 {
     // Make sure that before the constructor has finished, you've set the
     // editor's size to whatever you need it to be.
-    // Overall Widgets
-
-    auto font = modelLabel.getFont();
-    float height = font.getHeight();
-    font.setHeight(height);
 
     // Set Widget Graphics
     knob.setLookAndFeel(ImageCache::getFromMemory(BinaryData::knobCube_png, BinaryData::knobCube_pngSize));
@@ -27,7 +22,7 @@ RolandCubeAudioProcessorEditor::RolandCubeAudioProcessorEditor (RolandCubeAudioP
     // Overdrive
 
     driveSliderAttach.reset(new AudioProcessorValueTreeState::SliderAttachment(treeState, GAIN_ID, odDriveKnob));
-    addAndMakeVisible(odDriveKnob);
+    //addAndMakeVisible(odDriveKnob);
     odDriveKnob.setLookAndFeel(&knob);
     odDriveKnob.addListener(this);
     odDriveKnob.setSliderStyle(juce::Slider::SliderStyle::RotaryVerticalDrag);
@@ -35,7 +30,7 @@ RolandCubeAudioProcessorEditor::RolandCubeAudioProcessorEditor (RolandCubeAudioP
     odDriveKnob.setDoubleClickReturnValue(true, 0.5);
 
     masterSliderAttach.reset(new AudioProcessorValueTreeState::SliderAttachment(treeState, MASTER_ID, odLevelKnob));
-    addAndMakeVisible(odLevelKnob);
+    //addAndMakeVisible(odLevelKnob);
     odLevelKnob.setLookAndFeel(&knob);
     odLevelKnob.addListener(this);
     odLevelKnob.setSliderStyle(juce::Slider::SliderStyle::RotaryVerticalDrag);
@@ -44,7 +39,7 @@ RolandCubeAudioProcessorEditor::RolandCubeAudioProcessorEditor (RolandCubeAudioP
 
 
     bassSliderAttach.reset(new AudioProcessorValueTreeState::SliderAttachment(treeState, BASS_ID, ampBassKnob));
-    addAndMakeVisible(ampBassKnob);
+    //addAndMakeVisible(ampBassKnob);
     ampBassKnob.setLookAndFeel(&knob);
     ampBassKnob.addListener(this);
     ampBassKnob.setSliderStyle(juce::Slider::SliderStyle::RotaryVerticalDrag);
@@ -53,7 +48,7 @@ RolandCubeAudioProcessorEditor::RolandCubeAudioProcessorEditor (RolandCubeAudioP
 
 
     midSliderAttach.reset(new AudioProcessorValueTreeState::SliderAttachment(treeState, MID_ID, ampMidKnob));
-    addAndMakeVisible(ampMidKnob);
+    //addAndMakeVisible(ampMidKnob);
     ampMidKnob.setLookAndFeel(&knob);
     ampMidKnob.addListener(this);
     ampMidKnob.setSliderStyle(juce::Slider::SliderStyle::RotaryVerticalDrag);
@@ -62,7 +57,7 @@ RolandCubeAudioProcessorEditor::RolandCubeAudioProcessorEditor (RolandCubeAudioP
 
 
     trebleSliderAttach.reset(new AudioProcessorValueTreeState::SliderAttachment(treeState, TREBLE_ID, ampTrebleKnob));
-    addAndMakeVisible(ampTrebleKnob);
+    //addAndMakeVisible(ampTrebleKnob);
     ampTrebleKnob.setLookAndFeel(&knob);
     ampTrebleKnob.addListener(this);
     ampTrebleKnob.setSliderStyle(juce::Slider::SliderStyle::RotaryVerticalDrag);
@@ -70,21 +65,15 @@ RolandCubeAudioProcessorEditor::RolandCubeAudioProcessorEditor (RolandCubeAudioP
     ampTrebleKnob.setDoubleClickReturnValue(true, 0.0);
 
     modelSelectorSliderAttach.reset(new AudioProcessorValueTreeState::SliderAttachment(treeState, MODEL_ID, modelSelectorKnob));
-    addAndMakeVisible(modelSelectorKnob);
+    //addAndMakeVisible(modelSelectorKnob);
     modelSelectorKnob.setLookAndFeel(&knob);
     modelSelectorKnob.addListener(this);
     modelSelectorKnob.setSliderStyle(juce::Slider::SliderStyle::RotaryVerticalDrag);
     modelSelectorKnob.setTextBoxStyle(juce::Slider::TextEntryBoxPosition::NoTextBox, false, 50, 20);
     modelSelectorKnob.setDoubleClickReturnValue(true, 0.0);
 
-    addAndMakeVisible(versionLabel);
-    versionLabel.setText("v1.2", juce::NotificationType::dontSendNotification);
-    versionLabel.setJustificationType(juce::Justification::left);
-    versionLabel.setColour(juce::Label::textColourId, juce::Colours::white);
-    versionLabel.setFont(font);
-
     // Size of plugin GUI
-    setSize(500, 650);
+    setSize(background.getWidth(), background.getHeight());
 
     resetImages();
 }
@@ -105,10 +94,23 @@ void RolandCubeAudioProcessorEditor::paint (juce::Graphics& g)
     
     // Workaround for graphics on Windows builds (clipping code doesn't work correctly on Windows)
 #if defined(WIN32) || defined(_WIN32) || defined(__WIN32__) || defined(__NT__)
-    g.drawImageAt(background, 0, 0);  // Debug Line: Redraw entire background image
-    g.drawImageAt(logo_Eq, 0, 0);  // Debug Line: Redraw entire background image
-    g.drawImageAt(lead, 0, 0);  // Debug Line: Redraw entire background image
-   
+
+    
+    g.drawImageAt(background, 0, 0);  
+    g.drawImageAt(logo_Eq, 80, 20);
+    g.drawImageAt(lead, background.getWidth()/2.0 + 53.5, 10);
+    
+    g.setColour(Colours::dimgrey);
+    Rectangle<float>backgroundRect(0, 0, getWidth(), getHeight());
+    g.drawRoundedRectangle(backgroundRect, 10.0, 4.0); 
+    
+    g.setColour(Colours::darkgrey);
+    Rectangle<float>eqRect(65, 5, logo_Eq.getWidth()+30, lead.getHeight() + 6.5);
+    g.drawRoundedRectangle(eqRect, 15.0, 4.0);
+    
+    Rectangle<float>leadRect(background.getWidth() / 2.0 + 46, 5, lead.getWidth()+15, lead.getHeight()+7.5);
+    g.drawRoundedRectangle(leadRect, 15.0, 4.0);
+
 #else
 // Redraw only the clipped part of the background image
 
