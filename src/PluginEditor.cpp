@@ -72,7 +72,7 @@ RolandCubeAudioProcessorEditor::RolandCubeAudioProcessorEditor (RolandCubeAudioP
     typeSelector.setColour(ToggleButton::ColourIds::textColourId, Colours::red);
     typeSelector.setColour(ToggleButton::ColourIds::tickColourId, Colours::red);
     typeSelector.setColour(ToggleButton::ColourIds::tickDisabledColourId, Colours::red);
-    addAndMakeVisible(typeSelector);
+    //addAndMakeVisible(typeSelector);
 
     // Size of plugin GUI
     setSize(background.getWidth(), background.getHeight());

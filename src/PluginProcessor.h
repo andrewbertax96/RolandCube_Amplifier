@@ -86,7 +86,8 @@ public:
     bool isValidFormat(File configFile);
     void loadConfig(File configFile);
     void applyLSTM(AudioBuffer<float>& buffer, dsp::AudioBlock<float>& block, int totalNumInputChannels, RT_LSTM& LSTM, RT_LSTM& LSTM2, bool conditioned, const float gainParam, float& previousGainValue, chowdsp::ResampledProcess<chowdsp::ResamplingTypes::SRCResampler<>>& resampler);
-    void LSTMtoChannels(chowdsp::BufferView<float>& block, int totalNumChannels, RT_LSTM& LSTM, RT_LSTM& LSTM2, bool conditioned, float driveValue);
+    void LSTMtoChannels(juce::dsp::AudioBlock<float>& block, AudioBuffer<float>& buffer, int totalNumChannels, RT_LSTM& LSTM, RT_LSTM& LSTM2, bool conditioned, float gainValue);
+    //void LSTMtoChannels(chowdsp::BufferView<float>& block, int totalNumChannels, RT_LSTM& LSTM, RT_LSTM& LSTM2, bool conditioned, float driveValue);
     
     AudioProcessorValueTreeState treeState;
 
