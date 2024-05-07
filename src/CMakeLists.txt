@@ -7,8 +7,8 @@ target_sources(RolandCube PRIVATE
 	PluginProcessor.h
 	RTNeuralLSTM.cpp
 	RTNeuralLSTM.h
-        CabSimulation.h
-        Equalizer.cpp
-        Equalizer.h
+        CabSim.h
+        Eq4Band.cpp
+        Eq4Band.h
 )
 
