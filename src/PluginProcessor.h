@@ -28,6 +28,8 @@
 #define TREBLE_NAME "Treble"
 #define MODEL_ID "model"
 #define MODEL_NAME "Model"
+#define TYPE_ID "type"
+#define TYPE_NAME "Type"
 
 //==============================================================================
 /**
@@ -83,7 +85,7 @@ public:
     void initializeJsonFiles();
     bool isValidFormat(File configFile);
     void loadConfig(File configFile);
-    void applyLSTM(AudioBuffer<float>& buffer, int totalNumInputChannels, RT_LSTM& LSTM, RT_LSTM& LSTM2, bool conditioned, const float driveParam, float& previousDriveValue, chowdsp::ResampledProcess<chowdsp::ResamplingTypes::SRCResampler<>>& resampler);
+    void applyLSTM(AudioBuffer<float>& buffer, int totalNumInputChannels, RT_LSTM& LSTM, RT_LSTM& LSTM2, bool conditioned, const float gainParam, float& previousGainValue, chowdsp::ResampledProcess<chowdsp::ResamplingTypes::SRCResampler<>>& resampler);
     void applyLSTMtoChannels(chowdsp::BufferView<float>& block, int totalNumChannels, RT_LSTM& LSTM, RT_LSTM& LSTM2, bool conditioned, float driveValue);
     
     AudioProcessorValueTreeState treeState;
@@ -103,15 +105,15 @@ private:
     Equalizer equalizer1; // Amp EQ
     Equalizer equalizer2; // Amp EQ
 
-    std::atomic<float> driveParam = {0.0};
-    std::atomic<float> masterParam = { 0.0 };
-    std::atomic<float> bassParam = { 0.0 };
-    std::atomic<float> midParam = { 0.0 };
-    std::atomic<float> trebleParam = { 0.0 };
-    std::atomic<float> modelParam = { 0.0 };
-
-    bool parametrized = false;
-    float previousDriveValue = 0.5;
+    Atomic<float> gainParam = {0.0};
+    Atomic<float> masterParam = { 0.0 };
+    Atomic<float> bassParam = { 0.0 };
+    Atomic<float> midParam = { 0.0 };
+    Atomic<float> trebleParam = { 0.0 };
+    Atomic<float> modelParam = { 0.0 };
+    Atomic<bool> typeParam{false};
+    
+    float previousGainValue = 0.5;
     float previousMasterValue = 0.5;
 
     RT_LSTM LSTM;

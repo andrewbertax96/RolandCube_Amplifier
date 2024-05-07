@@ -67,6 +67,14 @@ RolandCubeAudioProcessorEditor::RolandCubeAudioProcessorEditor (RolandCubeAudioP
     volumeKnob.setTextBoxStyle(juce::Slider::TextEntryBoxPosition::NoTextBox, false, 50, 20);
     volumeKnob.setDoubleClickReturnValue(true, 0.5);
 
+
+    //typeSelector.setButtonText("FILTER MODE");
+    typeSelector.addMouseListener(this, false);//il false dice che non lo estendo ai figli.
+    typeSelector.setColour(ToggleButton::ColourIds::textColourId, Colours::red);
+    typeSelector.setColour(ToggleButton::ColourIds::tickColourId, Colours::red);
+    typeSelector.setColour(ToggleButton::ColourIds::tickDisabledColourId, Colours::red);
+    addAndMakeVisible(typeSelector);
+
     // Size of plugin GUI
     setSize(background.getWidth(), background.getHeight());
 
@@ -140,6 +148,8 @@ void RolandCubeAudioProcessorEditor::resized()
     ampBassKnob.setBounds(275, height, knobWidth, knobHeight);
     ampMidKnob.setBounds(388, height, knobWidth, knobHeight);
     ampTrebleKnob.setBounds(501, height, knobWidth, knobHeight);
+
+    typeSelector.setBounds(background.getWidth()/2.0, background.getHeight()-50,100,30);
 }
 
 void RolandCubeAudioProcessorEditor::resetImages()

@@ -14,7 +14,7 @@
 //==============================================================================
 /**
 */
-class RolandCubeAudioProcessorEditor  : public juce::AudioProcessorEditor                                    
+class RolandCubeAudioProcessorEditor  : public juce::AudioProcessorEditor
 {
 public:
     RolandCubeAudioProcessorEditor (RolandCubeAudioProcessor&, AudioProcessorValueTreeState&);
@@ -43,7 +43,9 @@ private:
     Slider gainKnob;
     Slider volumeKnob;
     Slider modelSelectorKnob;
- 
+    
+    ToggleButton typeSelector;
+    
     // LookandFeels of the knobs 
     myLookAndFeel knobLookAndFeel;
     myLookAndFeel knobLead_LookAndFeel;
