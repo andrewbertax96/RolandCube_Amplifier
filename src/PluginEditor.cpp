@@ -68,7 +68,6 @@ RolandCubeAudioProcessorEditor::RolandCubeAudioProcessorEditor (RolandCubeAudioP
     volumeKnob.setDoubleClickReturnValue(true, 0.5);
 
 
-    //typeSelector.setButtonText("FILTER MODE");
     typeSelector.addMouseListener(this, false);//il false dice che non lo estendo ai figli.
     typeSelector.setColour(ToggleButton::ColourIds::textColourId, Colours::red);
     typeSelector.setColour(ToggleButton::ColourIds::tickColourId, Colours::red);
@@ -89,6 +88,7 @@ RolandCubeAudioProcessorEditor::~RolandCubeAudioProcessorEditor()
     ampMidKnob.setLookAndFeel(nullptr);
     ampTrebleKnob.setLookAndFeel(nullptr);
     modelSelectorKnob.setLookAndFeel(nullptr);
+    typeSelector.setLookAndFeel(nullptr);
 }
 
 //==============================================================================
