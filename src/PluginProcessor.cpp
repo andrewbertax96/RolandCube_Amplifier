@@ -40,7 +40,7 @@ RolandCubeAudioProcessor::RolandCubeAudioProcessor()
    treeState.addParameterListener(MODEL_ID, this);
    treeState.addParameterListener(TYPE_ID, this);
 
-   initializeJsonFiles();   
+   //initializeJsonFiles();   
    cabSimIRa.load(BinaryData::default_ir_wav, BinaryData::default_ir_wavSize);
    pauseVolume = 3;
 }
@@ -209,6 +209,8 @@ void RolandCubeAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, j
 
     auto totalNumInputChannels  = getTotalNumInputChannels();
     auto totalNumOutputChannels = getTotalNumOutputChannels();
+    auto gainValue = gainParam.get();
+    auto masterValue = masterParam.get();
 
     dsp::AudioBlock<float> block(buffer);
     dsp::ProcessContextReplacing<float> context(block);
@@ -217,7 +219,7 @@ void RolandCubeAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, j
         buffer.clear (i, 0, buffer.getNumSamples());
     
     //Apply Model & EQ
-    applyLSTM(buffer, block, getTotalNumInputChannels(), LSTM, LSTM2, conditioned, gainParam.get(), previousGainValue, resampler);
+    applyLSTM(buffer, block, buffer.getNumChannels(), LSTM, LSTM2, conditioned, gainValue, previousGainValue, resampler);
     dcBlocker.process(context);
     applyEQ(buffer, equalizer1, equalizer2, midiMessages, totalNumInputChannels, getSampleRate());
 
@@ -225,8 +227,8 @@ void RolandCubeAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, j
     buffer.applyGain(2.0);
         
     // Master Volume 
-    applyGainSmoothing(buffer, masterParam.get(), previousMasterValue); // Apply ramped changes for gain smoothing
-    smoothPopSound(buffer, masterParam.get(), pauseVolume); // Smooth pop sound when changing models
+    applyGainSmoothing(buffer, masterValue, previousMasterValue); // Apply ramped changes for gain smoothing
+    smoothPopSound(buffer, masterValue, pauseVolume); // Smooth pop sound when changing models
 }
 
 //==============================================================================
@@ -368,7 +370,7 @@ void RolandCubeAudioProcessor::loadConfig(File configFile)
     this->suspendProcessing(false);
 }
 
-void RolandCubeAudioProcessor::applyLSTM(AudioBuffer<float>& buffer, dsp::AudioBlock<float> block, int totalNumInputChannels, RT_LSTM& LSTM, RT_LSTM& LSTM2, bool conditioned, const float gainParam, float& previousGainValue, chowdsp::ResampledProcess<chowdsp::ResamplingTypes::SRCResampler<>>& resampler)
+void RolandCubeAudioProcessor::applyLSTM(AudioBuffer<float>& buffer, dsp::AudioBlock<float>& block, int totalNumInputChannels, RT_LSTM& LSTM, RT_LSTM& LSTM2, bool conditioned, const float gainParam, float& previousGainValue, chowdsp::ResampledProcess<chowdsp::ResamplingTypes::SRCResampler<>>& resampler)
 {
     if (conditioned == false)
     {
@@ -400,26 +402,28 @@ void RolandCubeAudioProcessor::applyLSTM(AudioBuffer<float>& buffer, dsp::AudioB
 void RolandCubeAudioProcessor::LSTMtoChannels(chowdsp::BufferView<float>& block, int totalNumChannels, RT_LSTM& LSTM, RT_LSTM& LSTM2, bool conditioned, float gainValue)
 {
     for (int channel = 0; channel < totalNumChannels; ++channel) {
+        const float* channelDataIn = block.getReadPointer(channel);
+        float* channelDataOut = block.getWritePointer(channel);
 
         if (conditioned == false) {
             if (channel == 0) {
-                LSTM.process(block.getReadPointer(channel), block.getWritePointer(channel), block.getNumSamples());
+                LSTM.process(channelDataIn, channelDataOut, block.getNumSamples());
             }
             else if (channel == 1) {
-                LSTM2.process(block.getReadPointer(channel), block.getWritePointer(channel), block.getNumSamples());
+                LSTM2.process(channelDataIn, channelDataOut, block.getNumSamples());
             }
         }
-
         else {
             if (channel == 0) {
-                LSTM.process(block.getReadPointer(channel), gainValue, block.getWritePointer(channel), (int)block.getNumSamples());
+                LSTM.process(channelDataIn, gainValue, channelDataOut, block.getNumSamples());
             }
             else if (channel == 1) {
-                LSTM2.process(block.getReadPointer(channel), gainValue, block.getWritePointer(channel), (int)block.getNumSamples());
+                LSTM2.process(channelDataIn, gainValue, channelDataOut, block.getNumSamples());
             }
         }
     }
 }
+
 
 void RolandCubeAudioProcessor::set_ampEQ(float bass_slider, float mid_slider, float treble_slider)
 {
