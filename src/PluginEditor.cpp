@@ -89,7 +89,7 @@ RolandCubeAudioProcessorEditor::RolandCubeAudioProcessorEditor (RolandCubeAudioP
 
     // Size of plugin GUI
     setSize(background.getWidth(), background.getHeight());
-    //resetImages();
+    resetImages();
     loadJsonFiles();
     //loadFromFolder();
 }
@@ -183,20 +183,39 @@ void RolandCubeAudioProcessorEditor::loadJsonFiles()
     {
         processor.jsonFiles.push_back(file);
         //processor.jsonFiles.add(file);
-    }
+        DBG("File: " << file.getFullPathName());
 
-    // Carica i file JSON dalla cartella "parametrizedGain"
-    File parametrizedGainDirectory = resourcesDirectory.getChildFile("parametrizedGain");
-    Array<File> parametrizedGainFiles;
-    parametrizedGainDirectory.findChildFiles(parametrizedGainFiles, File::findFiles, false, "*.json");
-
-    // Aggiungi i file JSON trovati all'array jsonFiles
-    for (const auto& file : parametrizedGainFiles)
-    {
-        processor.model_loaded = false;
-        processor.jsonFiles.push_back(file);
-        //jsonFiles.add(file);
     }
+    //if (!typeSelector.getToggleState()) {
+
+    //    // Carica i file JSON dalla cartella "gainStable"
+    //    File gainStableDirectory = resourcesDirectory.getChildFile("gainStable");
+    //    Array<File> gainStableFiles;
+    //    gainStableDirectory.findChildFiles(gainStableFiles, File::findFiles, false, "*.json");
+
+    //    // Aggiungi i file JSON trovati all'array jsonFiles
+    //    for (const auto& file : gainStableFiles)
+    //    {
+    //        processor.jsonFiles.push_back(file);
+    //        //processor.jsonFiles.add(file);
+    //    }
+    //}
+    //else {
+
+    //    // Carica i file JSON dalla cartella "parametrizedGain"
+    //    File parametrizedGainDirectory = resourcesDirectory.getChildFile("parametrizedGain");
+    //    Array<File> parametrizedGainFiles;
+    //    parametrizedGainDirectory.findChildFiles(parametrizedGainFiles, File::findFiles, false, "*.json");
+
+    //    // Aggiungi i file JSON trovati all'array jsonFiles
+    //    for (const auto& file : parametrizedGainFiles)
+    //    {
+    //        processor.model_loaded = false;
+    //        processor.jsonFiles.push_back(file);
+    //        //jsonFiles.add(file);
+    //    }
+    //}
+
     // Try to load model from saved_model, if it doesnt exist and jsonFiles is not empty, load the first model (if it exists and is valid format)
     if (!processor.jsonFiles.empty()) {
         if (processor.saved_model.existsAsFile() && isValidFormat(processor.saved_model)) {
@@ -264,38 +283,38 @@ void RolandCubeAudioProcessorEditor::sliderValueChanged(Slider* slider)
 
 
 
-//void RolandCubeAudioProcessorEditor::resetImages()
-//{
-//    repaint();
-//    /*
-//    if (processor.fw_state == 0) {
-//        odFootSw.setImages(true, true, true,
-//            ImageCache::getFromMemory(BinaryData::footswitch_up_png, BinaryData::footswitch_up_pngSize), 1.0, Colours::transparentWhite,
-//            Image(), 1.0, Colours::transparentWhite,
-//            ImageCache::getFromMemory(BinaryData::footswitch_up_png, BinaryData::footswitch_up_pngSize), 1.0, Colours::transparentWhite,
-//            0.0);
-//    }
-//    else {
-//        odFootSw.setImages(true, true, true,
-//            ImageCache::getFromMemory(BinaryData::footswitch_down_png, BinaryData::footswitch_down_pngSize), 1.0, Colours::transparentWhite,
-//            Image(), 1.0, Colours::transparentWhite,
-//            ImageCache::getFromMemory(BinaryData::footswitch_down_png, BinaryData::footswitch_down_pngSize), 1.0, Colours::transparentWhite,
-//            0.0);
-//    }
-//    */
-//    // Set On/Off cab graphic
-//    if (processor.cab_state == 0) {
-//        cabOnButton.setImages(true, true, true,
-//            ImageCache::getFromMemory(BinaryData::cab_switch_off_png, BinaryData::cab_switch_off_pngSize), 1.0, Colours::transparentWhite,
-//            Image(), 1.0, Colours::transparentWhite,
-//            ImageCache::getFromMemory(BinaryData::cab_switch_off_png, BinaryData::cab_switch_off_pngSize), 1.0, Colours::transparentWhite,
-//            0.0);
-//    }
-//    else {
-//        cabOnButton.setImages(true, true, true,
-//            ImageCache::getFromMemory(BinaryData::cab_switch_on_png, BinaryData::cab_switch_on_pngSize), 1.0, Colours::transparentWhite,
-//            Image(), 1.0, Colours::transparentWhite,
-//            ImageCache::getFromMemory(BinaryData::cab_switch_on_png, BinaryData::cab_switch_on_pngSize), 1.0, Colours::transparentWhite,
-//            0.0);
-//    }
-//}
+void RolandCubeAudioProcessorEditor::resetImages()
+{
+    repaint();
+    /*
+    if (processor.fw_state == 0) {
+        odFootSw.setImages(true, true, true,
+            ImageCache::getFromMemory(BinaryData::footswitch_up_png, BinaryData::footswitch_up_pngSize), 1.0, Colours::transparentWhite,
+            Image(), 1.0, Colours::transparentWhite,
+            ImageCache::getFromMemory(BinaryData::footswitch_up_png, BinaryData::footswitch_up_pngSize), 1.0, Colours::transparentWhite,
+            0.0);
+    }
+    else {
+        odFootSw.setImages(true, true, true,
+            ImageCache::getFromMemory(BinaryData::footswitch_down_png, BinaryData::footswitch_down_pngSize), 1.0, Colours::transparentWhite,
+            Image(), 1.0, Colours::transparentWhite,
+            ImageCache::getFromMemory(BinaryData::footswitch_down_png, BinaryData::footswitch_down_pngSize), 1.0, Colours::transparentWhite,
+            0.0);
+    }
+    */
+    // Set On/Off cab graphic
+    /*if (processor.cab_state == 0) {
+        cabOnButton.setImages(true, true, true,
+            ImageCache::getFromMemory(BinaryData::cab_switch_off_png, BinaryData::cab_switch_off_pngSize), 1.0, Colours::transparentWhite,
+            Image(), 1.0, Colours::transparentWhite,
+            ImageCache::getFromMemory(BinaryData::cab_switch_off_png, BinaryData::cab_switch_off_pngSize), 1.0, Colours::transparentWhite,
+            0.0);
+    }
+    else {
+        cabOnButton.setImages(true, true, true,
+            ImageCache::getFromMemory(BinaryData::cab_switch_on_png, BinaryData::cab_switch_on_pngSize), 1.0, Colours::transparentWhite,
+            Image(), 1.0, Colours::transparentWhite,
+            ImageCache::getFromMemory(BinaryData::cab_switch_on_png, BinaryData::cab_switch_on_pngSize), 1.0, Colours::transparentWhite,
+            0.0);
+    }*/
+}

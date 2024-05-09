@@ -46,15 +46,29 @@ RolandCubeAudioProcessor::RolandCubeAudioProcessor()
     modelParam = treeState.getRawParameterValue (MODEL_ID);
     //typeParam = treeState.getRawParameterValue (TYPE_ID);
 
-    setJsonFiles();
-    const int selectedFileIndex = static_cast<float> (modelParam->load());
-    if (selectedFileIndex >= 0 && selectedFileIndex < jsonFiles.size() && jsonFiles.empty() == false) { //check if correct 
-        if (jsonFiles[selectedFileIndex].existsAsFile() && isValidFormat(jsonFiles[selectedFileIndex])) {
-            loadConfig(jsonFiles[selectedFileIndex]);
-            current_model_index = selectedFileIndex;
-            saved_model = jsonFiles[selectedFileIndex];
+    //setJsonFiles();
+
+    if (!jsonFiles.empty()) {
+        if (saved_model.existsAsFile() && isValidFormat(saved_model)) {
+            loadConfig(saved_model);
+            //modelSelect.setText(processor.saved_model.getFileNameWithoutExtension(), juce::NotificationType::dontSendNotification);
+        }
+        else {
+            if (jsonFiles[0].existsAsFile() && isValidFormat(jsonFiles[0])) {
+                loadConfig(jsonFiles[0]);
+                //modelSelect.setText(processor.jsonFiles[0].getFileNameWithoutExtension(), juce::NotificationType::dontSendNotification);
+            }
         }
     }
+
+    //const int selectedFileIndex = static_cast<float> (modelParam->load());
+    //if (selectedFileIndex >= 0 && selectedFileIndex < jsonFiles.size() && jsonFiles.empty() == false) { //check if correct 
+    //    if (jsonFiles[selectedFileIndex].existsAsFile() && isValidFormat(jsonFiles[selectedFileIndex])) {
+    //        loadConfig(jsonFiles[selectedFileIndex]);
+    //        current_model_index = selectedFileIndex;
+    //        saved_model = jsonFiles[selectedFileIndex];
+    //    }
+    //}
 
 
     auto bassValue = static_cast<float> (bassParam->load());
@@ -348,8 +362,8 @@ void RolandCubeAudioProcessor::setStateInformation (const void* data, int sizeIn
             current_model_index = xmlState->getIntAttribute("current_model_index");
             File temp = xmlState->getStringAttribute("folder");
             //folder = temp;
-            //if (auto* editor = dynamic_cast<RolandCubeAudioProcessorEditor*> (getActiveEditor()))
-                //editor->resetImages();
+            if (auto* editor = dynamic_cast<RolandCubeAudioProcessorEditor*> (getActiveEditor()))
+                editor->resetImages();
 
             if (saved_model.existsAsFile()) {
                 loadConfig(saved_model);

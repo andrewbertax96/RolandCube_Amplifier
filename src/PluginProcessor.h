@@ -96,7 +96,7 @@ public:
     std::vector<File> jsonFiles;
     File saved_model;
 
-    File folder = File::getSpecialLocation(File::userDesktopDirectory);
+    //File folder = File::getSpecialLocation(File::userDesktopDirectory);
     AudioProcessorValueTreeState treeState;
 
     bool model_loaded = false;
