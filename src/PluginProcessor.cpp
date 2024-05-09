@@ -47,7 +47,14 @@ RolandCubeAudioProcessor::RolandCubeAudioProcessor()
     //typeParam = treeState.getRawParameterValue (TYPE_ID);
 
     //setJsonFiles();
-
+    //const int selectedFileIndex = static_cast<float> (modelParam->load());
+    //if (selectedFileIndex >= 0 && selectedFileIndex < jsonFiles.size() && jsonFiles.empty() == false) { //check if correct 
+    //    if (jsonFiles[selectedFileIndex].existsAsFile() && isValidFormat(jsonFiles[selectedFileIndex])) {
+    //        loadConfig(jsonFiles[selectedFileIndex]);
+    //        current_model_index = selectedFileIndex;
+    //        saved_model = jsonFiles[selectedFileIndex];
+    //    }
+    //}
     if (!jsonFiles.empty()) {
         if (saved_model.existsAsFile() && isValidFormat(saved_model)) {
             loadConfig(saved_model);
@@ -61,14 +68,7 @@ RolandCubeAudioProcessor::RolandCubeAudioProcessor()
         }
     }
 
-    //const int selectedFileIndex = static_cast<float> (modelParam->load());
-    //if (selectedFileIndex >= 0 && selectedFileIndex < jsonFiles.size() && jsonFiles.empty() == false) { //check if correct 
-    //    if (jsonFiles[selectedFileIndex].existsAsFile() && isValidFormat(jsonFiles[selectedFileIndex])) {
-    //        loadConfig(jsonFiles[selectedFileIndex]);
-    //        current_model_index = selectedFileIndex;
-    //        saved_model = jsonFiles[selectedFileIndex];
-    //    }
-    //}
+  
 
 
     auto bassValue = static_cast<float> (bassParam->load());
@@ -238,37 +238,37 @@ void RolandCubeAudioProcessor::processBlock (AudioBuffer<float>& buffer, MidiBuf
                 buffer.applyGainRamp(0, (int) buffer.getNumSamples(), previousDriveValue * 2.5, driveValue * 2.5);
                 previousDriveValue = driveValue;
             }
-            auto block44k = resampler.processIn(block);
-            for (int ch = 0; ch < buffer.getNumChannels(); ++ch)
-            {
-                // Apply LSTM model
-                if (ch == 0) {
-                    LSTM.process(block44k.getReadPointer(0), block44k.getWritePointer(0), (int)block44k.getNumSamples());
-                }
-                else if (ch == 1) {
-                    LSTM2.process(block44k.getReadPointer(1), block44k.getWritePointer(1), (int)block44k.getNumSamples());
-                }
-            }
-            resampler.processOut(block44k, block);
+            //auto block44k = resampler.processIn(block);
+            //for (int ch = 0; ch < buffer.getNumChannels(); ++ch)
+            //{
+            //    // Apply LSTM model
+            //    if (ch == 0) {
+            //        LSTM.process(block44k.getReadPointer(0), block44k.getWritePointer(0), (int)block44k.getNumSamples());
+            //    }
+            //    else if (ch == 1) {
+            //        LSTM2.process(block44k.getReadPointer(1), block44k.getWritePointer(1), (int)block44k.getNumSamples());
+            //    }
+            //}
+            //resampler.processOut(block44k, block);
         } else {
             buffer.applyGain(1.5); // Apply default boost to help sound
             // resample to target sample rate
             
-            auto block44k = resampler.processIn(block);
-            for (int ch = 0; ch < buffer.getNumChannels(); ++ch)
-            {
-                // Apply LSTM model
-                if (ch == 0) {
-                    LSTM.process(block44k.getReadPointer(0), driveValue, block44k.getWritePointer(0), (int)block44k.getNumSamples());
-                }
-                else if (ch == 1) {
-                    LSTM2.process(block44k.getReadPointer(1), driveValue, block44k.getWritePointer(1), (int)block44k.getNumSamples());
-                }
-            }
-            resampler.processOut(block44k, block);
+            //auto block44k = resampler.processIn(block);
+            //for (int ch = 0; ch < buffer.getNumChannels(); ++ch)
+            //{
+            //    // Apply LSTM model
+            //    if (ch == 0) {
+            //        LSTM.process(block44k.getReadPointer(0), driveValue, block44k.getWritePointer(0), (int)block44k.getNumSamples());
+            //    }
+            //    else if (ch == 1) {
+            //        LSTM2.process(block44k.getReadPointer(1), driveValue, block44k.getWritePointer(1), (int)block44k.getNumSamples());
+            //    }
+            //}
+            //resampler.processOut(block44k, block);
         }
 
-        dcBlocker.process(context);
+        //dcBlocker.process(context);
 
         for (int ch = 0; ch < buffer.getNumChannels(); ++ch)
         {
@@ -362,8 +362,8 @@ void RolandCubeAudioProcessor::setStateInformation (const void* data, int sizeIn
             current_model_index = xmlState->getIntAttribute("current_model_index");
             File temp = xmlState->getStringAttribute("folder");
             //folder = temp;
-            if (auto* editor = dynamic_cast<RolandCubeAudioProcessorEditor*> (getActiveEditor()))
-                editor->resetImages();
+            /*if (auto* editor = dynamic_cast<RolandCubeAudioProcessorEditor*> (getActiveEditor()))
+                editor->resetImages();*/
 
             if (saved_model.existsAsFile()) {
                 loadConfig(saved_model);

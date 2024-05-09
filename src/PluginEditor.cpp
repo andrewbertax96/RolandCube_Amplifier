@@ -89,9 +89,9 @@ RolandCubeAudioProcessorEditor::RolandCubeAudioProcessorEditor (RolandCubeAudioP
 
     // Size of plugin GUI
     setSize(background.getWidth(), background.getHeight());
-    resetImages();
+    //resetImages();
+
     loadJsonFiles();
-    //loadFromFolder();
 }
 
 RolandCubeAudioProcessorEditor::~RolandCubeAudioProcessorEditor()
@@ -164,6 +164,7 @@ void RolandCubeAudioProcessorEditor::resized()
 void RolandCubeAudioProcessorEditor::loadJsonFiles()
 {
     processor.jsonFiles.clear();
+
     File resourcesDirectory = File::getSpecialLocation(File::currentApplicationFile).getChildFile("resources");
 
     // Verifica che la directory "resources" esista
@@ -179,13 +180,31 @@ void RolandCubeAudioProcessorEditor::loadJsonFiles()
     gainStableDirectory.findChildFiles(gainStableFiles, File::findFiles, false, "*.json");
 
     // Aggiungi i file JSON trovati all'array jsonFiles
-    for (const auto& file : gainStableFiles)
-    {
-        processor.jsonFiles.push_back(file);
-        //processor.jsonFiles.add(file);
-        DBG("File: " << file.getFullPathName());
 
+    if (gainStableFiles.size() > 0) {
+        for (auto file : gainStableFiles) {
+            if (isValidFormat(file)) {
+                processor.jsonFiles.push_back(file);
+                DBG("File: " << file.getFullPathName());
+            }
+        }
+
+        // Try to load model from saved_model, if it doesnt exist and jsonFiles is not empty, load the first model (if it exists and is valid format)
+        if (!processor.jsonFiles.empty()) {
+            if (processor.saved_model.existsAsFile() && isValidFormat(processor.saved_model)) {
+                processor.loadConfig(processor.saved_model);
+                //modelSelect.setText(processor.saved_model.getFileNameWithoutExtension(), juce::NotificationType::dontSendNotification);
+            }
+            else {
+                if (processor.jsonFiles[0].existsAsFile() && isValidFormat(processor.jsonFiles[0])) {
+                    processor.loadConfig(processor.jsonFiles[0]);
+                    //modelSelect.setText(processor.jsonFiles[0].getFileNameWithoutExtension(), juce::NotificationType::dontSendNotification);
+                }
+            }
+        }
     }
+
+    
     //if (!typeSelector.getToggleState()) {
 
     //    // Carica i file JSON dalla cartella "gainStable"
@@ -216,19 +235,6 @@ void RolandCubeAudioProcessorEditor::loadJsonFiles()
     //    }
     //}
 
-    // Try to load model from saved_model, if it doesnt exist and jsonFiles is not empty, load the first model (if it exists and is valid format)
-    if (!processor.jsonFiles.empty()) {
-        if (processor.saved_model.existsAsFile() && isValidFormat(processor.saved_model)) {
-            processor.loadConfig(processor.saved_model);
-            //modelSelect.setText(processor.saved_model.getFileNameWithoutExtension(), juce::NotificationType::dontSendNotification);
-        }
-        else {
-            if (processor.jsonFiles[0].existsAsFile() && isValidFormat(processor.jsonFiles[0])) {
-                processor.loadConfig(processor.jsonFiles[0]);
-                //modelSelect.setText(processor.jsonFiles[0].getFileNameWithoutExtension(), juce::NotificationType::dontSendNotification);
-            }
-        }
-    }
 }
 
 bool RolandCubeAudioProcessorEditor::isValidFormat(File configFile)
@@ -275,6 +281,8 @@ void RolandCubeAudioProcessorEditor::sliderValueChanged(Slider* slider)
             processor.saved_model = processor.jsonFiles[selectedFileIndex];
         }
     }
+    repaint();
+
     // Amp
     if (slider == &ampBassKnob || slider == &ampMidKnob || slider == &ampTrebleKnob) {
         processor.set_ampEQ(ampBassKnob.getValue(), ampMidKnob.getValue(), ampTrebleKnob.getValue());
@@ -283,38 +291,38 @@ void RolandCubeAudioProcessorEditor::sliderValueChanged(Slider* slider)
 
 
 
-void RolandCubeAudioProcessorEditor::resetImages()
-{
-    repaint();
-    /*
-    if (processor.fw_state == 0) {
-        odFootSw.setImages(true, true, true,
-            ImageCache::getFromMemory(BinaryData::footswitch_up_png, BinaryData::footswitch_up_pngSize), 1.0, Colours::transparentWhite,
-            Image(), 1.0, Colours::transparentWhite,
-            ImageCache::getFromMemory(BinaryData::footswitch_up_png, BinaryData::footswitch_up_pngSize), 1.0, Colours::transparentWhite,
-            0.0);
-    }
-    else {
-        odFootSw.setImages(true, true, true,
-            ImageCache::getFromMemory(BinaryData::footswitch_down_png, BinaryData::footswitch_down_pngSize), 1.0, Colours::transparentWhite,
-            Image(), 1.0, Colours::transparentWhite,
-            ImageCache::getFromMemory(BinaryData::footswitch_down_png, BinaryData::footswitch_down_pngSize), 1.0, Colours::transparentWhite,
-            0.0);
-    }
-    */
-    // Set On/Off cab graphic
-    /*if (processor.cab_state == 0) {
-        cabOnButton.setImages(true, true, true,
-            ImageCache::getFromMemory(BinaryData::cab_switch_off_png, BinaryData::cab_switch_off_pngSize), 1.0, Colours::transparentWhite,
-            Image(), 1.0, Colours::transparentWhite,
-            ImageCache::getFromMemory(BinaryData::cab_switch_off_png, BinaryData::cab_switch_off_pngSize), 1.0, Colours::transparentWhite,
-            0.0);
-    }
-    else {
-        cabOnButton.setImages(true, true, true,
-            ImageCache::getFromMemory(BinaryData::cab_switch_on_png, BinaryData::cab_switch_on_pngSize), 1.0, Colours::transparentWhite,
-            Image(), 1.0, Colours::transparentWhite,
-            ImageCache::getFromMemory(BinaryData::cab_switch_on_png, BinaryData::cab_switch_on_pngSize), 1.0, Colours::transparentWhite,
-            0.0);
-    }*/
-}
+//void RolandCubeAudioProcessorEditor::resetImages()
+//{
+//    repaint();
+//    /*
+//    if (processor.fw_state == 0) {
+//        odFootSw.setImages(true, true, true,
+//            ImageCache::getFromMemory(BinaryData::footswitch_up_png, BinaryData::footswitch_up_pngSize), 1.0, Colours::transparentWhite,
+//            Image(), 1.0, Colours::transparentWhite,
+//            ImageCache::getFromMemory(BinaryData::footswitch_up_png, BinaryData::footswitch_up_pngSize), 1.0, Colours::transparentWhite,
+//            0.0);
+//    }
+//    else {
+//        odFootSw.setImages(true, true, true,
+//            ImageCache::getFromMemory(BinaryData::footswitch_down_png, BinaryData::footswitch_down_pngSize), 1.0, Colours::transparentWhite,
+//            Image(), 1.0, Colours::transparentWhite,
+//            ImageCache::getFromMemory(BinaryData::footswitch_down_png, BinaryData::footswitch_down_pngSize), 1.0, Colours::transparentWhite,
+//            0.0);
+//    }
+//    */
+//    // Set On/Off cab graphic
+//    /*if (processor.cab_state == 0) {
+//        cabOnButton.setImages(true, true, true,
+//            ImageCache::getFromMemory(BinaryData::cab_switch_off_png, BinaryData::cab_switch_off_pngSize), 1.0, Colours::transparentWhite,
+//            Image(), 1.0, Colours::transparentWhite,
+//            ImageCache::getFromMemory(BinaryData::cab_switch_off_png, BinaryData::cab_switch_off_pngSize), 1.0, Colours::transparentWhite,
+//            0.0);
+//    }
+//    else {
+//        cabOnButton.setImages(true, true, true,
+//            ImageCache::getFromMemory(BinaryData::cab_switch_on_png, BinaryData::cab_switch_on_pngSize), 1.0, Colours::transparentWhite,
+//            Image(), 1.0, Colours::transparentWhite,
+//            ImageCache::getFromMemory(BinaryData::cab_switch_on_png, BinaryData::cab_switch_on_pngSize), 1.0, Colours::transparentWhite,
+//            0.0);
+//    }*/
+//}
