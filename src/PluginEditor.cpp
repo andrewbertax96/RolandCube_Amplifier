@@ -1,9 +1,7 @@
 /*
   ==============================================================================
 
-    This file was auto-generated!
-
-    It contains the basic framework code for a JUCE plugin editor.
+    This file contains the basic framework code for a JUCE plugin editor.
 
   ==============================================================================
 */
@@ -12,8 +10,8 @@
 #include "PluginEditor.h"
 
 //==============================================================================
-RolandCubeAudioProcessorEditor::RolandCubeAudioProcessorEditor (RolandCubeAudioProcessor& p)
-    : AudioProcessorEditor (&p), processor (p)
+RolandCubeAudioProcessorEditor::RolandCubeAudioProcessorEditor(RolandCubeAudioProcessor& p)
+    : AudioProcessorEditor(&p), audioProcessor(p)
 {
     // Make sure that before the constructor has finished, you've set the
     // editor's size to whatever you need it to
@@ -23,7 +21,7 @@ RolandCubeAudioProcessorEditor::RolandCubeAudioProcessorEditor (RolandCubeAudioP
     //EQ
 
     //bassSliderAttach.reset(new AudioProcessorValueTreeState::SliderAttachment(treeState, BASS_ID, ampBassKnob));
-    bassSliderAttach = std::make_unique<AudioProcessorValueTreeState::SliderAttachment>(processor.treeState, BASS_ID, ampBassKnob);
+    bassSliderAttach = std::make_unique<AudioProcessorValueTreeState::SliderAttachment>(audioProcessor.treeState, BASS_ID, ampBassKnob);
 
     addAndMakeVisible(ampBassKnob);
     ampBassKnob.setLookAndFeel(&knobLookAndFeel);
@@ -33,7 +31,7 @@ RolandCubeAudioProcessorEditor::RolandCubeAudioProcessorEditor (RolandCubeAudioP
 
 
     //midSliderAttach.reset(new AudioProcessorValueTreeState::SliderAttachment(treeState, MID_ID, ampMidKnob));
-    midSliderAttach = std::make_unique<AudioProcessorValueTreeState::SliderAttachment>(processor.treeState, MID_ID, ampMidKnob);
+    midSliderAttach = std::make_unique<AudioProcessorValueTreeState::SliderAttachment>(audioProcessor.treeState, MID_ID, ampMidKnob);
 
     addAndMakeVisible(ampMidKnob);
     ampMidKnob.setLookAndFeel(&knobLookAndFeel);
@@ -43,7 +41,7 @@ RolandCubeAudioProcessorEditor::RolandCubeAudioProcessorEditor (RolandCubeAudioP
 
 
     //trebleSliderAttach.reset(new AudioProcessorValueTreeState::SliderAttachment(treeState, TREBLE_ID, ampTrebleKnob));
-    trebleSliderAttach = std::make_unique<AudioProcessorValueTreeState::SliderAttachment>(processor.treeState, TREBLE_ID, ampTrebleKnob);
+    trebleSliderAttach = std::make_unique<AudioProcessorValueTreeState::SliderAttachment>(audioProcessor.treeState, TREBLE_ID, ampTrebleKnob);
 
     addAndMakeVisible(ampTrebleKnob);
     ampTrebleKnob.setLookAndFeel(&knobLookAndFeel);
@@ -54,7 +52,7 @@ RolandCubeAudioProcessorEditor::RolandCubeAudioProcessorEditor (RolandCubeAudioP
     // Overdrive
 
     //modelSelectorSliderAttach.reset(new AudioProcessorValueTreeState::SliderAttachment(treeState, MODEL_ID, modelSelectorKnob));
-    modelSelectorSliderAttach = std::make_unique<AudioProcessorValueTreeState::SliderAttachment>(processor.treeState, MODEL_ID, modelSelectorKnob);
+    modelSelectorSliderAttach = std::make_unique<AudioProcessorValueTreeState::SliderAttachment>(audioProcessor.treeState, MODEL_ID, modelSelectorKnob);
 
     addAndMakeVisible(modelSelectorKnob);
     modelSelectorKnob.setLookAndFeel(&knobLead_LookAndFeel);
@@ -63,7 +61,7 @@ RolandCubeAudioProcessorEditor::RolandCubeAudioProcessorEditor (RolandCubeAudioP
     modelSelectorKnob.setDoubleClickReturnValue(true, 0.0);
 
     //gainSliderAttach.reset(new AudioProcessorValueTreeState::SliderAttachment(treeState, GAIN_ID, gainKnob));
-    gainSliderAttach = std::make_unique<AudioProcessorValueTreeState::SliderAttachment>(processor.treeState, GAIN_ID, gainKnob);
+    gainSliderAttach = std::make_unique<AudioProcessorValueTreeState::SliderAttachment>(audioProcessor.treeState, GAIN_ID, gainKnob);
 
     addAndMakeVisible(gainKnob);
     gainKnob.setLookAndFeel(&knobLookAndFeel);
@@ -72,7 +70,7 @@ RolandCubeAudioProcessorEditor::RolandCubeAudioProcessorEditor (RolandCubeAudioP
     gainKnob.setDoubleClickReturnValue(true, 0.5);
 
     //volumeSliderAttach.reset(new AudioProcessorValueTreeState::SliderAttachment(treeState, MASTER_ID, volumeKnob));
-    volumeSliderAttach = std::make_unique<AudioProcessorValueTreeState::SliderAttachment>(processor.treeState, MASTER_ID, volumeKnob);
+    volumeSliderAttach = std::make_unique<AudioProcessorValueTreeState::SliderAttachment>(audioProcessor.treeState, MASTER_ID, volumeKnob);
 
     addAndMakeVisible(volumeKnob);
     volumeKnob.setLookAndFeel(&knobLookAndFeel);
@@ -80,7 +78,7 @@ RolandCubeAudioProcessorEditor::RolandCubeAudioProcessorEditor (RolandCubeAudioP
     volumeKnob.setTextBoxStyle(juce::Slider::TextEntryBoxPosition::NoTextBox, false, 50, 20);
     volumeKnob.setDoubleClickReturnValue(true, 0.5);
 
-
+    typeButtonAttach = std::make_unique<AudioProcessorValueTreeState::ButtonAttachment>(audioProcessor.treeState, TYPE_ID, typeSelector);
     typeSelector.addMouseListener(this, false);//il false dice che non lo estendo ai figli.
     typeSelector.setColour(ToggleButton::ColourIds::textColourId, Colours::red);
     typeSelector.setColour(ToggleButton::ColourIds::tickColourId, Colours::red);
@@ -91,7 +89,7 @@ RolandCubeAudioProcessorEditor::RolandCubeAudioProcessorEditor (RolandCubeAudioP
     setSize(background.getWidth(), background.getHeight());
     //resetImages();
 
-    loadJsonFiles();
+    //loadJsonFiles();
 }
 
 RolandCubeAudioProcessorEditor::~RolandCubeAudioProcessorEditor()
@@ -106,34 +104,39 @@ RolandCubeAudioProcessorEditor::~RolandCubeAudioProcessorEditor()
 }
 
 //==============================================================================
-void RolandCubeAudioProcessorEditor::paint (Graphics& g)
+void RolandCubeAudioProcessorEditor::paint (juce::Graphics& g)
 {
+    
     // Workaround for graphics on Windows builds (clipping code doesn't work correctly on Windows)
 #if defined(WIN32) || defined(_WIN32) || defined(__WIN32__) || defined(__NT__)
-    g.drawImageAt(background, 0, 0);
-    g.drawImageAt(logo_Eq, 80, 20);
-    g.drawImageAt(lead, background.getWidth() / 2.0 + 53.5, 10);
 
+    
+    g.drawImageAt(background, 0, 0);  
+    g.drawImageAt(logo_Eq, 80, 20);
+    g.drawImageAt(lead, background.getWidth()/2.0 + 53.5, 10);
+    
     g.setColour(Colours::dimgrey);
     Rectangle<float>backgroundRect(0, 0, getWidth(), getHeight());
-    g.drawRoundedRectangle(backgroundRect, 10.0, 4.0);
-
+    g.drawRoundedRectangle(backgroundRect, 10.0, 4.0); 
+    
     g.setColour(Colours::darkgrey);
-    Rectangle<float>eqRect(65, 5, logo_Eq.getWidth() + 30, lead.getHeight() + 6.5);
+    Rectangle<float>eqRect(65, 5, logo_Eq.getWidth()+30, lead.getHeight() + 6.5);
     g.drawRoundedRectangle(eqRect, 15.0, 4.0);
-
-    Rectangle<float>leadRect(background.getWidth() / 2.0 + 46, 5, lead.getWidth() + 15, lead.getHeight() + 7.5);
+    
+    Rectangle<float>leadRect(background.getWidth() / 2.0 + 46, 5, lead.getWidth()+15, lead.getHeight()+7.5);
     g.drawRoundedRectangle(leadRect, 15.0, 4.0);
+
 #else
 // Redraw only the clipped part of the background image
 
     juce::Rectangle<int> ClipRect = g.getClipBounds();
     //if (processor.fw_state == 0) {
     //    g.drawImage(background_off, ClipRect.getX(), ClipRect.getY(), ClipRect.getWidth(), ClipRect.getHeight(), ClipRect.getX(), ClipRect.getY(), ClipRect.getWidth(), ClipRect.getHeight());
-
+    
     g.drawImage(background_on, ClipRect.getX(), ClipRect.getY(), ClipRect.getWidth(), ClipRect.getHeight(), ClipRect.getX(), ClipRect.getY(), ClipRect.getWidth(), ClipRect.getHeight());
     g.drawImage(logo_Eq, ClipRect.getX(), ClipRect.getY(), ClipRect.getWidth(), ClipRect.getHeight(), ClipRect.getX(), ClipRect.getY(), ClipRect.getWidth(), ClipRect.getHeight());
     g.drawImage(lead, ClipRect.getX(), ClipRect.getY(), ClipRect.getWidth(), ClipRect.getHeight(), ClipRect.getX(), ClipRect.getY(), ClipRect.getWidth(), ClipRect.getHeight());
+    
 #endif
 }
 
@@ -142,7 +145,7 @@ void RolandCubeAudioProcessorEditor::resized()
     // This is generally where you'll want to lay out the positions of any
     // subcomponents in your editor..
 
-    //Overall Widgets
+    // Overdrive Widgets
     auto commonValue = 98.5;
     auto knobWidth = commonValue;
     auto knobHeight = commonValue;
@@ -150,7 +153,7 @@ void RolandCubeAudioProcessorEditor::resized()
     auto height = 62;
     auto heightLead = height + 11.5;
 
-    modelSelectorKnob.setBounds(769, heightLead - 5.5, knobWidth + 10, knobHeight + 10);
+    modelSelectorKnob.setBounds(769, heightLead-5.5, knobWidth+10, knobHeight+10);
     gainKnob.setBounds(959, heightLead, knobWidth, knobHeight);
     volumeKnob.setBounds(1073, heightLead, knobWidth, knobHeight);
 
@@ -158,12 +161,12 @@ void RolandCubeAudioProcessorEditor::resized()
     ampMidKnob.setBounds(388, height, knobWidth, knobHeight);
     ampTrebleKnob.setBounds(501, height, knobWidth, knobHeight);
 
-    typeSelector.setBounds(background.getWidth() / 2.0, background.getHeight() - 50, 100, 30);
+    typeSelector.setBounds(background.getWidth()/2.0, background.getHeight()-50,100,30);
 }
-
 void RolandCubeAudioProcessorEditor::loadJsonFiles()
 {
-    processor.jsonFiles.clear();
+
+    audioProcessor.jsonFiles.clear();
 
     File resourcesDirectory = File::getSpecialLocation(File::currentApplicationFile).getChildFile("resources");
 
@@ -184,27 +187,27 @@ void RolandCubeAudioProcessorEditor::loadJsonFiles()
     if (gainStableFiles.size() > 0) {
         for (auto file : gainStableFiles) {
             if (isValidFormat(file)) {
-                processor.jsonFiles.push_back(file);
+                audioProcessor.jsonFiles.push_back(file);
                 DBG("File: " << file.getFullPathName());
             }
         }
 
         // Try to load model from saved_model, if it doesnt exist and jsonFiles is not empty, load the first model (if it exists and is valid format)
-        if (!processor.jsonFiles.empty()) {
-            if (processor.saved_model.existsAsFile() && isValidFormat(processor.saved_model)) {
-                processor.loadConfig(processor.saved_model);
+        if (!audioProcessor.jsonFiles.empty()) {
+            if (audioProcessor.saved_model.existsAsFile() && isValidFormat(audioProcessor.saved_model)) {
+                audioProcessor.loadConfig(audioProcessor.saved_model);
                 //modelSelect.setText(processor.saved_model.getFileNameWithoutExtension(), juce::NotificationType::dontSendNotification);
             }
             else {
-                if (processor.jsonFiles[0].existsAsFile() && isValidFormat(processor.jsonFiles[0])) {
-                    processor.loadConfig(processor.jsonFiles[0]);
+                if (audioProcessor.jsonFiles[0].existsAsFile() && isValidFormat(audioProcessor.jsonFiles[0])) {
+                    audioProcessor.loadConfig(audioProcessor.jsonFiles[0]);
                     //modelSelect.setText(processor.jsonFiles[0].getFileNameWithoutExtension(), juce::NotificationType::dontSendNotification);
                 }
             }
         }
     }
 
-    
+
     //if (!typeSelector.getToggleState()) {
 
     //    // Carica i file JSON dalla cartella "gainStable"
@@ -236,7 +239,6 @@ void RolandCubeAudioProcessorEditor::loadJsonFiles()
     //}
 
 }
-
 bool RolandCubeAudioProcessorEditor::isValidFormat(File configFile)
 {
     // Read in the JSON file
@@ -258,71 +260,15 @@ bool RolandCubeAudioProcessorEditor::isValidFormat(File configFile)
 
         network = network_temp;
         hidden_size_temp = input_size_json;
-    } else {
+    }
+    else {
         return false;
     }
-    
+
     if (hidden_size_temp == 40 && network == "LSTM") {
         return true;
-    } else {
+    }
+    else {
         return false;
     }
 }
-
-
-
-void RolandCubeAudioProcessorEditor::sliderValueChanged(Slider* slider)
-{
-    const int selectedFileIndex = modelSelectorKnob.getValue();
-    if (selectedFileIndex >= 0 && selectedFileIndex < processor.jsonFiles.size() && processor.jsonFiles.empty() == false) { //check if correct 
-        if (processor.jsonFiles[selectedFileIndex].existsAsFile() && isValidFormat(processor.jsonFiles[selectedFileIndex])) {
-            processor.loadConfig(processor.jsonFiles[selectedFileIndex]);
-            processor.current_model_index = selectedFileIndex;
-            processor.saved_model = processor.jsonFiles[selectedFileIndex];
-        }
-    }
-    repaint();
-
-    // Amp
-    if (slider == &ampBassKnob || slider == &ampMidKnob || slider == &ampTrebleKnob) {
-        processor.set_ampEQ(ampBassKnob.getValue(), ampMidKnob.getValue(), ampTrebleKnob.getValue());
-    }
-}
-
-
-
-//void RolandCubeAudioProcessorEditor::resetImages()
-//{
-//    repaint();
-//    /*
-//    if (processor.fw_state == 0) {
-//        odFootSw.setImages(true, true, true,
-//            ImageCache::getFromMemory(BinaryData::footswitch_up_png, BinaryData::footswitch_up_pngSize), 1.0, Colours::transparentWhite,
-//            Image(), 1.0, Colours::transparentWhite,
-//            ImageCache::getFromMemory(BinaryData::footswitch_up_png, BinaryData::footswitch_up_pngSize), 1.0, Colours::transparentWhite,
-//            0.0);
-//    }
-//    else {
-//        odFootSw.setImages(true, true, true,
-//            ImageCache::getFromMemory(BinaryData::footswitch_down_png, BinaryData::footswitch_down_pngSize), 1.0, Colours::transparentWhite,
-//            Image(), 1.0, Colours::transparentWhite,
-//            ImageCache::getFromMemory(BinaryData::footswitch_down_png, BinaryData::footswitch_down_pngSize), 1.0, Colours::transparentWhite,
-//            0.0);
-//    }
-//    */
-//    // Set On/Off cab graphic
-//    /*if (processor.cab_state == 0) {
-//        cabOnButton.setImages(true, true, true,
-//            ImageCache::getFromMemory(BinaryData::cab_switch_off_png, BinaryData::cab_switch_off_pngSize), 1.0, Colours::transparentWhite,
-//            Image(), 1.0, Colours::transparentWhite,
-//            ImageCache::getFromMemory(BinaryData::cab_switch_off_png, BinaryData::cab_switch_off_pngSize), 1.0, Colours::transparentWhite,
-//            0.0);
-//    }
-//    else {
-//        cabOnButton.setImages(true, true, true,
-//            ImageCache::getFromMemory(BinaryData::cab_switch_on_png, BinaryData::cab_switch_on_pngSize), 1.0, Colours::transparentWhite,
-//            Image(), 1.0, Colours::transparentWhite,
-//            ImageCache::getFromMemory(BinaryData::cab_switch_on_png, BinaryData::cab_switch_on_pngSize), 1.0, Colours::transparentWhite,
-//            0.0);
-//    }*/
-//}

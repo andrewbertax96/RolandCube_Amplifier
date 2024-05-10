@@ -48,7 +48,6 @@ void RT_LSTM::set_weights(T1 model, const char* filename)
     dense.setBias(dense_bias.data());
    
 }
-
 void RT_LSTM::load_json(const char* filename)
 {
     // Read in the JSON file
