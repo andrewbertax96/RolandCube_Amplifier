@@ -40,7 +40,19 @@ RolandCubeAudioProcessor::RolandCubeAudioProcessor()
    treeState.addParameterListener(TREBLE_ID, this);
    treeState.addParameterListener(MODEL_ID, this);
    treeState.addParameterListener(TYPE_ID, this);
-;   
+
+   //MemoryInputStream jsonStream(BinaryData::acousticModelGainStable_json, BinaryData::acousticModelGainStable_jsonSize, false);
+   //auto jsonInput = nlohmann::json::parse(jsonStream.readEntireStreamAsString().toStdString());
+   //std::string filenameStr = jsonInput;
+
+   //      //Converte la stringa C++ in un oggetto File
+   //File saved_model = File(filenameStr);
+   //auto jsonInput = nlohmann::json::parse(jsonStream.readEntireStreamAsString().toStdString());
+   //neuralNet[0] = RTNeural::json_parser::parseJson<float>(jsonInput);
+   //neuralNet[1] = RTNeural::json_parser::parseJson<float>(jsonInput);
+
+   loadConfig(saved_model);
+
    cabSimIRa.load(BinaryData::default_ir_wav, BinaryData::default_ir_wavSize);
    pauseVolume = 3;
 }
@@ -135,6 +147,17 @@ void RolandCubeAudioProcessor::parameterChanged(const String& parameterID, float
         trebleParam = newValue;
     }
 
+    
+
+    //const int selectedFileIndex = modelParam.get();
+    //if (selectedFileIndex >= 0 && selectedFileIndex < jsonFiles.size() && jsonFiles.empty() == false) { //check if correct 
+    //    if (jsonFiles[selectedFileIndex].existsAsFile() && isValidFormat(jsonFiles[selectedFileIndex])) {
+    //        loadConfig(jsonFiles[selectedFileIndex]);
+    //        current_model_index = selectedFileIndex;
+    //        saved_model = jsonFiles[selectedFileIndex];
+    //    }
+    //}
+
     set_ampEQ(bassParam.get(), midParam.get(), trebleParam.get());
 }
 //==============================================================================
@@ -210,7 +233,7 @@ void RolandCubeAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, j
         buffer.clear (i, 0, buffer.getNumSamples());
     
     //Apply Model & EQ
-    //applyLSTM(buffer, block, buffer.getNumChannels(), LSTM, LSTM2, conditioned, gainValue, previousGainValue, resampler);
+    applyLSTM(buffer, block, buffer.getNumChannels(), LSTM, LSTM2, conditioned, gainValue, previousGainValue, resampler);
     dcBlocker.process(context);
     applyEQ(buffer, equalizer1, equalizer2, midiMessages, totalNumInputChannels, getSampleRate());
 
@@ -239,24 +262,24 @@ void RolandCubeAudioProcessor::getStateInformation (juce::MemoryBlock& destData)
     // You should use this method to store your parameters in the memory block.
     // You could do that either as raw data, or use the XML or ValueTree classes
     // as intermediaries to make it easy to save and load complex data.
-    //MemoryOutputStream stream(destData, false);
-    //treeState.state.writeToStream(stream);
-    auto state = treeState.copyState();
+    MemoryOutputStream stream(destData, false);
+    treeState.state.writeToStream(stream);
+   /* auto state = treeState.copyState();
     std::unique_ptr<XmlElement> xml (state.createXml());
     xml->setAttribute("saved_model", saved_model.getFullPathName().toStdString());
     xml->setAttribute("current_model_index", current_model_index);
-    copyXmlToBinary (*xml, destData);
+    copyXmlToBinary (*xml, destData);*/
 }
 
 void RolandCubeAudioProcessor::setStateInformation (const void* data, int sizeInBytes)
 {
     // You should use this method to restore your parameters from this memory block,
     // whose contents will have been created by the getStateInformation() call.
-    //ValueTree tree = ValueTree::readFromData(data, sizeInBytes);
-    //if (tree.isValid()) {
-    //    treeState.state = tree;
-    //}
-    std::unique_ptr<juce::XmlElement> xmlState (getXmlFromBinary (data, sizeInBytes));
+    ValueTree tree = ValueTree::readFromData(data, sizeInBytes);
+    if (tree.isValid()) {
+        treeState.state = tree;
+    }
+    /*std::unique_ptr<juce::XmlElement> xmlState (getXmlFromBinary (data, sizeInBytes));
 
     if (xmlState.get() != nullptr)
     {
@@ -267,13 +290,12 @@ void RolandCubeAudioProcessor::setStateInformation (const void* data, int sizeIn
             saved_model = temp_saved_model;
 
             current_model_index = xmlState->getIntAttribute("current_model_index");
-            //File temp = xmlState->getStringAttribute("folder");
             if (saved_model.existsAsFile()) {
                 loadConfig(saved_model);
             }          
 
         }
-    }
+    }*/
 }
 
 void RolandCubeAudioProcessor::loadConfig(File configFile)
@@ -316,7 +338,6 @@ void RolandCubeAudioProcessor::applyLSTM(AudioBuffer<float>& buffer, dsp::AudioB
         auto block44k = resampler.processIn(block);
         LSTMtoChannels(block44k, buffer, totalNumInputChannels, LSTM, LSTM2, conditioned, gainParam);
         resampler.processOut(block44k, buffer);
-        //LSTMtoChannels(block, buffer, totalNumInputChannels, LSTM, LSTM2, conditioned, gainParam);
     }
     else
     {
@@ -324,7 +345,6 @@ void RolandCubeAudioProcessor::applyLSTM(AudioBuffer<float>& buffer, dsp::AudioB
         auto block44k = resampler.processIn(block);
         LSTMtoChannels(block44k, buffer, totalNumInputChannels, LSTM, LSTM2, conditioned, gainParam);
         resampler.processOut(block44k, buffer);
-        //LSTMtoChannels(block, buffer, totalNumInputChannels, LSTM, LSTM2, conditioned, gainParam);
     }
 }
 

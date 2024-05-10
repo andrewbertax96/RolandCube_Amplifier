@@ -20,9 +20,7 @@ RolandCubeAudioProcessorEditor::RolandCubeAudioProcessorEditor(RolandCubeAudioPr
 
     //EQ
 
-    //bassSliderAttach.reset(new AudioProcessorValueTreeState::SliderAttachment(treeState, BASS_ID, ampBassKnob));
     bassSliderAttach = std::make_unique<AudioProcessorValueTreeState::SliderAttachment>(audioProcessor.treeState, BASS_ID, ampBassKnob);
-
     addAndMakeVisible(ampBassKnob);
     ampBassKnob.setLookAndFeel(&knobLookAndFeel);
     ampBassKnob.setSliderStyle(juce::Slider::SliderStyle::RotaryVerticalDrag);
@@ -30,9 +28,7 @@ RolandCubeAudioProcessorEditor::RolandCubeAudioProcessorEditor(RolandCubeAudioPr
     ampBassKnob.setDoubleClickReturnValue(true, 0.0);
 
 
-    //midSliderAttach.reset(new AudioProcessorValueTreeState::SliderAttachment(treeState, MID_ID, ampMidKnob));
     midSliderAttach = std::make_unique<AudioProcessorValueTreeState::SliderAttachment>(audioProcessor.treeState, MID_ID, ampMidKnob);
-
     addAndMakeVisible(ampMidKnob);
     ampMidKnob.setLookAndFeel(&knobLookAndFeel);
     ampMidKnob.setSliderStyle(juce::Slider::SliderStyle::RotaryVerticalDrag);
@@ -40,9 +36,7 @@ RolandCubeAudioProcessorEditor::RolandCubeAudioProcessorEditor(RolandCubeAudioPr
     ampMidKnob.setDoubleClickReturnValue(true, 0.0);
 
 
-    //trebleSliderAttach.reset(new AudioProcessorValueTreeState::SliderAttachment(treeState, TREBLE_ID, ampTrebleKnob));
     trebleSliderAttach = std::make_unique<AudioProcessorValueTreeState::SliderAttachment>(audioProcessor.treeState, TREBLE_ID, ampTrebleKnob);
-
     addAndMakeVisible(ampTrebleKnob);
     ampTrebleKnob.setLookAndFeel(&knobLookAndFeel);
     ampTrebleKnob.setSliderStyle(juce::Slider::SliderStyle::RotaryVerticalDrag);
@@ -51,27 +45,21 @@ RolandCubeAudioProcessorEditor::RolandCubeAudioProcessorEditor(RolandCubeAudioPr
 
     // Overdrive
 
-    //modelSelectorSliderAttach.reset(new AudioProcessorValueTreeState::SliderAttachment(treeState, MODEL_ID, modelSelectorKnob));
     modelSelectorSliderAttach = std::make_unique<AudioProcessorValueTreeState::SliderAttachment>(audioProcessor.treeState, MODEL_ID, modelSelectorKnob);
-
     addAndMakeVisible(modelSelectorKnob);
     modelSelectorKnob.setLookAndFeel(&knobLead_LookAndFeel);
     modelSelectorKnob.setSliderStyle(juce::Slider::SliderStyle::RotaryVerticalDrag);
     modelSelectorKnob.setTextBoxStyle(juce::Slider::TextEntryBoxPosition::NoTextBox, false, 50, 20);
     modelSelectorKnob.setDoubleClickReturnValue(true, 0.0);
 
-    //gainSliderAttach.reset(new AudioProcessorValueTreeState::SliderAttachment(treeState, GAIN_ID, gainKnob));
     gainSliderAttach = std::make_unique<AudioProcessorValueTreeState::SliderAttachment>(audioProcessor.treeState, GAIN_ID, gainKnob);
-
     addAndMakeVisible(gainKnob);
     gainKnob.setLookAndFeel(&knobLookAndFeel);
     gainKnob.setSliderStyle(juce::Slider::SliderStyle::RotaryVerticalDrag);
     gainKnob.setTextBoxStyle(juce::Slider::TextEntryBoxPosition::NoTextBox, false, 50, 20);
     gainKnob.setDoubleClickReturnValue(true, 0.5);
 
-    //volumeSliderAttach.reset(new AudioProcessorValueTreeState::SliderAttachment(treeState, MASTER_ID, volumeKnob));
     volumeSliderAttach = std::make_unique<AudioProcessorValueTreeState::SliderAttachment>(audioProcessor.treeState, MASTER_ID, volumeKnob);
-
     addAndMakeVisible(volumeKnob);
     volumeKnob.setLookAndFeel(&knobLookAndFeel);
     volumeKnob.setSliderStyle(juce::Slider::SliderStyle::RotaryVerticalDrag);
@@ -87,9 +75,8 @@ RolandCubeAudioProcessorEditor::RolandCubeAudioProcessorEditor(RolandCubeAudioPr
 
     // Size of plugin GUI
     setSize(background.getWidth(), background.getHeight());
-    //resetImages();
-
     //loadJsonFiles();
+    loadJson();
 }
 
 RolandCubeAudioProcessorEditor::~RolandCubeAudioProcessorEditor()
@@ -165,7 +152,6 @@ void RolandCubeAudioProcessorEditor::resized()
 }
 void RolandCubeAudioProcessorEditor::loadJsonFiles()
 {
-
     audioProcessor.jsonFiles.clear();
 
     File resourcesDirectory = File::getSpecialLocation(File::currentApplicationFile).getChildFile("resources");
@@ -192,19 +178,17 @@ void RolandCubeAudioProcessorEditor::loadJsonFiles()
             }
         }
 
-        // Try to load model from saved_model, if it doesnt exist and jsonFiles is not empty, load the first model (if it exists and is valid format)
-        if (!audioProcessor.jsonFiles.empty()) {
-            if (audioProcessor.saved_model.existsAsFile() && isValidFormat(audioProcessor.saved_model)) {
-                audioProcessor.loadConfig(audioProcessor.saved_model);
-                //modelSelect.setText(processor.saved_model.getFileNameWithoutExtension(), juce::NotificationType::dontSendNotification);
-            }
-            else {
-                if (audioProcessor.jsonFiles[0].existsAsFile() && isValidFormat(audioProcessor.jsonFiles[0])) {
-                    audioProcessor.loadConfig(audioProcessor.jsonFiles[0]);
-                    //modelSelect.setText(processor.jsonFiles[0].getFileNameWithoutExtension(), juce::NotificationType::dontSendNotification);
-                }
-            }
-        }
+        //// Try to load model from saved_model, if it doesnt exist and jsonFiles is not empty, load the first model (if it exists and is valid format)
+        //if (!audioProcessor.jsonFiles.empty()) {
+        //    if (audioProcessor.saved_model.existsAsFile() && isValidFormat(audioProcessor.saved_model)) {
+        //        audioProcessor.loadConfig(audioProcessor.saved_model);
+        //    }
+        //    else {
+        //        if (audioProcessor.jsonFiles[0].existsAsFile() && isValidFormat(audioProcessor.jsonFiles[0])) {
+        //            audioProcessor.loadConfig(audioProcessor.jsonFiles[0]);
+        //        }
+        //    }
+        //}
     }
 
 
@@ -239,6 +223,22 @@ void RolandCubeAudioProcessorEditor::loadJsonFiles()
     //}
 
 }
+
+void RolandCubeAudioProcessorEditor::loadJson()
+{
+    //saved_model = File();
+
+    // Ottiene il percorso del file JSON
+    File resourcesDirectory = File::getSpecialLocation(File::currentApplicationFile).getChildFile("resources");
+    File jsonFile = resourcesDirectory.getChildFile("acousticGainStable.json");
+
+    // Imposta il valore di saved_model
+    audioProcessor.saved_model = jsonFile;
+
+    // Carica il modello utilizzando la funzione loadConfig()
+    //audioProcessor.loadConfig(audioProcessor.saved_model);
+}
+
 bool RolandCubeAudioProcessorEditor::isValidFormat(File configFile)
 {
     // Read in the JSON file
