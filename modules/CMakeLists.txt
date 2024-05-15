@@ -28,7 +28,8 @@ target_link_libraries(juce_plugin_modules
 	nlohmann_json::nlohmann_json
 	RTNeural
 	samplerate
-	chowdsp_dsp_utils
+	chowdsp_dsp
+	#chowdsp_dsp_utils
     PUBLIC
         juce::juce_recommended_config_flags
         juce::juce_recommended_lto_flags
