@@ -51,7 +51,7 @@ RolandCubeAudioProcessor::RolandCubeAudioProcessor()
    //neuralNet[0] = RTNeural::json_parser::parseJson<float>(jsonInput);
    //neuralNet[1] = RTNeural::json_parser::parseJson<float>(jsonInput);
 
-   loadConfig(saved_model);
+   //loadConfig(saved_model);
 
    cabSimIRa.load(BinaryData::default_ir_wav, BinaryData::default_ir_wavSize);
    pauseVolume = 3;
@@ -262,24 +262,24 @@ void RolandCubeAudioProcessor::getStateInformation (juce::MemoryBlock& destData)
     // You should use this method to store your parameters in the memory block.
     // You could do that either as raw data, or use the XML or ValueTree classes
     // as intermediaries to make it easy to save and load complex data.
-    MemoryOutputStream stream(destData, false);
-    treeState.state.writeToStream(stream);
-   /* auto state = treeState.copyState();
+    //MemoryOutputStream stream(destData, false);
+    //treeState.state.writeToStream(stream);
+    auto state = treeState.copyState();
     std::unique_ptr<XmlElement> xml (state.createXml());
     xml->setAttribute("saved_model", saved_model.getFullPathName().toStdString());
     xml->setAttribute("current_model_index", current_model_index);
-    copyXmlToBinary (*xml, destData);*/
+    copyXmlToBinary (*xml, destData);
 }
 
 void RolandCubeAudioProcessor::setStateInformation (const void* data, int sizeInBytes)
 {
     // You should use this method to restore your parameters from this memory block,
     // whose contents will have been created by the getStateInformation() call.
-    ValueTree tree = ValueTree::readFromData(data, sizeInBytes);
+    /*ValueTree tree = ValueTree::readFromData(data, sizeInBytes);
     if (tree.isValid()) {
         treeState.state = tree;
-    }
-    /*std::unique_ptr<juce::XmlElement> xmlState (getXmlFromBinary (data, sizeInBytes));
+    }*/
+    std::unique_ptr<juce::XmlElement> xmlState (getXmlFromBinary (data, sizeInBytes));
 
     if (xmlState.get() != nullptr)
     {
@@ -295,7 +295,7 @@ void RolandCubeAudioProcessor::setStateInformation (const void* data, int sizeIn
             }          
 
         }
-    }*/
+    }
 }
 
 void RolandCubeAudioProcessor::loadConfig(File configFile)
@@ -343,7 +343,7 @@ void RolandCubeAudioProcessor::applyLSTM(AudioBuffer<float>& buffer, dsp::AudioB
     {
         buffer.applyGain(1.5); // Apply default boost to help sound
         auto block44k = resampler.processIn(block);
-        LSTMtoChannels(block44k, buffer, totalNumInputChannels, LSTM, LSTM2, conditioned, gainParam);
+        //LSTMtoChannels(block44k, buffer, totalNumInputChannels, LSTM, LSTM2, conditioned, gainParam);
         resampler.processOut(block44k, buffer);
     }
 }
