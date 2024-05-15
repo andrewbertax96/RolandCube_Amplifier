@@ -322,6 +322,7 @@ void RolandCubeAudioProcessor::loadConfig(File configFile)
 
 void RolandCubeAudioProcessor::applyLSTM(AudioBuffer<float>& buffer, dsp::AudioBlock<float>& block, int totalNumInputChannels, RT_LSTM& LSTM, RT_LSTM& LSTM2, bool conditioned, const float gainParam, float& previousGainValue, chowdsp::ResampledProcess<chowdsp::ResamplingTypes::SRCResampler<>>& resampler)
 {
+    auto block44k = resampler.processIn(block);
     if (conditioned == false)
     {
         // Apply ramped changes for gain smoothing
@@ -335,38 +336,40 @@ void RolandCubeAudioProcessor::applyLSTM(AudioBuffer<float>& buffer, dsp::AudioB
             previousGainValue = gainParam;
         }
         
-        auto block44k = resampler.processIn(block);
+        //auto block44k = resampler.processIn(block);
         LSTMtoChannels(block44k, buffer, totalNumInputChannels, LSTM, LSTM2, conditioned, gainParam);
-        resampler.processOut(block44k, buffer);
+        //resampler.processOut(block44k, block);
     }
     else
     {
         buffer.applyGain(1.5); // Apply default boost to help sound
-        auto block44k = resampler.processIn(block);
-        //LSTMtoChannels(block44k, buffer, totalNumInputChannels, LSTM, LSTM2, conditioned, gainParam);
-        resampler.processOut(block44k, buffer);
+        //auto block44k = resampler.processIn(block);
+        LSTMtoChannels(block44k, buffer, totalNumInputChannels, LSTM, LSTM2, conditioned, gainParam);
+        //resampler.processOut(block44k, block);
     }
+    resampler.processOut(block44k, block);
 }
 
-void RolandCubeAudioProcessor::LSTMtoChannels(chowdsp::BufferView<float>& block, AudioBuffer<float>& buffer, int totalNumChannels, RT_LSTM& LSTM, RT_LSTM& LSTM2, bool conditioned, float gainValue)
+void RolandCubeAudioProcessor::LSTMtoChannels(juce::dsp::AudioBlock<float>& block, AudioBuffer<float>& buffer, int totalNumChannels, RT_LSTM& LSTM, RT_LSTM& LSTM2, bool conditioned, float gainValue)
 {
-    const float* bufferReader_R = buffer.getReadPointer(0);
-    const float* bufferReader_L = buffer.getReadPointer(1);
-
-    float* bufferWriter_R = buffer.getWritePointer(0);
-    float* bufferWriter_L = buffer.getWritePointer(1);
+    //LSTM.process(block44k.getChannelPointer(0), block44k.getChannelPointer(0), (int)block44k.getNumSamples());
+    //block44k.getChannelPointer(0)
+   
 
     auto block44k = resampler.processIn(block);
 
+    auto block44k_ChannelPointer_0 = block44k.getChannelPointer(0);
+    auto block44k_ChannelPointer_1 = block44k.getChannelPointer(1);
+
     if (conditioned == false) {
 
-        LSTM.process(bufferReader_R, bufferWriter_R, block.getNumSamples());
-        LSTM2.process(bufferReader_L, bufferWriter_L, block.getNumSamples());
+        LSTM.process(block44k_ChannelPointer_0, block44k_ChannelPointer_0, block.getNumSamples());
+        LSTM2.process(block44k_ChannelPointer_1, block44k_ChannelPointer_1, block.getNumSamples());
     }
     else {
 
-        LSTM.process(bufferReader_R, gainValue, bufferWriter_R, block.getNumSamples());
-        LSTM2.process(bufferReader_L, gainValue, bufferWriter_L, block.getNumSamples());
+        LSTM.process(block44k_ChannelPointer_0, gainValue, block44k_ChannelPointer_0, block.getNumSamples());
+        LSTM2.process(block44k_ChannelPointer_1, gainValue, block44k_ChannelPointer_1, block.getNumSamples());
     }
 }
 
