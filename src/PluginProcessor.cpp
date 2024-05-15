@@ -233,7 +233,8 @@ void RolandCubeAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, j
         buffer.clear (i, 0, buffer.getNumSamples());
     
     //Apply Model & EQ
-    applyLSTM(buffer, block, buffer.getNumChannels(), LSTM, LSTM2, conditioned, gainValue, previousGainValue, resampler);
+    applyLSTM(buffer, block, LSTM, LSTM2, conditioned, gainValue, previousGainValue, resampler);
+    
     dcBlocker.process(context);
     applyEQ(buffer, equalizer1, equalizer2, midiMessages, totalNumInputChannels, getSampleRate());
 
@@ -262,8 +263,8 @@ void RolandCubeAudioProcessor::getStateInformation (juce::MemoryBlock& destData)
     // You should use this method to store your parameters in the memory block.
     // You could do that either as raw data, or use the XML or ValueTree classes
     // as intermediaries to make it easy to save and load complex data.
-    //MemoryOutputStream stream(destData, false);
-    //treeState.state.writeToStream(stream);
+    /*MemoryOutputStream stream(destData, false);
+    treeState.state.writeToStream(stream);*/
     auto state = treeState.copyState();
     std::unique_ptr<XmlElement> xml (state.createXml());
     xml->setAttribute("saved_model", saved_model.getFullPathName().toStdString());
@@ -320,9 +321,9 @@ void RolandCubeAudioProcessor::loadConfig(File configFile)
     this->suspendProcessing(false);
 }
 
-void RolandCubeAudioProcessor::applyLSTM(AudioBuffer<float>& buffer, dsp::AudioBlock<float>& block, int totalNumInputChannels, RT_LSTM& LSTM, RT_LSTM& LSTM2, bool conditioned, const float gainParam, float& previousGainValue, chowdsp::ResampledProcess<chowdsp::ResamplingTypes::SRCResampler<>>& resampler)
+void RolandCubeAudioProcessor::applyLSTM(AudioBuffer<float>& buffer, dsp::AudioBlock<float>& block, RT_LSTM& LSTM, RT_LSTM& LSTM2, bool conditioned, const float gainParam, float& previousGainValue, chowdsp::ResampledProcess<chowdsp::ResamplingTypes::SRCResampler<>>& resampler)
 {
-    auto block44k = resampler.processIn(block);
+    //auto block44k = resampler.processIn(block);
     if (conditioned == false)
     {
         // Apply ramped changes for gain smoothing
@@ -336,30 +337,30 @@ void RolandCubeAudioProcessor::applyLSTM(AudioBuffer<float>& buffer, dsp::AudioB
             previousGainValue = gainParam;
         }
         
-        //auto block44k = resampler.processIn(block);
-        LSTMtoChannels(block44k, buffer, totalNumInputChannels, LSTM, LSTM2, conditioned, gainParam);
-        //resampler.processOut(block44k, block);
+        auto block44k = resampler.processIn(block);
+        LSTMtoChannels(block44k, LSTM, LSTM2, conditioned, gainParam);
+        resampler.processOut(block44k, block);
     }
     else
     {
         buffer.applyGain(1.5); // Apply default boost to help sound
-        //auto block44k = resampler.processIn(block);
-        LSTMtoChannels(block44k, buffer, totalNumInputChannels, LSTM, LSTM2, conditioned, gainParam);
-        //resampler.processOut(block44k, block);
+        auto block44k = resampler.processIn(block);
+        LSTMtoChannels(block44k, LSTM, LSTM2, conditioned, gainParam);
+        resampler.processOut(block44k, block);
     }
-    resampler.processOut(block44k, block);
+    //resampler.processOut(block44k, block);
 }
 
-void RolandCubeAudioProcessor::LSTMtoChannels(juce::dsp::AudioBlock<float>& block, AudioBuffer<float>& buffer, int totalNumChannels, RT_LSTM& LSTM, RT_LSTM& LSTM2, bool conditioned, float gainValue)
+void RolandCubeAudioProcessor::LSTMtoChannels(juce::dsp::AudioBlock<float>& block, RT_LSTM& LSTM, RT_LSTM& LSTM2, bool conditioned, float gainValue)
 {
     //LSTM.process(block44k.getChannelPointer(0), block44k.getChannelPointer(0), (int)block44k.getNumSamples());
     //block44k.getChannelPointer(0)
    
 
-    auto block44k = resampler.processIn(block);
+    //auto block44k = resampler.processIn(block);
 
-    auto block44k_ChannelPointer_0 = block44k.getChannelPointer(0);
-    auto block44k_ChannelPointer_1 = block44k.getChannelPointer(1);
+    auto block44k_ChannelPointer_0 = block.getChannelPointer(0);
+    auto block44k_ChannelPointer_1 = block.getChannelPointer(1);
 
     if (conditioned == false) {
 

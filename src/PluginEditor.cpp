@@ -71,7 +71,7 @@ RolandCubeAudioProcessorEditor::RolandCubeAudioProcessorEditor(RolandCubeAudioPr
     typeSelector.setColour(ToggleButton::ColourIds::textColourId, Colours::red);
     typeSelector.setColour(ToggleButton::ColourIds::tickColourId, Colours::red);
     typeSelector.setColour(ToggleButton::ColourIds::tickDisabledColourId, Colours::red);
-    //addAndMakeVisible(typeSelector);
+    addAndMakeVisible(typeSelector);
 
     // Size of plugin GUI
     setSize(background.getWidth(), background.getHeight());
@@ -226,17 +226,47 @@ void RolandCubeAudioProcessorEditor::loadJsonFiles()
 
 void RolandCubeAudioProcessorEditor::loadJson()
 {
-    //saved_model = File();
+    // Costruisci il percorso completo del file JSON
+    File jsonFile("C:/Users/andre/Desktop/RolandCube_Amplifier/resources/jSonModels/gainStable/classicModelGainStable.json");
 
-    // Ottiene il percorso del file JSON
-    File resourcesDirectory = File::getSpecialLocation(File::currentApplicationFile).getChildFile("resources");
-    File jsonFile = resourcesDirectory.getChildFile("acousticGainStable.json");
+    // Controlla se il file JSON esiste
+    if (jsonFile.existsAsFile())
+    {
+        // Legge il contenuto del file JSON
+        String jsonContent = jsonFile.loadFileAsString();
 
-    // Imposta il valore di saved_model
+        // Stampa il contenuto del file JSON a scopo di debug
+        DBG("Contenuto del file JSON: " + jsonContent);
+
+        // Ora puoi fare qualsiasi cosa con il contenuto del file JSON, ad esempio passarlo al processore audio
+    }
+    else
+    {
+        DBG("Errore: il file JSON non esiste: " + jsonFile.getFullPathName());
+    }
+    //File resourcesDirectory = File::getSpecialLocation(File::currentApplicationFile)
+    //    .getChildFile("resources")
+    //    .getChildFile("jSonModels")
+    //    .getChildFile("gainStable");
+    //File jsonFile = resourcesDirectory.getChildFile("classicModelGainStable.json");
+
+    //// Controlla se il file JSON esiste
+    //if (jsonFile.existsAsFile())
+    //{
+    //    // Legge il contenuto del file JSON
+    //    String jsonContent = jsonFile.loadFileAsString();
+
+    //    // Stampa il contenuto del file JSON a scopo di debug
+    //    DBG("Contenuto del file JSON: " + jsonContent);
+
+    //    // Ora puoi fare qualsiasi cosa con il contenuto del file JSON, ad esempio passarlo al processore audio
+    //}
+    //else
+    //{
+    //    DBG("Errore: il file JSON non esiste: " + jsonFile.getFullPathName());
+    //}
     audioProcessor.saved_model = jsonFile;
-
-    // Carica il modello utilizzando la funzione loadConfig()
-    //audioProcessor.loadConfig(audioProcessor.saved_model);
+    audioProcessor.loadConfig(audioProcessor.saved_model);
 }
 
 bool RolandCubeAudioProcessorEditor::isValidFormat(File configFile)
