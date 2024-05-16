@@ -29,7 +29,6 @@ target_link_libraries(juce_plugin_modules
 	RTNeural
 	samplerate
 	chowdsp_dsp
-	#chowdsp_dsp_utils
     PUBLIC
         juce::juce_recommended_config_flags
         juce::juce_recommended_lto_flags

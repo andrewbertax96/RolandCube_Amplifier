@@ -35,6 +35,7 @@ public:
     void loadButtonClicked();
 
     void loadFromFolder();
+    void resetImages();
 
     //void buttonClicked(juce::Button* button);
     

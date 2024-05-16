@@ -28,9 +28,8 @@ RolandCubeAudioProcessor::RolandCubeAudioProcessor()
                                             std::make_unique<AudioParameterFloat>(TREBLE_ID, TREBLE_NAME, NormalisableRange<float>(-8.0f, 8.0f, 0.01f), 0.0f),
                                             std::make_unique<AudioParameterFloat>(MASTER_ID, MASTER_NAME, NormalisableRange<float>(0.0f, 1.0f, 0.01f), 0.5),
                                             std::make_unique<AudioParameterFloat>(MODEL_ID, MODEL_NAME, NormalisableRange<float>(0.0f, 8.0f, 1.0f), 0.0),
-                                            std::make_unique<AudioParameterBool>(TYPE_ID, TYPE_NAME, typeParam.get()),
-                                        }
-    )
+                                            std::make_unique<AudioParameterBool>(TYPE_ID, TYPE_NAME, typeParam.get() )
+                                        })
 #endif
 {
     driveParam = treeState.getRawParameterValue(GAIN_ID);
@@ -239,8 +238,8 @@ void RolandCubeAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, j
 {
     juce::ScopedNoDenormals noDenormals;
 
-    auto totalNumInputChannels  = getTotalNumInputChannels();
-    auto totalNumOutputChannels = getTotalNumOutputChannels();
+    /*auto totalNumInputChannels  = getTotalNumInputChannels();
+    auto totalNumOutputChannels = getTotalNumOutputChannels();*/
 
     auto driveValue = static_cast<float> (driveParam->load());
     auto masterValue = static_cast<float> (masterParam->load());
@@ -440,8 +439,8 @@ void RolandCubeAudioProcessor::setStateInformation (const void* data, int sizeIn
             current_model_index = xmlState->getIntAttribute("current_model_index");
             File temp = xmlState->getStringAttribute("folder");
             folder = temp;
-            //if (auto* editor = dynamic_cast<ProteusAudioProcessorEditor*> (getActiveEditor()))
-                //editor->resetImages();
+            if (auto* editor = dynamic_cast<RolandCubeAudioProcessorEditor*> (getActiveEditor()))
+                editor->resetImages();
 
             if (saved_model.existsAsFile()) {
                 loadConfig(saved_model);

@@ -437,6 +437,11 @@ void RolandCubeAudioProcessorEditor::loadFromFolder()
     }
 }
 
+void RolandCubeAudioProcessorEditor::resetImages()
+{
+    repaint();
+}
+
 
 void RolandCubeAudioProcessorEditor::buttonClicked(juce::Button* button)
 {

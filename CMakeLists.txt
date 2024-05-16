@@ -13,14 +13,16 @@ set(JUCE_FORMATS AU VST3 Standalone)
 
 juce_add_plugin(RolandCube
     COMPANY_NAME Roland                          
-    COPY_PLUGIN_AFTER_BUILD TRUE       
     PLUGIN_MANUFACTURER_CODE Brtx               
     PLUGIN_CODE RoCu                            
-    FORMATS ${JUCE_FORMATS}                                            
-    FORMATS AU VST3 Standalone  
+    FORMATS ${JUCE_FORMATS}  
+    ProductName "RolandCube"
+
     VST3_CATEGORIES Fx Distortion
+
     MICROPHONE_PERMISSION_ENABLED TRUE            
-    PRODUCT_NAME "RolandCube")
+    
+)
 
 # create JUCE header
 juce_generate_juce_header(RolandCube)

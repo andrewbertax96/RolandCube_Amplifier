@@ -10,7 +10,7 @@ public:
     void reset();
     void load_json(const char* filename);
     template <typename T1>
-    
+
     void set_weights(T1 model, const char* filename);
 
     void process(const float* inData, float* outData, int numSamples);
@@ -21,7 +21,7 @@ public:
     float previousParam1 = 0.0;
     float steppedValue1 = 0.0;
     bool changedParam1 = false;
-    
+
 private:
     RTNeural::ModelT<float, 1, 1,
         RTNeural::LSTMLayerT<float, 1, 40>,
@@ -34,7 +34,7 @@ private:
     RTNeural::ModelT<float, 3, 1,
         RTNeural::LSTMLayerT<float, 3, 40>,
         RTNeural::DenseT<float, 40, 1>> model_cond2;
-    
+
     // Pre-Allowcate arrays for feeding the models
     float inArray1[2] = { 0.0, 0.0 };
     float inArray2[3] = { 0.0, 0.0, 0.0 };
