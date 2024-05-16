@@ -10,11 +10,14 @@
 
 #include <JuceHeader.h>
 #include "PluginProcessor.h"
+#include "myLookAndFeel.h"
 
 //==============================================================================
 /**
 */
-class RolandCubeAudioProcessorEditor  : public juce::AudioProcessorEditor
+class RolandCubeAudioProcessorEditor  : public juce::AudioProcessorEditor,
+                                        private Button::Listener,
+                                        private Slider::Listener
 {
 public:
     RolandCubeAudioProcessorEditor (RolandCubeAudioProcessor&);
@@ -22,16 +25,34 @@ public:
     
     //==============================================================================
     void paint (juce::Graphics&) override;
-    void resized() override; 
+    void resized() override;
+    std::unique_ptr<FileChooser> myChooser;
+
     void loadJsonFiles();
     void loadJson();
     bool isValidFormat(File configFile);
+
+    void loadButtonClicked();
+
+    void loadFromFolder();
+
+    //void buttonClicked(juce::Button* button);
     
 private:
     // This reference is provided as a quick way for your editor to
     // access the processor object that created it.
     RolandCubeAudioProcessor& audioProcessor;
 
+    TextButton loadButton;
+    virtual void buttonClicked(Button* button) override;
+
+    virtual void sliderValueChanged(Slider* slider) override;
+    void modelSelectChanged();
+    // Global Widgets
+    Label modelLabel;
+    Label versionLabel;
+
+    ComboBox modelSelect;
     //Inserisci le immagini
     Image background = ImageCache::getFromMemory(BinaryData::backgroundCube_png, BinaryData::backgroundCube_pngSize);
     Image logo_Eq = ImageCache::getFromMemory(BinaryData::logoAndEq_Cube_png, BinaryData::logoAndEq_Cube_pngSize);

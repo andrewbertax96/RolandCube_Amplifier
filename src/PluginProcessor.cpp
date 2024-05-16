@@ -28,18 +28,35 @@ RolandCubeAudioProcessor::RolandCubeAudioProcessor()
                                             std::make_unique<AudioParameterFloat>(TREBLE_ID, TREBLE_NAME, NormalisableRange<float>(-8.0f, 8.0f, 0.01f), 0.0f),
                                             std::make_unique<AudioParameterFloat>(MASTER_ID, MASTER_NAME, NormalisableRange<float>(0.0f, 1.0f, 0.01f), 0.5),
                                             std::make_unique<AudioParameterFloat>(MODEL_ID, MODEL_NAME, NormalisableRange<float>(0.0f, 8.0f, 1.0f), 0.0),
-                                            std::make_unique<AudioParameterBool>(TYPE_ID, TYPE_NAME, false),
+                                            std::make_unique<AudioParameterBool>(TYPE_ID, TYPE_NAME, typeParam.get()),
                                         }
     )
 #endif
 {
-   treeState.addParameterListener(GAIN_ID, this);
+    driveParam = treeState.getRawParameterValue(GAIN_ID);
+    masterParam = treeState.getRawParameterValue(MASTER_ID);
+    bassParam = treeState.getRawParameterValue(BASS_ID);
+    midParam = treeState.getRawParameterValue(MID_ID);
+    trebleParam = treeState.getRawParameterValue(TREBLE_ID);
+
+    auto bassValue = static_cast<float> (bassParam->load());
+    auto midValue = static_cast<float> (midParam->load());
+    auto trebleValue = static_cast<float> (trebleParam->load());
+
+    equalizer1.setParameters(bassValue, midValue, trebleValue, 0.0);
+    equalizer2.setParameters(bassValue, midValue, trebleValue, 0.0);
+
+    pauseVolume = 3;
+
+    cabSimIRa.load(BinaryData::default_ir_wav, BinaryData::default_ir_wavSize);
+
+   /*treeState.addParameterListener(GAIN_ID, this);
    treeState.addParameterListener(MASTER_ID, this);
    treeState.addParameterListener(BASS_ID, this);
    treeState.addParameterListener(MID_ID, this);
    treeState.addParameterListener(TREBLE_ID, this);
    treeState.addParameterListener(MODEL_ID, this);
-   treeState.addParameterListener(TYPE_ID, this);
+   treeState.addParameterListener(TYPE_ID, this);*/
 
    //MemoryInputStream jsonStream(BinaryData::acousticModelGainStable_json, BinaryData::acousticModelGainStable_jsonSize, false);
    //auto jsonInput = nlohmann::json::parse(jsonStream.readEntireStreamAsString().toStdString());
@@ -53,8 +70,8 @@ RolandCubeAudioProcessor::RolandCubeAudioProcessor()
 
    //loadConfig(saved_model);
 
-   cabSimIRa.load(BinaryData::default_ir_wav, BinaryData::default_ir_wavSize);
-   pauseVolume = 3;
+   /*cabSimIRa.load(BinaryData::default_ir_wav, BinaryData::default_ir_wavSize);
+   pauseVolume = 3;*/
 }
 
 RolandCubeAudioProcessor::~RolandCubeAudioProcessor()
@@ -123,43 +140,43 @@ void RolandCubeAudioProcessor::changeProgramName (int index, const juce::String&
 {
 }
 
-void RolandCubeAudioProcessor::parameterChanged(const String& parameterID, float newValue)
-{
-    if (parameterID == MODEL_ID) {
-        modelParam = newValue;
-    }
-    else if(parameterID == TYPE_ID){
-        typeParam = newValue;
-    }
-    else if (parameterID == GAIN_ID) {
-        gainParam = newValue;
-    }
-    else if (parameterID == MASTER_ID) {
-        masterParam = newValue;
-    }
-    else if (parameterID == BASS_ID) {
-        bassParam = newValue;
-    }
-    else if (parameterID == MID_ID) {
-        midParam = newValue;
-    }
-    else if (parameterID == TREBLE_ID) {
-        trebleParam = newValue;
-    }
-
-    
-
-    //const int selectedFileIndex = modelParam.get();
-    //if (selectedFileIndex >= 0 && selectedFileIndex < jsonFiles.size() && jsonFiles.empty() == false) { //check if correct 
-    //    if (jsonFiles[selectedFileIndex].existsAsFile() && isValidFormat(jsonFiles[selectedFileIndex])) {
-    //        loadConfig(jsonFiles[selectedFileIndex]);
-    //        current_model_index = selectedFileIndex;
-    //        saved_model = jsonFiles[selectedFileIndex];
-    //    }
-    //}
-
-    set_ampEQ(bassParam.get(), midParam.get(), trebleParam.get());
-}
+//void RolandCubeAudioProcessor::parameterChanged(const String& parameterID, float newValue)
+//{
+//    if (parameterID == MODEL_ID) {
+//        modelParam = newValue;
+//    }
+//    else if(parameterID == TYPE_ID){
+//        typeParam = newValue;
+//    }
+//    else if (parameterID == GAIN_ID) {
+//        gainParam = newValue;
+//    }
+//    else if (parameterID == MASTER_ID) {
+//        masterParam = newValue;
+//    }
+//    else if (parameterID == BASS_ID) {
+//        bassParam = newValue;
+//    }
+//    else if (parameterID == MID_ID) {
+//        midParam = newValue;
+//    }
+//    else if (parameterID == TREBLE_ID) {
+//        trebleParam = newValue;
+//    }
+//
+//    
+//
+//    //const int selectedFileIndex = modelParam.get();
+//    //if (selectedFileIndex >= 0 && selectedFileIndex < jsonFiles.size() && jsonFiles.empty() == false) { //check if correct 
+//    //    if (jsonFiles[selectedFileIndex].existsAsFile() && isValidFormat(jsonFiles[selectedFileIndex])) {
+//    //        loadConfig(jsonFiles[selectedFileIndex]);
+//    //        current_model_index = selectedFileIndex;
+//    //        saved_model = jsonFiles[selectedFileIndex];
+//    //    }
+//    //}
+//
+//    set_ampEQ(bassParam.get(), midParam.get(), trebleParam.get());
+//}
 //==============================================================================
 void RolandCubeAudioProcessor::prepareToPlay (double sampleRate, int samplesPerBlock)
 {
@@ -170,6 +187,7 @@ void RolandCubeAudioProcessor::prepareToPlay (double sampleRate, int samplesPerB
 
     // prepare resampler for target sample rate: 44.1 kHz
     constexpr double targetSampleRate = 44100.0;
+    //resampler.prepareWithTargetSampleRate ({ sampleRate, (uint32) samplesPerBlock, 1 }, targetSampleRate);
     resampler.prepareWithTargetSampleRate({ sampleRate, (uint32)samplesPerBlock, 2 }, targetSampleRate);
 
 
@@ -223,27 +241,125 @@ void RolandCubeAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, j
 
     auto totalNumInputChannels  = getTotalNumInputChannels();
     auto totalNumOutputChannels = getTotalNumOutputChannels();
-    auto gainValue = gainParam.get();
-    auto masterValue = masterParam.get();
+
+    auto driveValue = static_cast<float> (driveParam->load());
+    auto masterValue = static_cast<float> (masterParam->load());
+    auto bassValue = static_cast<float> (bassParam->load());
+    auto midValue = static_cast<float> (midParam->load());
+    auto trebleValue = static_cast<float> (trebleParam->load());
+
+    // Setup Audio Data
+    const int numSamples = buffer.getNumSamples();
+    const int numInputChannels = getTotalNumInputChannels();
+    const int sampleRate = getSampleRate();
+    
+    //auto gainValue = gainParam.get();
+    //auto masterValue = masterParam.get();
 
     dsp::AudioBlock<float> block(buffer);
     dsp::ProcessContextReplacing<float> context(block);
 
-    for (auto i = totalNumInputChannels; i < totalNumOutputChannels; ++i)
-        buffer.clear (i, 0, buffer.getNumSamples());
+    /*for (auto i = totalNumInputChannels; i < totalNumOutputChannels; ++i)
+        buffer.clear (i, 0, buffer.getNumSamples());*/
     
-    //Apply Model & EQ
-    applyLSTM(buffer, block, LSTM, LSTM2, conditioned, gainValue, previousGainValue, resampler);
-    
-    dcBlocker.process(context);
-    applyEQ(buffer, equalizer1, equalizer2, midiMessages, totalNumInputChannels, getSampleRate());
+    if (fw_state == 1 && model_loaded == true) {
 
-    cabSimIRa.process(context); // Process IR a on channel 0
-    
-        
-    // Master Volume 
-    applyGainSmoothing(buffer, masterValue, previousMasterValue); // Apply ramped changes for gain smoothing
-    smoothPopSound(buffer, masterValue, pauseVolume); // Smooth pop sound when changing models
+        if (conditioned == false) {
+            // Apply ramped changes for gain smoothing
+            if (driveValue == previousDriveValue)
+            {
+                buffer.applyGain(driveValue * 2.5);
+            }
+            else {
+                buffer.applyGainRamp(0, (int)buffer.getNumSamples(), previousDriveValue * 2.5, driveValue * 2.5);
+                previousDriveValue = driveValue;
+            }
+            auto block44k = resampler.processIn(block);
+            for (int ch = 0; ch < buffer.getNumChannels(); ++ch)
+            {
+                // Apply LSTM model
+                if (ch == 0) {
+                    LSTM.process(block44k.getChannelPointer(0), block44k.getChannelPointer(0), (int)block44k.getNumSamples());
+                }
+                else if (ch == 1) {
+                    LSTM2.process(block44k.getChannelPointer(1), block44k.getChannelPointer(1), (int)block44k.getNumSamples());
+                }
+            }
+            resampler.processOut(block44k, block);
+        }
+        else {
+            buffer.applyGain(1.5); // Apply default boost to help sound
+            // resample to target sample rate
+
+            auto block44k = resampler.processIn(block);
+            for (int ch = 0; ch < buffer.getNumChannels(); ++ch)
+            {
+                // Apply LSTM model
+                if (ch == 0) {
+                    LSTM.process(block44k.getChannelPointer(0), driveValue, block44k.getChannelPointer(0), (int)block44k.getNumSamples());
+                }
+                else if (ch == 1) {
+                    LSTM2.process(block44k.getChannelPointer(1), driveValue, block44k.getChannelPointer(1), (int)block44k.getNumSamples());
+                }
+            }
+            resampler.processOut(block44k, block);
+        }
+
+        dcBlocker.process(context);
+
+        for (int ch = 0; ch < buffer.getNumChannels(); ++ch)
+        {
+            // Apply EQ
+            if (ch == 0) {
+                equalizer1.process(buffer.getReadPointer(0), buffer.getWritePointer(0), midiMessages, numSamples, numInputChannels, sampleRate);
+
+            }
+            else if (ch == 1) {
+                equalizer2.process(buffer.getReadPointer(1), buffer.getWritePointer(1), midiMessages, numSamples, numInputChannels, sampleRate);
+            }
+        }
+
+        if (cab_state == 1) {
+            cabSimIRa.process(context); // Process IR a on channel 0
+            buffer.applyGain(2.0);
+            //} else {
+            //    buffer.applyGain(0.7);
+        }
+
+        // Master Volume 
+        // Apply ramped changes for gain smoothing
+        if (masterValue == previousMasterValue)
+        {
+            buffer.applyGain(masterValue);
+        }
+        else {
+            buffer.applyGainRamp(0, (int)buffer.getNumSamples(), previousMasterValue, masterValue);
+            previousMasterValue = masterValue;
+        }
+
+        // Smooth pop sound when changing models
+        if (pauseVolume > 0) {
+            if (pauseVolume > 2)
+                buffer.applyGain(0.0);
+            else if (pauseVolume == 2)
+                buffer.applyGainRamp(0, (int)buffer.getNumSamples(), 0, masterValue / 2);
+            else
+                buffer.applyGainRamp(0, (int)buffer.getNumSamples(), masterValue / 2, masterValue);
+            pauseVolume -= 1;
+        }
+    }
+    ////Apply Model & EQ
+    //applyLSTM(buffer, block, LSTM, LSTM2, conditioned, gainValue, previousGainValue, resampler);
+    //
+    //dcBlocker.process(context);
+    //applyEQ(buffer, equalizer1, equalizer2, midiMessages, totalNumInputChannels, getSampleRate());
+
+    //cabSimIRa.process(context); // Process IR a on channel 0
+    //
+    //    
+    //// Master Volume 
+    //applyGainSmoothing(buffer, masterValue, previousMasterValue); // Apply ramped changes for gain smoothing
+    //smoothPopSound(buffer, masterValue, pauseVolume); // Smooth pop sound when changing models
 }
 
 //==============================================================================
@@ -265,11 +381,21 @@ void RolandCubeAudioProcessor::getStateInformation (juce::MemoryBlock& destData)
     // as intermediaries to make it easy to save and load complex data.
     /*MemoryOutputStream stream(destData, false);
     treeState.state.writeToStream(stream);*/
-    auto state = treeState.copyState();
+    
+    /*auto state = treeState.copyState();
     std::unique_ptr<XmlElement> xml (state.createXml());
     xml->setAttribute("saved_model", saved_model.getFullPathName().toStdString());
     xml->setAttribute("current_model_index", current_model_index);
-    copyXmlToBinary (*xml, destData);
+    copyXmlToBinary (*xml, destData);*/
+
+    auto state = treeState.copyState();
+    std::unique_ptr<XmlElement> xml(state.createXml());
+    xml->setAttribute("fw_state", fw_state);
+    xml->setAttribute("folder", folder.getFullPathName().toStdString());
+    xml->setAttribute("saved_model", saved_model.getFullPathName().toStdString());
+    xml->setAttribute("current_model_index", current_model_index);
+    xml->setAttribute("cab_state", cab_state);
+    copyXmlToBinary(*xml, destData);
 }
 
 void RolandCubeAudioProcessor::setStateInformation (const void* data, int sizeInBytes)
@@ -280,7 +406,8 @@ void RolandCubeAudioProcessor::setStateInformation (const void* data, int sizeIn
     if (tree.isValid()) {
         treeState.state = tree;
     }*/
-    std::unique_ptr<juce::XmlElement> xmlState (getXmlFromBinary (data, sizeInBytes));
+
+    /*std::unique_ptr<juce::XmlElement> xmlState (getXmlFromBinary (data, sizeInBytes));
 
     if (xmlState.get() != nullptr)
     {
@@ -294,6 +421,31 @@ void RolandCubeAudioProcessor::setStateInformation (const void* data, int sizeIn
             if (saved_model.existsAsFile()) {
                 loadConfig(saved_model);
             }          
+
+        }
+    }*/
+
+    std::unique_ptr<juce::XmlElement> xmlState(getXmlFromBinary(data, sizeInBytes));
+
+    if (xmlState.get() != nullptr)
+    {
+        if (xmlState->hasTagName(treeState.state.getType()))
+        {
+            treeState.replaceState(juce::ValueTree::fromXml(*xmlState));
+            fw_state = xmlState->getBoolAttribute("fw_state");
+            File temp_saved_model = xmlState->getStringAttribute("saved_model");
+            saved_model = temp_saved_model;
+            cab_state = xmlState->getBoolAttribute("cab_state");
+
+            current_model_index = xmlState->getIntAttribute("current_model_index");
+            File temp = xmlState->getStringAttribute("folder");
+            folder = temp;
+            //if (auto* editor = dynamic_cast<ProteusAudioProcessorEditor*> (getActiveEditor()))
+                //editor->resetImages();
+
+            if (saved_model.existsAsFile()) {
+                loadConfig(saved_model);
+            }
 
         }
     }
@@ -318,61 +470,64 @@ void RolandCubeAudioProcessor::loadConfig(File configFile)
     else {
         conditioned = true;
     }
+
+    //saved_model = configFile;
+    model_loaded = true;
     this->suspendProcessing(false);
 }
 
-void RolandCubeAudioProcessor::applyLSTM(AudioBuffer<float>& buffer, dsp::AudioBlock<float>& block, RT_LSTM& LSTM, RT_LSTM& LSTM2, bool conditioned, const float gainParam, float& previousGainValue, chowdsp::ResampledProcess<chowdsp::ResamplingTypes::SRCResampler<>>& resampler)
-{
-    //auto block44k = resampler.processIn(block);
-    if (conditioned == false)
-    {
-        // Apply ramped changes for gain smoothing
-        if (gainParam == previousGainValue)
-        {
-            buffer.applyGain(gainParam * 2.5);
-        }
-        else
-        {
-            buffer.applyGainRamp(0, (int)buffer.getNumSamples(), previousGainValue * 2.5, gainParam * 2.5);
-            previousGainValue = gainParam;
-        }
-        
-        auto block44k = resampler.processIn(block);
-        LSTMtoChannels(block44k, LSTM, LSTM2, conditioned, gainParam);
-        resampler.processOut(block44k, block);
-    }
-    else
-    {
-        buffer.applyGain(1.5); // Apply default boost to help sound
-        auto block44k = resampler.processIn(block);
-        LSTMtoChannels(block44k, LSTM, LSTM2, conditioned, gainParam);
-        resampler.processOut(block44k, block);
-    }
-    //resampler.processOut(block44k, block);
-}
-
-void RolandCubeAudioProcessor::LSTMtoChannels(juce::dsp::AudioBlock<float>& block, RT_LSTM& LSTM, RT_LSTM& LSTM2, bool conditioned, float gainValue)
-{
-    //LSTM.process(block44k.getChannelPointer(0), block44k.getChannelPointer(0), (int)block44k.getNumSamples());
-    //block44k.getChannelPointer(0)
-   
-
-    //auto block44k = resampler.processIn(block);
-
-    auto block44k_ChannelPointer_0 = block.getChannelPointer(0);
-    auto block44k_ChannelPointer_1 = block.getChannelPointer(1);
-
-    if (conditioned == false) {
-
-        LSTM.process(block44k_ChannelPointer_0, block44k_ChannelPointer_0, block.getNumSamples());
-        LSTM2.process(block44k_ChannelPointer_1, block44k_ChannelPointer_1, block.getNumSamples());
-    }
-    else {
-
-        LSTM.process(block44k_ChannelPointer_0, gainValue, block44k_ChannelPointer_0, block.getNumSamples());
-        LSTM2.process(block44k_ChannelPointer_1, gainValue, block44k_ChannelPointer_1, block.getNumSamples());
-    }
-}
+//void RolandCubeAudioProcessor::applyLSTM(AudioBuffer<float>& buffer, dsp::AudioBlock<float>& block, RT_LSTM& LSTM, RT_LSTM& LSTM2, bool conditioned, const float gainParam, float& previousGainValue, chowdsp::ResampledProcess<chowdsp::ResamplingTypes::SRCResampler<>>& resampler)
+//{
+//    //auto block44k = resampler.processIn(block);
+//    if (conditioned == false)
+//    {
+//        // Apply ramped changes for gain smoothing
+//        if (gainParam == previousGainValue)
+//        {
+//            buffer.applyGain(gainParam * 2.5);
+//        }
+//        else
+//        {
+//            buffer.applyGainRamp(0, (int)buffer.getNumSamples(), previousGainValue * 2.5, gainParam * 2.5);
+//            previousGainValue = gainParam;
+//        }
+//        
+//        auto block44k = resampler.processIn(block);
+//        LSTMtoChannels(block44k, LSTM, LSTM2, conditioned, gainParam);
+//        resampler.processOut(block44k, block);
+//    }
+//    else
+//    {
+//        buffer.applyGain(1.5); // Apply default boost to help sound
+//        auto block44k = resampler.processIn(block);
+//        LSTMtoChannels(block44k, LSTM, LSTM2, conditioned, gainParam);
+//        resampler.processOut(block44k, block);
+//    }
+//    //resampler.processOut(block44k, block);
+//}
+//
+//void RolandCubeAudioProcessor::LSTMtoChannels(juce::dsp::AudioBlock<float>& block, RT_LSTM& LSTM, RT_LSTM& LSTM2, bool conditioned, float gainValue)
+//{
+//    //LSTM.process(block44k.getChannelPointer(0), block44k.getChannelPointer(0), (int)block44k.getNumSamples());
+//    //block44k.getChannelPointer(0)
+//   
+//
+//    //auto block44k = resampler.processIn(block);
+//
+//    auto block44k_ChannelPointer_0 = block.getChannelPointer(0);
+//    auto block44k_ChannelPointer_1 = block.getChannelPointer(1);
+//
+//    if (conditioned == false) {
+//
+//        LSTM.process(block44k_ChannelPointer_0, block44k_ChannelPointer_0, block.getNumSamples());
+//        LSTM2.process(block44k_ChannelPointer_1, block44k_ChannelPointer_1, block.getNumSamples());
+//    }
+//    else {
+//
+//        LSTM.process(block44k_ChannelPointer_0, gainValue, block44k_ChannelPointer_0, block.getNumSamples());
+//        LSTM2.process(block44k_ChannelPointer_1, gainValue, block44k_ChannelPointer_1, block.getNumSamples());
+//    }
+//}
 
 
 void RolandCubeAudioProcessor::set_ampEQ(float bass_slider, float mid_slider, float treble_slider)
@@ -381,46 +536,46 @@ void RolandCubeAudioProcessor::set_ampEQ(float bass_slider, float mid_slider, fl
     equalizer2.setParameters(bass_slider, mid_slider, treble_slider, 0.0f);
 }
 
-void RolandCubeAudioProcessor::applyEQ(AudioBuffer<float>& buffer, Equalizer& equalizer1, Equalizer& equalizer2, MidiBuffer& midiMessages, int totalNumInputChannels, double sampleRate) 
-{
-
-    const float* bufferReader_R = buffer.getReadPointer(0);
-    const float* bufferReader_L = buffer.getReadPointer(1);
-    const int numSamples = buffer.getNumSamples();
-    float* bufferWriter_R = buffer.getWritePointer(0);
-    float* bufferWriter_L = buffer.getWritePointer(1);
-
-    equalizer1.process(bufferReader_R, bufferWriter_R, midiMessages, numSamples, totalNumInputChannels, sampleRate);
-    equalizer2.process(bufferReader_L, bufferWriter_L, midiMessages, numSamples, totalNumInputChannels, sampleRate);
-}
-
-void RolandCubeAudioProcessor::applyGainSmoothing(AudioBuffer<float>& buffer, const float masterParam, float& previousMasterValue)
-{
-    buffer.applyGain(4.0);
-    if (masterParam == previousMasterValue)
-    {
-        buffer.applyGain(masterParam);
-    }
-    else
-    {
-        buffer.applyGainRamp(0, (int)buffer.getNumSamples(), previousMasterValue, masterParam);
-        previousMasterValue = masterParam;
-    }
-}
-
-void RolandCubeAudioProcessor::smoothPopSound(AudioBuffer<float>& buffer, const float masterParam, int& pauseVolume)
-{
-    if (pauseVolume > 0) {
-        if (pauseVolume > 2)
-            buffer.applyGain(0.0);
-        else if (pauseVolume == 2)
-            buffer.applyGainRamp(0, (int)buffer.getNumSamples(), 0, masterParam / 2);
-        else
-            buffer.applyGainRamp(0, (int)buffer.getNumSamples(), masterParam / 2, masterParam);
-
-        pauseVolume -= 1;
-    }
-}
+//void RolandCubeAudioProcessor::applyEQ(AudioBuffer<float>& buffer, Equalizer& equalizer1, Equalizer& equalizer2, MidiBuffer& midiMessages, int totalNumInputChannels, double sampleRate) 
+//{
+//
+//    const float* bufferReader_R = buffer.getReadPointer(0);
+//    const float* bufferReader_L = buffer.getReadPointer(1);
+//    const int numSamples = buffer.getNumSamples();
+//    float* bufferWriter_R = buffer.getWritePointer(0);
+//    float* bufferWriter_L = buffer.getWritePointer(1);
+//
+//    equalizer1.process(bufferReader_R, bufferWriter_R, midiMessages, numSamples, totalNumInputChannels, sampleRate);
+//    equalizer2.process(bufferReader_L, bufferWriter_L, midiMessages, numSamples, totalNumInputChannels, sampleRate);
+//}
+//
+//void RolandCubeAudioProcessor::applyGainSmoothing(AudioBuffer<float>& buffer, const float masterParam, float& previousMasterValue)
+//{
+//    buffer.applyGain(4.0);
+//    if (masterParam == previousMasterValue)
+//    {
+//        buffer.applyGain(masterParam);
+//    }
+//    else
+//    {
+//        buffer.applyGainRamp(0, (int)buffer.getNumSamples(), previousMasterValue, masterParam);
+//        previousMasterValue = masterParam;
+//    }
+//}
+//
+//void RolandCubeAudioProcessor::smoothPopSound(AudioBuffer<float>& buffer, const float masterParam, int& pauseVolume)
+//{
+//    if (pauseVolume > 0) {
+//        if (pauseVolume > 2)
+//            buffer.applyGain(0.0);
+//        else if (pauseVolume == 2)
+//            buffer.applyGainRamp(0, (int)buffer.getNumSamples(), 0, masterParam / 2);
+//        else
+//            buffer.applyGainRamp(0, (int)buffer.getNumSamples(), masterParam / 2, masterParam);
+//
+//        pauseVolume -= 1;
+//    }
+//}
 
 //==============================================================================
 // This creates new instances of the plugin..
