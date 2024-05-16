@@ -338,7 +338,7 @@ void RolandCubeAudioProcessorEditor::sliderValueChanged(Slider* slider)
     }
 }
 
-void ProteusAudioProcessorEditor::modelSelectChanged()
+void RolandCubeAudioProcessorEditor::modelSelectChanged()
 {
     const int selectedFileIndex = modelSelect.getSelectedItemIndex();
     if (selectedFileIndex >= 0 && selectedFileIndex < processor.jsonFiles.size() && processor.jsonFiles.empty() == false) { //check if correct 
