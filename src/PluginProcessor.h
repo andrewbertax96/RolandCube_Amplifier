@@ -32,12 +32,12 @@
 //==============================================================================
 /**
 */
-class ProteusAudioProcessor  : public AudioProcessor
+class RolandCubeAudioProcessor : public AudioProcessor
 {
 public:
     //==============================================================================
-    ProteusAudioProcessor();
-    ~ProteusAudioProcessor();
+    RolandCubeAudioProcessor();
+    ~RolandCubeAudioProcessor();
 
     //==============================================================================
     void prepareToPlay (double sampleRate, int samplesPerBlock) override;
@@ -126,5 +126,5 @@ private:
     CabSim cabSimIRa;
 
     //==============================================================================
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (ProteusAudioProcessor)
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (RolandCubeAudioProcessor)
 };

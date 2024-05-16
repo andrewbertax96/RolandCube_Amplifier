@@ -12,7 +12,7 @@
 #include "PluginEditor.h"
 
 //==============================================================================
-ProteusAudioProcessor::ProteusAudioProcessor()
+RolandCubeAudioProcessor::RolandCubeAudioProcessor()
 #ifndef JucePlugin_PreferredChannelConfigurations
     : AudioProcessor(BusesProperties()
 #if ! JucePlugin_IsMidiEffect
@@ -51,17 +51,17 @@ ProteusAudioProcessor::ProteusAudioProcessor()
 
 }
 
-ProteusAudioProcessor::~ProteusAudioProcessor()
+RolandCubeAudioProcessor::~RolandCubeAudioProcessor()
 {
 }
 
 //==============================================================================
-const String ProteusAudioProcessor::getName() const
+const String RolandCubeAudioProcessor::getName() const
 {
     return JucePlugin_Name;
 }
 
-bool ProteusAudioProcessor::acceptsMidi() const
+bool RolandCubeAudioProcessor::acceptsMidi() const
 {
    #if JucePlugin_WantsMidiInput
     return true;
@@ -70,7 +70,7 @@ bool ProteusAudioProcessor::acceptsMidi() const
    #endif
 }
 
-bool ProteusAudioProcessor::producesMidi() const
+bool RolandCubeAudioProcessor::producesMidi() const
 {
    #if JucePlugin_ProducesMidiOutput
     return true;
@@ -79,7 +79,7 @@ bool ProteusAudioProcessor::producesMidi() const
    #endif
 }
 
-bool ProteusAudioProcessor::isMidiEffect() const
+bool RolandCubeAudioProcessor::isMidiEffect() const
 {
    #if JucePlugin_IsMidiEffect
     return true;
@@ -88,37 +88,37 @@ bool ProteusAudioProcessor::isMidiEffect() const
    #endif
 }
 
-double ProteusAudioProcessor::getTailLengthSeconds() const
+double RolandCubeAudioProcessor::getTailLengthSeconds() const
 {
     return 0.0;
 }
 
-int ProteusAudioProcessor::getNumPrograms()
+int RolandCubeAudioProcessor::getNumPrograms()
 {
     return 1;   // NB: some hosts don't cope very well if you tell them there are 0 programs,
                 // so this should be at least 1, even if you're not really implementing programs.
 }
 
-int ProteusAudioProcessor::getCurrentProgram()
+int RolandCubeAudioProcessor::getCurrentProgram()
 {
     return 0;
 }
 
-void ProteusAudioProcessor::setCurrentProgram (int index)
+void RolandCubeAudioProcessor::setCurrentProgram (int index)
 {
 }
 
-const String ProteusAudioProcessor::getProgramName (int index)
+const String RolandCubeAudioProcessor::getProgramName (int index)
 {
     return {};
 }
 
-void ProteusAudioProcessor::changeProgramName (int index, const String& newName)
+void RolandCubeAudioProcessor::changeProgramName (int index, const String& newName)
 {
 }
 
 //==============================================================================
-void ProteusAudioProcessor::prepareToPlay (double sampleRate, int samplesPerBlock)
+void RolandCubeAudioProcessor::prepareToPlay (double sampleRate, int samplesPerBlock)
 {
     // Use this method as the place to do any pre-playback
     // initialisation that you need..
@@ -144,14 +144,14 @@ void ProteusAudioProcessor::prepareToPlay (double sampleRate, int samplesPerBloc
 
 }
 
-void ProteusAudioProcessor::releaseResources()
+void RolandCubeAudioProcessor::releaseResources()
 {
     // When playback stops, you can use this as an opportunity to free up any
     // spare memory, etc.
 }
 
 #ifndef JucePlugin_PreferredChannelConfigurations
-bool ProteusAudioProcessor::isBusesLayoutSupported (const BusesLayout& layouts) const
+bool RolandCubeAudioProcessor::isBusesLayoutSupported (const BusesLayout& layouts) const
 {
   #if JucePlugin_IsMidiEffect
     ignoreUnused (layouts);
@@ -175,7 +175,7 @@ bool ProteusAudioProcessor::isBusesLayoutSupported (const BusesLayout& layouts) 
 #endif
 
 
-void ProteusAudioProcessor::processBlock (AudioBuffer<float>& buffer, MidiBuffer& midiMessages)
+void RolandCubeAudioProcessor::processBlock (AudioBuffer<float>& buffer, MidiBuffer& midiMessages)
 {
     ScopedNoDenormals noDenormals;
 
@@ -282,18 +282,18 @@ void ProteusAudioProcessor::processBlock (AudioBuffer<float>& buffer, MidiBuffer
 }
 
 //==============================================================================
-bool ProteusAudioProcessor::hasEditor() const
+bool RolandCubeAudioProcessor::hasEditor() const
 {
     return true; // (change this to false if you choose to not supply an editor)
 }
 
-AudioProcessorEditor* ProteusAudioProcessor::createEditor()
+AudioProcessorEditor* RolandCubeAudioProcessor::createEditor()
 {
-    return new ProteusAudioProcessorEditor (*this);
+    return new RolandCubeAudioProcessorEditor(*this);
 }
 
 //==============================================================================
-void ProteusAudioProcessor::getStateInformation (MemoryBlock& destData)
+void RolandCubeAudioProcessor::getStateInformation (MemoryBlock& destData)
 {
     // You should use this method to store your parameters in the memory block.
     // You could do that either as raw data, or use the XML or ValueTree classes
@@ -310,7 +310,7 @@ void ProteusAudioProcessor::getStateInformation (MemoryBlock& destData)
 
 }
 
-void ProteusAudioProcessor::setStateInformation (const void* data, int sizeInBytes)
+void RolandCubeAudioProcessor::setStateInformation (const void* data, int sizeInBytes)
 {
     // You should use this method to restore your parameters from this memory block,
     // whose contents will have been created by the getStateInformation() call.
@@ -330,7 +330,7 @@ void ProteusAudioProcessor::setStateInformation (const void* data, int sizeInByt
             current_model_index = xmlState->getIntAttribute("current_model_index");
             File temp = xmlState->getStringAttribute("folder");
             folder = temp;
-            if (auto* editor = dynamic_cast<ProteusAudioProcessorEditor*> (getActiveEditor()))
+            if (auto* editor = dynamic_cast<RolandCubeAudioProcessorEditor*> (getActiveEditor()))
                 editor->resetImages();
 
             if (saved_model.existsAsFile()) {
@@ -341,13 +341,13 @@ void ProteusAudioProcessor::setStateInformation (const void* data, int sizeInByt
     }
 }
 
-void ProteusAudioProcessor::set_ampEQ(float bass_slider, float mid_slider, float treble_slider)
+void RolandCubeAudioProcessor::set_ampEQ(float bass_slider, float mid_slider, float treble_slider)
 {
     eq4band.setParameters(bass_slider, mid_slider, treble_slider, 0.0f);
     eq4band2.setParameters(bass_slider, mid_slider, treble_slider, 0.0f);
 }
 
-void ProteusAudioProcessor::loadConfig(File configFile)
+void RolandCubeAudioProcessor::loadConfig(File configFile)
 {
     this->suspendProcessing(true);
     pauseVolume = 3;
@@ -377,5 +377,5 @@ void ProteusAudioProcessor::loadConfig(File configFile)
 // This creates new instances of the plugin..
 AudioProcessor* JUCE_CALLTYPE createPluginFilter()
 {
-    return new ProteusAudioProcessor();
+    return new RolandCubeAudioProcessor();
 }

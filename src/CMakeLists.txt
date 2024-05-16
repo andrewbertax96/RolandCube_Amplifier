@@ -1,6 +1,6 @@
 #add_subdirectory(headless)
 
-target_sources(Proteus PRIVATE
+target_sources(RolandCube PRIVATE
 	myLookAndFeel.cpp
 	myLookAndFeel.h
 	PluginEditor.cpp

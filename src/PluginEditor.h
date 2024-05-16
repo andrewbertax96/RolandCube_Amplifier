@@ -17,13 +17,13 @@
 //==============================================================================
 /**
 */
-class ProteusAudioProcessorEditor  : public AudioProcessorEditor,
+class RolandCubeAudioProcessorEditor : public AudioProcessorEditor,
                                        private Button::Listener,
                                        private Slider::Listener                  
 {
 public:
-    ProteusAudioProcessorEditor (ProteusAudioProcessor&);
-    ~ProteusAudioProcessorEditor();
+    RolandCubeAudioProcessorEditor(RolandCubeAudioProcessor&);
+    ~RolandCubeAudioProcessorEditor();
 
     //==============================================================================
     void paint (Graphics&) override;
@@ -36,7 +36,7 @@ public:
 private:
     // This reference is provided as a quick way for your editor to
     // access the processor object that created it.
-    ProteusAudioProcessor& processor;
+    RolandCubeAudioProcessor& processor;
 
 
     TextButton loadButton;
@@ -90,5 +90,5 @@ public:
     std::unique_ptr <AudioProcessorValueTreeState::SliderAttachment> driveSliderAttach;
     std::unique_ptr <AudioProcessorValueTreeState::SliderAttachment> masterSliderAttach;
  
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (ProteusAudioProcessorEditor)
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (RolandCubeAudioProcessorEditor)
 };

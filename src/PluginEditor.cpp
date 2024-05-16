@@ -12,7 +12,7 @@
 #include "PluginEditor.h"
 
 //==============================================================================
-ProteusAudioProcessorEditor::ProteusAudioProcessorEditor (ProteusAudioProcessor& p)
+RolandCubeAudioProcessorEditor::RolandCubeAudioProcessorEditor(RolandCubeAudioProcessor& p)
     : AudioProcessorEditor (&p), processor (p)
 {
     // Make sure that before the constructor has finished, you've set the
@@ -116,7 +116,7 @@ ProteusAudioProcessorEditor::ProteusAudioProcessorEditor (ProteusAudioProcessor&
     loadFromFolder();
 }
 
-ProteusAudioProcessorEditor::~ProteusAudioProcessorEditor()
+RolandCubeAudioProcessorEditor::~RolandCubeAudioProcessorEditor()
 {
     odDriveKnob.setLookAndFeel(nullptr);
     odLevelKnob.setLookAndFeel(nullptr);
@@ -126,7 +126,7 @@ ProteusAudioProcessorEditor::~ProteusAudioProcessorEditor()
 }
 
 //==============================================================================
-void ProteusAudioProcessorEditor::paint (Graphics& g)
+void RolandCubeAudioProcessorEditor::paint (Graphics& g)
 {
     // Workaround for graphics on Windows builds (clipping code doesn't work correctly on Windows)
 #if defined(WIN32) || defined(_WIN32) || defined(__WIN32__) || defined(__NT__)
@@ -150,7 +150,7 @@ void ProteusAudioProcessorEditor::paint (Graphics& g)
 #endif
 }
 
-void ProteusAudioProcessorEditor::resized()
+void RolandCubeAudioProcessorEditor::resized()
 {
     // This is generally where you'll want to lay out the positions of any
     // subcomponents in your editor..
@@ -172,7 +172,7 @@ void ProteusAudioProcessorEditor::resized()
     ampTrebleKnob.setBounds(340, 131, 62, 62);
 }
 
-bool ProteusAudioProcessorEditor::isValidFormat(File configFile)
+bool RolandCubeAudioProcessorEditor::isValidFormat(File configFile)
 {
     // Read in the JSON file
     String path = configFile.getFullPathName();
@@ -204,7 +204,7 @@ bool ProteusAudioProcessorEditor::isValidFormat(File configFile)
     }
 }
 
-void ProteusAudioProcessorEditor::loadButtonClicked()
+void RolandCubeAudioProcessorEditor::loadButtonClicked()
 { 
     myChooser = std::make_unique<FileChooser> ("Select a folder to load models from",
                                                processor.folder,
@@ -266,7 +266,7 @@ void ProteusAudioProcessorEditor::loadButtonClicked()
     
 }
 
-void ProteusAudioProcessorEditor::loadFromFolder()
+void RolandCubeAudioProcessorEditor::loadFromFolder()
 {
     processor.model_loaded = false;
     Array<File> files;
@@ -300,7 +300,7 @@ void ProteusAudioProcessorEditor::loadFromFolder()
 }
 
 
-void ProteusAudioProcessorEditor::buttonClicked(juce::Button* button)
+void RolandCubeAudioProcessorEditor::buttonClicked(juce::Button* button)
 {
     //if (button == &odFootSw) {
     //    odFootSwClicked();
@@ -311,7 +311,7 @@ void ProteusAudioProcessorEditor::buttonClicked(juce::Button* button)
     }
 }
 
-void ProteusAudioProcessorEditor::odFootSwClicked() {
+void RolandCubeAudioProcessorEditor::odFootSwClicked() {
     //if (processor.fw_state == 0)
     //    processor.fw_state = 1;
     //else
@@ -319,7 +319,7 @@ void ProteusAudioProcessorEditor::odFootSwClicked() {
     //resetImages();
 }
 
-void ProteusAudioProcessorEditor::cabOnButtonClicked() {
+void RolandCubeAudioProcessorEditor::cabOnButtonClicked() {
     if (processor.cab_state == 0) {
         processor.cab_state = 1;
     }
@@ -330,7 +330,7 @@ void ProteusAudioProcessorEditor::cabOnButtonClicked() {
     repaint();
 }
 
-void ProteusAudioProcessorEditor::sliderValueChanged(Slider* slider)
+void RolandCubeAudioProcessorEditor::sliderValueChanged(Slider* slider)
 {
     // Amp
     if (slider == &ampBassKnob || slider == &ampMidKnob || slider == &ampTrebleKnob) {
@@ -352,7 +352,7 @@ void ProteusAudioProcessorEditor::modelSelectChanged()
 }
 
 
-void ProteusAudioProcessorEditor::resetImages()
+void RolandCubeAudioProcessorEditor::resetImages()
 {
     repaint();
     /*
