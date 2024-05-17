@@ -16,8 +16,9 @@ juce_add_plugin(RolandCube
     PLUGIN_MANUFACTURER_CODE Brtx               
     PLUGIN_CODE RoCu                            
     FORMATS ${JUCE_FORMATS}  
-    ProductName "RolandCube"
-
+    PRODUCT_NAME "RolandCube"
+    FORMATS AU VST3 Standalone    
+    COPY_PLUGIN_AFTER_BUILD TRUE
     VST3_CATEGORIES Fx Distortion
 
     MICROPHONE_PERMISSION_ENABLED TRUE            

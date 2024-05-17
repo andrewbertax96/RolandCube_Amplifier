@@ -36,12 +36,12 @@
 //==============================================================================
 /**
 */
-class RolandCubeAudioProcessor : public AudioProcessor
+class ProteusAudioProcessor  : public AudioProcessor
 {
 public:
     //==============================================================================
-    RolandCubeAudioProcessor();
-    ~RolandCubeAudioProcessor();
+    ProteusAudioProcessor();
+    ~ProteusAudioProcessor();
 
     //==============================================================================
     void prepareToPlay (double sampleRate, int samplesPerBlock) override;
@@ -114,7 +114,6 @@ private:
     std::atomic<float>* bassParam = nullptr;
     std::atomic<float>* midParam = nullptr;
     std::atomic<float>* trebleParam = nullptr;
-    Atomic<bool> typeParam = { false };
 
     float previousDriveValue = 0.5;
     float previousMasterValue = 0.5;
@@ -126,10 +125,10 @@ private:
     dsp::ProcessorDuplicator<dsp::IIR::Filter<float>, dsp::IIR::Coefficients<float>> dcBlocker;
 
     chowdsp::ResampledProcess<chowdsp::ResamplingTypes::SRCResampler<>> resampler;
-   
+
     // IR processing
     CabSim cabSimIRa;
 
     //==============================================================================
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (RolandCubeAudioProcessor)
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (ProteusAudioProcessor)
 };

@@ -17,13 +17,13 @@
 //==============================================================================
 /**
 */
-class RolandCubeAudioProcessorEditor : public AudioProcessorEditor,
+class ProteusAudioProcessorEditor  : public AudioProcessorEditor,
                                        private Button::Listener,
                                        private Slider::Listener                  
 {
 public:
-    RolandCubeAudioProcessorEditor(RolandCubeAudioProcessor&);
-    ~RolandCubeAudioProcessorEditor();
+    ProteusAudioProcessorEditor (ProteusAudioProcessor&);
+    ~ProteusAudioProcessorEditor();
 
     //==============================================================================
     void paint (Graphics&) override;
@@ -36,7 +36,7 @@ public:
 private:
     // This reference is provided as a quick way for your editor to
     // access the processor object that created it.
-    RolandCubeAudioProcessor& processor;
+    ProteusAudioProcessor& processor;
 
 
     TextButton loadButton;
@@ -50,6 +50,10 @@ private:
     //Image background_on = ImageCache::getFromMemory(BinaryData::background_on_jpg, BinaryData::background_on_jpgSize);
     //Image background_on_blue = ImageCache::getFromMemory(BinaryData::background_on_blue_jpg, BinaryData::background_on_blue_jpgSize);
     //Image background_off = ImageCache::getFromMemory(BinaryData::background_off_jpg, BinaryData::background_off_jpgSize);
+    Image background = ImageCache::getFromMemory(BinaryData::backgroundCube_png, BinaryData::backgroundCube_pngSize);
+    Image logo_Eq = ImageCache::getFromMemory(BinaryData::logoAndEq_Cube_png, BinaryData::logoAndEq_Cube_pngSize);
+    Image lead = ImageCache::getFromMemory(BinaryData::leadChannelCube_png, BinaryData::leadChannelCube_pngSize);
+
 
     // Global Widgets
     Label modelLabel;
@@ -57,25 +61,28 @@ private:
 
     ComboBox modelSelect;
 
-    ///Inserisci le immagini
-    Image background = ImageCache::getFromMemory(BinaryData::backgroundCube_png, BinaryData::backgroundCube_pngSize);
-    Image logo_Eq = ImageCache::getFromMemory(BinaryData::logoAndEq_Cube_png, BinaryData::logoAndEq_Cube_pngSize);
-    Image lead = ImageCache::getFromMemory(BinaryData::leadChannelCube_png, BinaryData::leadChannelCube_pngSize);
-
-    //Amp Widgets
+    //// Overdrive Widgets
+    //Slider ampBassKnob;
+    //Slider ampMidKnob;
+    //Slider ampTrebleKnob;
+    //Slider odDriveKnob;
+    //Slider odLevelKnob;
+    ////ImageButton odFootSw;
+    ////ImageButton odLED;
+    //ImageButton cabOnButton;
     Slider ampBassKnob;
     Slider ampMidKnob;
     Slider ampTrebleKnob;
-    Slider odDriveKnob;
-    Slider odLevelKnob;
+    Slider gainKnob;
+    Slider volumeKnob;
     Slider modelSelectorKnob;
-
-    ToggleButton typeSelector;
-
-    // LookandFeels of the knobs 
+    
+    // LookandFeels 
+    //myLookAndFeel blackHexKnobLAF;
+    myLookAndFeel bigKnobLAF;
+    myLookAndFeel smallKnobLAF;
     myLookAndFeel knobLookAndFeel;
     myLookAndFeel knobLead_LookAndFeel;
-
 
     virtual void sliderValueChanged(Slider* slider) override;
 
@@ -88,13 +95,18 @@ private:
     bool model_loaded = false;
 
 public:
-    std::unique_ptr <AudioProcessorValueTreeState::SliderAttachment> bassSliderAttach;
+    /*std::unique_ptr <AudioProcessorValueTreeState::SliderAttachment> bassSliderAttach;
     std::unique_ptr <AudioProcessorValueTreeState::SliderAttachment> midSliderAttach;
     std::unique_ptr <AudioProcessorValueTreeState::SliderAttachment> trebleSliderAttach;
     std::unique_ptr <AudioProcessorValueTreeState::SliderAttachment> driveSliderAttach;
-    std::unique_ptr <AudioProcessorValueTreeState::SliderAttachment> masterSliderAttach;
+    std::unique_ptr <AudioProcessorValueTreeState::SliderAttachment> masterSliderAttach;*/
+    std::unique_ptr <AudioProcessorValueTreeState::SliderAttachment> bassSliderAttach;
+    std::unique_ptr <AudioProcessorValueTreeState::SliderAttachment> midSliderAttach;
+    std::unique_ptr <AudioProcessorValueTreeState::SliderAttachment> trebleSliderAttach;
+    std::unique_ptr <AudioProcessorValueTreeState::SliderAttachment> gainSliderAttach;
+    std::unique_ptr <AudioProcessorValueTreeState::SliderAttachment> volumeSliderAttach;
     std::unique_ptr <AudioProcessorValueTreeState::SliderAttachment> modelSelectorSliderAttach;
     std::unique_ptr <AudioProcessorValueTreeState::ButtonAttachment> typeButtonAttach;
  
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (RolandCubeAudioProcessorEditor)
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (ProteusAudioProcessorEditor)
 };

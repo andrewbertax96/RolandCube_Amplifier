@@ -12,22 +12,38 @@
 #include "PluginEditor.h"
 
 //==============================================================================
-RolandCubeAudioProcessorEditor::RolandCubeAudioProcessorEditor(RolandCubeAudioProcessor& p)
+ProteusAudioProcessorEditor::ProteusAudioProcessorEditor (ProteusAudioProcessor& p)
     : AudioProcessorEditor (&p), processor (p)
 {
     // Make sure that before the constructor has finished, you've set the
     // editor's size to whatever you need it to
 
-    
+    // Overall Widgets
+    addAndMakeVisible(loadButton);
+    loadButton.setButtonText("LOAD MODEL");
+    loadButton.addListener(this);
+
+    addAndMakeVisible(modelSelect);
+    modelSelect.setColour(juce::Label::textColourId, juce::Colours::black);
+    modelSelect.setScrollWheelEnabled(true);
+    int c = 1;
+    for (const auto& jsonFile : processor.jsonFiles) {
+        modelSelect.addItem(jsonFile.getFileName(), c);
+        c += 1;
+    }
+    modelSelect.onChange = [this] {modelSelectChanged();};
+
     auto font = modelLabel.getFont();
     float height = font.getHeight();
     font.setHeight(height);
 
-    // Make sure that before the constructor has finished, you've set the
-    // editor's size to whatever you need it to
-    knobLookAndFeel.setLookAndFeel(ImageCache::getFromMemory(BinaryData::knobCube_png, BinaryData::knobCube_pngSize));
-    knobLead_LookAndFeel.setLookAndFeel(ImageCache::getFromMemory(BinaryData::knobCubeLead_png, BinaryData::knobCubeLead_pngSize));
-
+    // Set Widget Graphics
+    //bigKnobLAF.setLookAndFeel(ImageCache::getFromMemory(BinaryData::big_knob_png, BinaryData::big_knob_pngSize));
+    //smallKnobLAF.setLookAndFeel(ImageCache::getFromMemory(BinaryData::small_knob_png, BinaryData::small_knob_pngSize));
+    //knobLookAndFeel.setLookAndFeel(ImageCache::getFromMemory(BinaryData::knobCube_png, BinaryData::knobCube_pngSize));
+    bigKnobLAF.setLookAndFeel(ImageCache::getFromMemory(BinaryData::knobCube_png, BinaryData::knobCube_pngSize));
+    //knobLead_LookAndFeel.setLookAndFeel(ImageCache::getFromMemory(BinaryData::knobCubeLead_png, BinaryData::knobCubeLead_pngSize));
+    smallKnobLAF.setLookAndFeel(ImageCache::getFromMemory(BinaryData::knobCubeLead_png, BinaryData::knobCubeLead_pngSize));
     //EQ
 
     bassSliderAttach = std::make_unique<AudioProcessorValueTreeState::SliderAttachment>(processor.treeState, BASS_ID, ampBassKnob);
@@ -62,91 +78,159 @@ RolandCubeAudioProcessorEditor::RolandCubeAudioProcessorEditor(RolandCubeAudioPr
     modelSelectorKnob.setTextBoxStyle(juce::Slider::TextEntryBoxPosition::NoTextBox, false, 50, 20);
     modelSelectorKnob.setDoubleClickReturnValue(true, 0.0);
 
-    driveSliderAttach = std::make_unique<AudioProcessorValueTreeState::SliderAttachment>(processor.treeState, GAIN_ID, odDriveKnob);
+    gainSliderAttach = std::make_unique<AudioProcessorValueTreeState::SliderAttachment>(processor.treeState, GAIN_ID, gainKnob);
+    addAndMakeVisible(gainKnob);
+    gainKnob.setLookAndFeel(&knobLookAndFeel);
+    gainKnob.setSliderStyle(juce::Slider::SliderStyle::RotaryVerticalDrag);
+    gainKnob.setTextBoxStyle(juce::Slider::TextEntryBoxPosition::NoTextBox, false, 50, 20);
+    gainKnob.setDoubleClickReturnValue(true, 0.5);
+
+    volumeSliderAttach = std::make_unique<AudioProcessorValueTreeState::SliderAttachment>(processor.treeState, MASTER_ID, volumeKnob);
+    addAndMakeVisible(volumeKnob);
+    volumeKnob.setLookAndFeel(&knobLookAndFeel);
+    volumeKnob.setSliderStyle(juce::Slider::SliderStyle::RotaryVerticalDrag);
+    volumeKnob.setTextBoxStyle(juce::Slider::TextEntryBoxPosition::NoTextBox, false, 50, 20);
+    volumeKnob.setDoubleClickReturnValue(true, 0.5);
+
+    //typeButtonAttach = std::make_unique<AudioProcessorValueTreeState::ButtonAttachment>(audioProcessor.treeState, TYPE_ID, typeSelector);
+    //typeSelector.addMouseListener(this, false);//il false dice che non lo estendo ai figli.
+    //typeSelector.setColour(ToggleButton::ColourIds::textColourId, Colours::red);
+    //typeSelector.setColour(ToggleButton::ColourIds::tickColourId, Colours::red);
+    //typeSelector.setColour(ToggleButton::ColourIds::tickDisabledColourId, Colours::red);
+    //addAndMakeVisible(typeSelector);
+
+    // Pre Amp Pedal Widgets
+ 
+    /*
+    // Overdrive
+    odFootSw.setImages(true, true, true,
+        ImageCache::getFromMemory(BinaryData::footswitch_up_png, BinaryData::footswitch_up_pngSize), 1.0, Colours::transparentWhite,
+        Image(), 1.0, Colours::transparentWhite,
+        ImageCache::getFromMemory(BinaryData::footswitch_down_png, BinaryData::footswitch_down_pngSize), 1.0, Colours::transparentWhite,
+        0.0);
+    addAndMakeVisible(odFootSw);
+    odFootSw.addListener(this);
+    */
+
+    /*cabOnButton.setImages(true, true, true,
+        ImageCache::getFromMemory(BinaryData::cab_switch_on_png, BinaryData::cab_switch_on_pngSize), 1.0, Colours::transparentWhite,
+        Image(), 1.0, Colours::transparentWhite,
+        ImageCache::getFromMemory(BinaryData::cab_switch_on_png, BinaryData::cab_switch_on_pngSize), 1.0, Colours::transparentWhite,
+        0.0);
+    addAndMakeVisible(cabOnButton);
+    cabOnButton.addListener(this);*/
+
+    /*driveSliderAttach = std::make_unique<AudioProcessorValueTreeState::SliderAttachment>(processor.treeState, GAIN_ID, odDriveKnob);
     addAndMakeVisible(odDriveKnob);
-    odDriveKnob.setLookAndFeel(&knobLookAndFeel);
+    odDriveKnob.setLookAndFeel(&bigKnobLAF);
+    odDriveKnob.addListener(this);
     odDriveKnob.setSliderStyle(juce::Slider::SliderStyle::RotaryVerticalDrag);
     odDriveKnob.setTextBoxStyle(juce::Slider::TextEntryBoxPosition::NoTextBox, false, 50, 20);
     odDriveKnob.setDoubleClickReturnValue(true, 0.5);
 
     masterSliderAttach = std::make_unique<AudioProcessorValueTreeState::SliderAttachment>(processor.treeState, MASTER_ID, odLevelKnob);
     addAndMakeVisible(odLevelKnob);
-    odLevelKnob.setLookAndFeel(&knobLookAndFeel);
+    odLevelKnob.setLookAndFeel(&smallKnobLAF);
+    odLevelKnob.addListener(this);
     odLevelKnob.setSliderStyle(juce::Slider::SliderStyle::RotaryVerticalDrag);
     odLevelKnob.setTextBoxStyle(juce::Slider::TextEntryBoxPosition::NoTextBox, false, 50, 20);
     odLevelKnob.setDoubleClickReturnValue(true, 0.5);
 
-    typeButtonAttach = std::make_unique<AudioProcessorValueTreeState::ButtonAttachment>(processor.treeState, TYPE_ID, typeSelector);
-    typeSelector.addMouseListener(this, false);//il false dice che non lo estendo ai figli.
-    typeSelector.setColour(ToggleButton::ColourIds::textColourId, Colours::red);
-    typeSelector.setColour(ToggleButton::ColourIds::tickColourId, Colours::red);
-    typeSelector.setColour(ToggleButton::ColourIds::tickDisabledColourId, Colours::red);
-    //addAndMakeVisible(typeSelector);
+    bassSliderAttach = std::make_unique<AudioProcessorValueTreeState::SliderAttachment>(processor.treeState, BASS_ID, ampBassKnob);    	    
+    addAndMakeVisible(ampBassKnob);
+    ampBassKnob.setLookAndFeel(&smallKnobLAF);
+    ampBassKnob.addListener(this);
+    ampBassKnob.setSliderStyle(juce::Slider::SliderStyle::RotaryVerticalDrag);
+    ampBassKnob.setTextBoxStyle(juce::Slider::TextEntryBoxPosition::NoTextBox, false, 50, 20);
+    ampBassKnob.setDoubleClickReturnValue(true, 0.0);
 
-    // Overall Widgets
-    addAndMakeVisible(loadButton);
-    loadButton.setButtonText("LOAD MODEL");
-    loadButton.addListener(this);
+    midSliderAttach = std::make_unique<AudioProcessorValueTreeState::SliderAttachment>(processor.treeState, MID_ID, ampMidKnob);    
+    addAndMakeVisible(ampMidKnob);
+    ampMidKnob.setLookAndFeel(&smallKnobLAF);
+    ampMidKnob.addListener(this);
+    ampMidKnob.setSliderStyle(juce::Slider::SliderStyle::RotaryVerticalDrag);
+    ampMidKnob.setTextBoxStyle(juce::Slider::TextEntryBoxPosition::NoTextBox, false, 50, 20);
+    ampMidKnob.setDoubleClickReturnValue(true, 0.0);
 
-    addAndMakeVisible(modelSelect);
-    modelSelect.setColour(juce::Label::textColourId, juce::Colours::black);
-    modelSelect.setScrollWheelEnabled(true);
-    int c = 1;
-    for (const auto& jsonFile : processor.jsonFiles) {
-        modelSelect.addItem(jsonFile.getFileName(), c);
-        c += 1;
-    }
-    modelSelect.onChange = [this] {modelSelectChanged(); };
+    trebleSliderAttach = std::make_unique<AudioProcessorValueTreeState::SliderAttachment>(processor.treeState, TREBLE_ID, ampTrebleKnob);
+    addAndMakeVisible(ampTrebleKnob);
+    ampTrebleKnob.setLookAndFeel(&smallKnobLAF);
+    ampTrebleKnob.addListener(this);
+    ampTrebleKnob.setSliderStyle(juce::Slider::SliderStyle::RotaryVerticalDrag);
+    ampTrebleKnob.setTextBoxStyle(juce::Slider::TextEntryBoxPosition::NoTextBox, false, 50, 20);
+    ampTrebleKnob.setDoubleClickReturnValue(true, 0.0);
 
     addAndMakeVisible(versionLabel);
     versionLabel.setText("v1.2", juce::NotificationType::dontSendNotification);
     versionLabel.setJustificationType(juce::Justification::left);
     versionLabel.setColour(juce::Label::textColourId, juce::Colours::white);
-    versionLabel.setFont(font);
+    versionLabel.setFont(font);*/
 
     // Size of plugin GUI
+    //setSize (500, 650);
     setSize(background.getWidth(), background.getHeight());
-    
-    //loadJsonFiles();
-    //loadJson();
-
 
     resetImages();
 
     loadFromFolder();
 }
 
-RolandCubeAudioProcessorEditor::~RolandCubeAudioProcessorEditor()
+ProteusAudioProcessorEditor::~ProteusAudioProcessorEditor()
 {
-    odDriveKnob.setLookAndFeel(nullptr);
+   /* odDriveKnob.setLookAndFeel(nullptr);
     odLevelKnob.setLookAndFeel(nullptr);
+    ampBassKnob.setLookAndFeel(nullptr);
+    ampMidKnob.setLookAndFeel(nullptr);
+    ampTrebleKnob.setLookAndFeel(nullptr);*/
+    gainKnob.setLookAndFeel(nullptr);
+    volumeKnob.setLookAndFeel(nullptr);
     ampBassKnob.setLookAndFeel(nullptr);
     ampMidKnob.setLookAndFeel(nullptr);
     ampTrebleKnob.setLookAndFeel(nullptr);
     modelSelectorKnob.setLookAndFeel(nullptr);
-    typeSelector.setLookAndFeel(nullptr);
+    //typeSelector.setLookAndFeel(nullptr);
 }
 
 //==============================================================================
-void RolandCubeAudioProcessorEditor::paint (Graphics& g)
+void ProteusAudioProcessorEditor::paint (Graphics& g)
 {
     // Workaround for graphics on Windows builds (clipping code doesn't work correctly on Windows)
-#if defined(WIN32) || defined(_WIN32) || defined(__WIN32__) || defined(__NT__)
+//#if defined(WIN32) || defined(_WIN32) || defined(__WIN32__) || defined(__NT__)
+//    //if (processor.fw_state == 0) {
+//    //    g.drawImageAt(background_off, 0, 0);  // Debug Line: Redraw entire background image
+//    if (processor.fw_state == 1 && processor.conditioned == true) {
+//        g.drawImageAt(background_on, 0, 0);  // Debug Line: Redraw entire background image
+//    } else if (processor.fw_state == 1 && processor.conditioned == false) {
+//        g.drawImageAt(background_on_blue, 0, 0);  // Debug Line: Redraw entire background image
+//    }
+//#else
+//// Redraw only the clipped part of the background image
+//
+//    juce::Rectangle<int> ClipRect = g.getClipBounds();
+//    //if (processor.fw_state == 0) {
+//    //    g.drawImage(background_off, ClipRect.getX(), ClipRect.getY(), ClipRect.getWidth(), ClipRect.getHeight(), ClipRect.getX(), ClipRect.getY(), ClipRect.getWidth(), ClipRect.getHeight());
+//    if (processor.fw_state == 1 && processor.conditioned == true) {
+//        g.drawImage(background_on, ClipRect.getX(), ClipRect.getY(), ClipRect.getWidth(), ClipRect.getHeight(), ClipRect.getX(), ClipRect.getY(), ClipRect.getWidth(), ClipRect.getHeight());
+//    } else if (processor.fw_state == 1 && processor.conditioned == false)
+//        g.drawImage(background_on_blue, ClipRect.getX(), ClipRect.getY(), ClipRect.getWidth(), ClipRect.getHeight(), ClipRect.getX(), ClipRect.getY(), ClipRect.getWidth(), ClipRect.getHeight());
+//#endif
 
+    #if defined(WIN32) || defined(_WIN32) || defined(__WIN32__) || defined(__NT__)
 
-    g.drawImageAt(background, 0, 0);
+    
+    g.drawImageAt(background, 0, 0);  
     g.drawImageAt(logo_Eq, 80, 20);
-    g.drawImageAt(lead, background.getWidth() / 2.0 + 53.5, 10);
-
+    g.drawImageAt(lead, background.getWidth()/2.0 + 53.5, 10);
+    
     g.setColour(Colours::dimgrey);
     Rectangle<float>backgroundRect(0, 0, getWidth(), getHeight());
-    g.drawRoundedRectangle(backgroundRect, 10.0, 4.0);
-
+    g.drawRoundedRectangle(backgroundRect, 10.0, 4.0); 
+    
     g.setColour(Colours::darkgrey);
-    Rectangle<float>eqRect(65, 5, logo_Eq.getWidth() + 30, lead.getHeight() + 6.5);
+    Rectangle<float>eqRect(65, 5, logo_Eq.getWidth()+30, lead.getHeight() + 6.5);
     g.drawRoundedRectangle(eqRect, 15.0, 4.0);
-
-    Rectangle<float>leadRect(background.getWidth() / 2.0 + 46, 5, lead.getWidth() + 15, lead.getHeight() + 7.5);
+    
+    Rectangle<float>leadRect(background.getWidth() / 2.0 + 46, 5, lead.getWidth()+15, lead.getHeight()+7.5);
     g.drawRoundedRectangle(leadRect, 15.0, 4.0);
 
 #else
@@ -155,23 +239,34 @@ void RolandCubeAudioProcessorEditor::paint (Graphics& g)
     juce::Rectangle<int> ClipRect = g.getClipBounds();
     //if (processor.fw_state == 0) {
     //    g.drawImage(background_off, ClipRect.getX(), ClipRect.getY(), ClipRect.getWidth(), ClipRect.getHeight(), ClipRect.getX(), ClipRect.getY(), ClipRect.getWidth(), ClipRect.getHeight());
-
+    
     g.drawImage(background, ClipRect.getX(), ClipRect.getY(), ClipRect.getWidth(), ClipRect.getHeight(), ClipRect.getX(), ClipRect.getY(), ClipRect.getWidth(), ClipRect.getHeight());
     g.drawImage(logo_Eq, ClipRect.getX(), ClipRect.getY(), ClipRect.getWidth(), ClipRect.getHeight(), ClipRect.getX(), ClipRect.getY(), ClipRect.getWidth(), ClipRect.getHeight());
     g.drawImage(lead, ClipRect.getX(), ClipRect.getY(), ClipRect.getWidth(), ClipRect.getHeight(), ClipRect.getX(), ClipRect.getY(), ClipRect.getWidth(), ClipRect.getHeight());
-
+    
 #endif
 }
 
-void RolandCubeAudioProcessorEditor::resized()
+void ProteusAudioProcessorEditor::resized()
 {
     // This is generally where you'll want to lay out the positions of any
     // subcomponents in your editor..
 
+    ////Overall Widgets
+    //loadButton.setBounds(186, 48, 120, 24);
+    //modelSelect.setBounds(52, 11, 400, 28);
+    ////modelLabel.setBounds(197, 2, 90, 25);
+    //versionLabel.setBounds(462, 632, 60, 10);
+    //cabOnButton.setBounds(115, 233, 53, 39);
 
-    // This is generally where you'll want to lay out the positions of any
-    // subcomponents in your editor..
+    //// Overdrive Widgets
+    //odDriveKnob.setBounds(168, 242, 190, 190);
+    //odLevelKnob.setBounds(340, 225, 62, 62);
+    ////odFootSw.setBounds(185, 416, 175, 160);
 
+    //ampBassKnob.setBounds(113, 131, 62, 62);
+    //ampMidKnob.setBounds(227, 131, 62, 62);
+    //ampTrebleKnob.setBounds(340, 131, 62, 62);
     // Overdrive Widgets
     auto commonValue = 98.5;
     auto knobWidth = commonValue;
@@ -187,17 +282,17 @@ void RolandCubeAudioProcessorEditor::resized()
     versionLabel.setBounds(462, 632, 60, 10);
 
     modelSelectorKnob.setBounds(769, heightLead - 5.5, knobWidth + 10, knobHeight + 10);
-    odDriveKnob.setBounds(959, heightLead, knobWidth, knobHeight);
-    odLevelKnob.setBounds(1073, heightLead, knobWidth, knobHeight);
+    gainKnob.setBounds(959, heightLead, knobWidth, knobHeight);
+    volumeKnob.setBounds(1073, heightLead, knobWidth, knobHeight);
 
     ampBassKnob.setBounds(275, height, knobWidth, knobHeight);
     ampMidKnob.setBounds(388, height, knobWidth, knobHeight);
     ampTrebleKnob.setBounds(501, height, knobWidth, knobHeight);
 
-    typeSelector.setBounds(background.getWidth() / 2.0, background.getHeight() - 50, 100, 30);
+    //typeSelector.setBounds(background.getWidth() / 2.0, background.getHeight() - 50, 100, 30);
 }
 
-bool RolandCubeAudioProcessorEditor::isValidFormat(File configFile)
+bool ProteusAudioProcessorEditor::isValidFormat(File configFile)
 {
     // Read in the JSON file
     String path = configFile.getFullPathName();
@@ -229,7 +324,7 @@ bool RolandCubeAudioProcessorEditor::isValidFormat(File configFile)
     }
 }
 
-void RolandCubeAudioProcessorEditor::loadButtonClicked()
+void ProteusAudioProcessorEditor::loadButtonClicked()
 { 
     myChooser = std::make_unique<FileChooser> ("Select a folder to load models from",
                                                processor.folder,
@@ -291,7 +386,7 @@ void RolandCubeAudioProcessorEditor::loadButtonClicked()
     
 }
 
-void RolandCubeAudioProcessorEditor::loadFromFolder()
+void ProteusAudioProcessorEditor::loadFromFolder()
 {
     processor.model_loaded = false;
     Array<File> files;
@@ -325,7 +420,7 @@ void RolandCubeAudioProcessorEditor::loadFromFolder()
 }
 
 
-void RolandCubeAudioProcessorEditor::buttonClicked(juce::Button* button)
+void ProteusAudioProcessorEditor::buttonClicked(juce::Button* button)
 {
     //if (button == &odFootSw) {
     //    odFootSwClicked();
@@ -336,7 +431,7 @@ void RolandCubeAudioProcessorEditor::buttonClicked(juce::Button* button)
     }*/
 }
 
-void RolandCubeAudioProcessorEditor::odFootSwClicked() {
+void ProteusAudioProcessorEditor::odFootSwClicked() {
     //if (processor.fw_state == 0)
     //    processor.fw_state = 1;
     //else
@@ -344,7 +439,7 @@ void RolandCubeAudioProcessorEditor::odFootSwClicked() {
     //resetImages();
 }
 
-void RolandCubeAudioProcessorEditor::cabOnButtonClicked() {
+void ProteusAudioProcessorEditor::cabOnButtonClicked() {
     if (processor.cab_state == 0) {
         processor.cab_state = 1;
     }
@@ -355,7 +450,7 @@ void RolandCubeAudioProcessorEditor::cabOnButtonClicked() {
     repaint();
 }
 
-void RolandCubeAudioProcessorEditor::sliderValueChanged(Slider* slider)
+void ProteusAudioProcessorEditor::sliderValueChanged(Slider* slider)
 {
     // Amp
     if (slider == &ampBassKnob || slider == &ampMidKnob || slider == &ampTrebleKnob) {
@@ -363,7 +458,7 @@ void RolandCubeAudioProcessorEditor::sliderValueChanged(Slider* slider)
     }
 }
 
-void RolandCubeAudioProcessorEditor::modelSelectChanged()
+void ProteusAudioProcessorEditor::modelSelectChanged()
 {
     const int selectedFileIndex = modelSelect.getSelectedItemIndex();
     if (selectedFileIndex >= 0 && selectedFileIndex < processor.jsonFiles.size() && processor.jsonFiles.empty() == false) { //check if correct 
@@ -377,7 +472,7 @@ void RolandCubeAudioProcessorEditor::modelSelectChanged()
 }
 
 
-void RolandCubeAudioProcessorEditor::resetImages()
+void ProteusAudioProcessorEditor::resetImages()
 {
     repaint();
     /*
@@ -396,4 +491,19 @@ void RolandCubeAudioProcessorEditor::resetImages()
             0.0);
     }
     */
+    // Set On/Off cab graphic
+   /* if (processor.cab_state == 0) {
+        cabOnButton.setImages(true, true, true,
+            ImageCache::getFromMemory(BinaryData::cab_switch_off_png, BinaryData::cab_switch_off_pngSize), 1.0, Colours::transparentWhite,
+            Image(), 1.0, Colours::transparentWhite,
+            ImageCache::getFromMemory(BinaryData::cab_switch_off_png, BinaryData::cab_switch_off_pngSize), 1.0, Colours::transparentWhite,
+            0.0);
+    }
+    else {
+        cabOnButton.setImages(true, true, true,
+            ImageCache::getFromMemory(BinaryData::cab_switch_on_png, BinaryData::cab_switch_on_pngSize), 1.0, Colours::transparentWhite,
+            Image(), 1.0, Colours::transparentWhite,
+            ImageCache::getFromMemory(BinaryData::cab_switch_on_png, BinaryData::cab_switch_on_pngSize), 1.0, Colours::transparentWhite,
+            0.0);
+    }*/
 }
