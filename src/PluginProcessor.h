@@ -23,6 +23,10 @@
 #define MID_NAME "Mid"
 #define TREBLE_ID "treble"
 #define TREBLE_NAME "Treble"
+#define MODEL_ID "model"
+#define MODEL_NAME "Model"
+#define TYPE_ID "type"
+#define TYPE_NAME "Type"
 
 #include <nlohmann/json.hpp>
 #include "RTNeuralLSTM.h"
@@ -110,6 +114,7 @@ private:
     std::atomic<float>* bassParam = nullptr;
     std::atomic<float>* midParam = nullptr;
     std::atomic<float>* trebleParam = nullptr;
+    Atomic<bool> typeParam = { false };
 
     float previousDriveValue = 0.5;
     float previousMasterValue = 0.5;

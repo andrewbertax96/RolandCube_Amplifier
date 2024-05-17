@@ -47,8 +47,8 @@ private:
 
     //Image background = ImageCache::getFromMemory(BinaryData::smart_pedal_jpg, BinaryData::smart_pedal_jpgSize);
     // LookandFeels and Graphics
-    Image background_on = ImageCache::getFromMemory(BinaryData::background_on_jpg, BinaryData::background_on_jpgSize);
-    Image background_on_blue = ImageCache::getFromMemory(BinaryData::background_on_blue_jpg, BinaryData::background_on_blue_jpgSize);
+    //Image background_on = ImageCache::getFromMemory(BinaryData::background_on_jpg, BinaryData::background_on_jpgSize);
+    //Image background_on_blue = ImageCache::getFromMemory(BinaryData::background_on_blue_jpg, BinaryData::background_on_blue_jpgSize);
     //Image background_off = ImageCache::getFromMemory(BinaryData::background_off_jpg, BinaryData::background_off_jpgSize);
 
     // Global Widgets
@@ -57,21 +57,25 @@ private:
 
     ComboBox modelSelect;
 
-    // Overdrive Widgets
+    ///Inserisci le immagini
+    Image background = ImageCache::getFromMemory(BinaryData::backgroundCube_png, BinaryData::backgroundCube_pngSize);
+    Image logo_Eq = ImageCache::getFromMemory(BinaryData::logoAndEq_Cube_png, BinaryData::logoAndEq_Cube_pngSize);
+    Image lead = ImageCache::getFromMemory(BinaryData::leadChannelCube_png, BinaryData::leadChannelCube_pngSize);
+
+    //Amp Widgets
     Slider ampBassKnob;
     Slider ampMidKnob;
     Slider ampTrebleKnob;
     Slider odDriveKnob;
     Slider odLevelKnob;
-    //ImageButton odFootSw;
-    //ImageButton odLED;
-    ImageButton cabOnButton;
+    Slider modelSelectorKnob;
 
-    
-    // LookandFeels 
-    //myLookAndFeel blackHexKnobLAF;
-    myLookAndFeel bigKnobLAF;
-    myLookAndFeel smallKnobLAF;
+    ToggleButton typeSelector;
+
+    // LookandFeels of the knobs 
+    myLookAndFeel knobLookAndFeel;
+    myLookAndFeel knobLead_LookAndFeel;
+
 
     virtual void sliderValueChanged(Slider* slider) override;
 
@@ -89,6 +93,8 @@ public:
     std::unique_ptr <AudioProcessorValueTreeState::SliderAttachment> trebleSliderAttach;
     std::unique_ptr <AudioProcessorValueTreeState::SliderAttachment> driveSliderAttach;
     std::unique_ptr <AudioProcessorValueTreeState::SliderAttachment> masterSliderAttach;
+    std::unique_ptr <AudioProcessorValueTreeState::SliderAttachment> modelSelectorSliderAttach;
+    std::unique_ptr <AudioProcessorValueTreeState::ButtonAttachment> typeButtonAttach;
  
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (RolandCubeAudioProcessorEditor)
 };
