@@ -114,7 +114,8 @@ private:
     std::atomic<float>* bassParam = nullptr;
     std::atomic<float>* midParam = nullptr;
     std::atomic<float>* trebleParam = nullptr;
-
+    //std::atomic<bool>* typeParam = nullptr;
+    Atomic<bool> typeParam = {false};
     float previousDriveValue = 0.5;
     float previousMasterValue = 0.5;
     //float steppedValue1 = 0.0;

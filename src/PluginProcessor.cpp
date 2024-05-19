@@ -28,8 +28,9 @@ ProteusAudioProcessor::ProteusAudioProcessor()
                         std::make_unique<AudioParameterFloat>(MID_ID, MID_NAME, NormalisableRange<float>(-8.0f, 8.0f, 0.01f), 0.0f),
                         std::make_unique<AudioParameterFloat>(TREBLE_ID, TREBLE_NAME, NormalisableRange<float>(-8.0f, 8.0f, 0.01f), 0.0f),
                         std::make_unique<AudioParameterFloat>(MASTER_ID, MASTER_NAME, NormalisableRange<float>(0.0f, 1.0f, 0.01f), 0.5),
-                        std::make_unique<AudioParameterFloat>(MODEL_ID, MODEL_NAME, NormalisableRange<float>(0.0f, 8.0f, 1.0f), 0.0)
-                        //std::make_unique<AudioParameterBool>(TYPE_ID, TYPE_NAME, typeParam.get())
+                        std::make_unique<AudioParameterFloat>(MODEL_ID, MODEL_NAME, NormalisableRange<float>(0.0f, 8.0f, 1.0f), 0.0),
+                        std::make_unique<AudioParameterBool>(TYPE_ID, TYPE_NAME, typeParam.get())
+                        //std::make_unique<AudioParameterBool>(TYPE_ID, TYPE_NAME, false)
         })
 
     
@@ -40,6 +41,8 @@ ProteusAudioProcessor::ProteusAudioProcessor()
     bassParam = treeState.getRawParameterValue (BASS_ID);
     midParam = treeState.getRawParameterValue (MID_ID);
     trebleParam = treeState.getRawParameterValue (TREBLE_ID);
+    //typeParam = treeState.getParameterAsValue (TYPE_ID);
+    auto typeValue = typeParam.get();
 
     auto bassValue = static_cast<float> (bassParam->load());
     auto midValue = static_cast<float> (midParam->load());

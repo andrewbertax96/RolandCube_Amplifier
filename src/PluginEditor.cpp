@@ -37,13 +37,15 @@ ProteusAudioProcessorEditor::ProteusAudioProcessorEditor (ProteusAudioProcessor&
     float height = font.getHeight();
     font.setHeight(height);
 
+
+
+    
+
     // Set Widget Graphics
     //bigKnobLAF.setLookAndFeel(ImageCache::getFromMemory(BinaryData::big_knob_png, BinaryData::big_knob_pngSize));
     //smallKnobLAF.setLookAndFeel(ImageCache::getFromMemory(BinaryData::small_knob_png, BinaryData::small_knob_pngSize));
-    //knobLookAndFeel.setLookAndFeel(ImageCache::getFromMemory(BinaryData::knobCube_png, BinaryData::knobCube_pngSize));
-    bigKnobLAF.setLookAndFeel(ImageCache::getFromMemory(BinaryData::knobCube_png, BinaryData::knobCube_pngSize));
-    //knobLead_LookAndFeel.setLookAndFeel(ImageCache::getFromMemory(BinaryData::knobCubeLead_png, BinaryData::knobCubeLead_pngSize));
-    smallKnobLAF.setLookAndFeel(ImageCache::getFromMemory(BinaryData::knobCubeLead_png, BinaryData::knobCubeLead_pngSize));
+    knobLookAndFeel.setLookAndFeel(ImageCache::getFromMemory(BinaryData::knobCube_png, BinaryData::knobCube_pngSize));
+    knobLead_LookAndFeel.setLookAndFeel(ImageCache::getFromMemory(BinaryData::knobCubeLead_png, BinaryData::knobCubeLead_pngSize));
     //EQ
 
     bassSliderAttach = std::make_unique<AudioProcessorValueTreeState::SliderAttachment>(processor.treeState, BASS_ID, ampBassKnob);
@@ -92,12 +94,12 @@ ProteusAudioProcessorEditor::ProteusAudioProcessorEditor (ProteusAudioProcessor&
     volumeKnob.setTextBoxStyle(juce::Slider::TextEntryBoxPosition::NoTextBox, false, 50, 20);
     volumeKnob.setDoubleClickReturnValue(true, 0.5);
 
-    //typeButtonAttach = std::make_unique<AudioProcessorValueTreeState::ButtonAttachment>(audioProcessor.treeState, TYPE_ID, typeSelector);
-    //typeSelector.addMouseListener(this, false);//il false dice che non lo estendo ai figli.
-    //typeSelector.setColour(ToggleButton::ColourIds::textColourId, Colours::red);
-    //typeSelector.setColour(ToggleButton::ColourIds::tickColourId, Colours::red);
-    //typeSelector.setColour(ToggleButton::ColourIds::tickDisabledColourId, Colours::red);
-    //addAndMakeVisible(typeSelector);
+    typeButtonAttach = std::make_unique<AudioProcessorValueTreeState::ButtonAttachment>(processor.treeState, TYPE_ID, typeSelector);
+    addAndMakeVisible(typeSelector);
+    typeSelector.addMouseListener(this, false);//il false dice che non lo estendo ai figli.
+    typeSelector.setColour(ToggleButton::ColourIds::textColourId, Colours::red);
+    typeSelector.setColour(ToggleButton::ColourIds::tickColourId, Colours::red);
+    typeSelector.setColour(ToggleButton::ColourIds::tickDisabledColourId, Colours::red);
 
     // Pre Amp Pedal Widgets
  
@@ -188,7 +190,7 @@ ProteusAudioProcessorEditor::~ProteusAudioProcessorEditor()
     ampMidKnob.setLookAndFeel(nullptr);
     ampTrebleKnob.setLookAndFeel(nullptr);
     modelSelectorKnob.setLookAndFeel(nullptr);
-    //typeSelector.setLookAndFeel(nullptr);
+    typeSelector.setLookAndFeel(nullptr);
 }
 
 //==============================================================================
@@ -289,7 +291,7 @@ void ProteusAudioProcessorEditor::resized()
     ampMidKnob.setBounds(388, height, knobWidth, knobHeight);
     ampTrebleKnob.setBounds(501, height, knobWidth, knobHeight);
 
-    //typeSelector.setBounds(background.getWidth() / 2.0, background.getHeight() - 50, 100, 30);
+    typeSelector.setBounds(background.getWidth() / 2.0, background.getHeight() - 50, 100, 30);
 }
 
 bool ProteusAudioProcessorEditor::isValidFormat(File configFile)

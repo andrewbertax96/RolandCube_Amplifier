@@ -77,6 +77,8 @@ private:
     Slider volumeKnob;
     Slider modelSelectorKnob;
     
+    ToggleButton typeSelector;
+
     // LookandFeels 
     //myLookAndFeel blackHexKnobLAF;
     myLookAndFeel bigKnobLAF;
@@ -86,7 +88,7 @@ private:
 
     virtual void sliderValueChanged(Slider* slider) override;
 
-    AudioProcessorParameter* getParameter(const String& paramId);
+    //AudioProcessorParameter* getParameter(const String& paramId);
  
     void odFootSwClicked();
     void modelSelectChanged();
