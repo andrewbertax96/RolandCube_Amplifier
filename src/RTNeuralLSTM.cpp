@@ -46,7 +46,7 @@ void RT_LSTM::set_weights(T1 model, const char* filename)
 
     std::vector<float> dense_bias = weights_json["/state_dict/lin.bias"_json_pointer];
     dense.setBias(dense_bias.data());
-   
+
 }
 void RT_LSTM::load_json(const char* filename)
 {
@@ -76,7 +76,8 @@ void RT_LSTM::reset()
 {
     if (input_size == 1) {
         model.reset();
-    } else {
+    }
+    else {
         model_cond1.reset();
     }
 }

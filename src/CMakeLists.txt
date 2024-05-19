@@ -1,5 +1,3 @@
-#add_subdirectory(headless)
-
 target_sources(RolandCube PRIVATE
 	myLookAndFeel.cpp
 	myLookAndFeel.h
@@ -9,9 +7,8 @@ target_sources(RolandCube PRIVATE
 	PluginProcessor.h
 	RTNeuralLSTM.cpp
 	RTNeuralLSTM.h
-        CabSim.h
-        Eq4Band.cpp
-        Eq4Band.h
+        CabSimulation.h
+        Equalizer.cpp
+        Equalizer.h
 )
 
-#target_precompile_headers(Proteus PRIVATE pch.h)

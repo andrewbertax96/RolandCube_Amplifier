@@ -1,19 +1,17 @@
 /*
   ==============================================================================
 
-    This file contains the basic framework code for a JUCE plugin processor.
+    This file was auto-generated!
+
+    It contains the basic framework code for a JUCE plugin processor.
 
   ==============================================================================
 */
 
 #pragma once
 
-#include <JuceHeader.h>
+#include "../JuceLibraryCode/JuceHeader.h"
 
-#include <nlohmann/json.hpp>
-#include "RTNeuralLSTM.h"
-#include "cabSimulation.h"
-#include "Equalizer.h"
 
 #define GAIN_ID "drive"
 #define GAIN_NAME "Drive"
@@ -30,27 +28,30 @@
 #define TYPE_ID "type"
 #define TYPE_NAME "Type"
 
+#include <nlohmann/json.hpp>
+#include "RTNeuralLSTM.h"
+#include "Eq4Band.h"
+#include "CabSim.h"
+
 //==============================================================================
 /**
 */
-class RolandCubeAudioProcessor  : public juce::AudioProcessor
-    //,
-                                  //public AudioProcessorValueTreeState::Listener
+class ProteusAudioProcessor  : public AudioProcessor
 {
 public:
     //==============================================================================
-    RolandCubeAudioProcessor();
-    ~RolandCubeAudioProcessor() override;
-    
+    ProteusAudioProcessor();
+    ~ProteusAudioProcessor();
+
     //==============================================================================
-    void prepareToPlay(double sampleRate, int samplesPerBlock) override;
+    void prepareToPlay (double sampleRate, int samplesPerBlock) override;
     void releaseResources() override;
 
-    #ifndef JucePlugin_PreferredChannelConfigurations
-     bool isBusesLayoutSupported(const BusesLayout& layouts) const override;
-    #endif
+   #ifndef JucePlugin_PreferredChannelConfigurations
+    bool isBusesLayoutSupported (const BusesLayout& layouts) const override;
+   #endif
 
-    void processBlock(AudioBuffer<float>&, MidiBuffer&) override;
+    void processBlock (AudioBuffer<float>&, MidiBuffer&) override;
 
     //==============================================================================
     AudioProcessorEditor* createEditor() override;
@@ -67,37 +68,19 @@ public:
     //==============================================================================
     int getNumPrograms() override;
     int getCurrentProgram() override;
-    void setCurrentProgram(int index) override;
-    const String getProgramName(int index) override;
-    void changeProgramName(int index, const String& newName) override;
+    void setCurrentProgram (int index) override;
+    const String getProgramName (int index) override;
+    void changeProgramName (int index, const String& newName) override;
 
     //==============================================================================
-    void getStateInformation(MemoryBlock& destData) override;
-    void setStateInformation(const void* data, int sizeInBytes) override;
+    void getStateInformation (MemoryBlock& destData) override;
+    void setStateInformation (const void* data, int sizeInBytes) override;
 
-    //void parameterChanged(const String& parameterID, float newValue) override;
     void set_ampEQ(float bass_slider, float mid_slider, float treble_slider);
-    /*void applyEQ(AudioBuffer<float>& buffer, Equalizer& equalizer1, Equalizer& equalizer2, MidiBuffer& midiMessages, int totalNumInputChannels, double sampleRate);
 
-    void applyGainSmoothing(AudioBuffer<float>& buffer, const float masterParam, float& previousMasterValue);
-    void smoothPopSound(AudioBuffer<float>& buffer, const float masterParam, int& pauseVolume);*/
-
+    // Files and configuration
     void loadConfig(File configFile);
-    //void applyLSTM(AudioBuffer<float>& buffer, dsp::AudioBlock<float>& block, RT_LSTM& LSTM, RT_LSTM& LSTM2, bool conditioned, const float gainParam, float& previousGainValue, chowdsp::ResampledProcess<chowdsp::ResamplingTypes::SRCResampler<>>& resampler);
-    //void LSTMtoChannels(juce::dsp::AudioBlock<float>& block, RT_LSTM& LSTM, RT_LSTM& LSTM2, bool conditioned, float gainValue);
-    
-    AudioProcessorValueTreeState treeState;
 
-    //// Files and configuration
-
-    //bool conditioned = false;
-    //int pauseVolume = 3;
-    //const char* char_filename = "";
-
-    //int current_model_index = 0;
-    //std::vector<File> jsonFiles;
-    //File saved_model;
-    
     // Pedal/amp states
     int fw_state = 1;       // 0 = off, 1 = on
     int cab_state = 1; // 0 = off, 1 = on
@@ -111,7 +94,7 @@ public:
     File folder = File::getSpecialLocation(File::userDesktopDirectory);
     File saved_model;
 
-    //AudioProcessorValueTreeState treeState;
+    AudioProcessorValueTreeState treeState;
 
     bool conditioned = false;
 
@@ -120,29 +103,22 @@ public:
     int pauseVolume = 3;
 
     bool model_loaded = false;
+
 private:
 
-    Equalizer equalizer1; // Amp EQ
-    Equalizer equalizer2; // Amp EQ
-
-    /*Atomic<float> gainParam = {0.0};
-    Atomic<float> masterParam = { 0.5 };
-    Atomic<float> bassParam = { 0.0 };
-    Atomic<float> midParam = { 0.0 };
-    Atomic<float> trebleParam = { 0.0 };
-    Atomic<float> modelParam = { 0.0 };
-    Atomic<bool> typeParam = {false};*/
+    Eq4Band eq4band; // Amp EQ
+    Eq4Band eq4band2; // Amp EQ
 
     std::atomic<float>* driveParam = nullptr;
     std::atomic<float>* masterParam = nullptr;
     std::atomic<float>* bassParam = nullptr;
     std::atomic<float>* midParam = nullptr;
     std::atomic<float>* trebleParam = nullptr;
-    Atomic<bool> typeParam = { false }; 
-    
-    //float previousGainValue = 0.5;
+    //std::atomic<bool>* typeParam = nullptr;
+    Atomic<bool> typeParam = {false};
     float previousDriveValue = 0.5;
     float previousMasterValue = 0.5;
+    //float steppedValue1 = 0.0;
 
     RT_LSTM LSTM;
     RT_LSTM LSTM2;
@@ -152,9 +128,8 @@ private:
     chowdsp::ResampledProcess<chowdsp::ResamplingTypes::SRCResampler<>> resampler;
 
     // IR processing
-    CabSimulation cabSimIRa;
-     
-     
+    CabSim cabSimIRa;
+
     //==============================================================================
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (RolandCubeAudioProcessor)
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (ProteusAudioProcessor)
 };
