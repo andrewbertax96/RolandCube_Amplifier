@@ -453,13 +453,6 @@ void RolandCubeAudioProcessorEditor::buttonClicked(juce::Button* button)
         cabOnButtonClicked();
     }*/
 }
-void RolandCubeAudioProcessorEditor::sliderValueChanged(Slider* slider)
-{
-    // Amp
-    if (slider == &ampBassKnob || slider == &ampMidKnob || slider == &ampTrebleKnob) {
-        audioProcessor.set_ampEQ(ampBassKnob.getValue(), ampMidKnob.getValue(), ampTrebleKnob.getValue());
-    }
-}
 void RolandCubeAudioProcessorEditor::modelSelectChanged()
 {
     const int selectedFileIndex = modelSelect.getSelectedItemIndex();

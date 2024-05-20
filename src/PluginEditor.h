@@ -16,8 +16,8 @@
 /**
 */
 class RolandCubeAudioProcessorEditor  : public juce::AudioProcessorEditor,
-                                        private Button::Listener,
-                                        private Slider::Listener
+                                        private Button::Listener
+                                       
 {
 public:
     RolandCubeAudioProcessorEditor (RolandCubeAudioProcessor&);
@@ -37,7 +37,6 @@ public:
     void loadFromFolder();
     void resetImages();
 
-    //void buttonClicked(juce::Button* button);
     
 private:
     // This reference is provided as a quick way for your editor to
@@ -47,7 +46,6 @@ private:
     TextButton loadButton;
     virtual void buttonClicked(Button* button) override;
 
-    virtual void sliderValueChanged(Slider* slider) override;
     void modelSelectChanged();
     // Global Widgets
     Label modelLabel;
