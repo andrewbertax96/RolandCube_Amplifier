@@ -324,25 +324,32 @@ bool RolandCubeAudioProcessor::isValidFormat(File configFile)
     }
 }
 
-void RolandCubeAudioProcessor::modelSelect(int modelParam, std::vector<File> modelType)
+void RolandCubeAudioProcessor::modelSelect(int modelParam, const std::vector<File>& modelType)
 {
-    // Verifica se il valore selezionato è valido
-    int selectedFileIndex = modelParam;
-    if (selectedFileIndex >= 0 && selectedFileIndex < modelType.size()) {
-        // Carica il file JSON corrispondente
-        if (modelType[selectedFileIndex].existsAsFile() && isValidFormat(modelType[selectedFileIndex])) {
-            loadConfig(modelType[selectedFileIndex]);
-            current_model_index = selectedFileIndex;
-            saved_model = modelType[selectedFileIndex];
-        }
-        else {
-            DBG("Errore: Il file JSON selezionato non esiste o non è nel formato corretto.");
-        }
+    // Verifica se il vettore dei modelli è vuoto
+    if (modelType.empty()) {
+        DBG("Errore: Il vettore dei modelli è vuoto.");
+        return;
+    }
+
+    // Verifica se l'indice del modello è valido
+    if (modelParam < 0 || modelParam >= modelType.size()) {
+        DBG("Errore: Indice di modello non valido.");
+        return;
+    }
+
+    // Carica il file JSON corrispondente al modello selezionato
+    const File& selectedFile = modelType[modelParam];
+    if (selectedFile.existsAsFile() && isValidFormat(selectedFile)) {
+        loadConfig(selectedFile);
+        current_model_index = modelParam;
+        saved_model = selectedFile;
     }
     else {
-        DBG("Errore: Indice di modello non valido.");
+        DBG("Errore: Il file JSON selezionato non esiste o non è nel formato corretto.");
     }
 }
+
 
 void RolandCubeAudioProcessor::loadConfig(File configFile)
 {
