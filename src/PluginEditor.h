@@ -26,7 +26,8 @@ public:
     void resized() override;
 
     void loadJsonFiles();
-    void loadJson();
+    void orderJsonFiles(std::vector<File>& jsonFiles);
+    void modelSelect();
     bool isValidFormat(File configFile);
 
     void resetImages();

@@ -81,6 +81,8 @@ public:
     void applyGainSmoothing(AudioBuffer<float>& buffer, const float masterParam, float& previousMasterValue);
     void smoothPopSound(AudioBuffer<float>& buffer, const float masterParam, int& pauseVolume);
 
+    bool isValidFormat(File configFile);
+    void modelSelect(int modelParam);
     void loadConfig(File configFile);
     void applyLSTM(AudioBuffer<float>& buffer, dsp::AudioBlock<float>& block, RT_LSTM& LSTM, RT_LSTM& LSTM2, bool conditioned, const float gainParam, float& previousGainValue, chowdsp::ResampledProcess<chowdsp::ResamplingTypes::SRCResampler<>>& resampler);
     void LSTMtoChannels(juce::dsp::AudioBlock<float>& block, RT_LSTM& LSTM, RT_LSTM& LSTM2, bool conditioned, float gainValue);
@@ -98,6 +100,8 @@ public:
     File saved_model;
     int num_models = 0;
 
+    Atomic<int> modelParam = { 0 };
+
 private:
 
     Equalizer equalizer1; // Amp EQ
@@ -108,7 +112,6 @@ private:
     Atomic<float> bassParam = { 0.0 };
     Atomic<float> midParam = { 0.0 };
     Atomic<float> trebleParam = { 0.0 };
-    Atomic<float> modelParam = { 0.0 };
 
     float previousGainValue = 0.5;
     float previousMasterValue = 0.5;
