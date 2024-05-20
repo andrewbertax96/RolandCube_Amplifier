@@ -27,9 +27,6 @@ public:
 
     void loadJsonFiles();
     void orderJsonFiles(std::vector<File>& jsonFiles);
-    void modelSelect();
-    bool isValidFormat(File configFile);
-
     void resetImages();
 
     
@@ -37,7 +34,6 @@ private:
     // This reference is provided as a quick way for your editor to
     // access the processor object that created it.
     RolandCubeAudioProcessor& audioProcessor;
-    Atomic<bool> typeParam = { true };
 
     //Inserisci le immagini
     Image background = ImageCache::getFromMemory(BinaryData::backgroundCube_png, BinaryData::backgroundCube_pngSize);
@@ -51,6 +47,7 @@ private:
     Slider gainKnob;
     Slider volumeKnob;
     Slider modelSelectorKnob;
+    ToggleButton gainType_Button;
       
     // LookandFeels of the knobs 
     myLookAndFeel knobLookAndFeel;
@@ -62,6 +59,7 @@ private:
     std::unique_ptr <AudioProcessorValueTreeState::SliderAttachment> gainSliderAttach;
     std::unique_ptr <AudioProcessorValueTreeState::SliderAttachment> volumeSliderAttach;
     std::unique_ptr <AudioProcessorValueTreeState::SliderAttachment> modelSelectorSliderAttach;
+    std::unique_ptr <AudioProcessorValueTreeState::ButtonAttachment> gaintypeSelectorButtonAttach;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (RolandCubeAudioProcessorEditor)
 };

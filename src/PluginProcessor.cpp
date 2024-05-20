@@ -27,7 +27,8 @@ RolandCubeAudioProcessor::RolandCubeAudioProcessor()
                                             std::make_unique<AudioParameterFloat>(MID_ID, MID_NAME, NormalisableRange<float>(-8.0f, 8.0f, 0.01f), 0.0f),
                                             std::make_unique<AudioParameterFloat>(TREBLE_ID, TREBLE_NAME, NormalisableRange<float>(-8.0f, 8.0f, 0.01f), 0.0f),
                                             std::make_unique<AudioParameterFloat>(MASTER_ID, MASTER_NAME, NormalisableRange<float>(0.0f, 1.0f, 0.01f), 0.5),
-                                            std::make_unique<AudioParameterFloat>(MODEL_ID, MODEL_NAME, NormalisableRange<float>(0.0f, 8.0f, 1.0f), 0.0)
+                                            std::make_unique<AudioParameterFloat>(MODEL_ID, MODEL_NAME, NormalisableRange<float>(0.0f, 8.0f, 1.0f), 0.0),
+                                            std::make_unique<AudioParameterBool>(TYPE_ID, TYPE_NAME, false)
                                         })
 #endif
 {
@@ -37,7 +38,7 @@ RolandCubeAudioProcessor::RolandCubeAudioProcessor()
    treeState.addParameterListener(MID_ID, this);
    treeState.addParameterListener(TREBLE_ID, this);
    treeState.addParameterListener(MODEL_ID, this);
-   treeState.addParameterListener(TYPE_ID, this);
+   //treeState.addParameterListener(TYPE_ID, this);
 
    cabSimIRa.load(BinaryData::default_ir_wav, BinaryData::default_ir_wavSize);
    pauseVolume = 3;
@@ -112,8 +113,18 @@ void RolandCubeAudioProcessor::changeProgramName (int index, const juce::String&
 void RolandCubeAudioProcessor::parameterChanged(const String& parameterID, float newValue)
 {
     if (parameterID == MODEL_ID) {
-        // Aggiorna il valore di modelParam
         modelParam = static_cast<int>(newValue);
+    }
+    else if (parameterID == TYPE_ID) {
+        gainType_Param = newValue;
+
+        if (gainType_Param.get() == false) {
+            modelType = jsonFilesGainStable;
+        }
+        else {
+
+            modelType = jsonFilesParametrizedGain;
+        }
     }
     else if (parameterID == GAIN_ID) {
         gainParam = newValue;
@@ -131,7 +142,7 @@ void RolandCubeAudioProcessor::parameterChanged(const String& parameterID, float
         trebleParam = newValue;
     }
 
-    modelSelect(modelParam.get());
+    modelSelect(modelParam.get(), modelType);
     set_ampEQ(bassParam.get(), midParam.get(), trebleParam.get());
 }
 
@@ -313,16 +324,16 @@ bool RolandCubeAudioProcessor::isValidFormat(File configFile)
     }
 }
 
-void RolandCubeAudioProcessor::modelSelect(int modelParam)
+void RolandCubeAudioProcessor::modelSelect(int modelParam, std::vector<File> modelType)
 {
     // Verifica se il valore selezionato è valido
     int selectedFileIndex = modelParam;
-    if (selectedFileIndex >= 0 && selectedFileIndex < jsonFiles.size()) {
+    if (selectedFileIndex >= 0 && selectedFileIndex < modelType.size()) {
         // Carica il file JSON corrispondente
-        if (jsonFiles[selectedFileIndex].existsAsFile() && isValidFormat(jsonFiles[selectedFileIndex])) {
-            loadConfig(jsonFiles[selectedFileIndex]);
+        if (modelType[selectedFileIndex].existsAsFile() && isValidFormat(modelType[selectedFileIndex])) {
+            loadConfig(modelType[selectedFileIndex]);
             current_model_index = selectedFileIndex;
-            saved_model = jsonFiles[selectedFileIndex];
+            saved_model = modelType[selectedFileIndex];
         }
         else {
             DBG("Errore: Il file JSON selezionato non esiste o non è nel formato corretto.");
@@ -353,7 +364,6 @@ void RolandCubeAudioProcessor::loadConfig(File configFile)
         conditioned = true;
     }
 
-    //saved_model = configFile;
     this->suspendProcessing(false);
 }
 
