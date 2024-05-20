@@ -154,40 +154,60 @@ void RolandCubeAudioProcessorEditor::loadJsonFiles() {
     // Ottieni il percorso dell'eseguibile corrente
     File executableFile = File::getSpecialLocation(File::currentExecutableFile);
 
+    // Stampa il percorso dell'eseguibile corrente per il debug
+    DBG("Percorso dell'eseguibile corrente: " + executableFile.getFullPathName());
+
     // Risali fino alla cartella principale del progetto `RolandCube_Amplifier`
     File projectRoot = executableFile;
     while (!projectRoot.isRoot() && !projectRoot.getFileName().equalsIgnoreCase("RolandCube_Amplifier")) {
         projectRoot = projectRoot.getParentDirectory();
     }
 
-    // Definisci le directory per i file JSON
-    StringArray jsonDirectories = { "gainStable", "parametrizedGain" };
+    // Stampa il percorso della cartella principale del progetto per il debug
+    DBG("Percorso della cartella principale del progetto: " + projectRoot.getFullPathName());
 
-    // Carica i file JSON da entrambe le directory
-    for (const auto& directory : jsonDirectories) {
-        File jsonDirectory = projectRoot.getChildFile("resources/jSonModels/" + directory);
+    // Definisci la directory per i file JSON di gainStable
+    File directoryGainStable = projectRoot.getChildFile("train/models/gainStable");
 
-        // Controlla se la directory esiste
-        if (jsonDirectory.isDirectory()) {
-            // Ottieni un array di file nella directory
-            Array<File> jsonFiles = jsonDirectory.findChildFiles(File::TypesOfFileToFind::findFiles, false, "*.json");
+    // Controlla se la directory esiste
+    if (directoryGainStable.isDirectory()) {
+        // Ottieni un array di file nella directory
+        Array<File> filesGainStable = directoryGainStable.findChildFiles(File::TypesOfFileToFind::findFiles, false, "*.json");
 
-            // Aggiungi i file JSON al vettore corrispondente
-            for (const auto& file : jsonFiles) {
-                if (directory.equalsIgnoreCase("gainStable"))
-                    audioProcessor.jsonFilesGainStable.push_back(file);
-                else if (directory.equalsIgnoreCase("parametrizedGain"))
-                    audioProcessor.jsonFilesParametrizedGain.push_back(file);
-            }
-
-            // Stampa i nomi dei file JSON caricati a scopo di debug
-            for (const auto& file : jsonFiles) {
-                DBG("File JSON trovato (" + directory + "): " + file.getFullPathName());
-            }
+        // Aggiungi i file JSON al vettore jsonFilesGainStable
+        for (const auto& file : filesGainStable) {
+            audioProcessor.jsonFilesGainStable.push_back(file);
         }
-        else {
-            DBG("Errore: la directory " + directory + " non esiste: " + jsonDirectory.getFullPathName());
+
+        // Stampa i nomi dei file JSON caricati a scopo di debug
+        for (const auto& file : audioProcessor.jsonFilesGainStable) {
+            DBG("File JSON trovato (gainStable): " + file.getFullPathName());
         }
+    }
+    else {
+        DBG("Errore: la directory gainStable non esiste: " + directoryGainStable.getFullPathName());
+    }
+
+    // Definisci la directory per i file JSON di parametrizedGain
+    File directoryParametrizedGain = projectRoot.getChildFile("train/models/parametrizedGain");
+
+    // Controlla se la directory esiste
+    if (directoryParametrizedGain.isDirectory()) {
+        // Ottieni un array di file nella directory
+        Array<File> filesParametrizedGain = directoryParametrizedGain.findChildFiles(File::TypesOfFileToFind::findFiles, false, "*.json");
+
+        // Aggiungi i file JSON al vettore jsonFilesParametrizedGain
+        for (const auto& file : filesParametrizedGain) {
+            audioProcessor.jsonFilesParametrizedGain.push_back(file);
+        }
+
+        // Stampa i nomi dei file JSON caricati a scopo di debug
+        for (const auto& file : audioProcessor.jsonFilesParametrizedGain) {
+            DBG("File JSON trovato (parametrizedGain): " + file.getFullPathName());
+        }
+    }
+    else {
+        DBG("Errore: la directory parametrizedGain non esiste: " + directoryParametrizedGain.getFullPathName());
     }
 }
 
