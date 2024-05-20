@@ -214,74 +214,57 @@ void RolandCubeAudioProcessorEditor::loadJsonFiles()
 
 }
 
+File findProjectRoot(File currentDir, const String& projectName) {
+    while (!currentDir.isRoot() && !currentDir.getFileName().equalsIgnoreCase(projectName)) {
+        currentDir = currentDir.getParentDirectory();
+    }
+    return currentDir;
+}
+
 void RolandCubeAudioProcessorEditor::loadJson()
 {
-    
+    //jsonFile = "C:/Users/andre/Desktop/RolandCube_Amplifier/resources/jSonModels/gainStable/acousticModelGainStable.json";
+
     File jsonFile;
+
+    // Ottieni il percorso dell'eseguibile corrente
+    File executableFile = File::getSpecialLocation(File::currentExecutableFile);
+
+    // Stampa il percorso dell'eseguibile corrente per il debug
+    DBG("Percorso dell'eseguibile corrente: " + executableFile.getFullPathName());
+
+  
+    // Risali fino alla cartella principale del progetto `RolandCube_Amplifier`
+    File projectRoot = findProjectRoot(executableFile, "RolandCube_Amplifier");
+
+    // Stampa il percorso della cartella principale del progetto per il debug
+    DBG("Percorso della cartella principale del progetto: " + projectRoot.getFullPathName());
+
+    // Costruisci il percorso relativo del file JSON basato sulla cartella principale del progetto
     if (typeParam.get() == false) {
-        // Costruisci il percorso completo del file JSON
-        jsonFile = "C:/Users/andre/Desktop/RolandCube_Amplifier/resources/jSonModels/gainStable/acousticModelGainStable.json";
-
-        // Controlla se il file JSON esiste
-        if (jsonFile.existsAsFile())
-        {
-            // Legge il contenuto del file JSON
-            String jsonContent = jsonFile.loadFileAsString();
-
-            // Stampa il contenuto del file JSON a scopo di debug
-            DBG("Contenuto del file JSON: " + jsonContent);
-
-            // Ora puoi fare qualsiasi cosa con il contenuto del file JSON, ad esempio passarlo al processore audio
-        }
-        else
-        {
-            DBG("Errore: il file JSON non esiste: " + jsonFile.getFullPathName());
-        }
+        jsonFile = projectRoot.getChildFile("resources/jSonModels/gainStable/acousticModelGainStable.json");
     }
-    else
-    {
-        // Costruisci il percorso completo del file JSON
-        jsonFile = "C:/Users/andre/Desktop/RolandCube_Amplifier/resources/jSonModels/parametrizedGain/acousticModelParametrizedGain.json";
-
-        // Controlla se il file JSON esiste
-        if (jsonFile.existsAsFile())
-        {
-            // Legge il contenuto del file JSON
-            String jsonContent = jsonFile.loadFileAsString();
-
-            // Stampa il contenuto del file JSON a scopo di debug
-            DBG("Contenuto del file JSON: " + jsonContent);
-
-            // Ora puoi fare qualsiasi cosa con il contenuto del file JSON, ad esempio passarlo al processore audio
-        }
-        else
-        {
-            DBG("Errore: il file JSON non esiste: " + jsonFile.getFullPathName());
-        }
+    else {
+        jsonFile = projectRoot.getChildFile("resources/jSonModels/parametrizedGain/acousticModelParametrizedGain.json");
     }
-    //File resourcesDirectory = File::getSpecialLocation(File::currentApplicationFile)
-    //    .getChildFile("resources")
-    //    .getChildFile("jSonModels")
-    //    .getChildFile("gainStable");
-    //File jsonFile = resourcesDirectory.getChildFile("classicModelGainStable.json");
 
-    //// Controlla se il file JSON esiste
-    //if (jsonFile.existsAsFile())
-    //{
-    //    // Legge il contenuto del file JSON
-    //    String jsonContent = jsonFile.loadFileAsString();
+    // Controlla se il file JSON esiste
+    if (jsonFile.existsAsFile()) {
+        // Legge il contenuto del file JSON
+        String jsonContent = jsonFile.loadFileAsString();
 
-    //    // Stampa il contenuto del file JSON a scopo di debug
-    //    DBG("Contenuto del file JSON: " + jsonContent);
+        // Stampa il contenuto del file JSON a scopo di debug
+        DBG("Contenuto del file JSON: " + jsonContent);
 
-    //    // Ora puoi fare qualsiasi cosa con il contenuto del file JSON, ad esempio passarlo al processore audio
-    //}
-    //else
-    //{
-    //    DBG("Errore: il file JSON non esiste: " + jsonFile.getFullPathName());
-    //}
+        // Ora puoi fare qualsiasi cosa con il contenuto del file JSON, ad esempio passarlo al processore audio
+    }
+    else {
+        DBG("Errore: il file JSON non esiste: " + jsonFile.getFullPathName());
+    }
+
     audioProcessor.saved_model = jsonFile;
     audioProcessor.loadConfig(audioProcessor.saved_model);
+
 }
 
 bool RolandCubeAudioProcessorEditor::isValidFormat(File configFile)
