@@ -27,8 +27,7 @@ RolandCubeAudioProcessor::RolandCubeAudioProcessor()
                                             std::make_unique<AudioParameterFloat>(MID_ID, MID_NAME, NormalisableRange<float>(-8.0f, 8.0f, 0.01f), 0.0f),
                                             std::make_unique<AudioParameterFloat>(TREBLE_ID, TREBLE_NAME, NormalisableRange<float>(-8.0f, 8.0f, 0.01f), 0.0f),
                                             std::make_unique<AudioParameterFloat>(MASTER_ID, MASTER_NAME, NormalisableRange<float>(0.0f, 1.0f, 0.01f), 0.5),
-                                            std::make_unique<AudioParameterFloat>(MODEL_ID, MODEL_NAME, NormalisableRange<float>(0.0f, 8.0f, 1.0f), 0.0),
-                                            std::make_unique<AudioParameterBool>(TYPE_ID, TYPE_NAME, typeParam.get() )
+                                            std::make_unique<AudioParameterFloat>(MODEL_ID, MODEL_NAME, NormalisableRange<float>(0.0f, 8.0f, 1.0f), 0.0)
                                         })
 #endif
 {
@@ -39,18 +38,6 @@ RolandCubeAudioProcessor::RolandCubeAudioProcessor()
    treeState.addParameterListener(TREBLE_ID, this);
    treeState.addParameterListener(MODEL_ID, this);
    treeState.addParameterListener(TYPE_ID, this);
-
-   //MemoryInputStream jsonStream(BinaryData::acousticModelGainStable_json, BinaryData::acousticModelGainStable_jsonSize, false);
-   //auto jsonInput = nlohmann::json::parse(jsonStream.readEntireStreamAsString().toStdString());
-   //std::string filenameStr = jsonInput;
-
-   //      //Converte la stringa C++ in un oggetto File
-   //File saved_model = File(filenameStr);
-   //auto jsonInput = nlohmann::json::parse(jsonStream.readEntireStreamAsString().toStdString());
-   //neuralNet[0] = RTNeural::json_parser::parseJson<float>(jsonInput);
-   //neuralNet[1] = RTNeural::json_parser::parseJson<float>(jsonInput);
-
-   //loadConfig(saved_model);
 
    cabSimIRa.load(BinaryData::default_ir_wav, BinaryData::default_ir_wavSize);
    pauseVolume = 3;
@@ -126,9 +113,6 @@ void RolandCubeAudioProcessor::parameterChanged(const String& parameterID, float
 {
     if (parameterID == MODEL_ID) {
         modelParam = newValue;
-    }
-    else if(parameterID == TYPE_ID){
-        typeParam = newValue;
     }
     else if (parameterID == GAIN_ID) {
         gainParam = newValue;
@@ -272,8 +256,6 @@ void RolandCubeAudioProcessor::getStateInformation (juce::MemoryBlock& destData)
     std::unique_ptr<XmlElement> xml (state.createXml());
     xml->setAttribute("saved_model", saved_model.getFullPathName().toStdString());
     xml->setAttribute("current_model_index", current_model_index);
-    xml->setAttribute("folder", folder.getFullPathName().toStdString());
-    xml->setAttribute("current_model_index", current_model_index);
     copyXmlToBinary (*xml, destData);
 
 }
@@ -298,8 +280,6 @@ void RolandCubeAudioProcessor::setStateInformation (const void* data, int sizeIn
             saved_model = temp_saved_model;
 
             current_model_index = xmlState->getIntAttribute("current_model_index");
-            File temp = xmlState->getStringAttribute("folder");
-            folder = temp;
             if (saved_model.existsAsFile()) {
                 loadConfig(saved_model);
             }          
@@ -329,7 +309,6 @@ void RolandCubeAudioProcessor::loadConfig(File configFile)
     }
 
     //saved_model = configFile;
-    model_loaded = true;
     this->suspendProcessing(false);
 }
 
@@ -349,16 +328,12 @@ void RolandCubeAudioProcessor::applyLSTM(AudioBuffer<float>& buffer, dsp::AudioB
             previousGainValue = gainParam;
         }
         
-        //auto block44k = resampler.processIn(block);
         LSTMtoChannels(block44k, LSTM, LSTM2, conditioned, gainParam);
-        //resampler.processOut(block44k, block);
     }
     else
     {
         buffer.applyGain(1.5); // Apply default boost to help sound
-        //auto block44k = resampler.processIn(block);
         LSTMtoChannels(block44k, LSTM, LSTM2, conditioned, gainParam);
-        //resampler.processOut(block44k, block);
     }
     resampler.processOut(block44k, block);
 }

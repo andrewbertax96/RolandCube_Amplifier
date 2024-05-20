@@ -13,13 +13,6 @@
 RolandCubeAudioProcessorEditor::RolandCubeAudioProcessorEditor(RolandCubeAudioProcessor& p)
     : AudioProcessorEditor(&p), audioProcessor(p)
 {
-
-    auto font = modelLabel.getFont();
-    float height = font.getHeight();
-    font.setHeight(height);
-
-    
-
     // Make sure that before the constructor has finished, you've set the
     // editor's size to whatever you need it to
     knobLookAndFeel.setLookAndFeel(ImageCache::getFromMemory(BinaryData::knobCube_png, BinaryData::knobCube_pngSize));
@@ -73,40 +66,10 @@ RolandCubeAudioProcessorEditor::RolandCubeAudioProcessorEditor(RolandCubeAudioPr
     volumeKnob.setTextBoxStyle(juce::Slider::TextEntryBoxPosition::NoTextBox, false, 50, 20);
     volumeKnob.setDoubleClickReturnValue(true, 0.5);
 
-    typeButtonAttach = std::make_unique<AudioProcessorValueTreeState::ButtonAttachment>(audioProcessor.treeState, TYPE_ID, typeSelector);
-    typeSelector.addMouseListener(this, false);//il false dice che non lo estendo ai figli.
-    typeSelector.setColour(ToggleButton::ColourIds::textColourId, Colours::red);
-    typeSelector.setColour(ToggleButton::ColourIds::tickColourId, Colours::red);
-    typeSelector.setColour(ToggleButton::ColourIds::tickDisabledColourId, Colours::red);
-    addAndMakeVisible(typeSelector);
-
-    // Overall Widgets
-    addAndMakeVisible(loadButton);
-    loadButton.setButtonText("LOAD MODEL");
-    loadButton.addListener(this);
-
-    addAndMakeVisible(modelSelect);
-    modelSelect.setColour(juce::Label::textColourId, juce::Colours::black);
-    modelSelect.setScrollWheelEnabled(true);
-    int c = 1;
-    for (const auto& jsonFile : audioProcessor.jsonFiles) {
-        modelSelect.addItem(jsonFile.getFileName(), c);
-        c += 1;
-    }
-    modelSelect.onChange = [this] {modelSelectChanged(); };
-
-    addAndMakeVisible(versionLabel);
-    versionLabel.setText("v1.2", juce::NotificationType::dontSendNotification);
-    versionLabel.setJustificationType(juce::Justification::left);
-    versionLabel.setColour(juce::Label::textColourId, juce::Colours::white);
-    versionLabel.setFont(font);
-
     // Size of plugin GUI
     setSize(background.getWidth(), background.getHeight());
     //loadJsonFiles();
-    //loadJson();
-
-    loadFromFolder();
+    loadJson();
 }
 
 RolandCubeAudioProcessorEditor::~RolandCubeAudioProcessorEditor()
@@ -169,12 +132,6 @@ void RolandCubeAudioProcessorEditor::resized()
     auto height = 62;
     auto heightLead = height + 11.5;
 
-    //Overall Widgets
-    loadButton.setBounds(186, 48, 120, 24);
-    modelSelect.setBounds(52, 11, 400, 28);
-    //modelLabel.setBounds(197, 2, 90, 25);
-    versionLabel.setBounds(462, 632, 60, 10);
-
     modelSelectorKnob.setBounds(769, heightLead-5.5, knobWidth+10, knobHeight+10);
     gainKnob.setBounds(959, heightLead, knobWidth, knobHeight);
     volumeKnob.setBounds(1073, heightLead, knobWidth, knobHeight);
@@ -182,8 +139,6 @@ void RolandCubeAudioProcessorEditor::resized()
     ampBassKnob.setBounds(275, height, knobWidth, knobHeight);
     ampMidKnob.setBounds(388, height, knobWidth, knobHeight);
     ampTrebleKnob.setBounds(501, height, knobWidth, knobHeight);
-
-    typeSelector.setBounds(background.getWidth()/2.0, background.getHeight()-50,100,30);
 }
 void RolandCubeAudioProcessorEditor::loadJsonFiles()
 {
@@ -261,23 +216,48 @@ void RolandCubeAudioProcessorEditor::loadJsonFiles()
 
 void RolandCubeAudioProcessorEditor::loadJson()
 {
-    // Costruisci il percorso completo del file JSON
-    File jsonFile("C:/Users/andre/Desktop/RolandCube_Amplifier/resources/jSonModels/gainStable/classicModelGainStable.json");
+    
+    File jsonFile;
+    if (typeParam.get() == false) {
+        // Costruisci il percorso completo del file JSON
+        jsonFile = "C:/Users/andre/Desktop/RolandCube_Amplifier/resources/jSonModels/gainStable/acousticModelGainStable.json";
 
-    // Controlla se il file JSON esiste
-    if (jsonFile.existsAsFile())
-    {
-        // Legge il contenuto del file JSON
-        String jsonContent = jsonFile.loadFileAsString();
+        // Controlla se il file JSON esiste
+        if (jsonFile.existsAsFile())
+        {
+            // Legge il contenuto del file JSON
+            String jsonContent = jsonFile.loadFileAsString();
 
-        // Stampa il contenuto del file JSON a scopo di debug
-        DBG("Contenuto del file JSON: " + jsonContent);
+            // Stampa il contenuto del file JSON a scopo di debug
+            DBG("Contenuto del file JSON: " + jsonContent);
 
-        // Ora puoi fare qualsiasi cosa con il contenuto del file JSON, ad esempio passarlo al processore audio
+            // Ora puoi fare qualsiasi cosa con il contenuto del file JSON, ad esempio passarlo al processore audio
+        }
+        else
+        {
+            DBG("Errore: il file JSON non esiste: " + jsonFile.getFullPathName());
+        }
     }
     else
     {
-        DBG("Errore: il file JSON non esiste: " + jsonFile.getFullPathName());
+        // Costruisci il percorso completo del file JSON
+        jsonFile = "C:/Users/andre/Desktop/RolandCube_Amplifier/resources/jSonModels/parametrizedGain/acousticModelParametrizedGain.json";
+
+        // Controlla se il file JSON esiste
+        if (jsonFile.existsAsFile())
+        {
+            // Legge il contenuto del file JSON
+            String jsonContent = jsonFile.loadFileAsString();
+
+            // Stampa il contenuto del file JSON a scopo di debug
+            DBG("Contenuto del file JSON: " + jsonContent);
+
+            // Ora puoi fare qualsiasi cosa con il contenuto del file JSON, ad esempio passarlo al processore audio
+        }
+        else
+        {
+            DBG("Errore: il file JSON non esiste: " + jsonFile.getFullPathName());
+        }
     }
     //File resourcesDirectory = File::getSpecialLocation(File::currentApplicationFile)
     //    .getChildFile("resources")
@@ -338,130 +318,7 @@ bool RolandCubeAudioProcessorEditor::isValidFormat(File configFile)
     }
 }
 
-void RolandCubeAudioProcessorEditor::loadButtonClicked()
-{
-    myChooser = std::make_unique<FileChooser>("Select a folder to load models from",
-        audioProcessor.folder,
-        "*.json");
-
-    auto folderChooserFlags = FileBrowserComponent::openMode | FileBrowserComponent::canSelectDirectories | FileBrowserComponent::canSelectFiles;
-
-    myChooser->launchAsync(folderChooserFlags, [this](const FileChooser& chooser)
-        {
-            if (!chooser.getResult().exists()) {
-                return;
-            }
-            audioProcessor.model_loaded = false;
-            Array<File> files;
-            if (chooser.getResult().existsAsFile()) { // If a file is selected
-
-                if (isValidFormat(chooser.getResult())) {
-                    audioProcessor.saved_model = chooser.getResult();
-                }
-
-                files = chooser.getResult().getParentDirectory().findChildFiles(2, false, "*.json");
-                audioProcessor.folder = chooser.getResult().getParentDirectory();
-
-            }
-            else if (chooser.getResult().isDirectory()) { // Else folder is selected
-                files = chooser.getResult().findChildFiles(2, false, "*.json");
-                audioProcessor.folder = chooser.getResult();
-            }
-
-            audioProcessor.jsonFiles.clear();
-
-            modelSelect.clear();
-
-            if (files.size() > 0) {
-                for (auto file : files) {
-
-                    if (isValidFormat(file)) {
-                        modelSelect.addItem(file.getFileNameWithoutExtension(), audioProcessor.jsonFiles.size() + 1);
-                        audioProcessor.jsonFiles.push_back(file);
-                        audioProcessor.num_models += 1;
-                    }
-                }
-                if (chooser.getResult().existsAsFile()) {
-
-                    if (isValidFormat(chooser.getResult()) == true) {
-                        modelSelect.setText(audioProcessor.saved_model.getFileNameWithoutExtension());
-                        audioProcessor.loadConfig(audioProcessor.saved_model);
-                    }
-                }
-                else {
-                    if (!audioProcessor.jsonFiles.empty()) {
-                        modelSelect.setSelectedItemIndex(0, juce::NotificationType::dontSendNotification);
-                        modelSelectChanged();
-                    }
-                }
-            }
-            else {
-                audioProcessor.saved_model = ""; // Clear the saved model since there's nothing in the dropdown
-            }
-        });
-
-}
-
-void RolandCubeAudioProcessorEditor::loadFromFolder()
-{
-    audioProcessor.model_loaded = false;
-    Array<File> files;
-    files = audioProcessor.folder.findChildFiles(2, false, "*.json");
-
-    audioProcessor.jsonFiles.clear();
-    modelSelect.clear();
-
-    if (files.size() > 0) {
-        for (auto file : files) {
-
-            if (isValidFormat(file)) {
-                modelSelect.addItem(file.getFileNameWithoutExtension(), audioProcessor.jsonFiles.size() + 1);
-                audioProcessor.jsonFiles.push_back(file);
-                audioProcessor.num_models += 1;
-            }
-        }
-        // Try to load model from saved_model, if it doesnt exist and jsonFiles is not empty, load the first model (if it exists and is valid format)
-        if (!audioProcessor.jsonFiles.empty()) {
-            if (audioProcessor.saved_model.existsAsFile() && isValidFormat(audioProcessor.saved_model)) {
-                audioProcessor.loadConfig(audioProcessor.saved_model);
-                modelSelect.setText(audioProcessor.saved_model.getFileNameWithoutExtension(), juce::NotificationType::dontSendNotification);
-            }
-            else {
-                if (audioProcessor.jsonFiles[0].existsAsFile() && isValidFormat(audioProcessor.jsonFiles[0])) {
-                    audioProcessor.loadConfig(audioProcessor.jsonFiles[0]);
-                    modelSelect.setText(audioProcessor.jsonFiles[0].getFileNameWithoutExtension(), juce::NotificationType::dontSendNotification);
-                }
-            }
-        }
-    }
-}
-
 void RolandCubeAudioProcessorEditor::resetImages()
 {
-    repaint();
-}
-
-
-void RolandCubeAudioProcessorEditor::buttonClicked(juce::Button* button)
-{
-    //if (button == &odFootSw) {
-    //    odFootSwClicked();
-    if (button == &loadButton) {
-        loadButtonClicked();
-    }/*
-    else if (button == &cabOnButton) {
-        cabOnButtonClicked();
-    }*/
-}
-void RolandCubeAudioProcessorEditor::modelSelectChanged()
-{
-    const int selectedFileIndex = modelSelect.getSelectedItemIndex();
-    if (selectedFileIndex >= 0 && selectedFileIndex < audioProcessor.jsonFiles.size() && audioProcessor.jsonFiles.empty() == false) { //check if correct 
-        if (audioProcessor.jsonFiles[selectedFileIndex].existsAsFile() && isValidFormat(audioProcessor.jsonFiles[selectedFileIndex])) {
-            audioProcessor.loadConfig(audioProcessor.jsonFiles[selectedFileIndex]);
-            audioProcessor.current_model_index = selectedFileIndex;
-            audioProcessor.saved_model = audioProcessor.jsonFiles[selectedFileIndex];
-        }
-    }
     repaint();
 }

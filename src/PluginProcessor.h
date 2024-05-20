@@ -97,8 +97,6 @@ public:
     std::vector<File> jsonFiles;
     File saved_model;
     int num_models = 0;
-    File folder = File::getSpecialLocation(File::userDesktopDirectory);
-    bool model_loaded = false;
 
 private:
 
@@ -111,7 +109,6 @@ private:
     Atomic<float> midParam = { 0.0 };
     Atomic<float> trebleParam = { 0.0 };
     Atomic<float> modelParam = { 0.0 };
-    Atomic<bool> typeParam = {false};
 
     float previousGainValue = 0.5;
     float previousMasterValue = 0.5;
