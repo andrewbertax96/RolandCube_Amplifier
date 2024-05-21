@@ -17,7 +17,7 @@ RolandCubeAudioProcessorEditor::RolandCubeAudioProcessorEditor(RolandCubeAudioPr
     // editor's size to whatever you need it to
     knobLookAndFeel.setLookAndFeel(ImageCache::getFromMemory(BinaryData::knobCube_png, BinaryData::knobCube_pngSize));
     knobLead_LookAndFeel.setLookAndFeel(ImageCache::getFromMemory(BinaryData::knobCubeLead_png, BinaryData::knobCubeLead_pngSize));
-
+    roland_logo = roland_logo.rescaled(roland_logo.getWidth() - 150, roland_logo.getHeight() - 35);
     //EQ
 
     bassSliderAttach = std::make_unique<AudioProcessorValueTreeState::SliderAttachment>(audioProcessor.treeState, BASS_ID, ampBassKnob);
@@ -76,6 +76,7 @@ RolandCubeAudioProcessorEditor::RolandCubeAudioProcessorEditor(RolandCubeAudioPr
     // Size of plugin GUI
     setSize(background.getWidth(), background.getHeight());
     loadJsonFiles();
+    startTimer(400);
 }
 
 RolandCubeAudioProcessorEditor::~RolandCubeAudioProcessorEditor()
@@ -97,6 +98,9 @@ void RolandCubeAudioProcessorEditor::paint (juce::Graphics& g)
 
     
     g.drawImageAt(background, 0, 0);  
+    g.setOpacity(0.9);
+    g.drawImageAt(roland_logo, getWidth() / 2.0 - (roland_logo.getWidth()/2.0) + 8, getHeight() - roland_logo.getHeight()-4);
+    g.setOpacity(1.0);
     g.drawImageAt(logo_Eq, 80, 20);
     g.drawImageAt(lead, background.getWidth()/2.0 + 53.5, 10);
     
@@ -116,6 +120,7 @@ void RolandCubeAudioProcessorEditor::paint (juce::Graphics& g)
 
     juce::Rectangle<int> ClipRect = g.getClipBounds();
     g.drawImage(background, ClipRect.getX(), ClipRect.getY(), ClipRect.getWidth(), ClipRect.getHeight(), ClipRect.getX(), ClipRect.getY(), ClipRect.getWidth(), ClipRect.getHeight());
+    g.drawImage(roland_logo, ClipRect.getX(), ClipRect.getY(), ClipRect.getWidth(), ClipRect.getHeight(), ClipRect.getX(), ClipRect.getY(), ClipRect.getWidth(), ClipRect.getHeight());
     g.drawImage(logo_Eq, ClipRect.getX(), ClipRect.getY(), ClipRect.getWidth(), ClipRect.getHeight(), ClipRect.getX(), ClipRect.getY(), ClipRect.getWidth(), ClipRect.getHeight());
     g.drawImage(lead, ClipRect.getX(), ClipRect.getY(), ClipRect.getWidth(), ClipRect.getHeight(), ClipRect.getX(), ClipRect.getY(), ClipRect.getWidth(), ClipRect.getHeight());
     
@@ -215,7 +220,7 @@ void RolandCubeAudioProcessorEditor::orderJsonFiles(std::vector<File>& jsonFiles
     jsonFiles = orderedFiles;
 }
 
-void RolandCubeAudioProcessorEditor::resetImages()
+void RolandCubeAudioProcessorEditor::timerCallback()
 {
-    repaint();
+    stopTimer();
 }

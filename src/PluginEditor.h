@@ -15,7 +15,8 @@
 //==============================================================================
 /**
 */
-class RolandCubeAudioProcessorEditor  : public juce::AudioProcessorEditor                                
+class RolandCubeAudioProcessorEditor  : public juce::AudioProcessorEditor,
+                                        private juce::Timer
 {
 public:
     RolandCubeAudioProcessorEditor (RolandCubeAudioProcessor&);
@@ -26,20 +27,19 @@ public:
     void resized() override;
 
     void loadJsonFiles();
-    void loadJson();
     void orderJsonFiles(std::vector<File>& jsonFiles);
-    void resetImages();
-
     
 private:
     // This reference is provided as a quick way for your editor to
     // access the processor object that created it.
     RolandCubeAudioProcessor& audioProcessor;
+    void timerCallback() override;
 
     //Inserisci le immagini
     Image background = ImageCache::getFromMemory(BinaryData::backgroundCube_png, BinaryData::backgroundCube_pngSize);
     Image logo_Eq = ImageCache::getFromMemory(BinaryData::logoAndEq_Cube_png, BinaryData::logoAndEq_Cube_pngSize);
     Image lead = ImageCache::getFromMemory(BinaryData::leadChannelCube_png, BinaryData::leadChannelCube_pngSize);
+    Image roland_logo = ImageCache::getFromMemory(BinaryData::Roland_logo_png, BinaryData::Roland_logo_pngSize);
 
     //Amp Widgets
     Slider ampBassKnob;

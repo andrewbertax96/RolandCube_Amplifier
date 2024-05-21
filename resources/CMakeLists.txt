@@ -5,5 +5,5 @@ juce_add_binary_data(BinaryData SOURCES
     images/knobCube.png
     images/knobCubeLead.png
     images/default_ir.wav
+    images/Roland_logo.png
 )
-

@@ -28,7 +28,7 @@ RolandCubeAudioProcessor::RolandCubeAudioProcessor()
                                             std::make_unique<AudioParameterFloat>(TREBLE_ID, TREBLE_NAME, NormalisableRange<float>(-8.0f, 8.0f, 0.01f), 0.0f),
                                             std::make_unique<AudioParameterFloat>(MASTER_ID, MASTER_NAME, NormalisableRange<float>(0.0f, 1.0f, 0.01f), 0.5),
                                             std::make_unique<AudioParameterFloat>(MODEL_ID, MODEL_NAME, NormalisableRange<float>(0.0f, 8.0f, 1.0f), 0.0),
-                                            std::make_unique<AudioParameterBool>(TYPE_ID, TYPE_NAME, parametrizedGainType_Param.get())
+                                            std::make_unique<AudioParameterBool>(TYPE_ID, TYPE_NAME, false)
                                         })
 #endif
 {
@@ -448,7 +448,6 @@ void RolandCubeAudioProcessor::LSTMtoChannels(juce::dsp::AudioBlock<float>& bloc
         LSTM2.process(block44k_ChannelPointer_1, gainValue, block44k_ChannelPointer_1, block.getNumSamples());
     }
 }
-
 
 void RolandCubeAudioProcessor::set_ampEQ(float bass_slider, float mid_slider, float treble_slider)
 {
