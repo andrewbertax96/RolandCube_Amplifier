@@ -28,7 +28,7 @@ RolandCubeAudioProcessor::RolandCubeAudioProcessor()
                                             std::make_unique<AudioParameterFloat>(TREBLE_ID, TREBLE_NAME, NormalisableRange<float>(-8.0f, 8.0f, 0.01f), 0.0f),
                                             std::make_unique<AudioParameterFloat>(MASTER_ID, MASTER_NAME, NormalisableRange<float>(0.0f, 1.0f, 0.01f), 0.5),
                                             std::make_unique<AudioParameterFloat>(MODEL_ID, MODEL_NAME, NormalisableRange<float>(0.0f, 8.0f, 1.0f), 0.0),
-                                            std::make_unique<AudioParameterBool>(TYPE_ID, TYPE_NAME, gainType_Param.get())
+                                            std::make_unique<AudioParameterBool>(TYPE_ID, TYPE_NAME, parametrizedGainType_Param.get())
                                         })
 #endif
 {
@@ -38,7 +38,7 @@ RolandCubeAudioProcessor::RolandCubeAudioProcessor()
    treeState.addParameterListener(MID_ID, this);
    treeState.addParameterListener(TREBLE_ID, this);
    treeState.addParameterListener(MODEL_ID, this);
-   treeState.addParameterListener(TYPE_ID, this);//verificare se ha senso inserire questa riga di codice.
+   treeState.addParameterListener(TYPE_ID, this);
 
    cabSimIRa.load(BinaryData::default_ir_wav, BinaryData::default_ir_wavSize);
    pauseVolume = 3;
@@ -114,20 +114,25 @@ void RolandCubeAudioProcessor::parameterChanged(const String& parameterID, float
 {
     if (parameterID == MODEL_ID) {
         modelParam = static_cast<int>(newValue);
-        modelSelect(modelParam.get(), modelType);
-    }
-    else if (parameterID == TYPE_ID) {
-        gainType_Param = newValue;
-
-        if (gainType_Param.get() == false) {
-            modelType = jsonFilesGainStable;
+        if (useFinalModelsArray == true) {
+            modelSelect(modelParam.get(), best_JsonModels);
         }
         else {
-            modelType = jsonFilesParametrizedGain;
+            modelSelect(modelParam.get(), model_gainType);
+        }
+    }
+    else if (parameterID == TYPE_ID) {
+        parametrizedGainType_Param = newValue;
+
+        if (parametrizedGainType_Param.get() == false) {
+            model_gainType = jsonFilesGainStable;
+        }
+        else {
+            model_gainType = jsonFilesParametrizedGain;
         }
 
         // Dopo aver cambiato il tipo di gain, selezionare il modello attuale
-        modelSelect(modelParam.get(), modelType);
+        modelSelect(modelParam.get(), model_gainType);
     }
     else if (parameterID == GAIN_ID) {
         gainParam = newValue;
@@ -254,8 +259,6 @@ void RolandCubeAudioProcessor::getStateInformation (juce::MemoryBlock& destData)
     // You should use this method to store your parameters in the memory block.
     // You could do that either as raw data, or use the XML or ValueTree classes
     // as intermediaries to make it easy to save and load complex data.
-    /*MemoryOutputStream stream(destData, false);
-    treeState.state.writeToStream(stream);*/
     
     auto state = treeState.copyState();
     std::unique_ptr<XmlElement> xml (state.createXml());
@@ -269,11 +272,7 @@ void RolandCubeAudioProcessor::setStateInformation (const void* data, int sizeIn
 {
     // You should use this method to restore your parameters from this memory block,
     // whose contents will have been created by the getStateInformation() call.
-    /*ValueTree tree = ValueTree::readFromData(data, sizeInBytes);
-    if (tree.isValid()) {
-        treeState.state = tree;
-    }*/
-
+    
     std::unique_ptr<juce::XmlElement> xmlState (getXmlFromBinary (data, sizeInBytes));
 
     if (xmlState.get() != nullptr)
@@ -295,24 +294,41 @@ void RolandCubeAudioProcessor::setStateInformation (const void* data, int sizeIn
 
 void RolandCubeAudioProcessor::initializeModelTypeAndLoadModel()
 {
-    // Imposta il modelType iniziale basato su gainType_Param
-    if (gainType_Param.get() == false) {
-        modelType = jsonFilesGainStable;
+    // Imposta il model_gainType iniziale basato su parametrizedGainType_Param
+    if (parametrizedGainType_Param.get() == false) {
+        model_gainType = jsonFilesGainStable;
     }
     else {
-        modelType = jsonFilesParametrizedGain;
+        model_gainType = jsonFilesParametrizedGain;
     }
 
     // Prova a caricare il modello salvato o il primo disponibile
-    if (!modelType.empty()) {
+    if (!model_gainType.empty()) {
         const File& initialModel = saved_model.existsAsFile() && isValidFormat(saved_model)
             ? saved_model
-            : modelType[0];
+            : model_gainType[0];
 
         if (initialModel.existsAsFile() && isValidFormat(initialModel)) {
             loadConfig(initialModel);
         }
     }
+}
+
+std::vector<File> RolandCubeAudioProcessor::chooseBestModels(const std::vector<File>& gainStableModels, const std::vector<File>& parametrizedGainModels)
+{
+    std::vector<File> bestModels;
+
+    //bestModels[0] = //scegli uno tra gainStable[0] e parametrizedGain[0]
+    //bestModels[1] = // scegli uno tra gainStable[1] e parametrizedGain[1]
+    //bestModels[2] = // scegli uno tra gainStable[2] e parametrizedGain[2]
+    //bestModels[3] = // scegli uno tra gainStable[3] e parametrizedGain[3]
+    //bestModels[4] = // scegli uno tra gainStable[4] e parametrizedGain[4]
+    //bestModels[5] = // scegli uno tra gainStable[5] e parametrizedGain[5]
+    //bestModels[6] = // scegli uno tra gainStable[6] e parametrizedGain[6]
+    //bestModels[7] = // scegli uno tra gainStable[7] e parametrizedGain[7]
+    //bestModels[8] = // scegli uno tra gainStable[8] e parametrizedGain[8]
+
+    return bestModels;
 }
 
 bool RolandCubeAudioProcessor::isValidFormat(File configFile)
@@ -349,10 +365,10 @@ bool RolandCubeAudioProcessor::isValidFormat(File configFile)
     }
 }
 
-void RolandCubeAudioProcessor::modelSelect(int modelParam, const std::vector<File>& modelType)
+void RolandCubeAudioProcessor::modelSelect(int modelParam, const std::vector<File>& model_gainType)
 {
-    if (modelParam >= 0 && modelParam < modelType.size()) {
-        const File& selectedModel = modelType[modelParam];
+    if (modelParam >= 0 && modelParam < model_gainType.size()) {
+        const File& selectedModel = model_gainType[modelParam];
         if (selectedModel.existsAsFile() && isValidFormat(selectedModel)) {
             loadConfig(selectedModel);
             current_model_index = modelParam;

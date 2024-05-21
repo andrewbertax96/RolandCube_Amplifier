@@ -82,8 +82,10 @@ public:
     void smoothPopSound(AudioBuffer<float>& buffer, const float masterParam, int& pauseVolume);
 
     void initializeModelTypeAndLoadModel();
+    std::vector<File> chooseBestModels(const std::vector<File>& gainStableModels, const std::vector<File>& parametrizedGainModels);
+
     bool isValidFormat(File configFile);
-    void modelSelect(int modelParam, const std::vector<File>& modelType);
+    void modelSelect(int modelParam, const std::vector<File>& model_gainType);
     void loadConfig(File configFile);
     void applyLSTM(AudioBuffer<float>& buffer, dsp::AudioBlock<float>& block, RT_LSTM& LSTM, RT_LSTM& LSTM2, bool conditioned, const float gainParam, float& previousGainValue, chowdsp::ResampledProcess<chowdsp::ResamplingTypes::SRCResampler<>>& resampler);
     void LSTMtoChannels(juce::dsp::AudioBlock<float>& block, RT_LSTM& LSTM, RT_LSTM& LSTM2, bool conditioned, float gainValue);
@@ -95,7 +97,9 @@ public:
     std::vector<File> jsonFilesGainStable;
     std::vector<File> jsonFilesParametrizedGain;
 
-    std::vector<File> modelType = jsonFilesGainStable;
+    std::vector<File> model_gainType;
+    std::vector<File> best_JsonModels = chooseBestModels(jsonFilesGainStable, jsonFilesParametrizedGain);
+
     int current_model_index = 0;
     File saved_model;
 
@@ -110,13 +114,12 @@ private:
     Atomic<float> midParam = { 0.0 };
     Atomic<float> trebleParam = { 0.0 };
     Atomic<int> modelParam = { 0 };
-    Atomic<bool> gainType_Param = {false};
+    Atomic<bool> parametrizedGainType_Param = {false};
 
     bool conditioned = false;
     int pauseVolume = 3;
     const char* char_filename = "";
-
-    
+    bool useFinalModelsArray = false;
 
     float previousGainValue = 0.5;
     float previousMasterValue = 0.5;
