@@ -76,8 +76,6 @@ RolandCubeAudioProcessorEditor::RolandCubeAudioProcessorEditor(RolandCubeAudioPr
     // Size of plugin GUI
     setSize(background.getWidth(), background.getHeight());
     loadJsonFiles();
-    orderJsonFiles(audioProcessor.jsonFilesGainStable);
-    orderJsonFiles(audioProcessor.jsonFilesParametrizedGain);
 }
 
 RolandCubeAudioProcessorEditor::~RolandCubeAudioProcessorEditor()
@@ -117,9 +115,6 @@ void RolandCubeAudioProcessorEditor::paint (juce::Graphics& g)
 // Redraw only the clipped part of the background image
 
     juce::Rectangle<int> ClipRect = g.getClipBounds();
-    //if (processor.fw_state == 0) {
-    //    g.drawImage(background_off, ClipRect.getX(), ClipRect.getY(), ClipRect.getWidth(), ClipRect.getHeight(), ClipRect.getX(), ClipRect.getY(), ClipRect.getWidth(), ClipRect.getHeight());
-    
     g.drawImage(background, ClipRect.getX(), ClipRect.getY(), ClipRect.getWidth(), ClipRect.getHeight(), ClipRect.getX(), ClipRect.getY(), ClipRect.getWidth(), ClipRect.getHeight());
     g.drawImage(logo_Eq, ClipRect.getX(), ClipRect.getY(), ClipRect.getWidth(), ClipRect.getHeight(), ClipRect.getX(), ClipRect.getY(), ClipRect.getWidth(), ClipRect.getHeight());
     g.drawImage(lead, ClipRect.getX(), ClipRect.getY(), ClipRect.getWidth(), ClipRect.getHeight(), ClipRect.getX(), ClipRect.getY(), ClipRect.getWidth(), ClipRect.getHeight());
@@ -154,61 +149,44 @@ void RolandCubeAudioProcessorEditor::loadJsonFiles() {
     // Ottieni il percorso dell'eseguibile corrente
     File executableFile = File::getSpecialLocation(File::currentExecutableFile);
 
-    // Stampa il percorso dell'eseguibile corrente per il debug
-    DBG("Percorso dell'eseguibile corrente: " + executableFile.getFullPathName());
-
     // Risali fino alla cartella principale del progetto `RolandCube_Amplifier`
     File projectRoot = executableFile;
     while (!projectRoot.isRoot() && !projectRoot.getFileName().equalsIgnoreCase("RolandCube_Amplifier")) {
         projectRoot = projectRoot.getParentDirectory();
     }
 
-    // Stampa il percorso della cartella principale del progetto per il debug
-    DBG("Percorso della cartella principale del progetto: " + projectRoot.getFullPathName());
+    // Definisci le directory per i file JSON
+    StringArray jsonDirectories = { "gainStable", "parametrizedGain" };
 
-    // Definisci la directory per i file JSON di gainStable
-    File directoryGainStable = projectRoot.getChildFile("train/models/gainStable");
+    // Carica i file JSON da entrambe le directory
+    for (const auto& directory : jsonDirectories) {
+        File jsonDirectory = projectRoot.getChildFile("train/models/" + directory);
 
-    // Controlla se la directory esiste
-    if (directoryGainStable.isDirectory()) {
-        // Ottieni un array di file nella directory
-        Array<File> filesGainStable = directoryGainStable.findChildFiles(File::TypesOfFileToFind::findFiles, false, "*.json");
+        // Controlla se la directory esiste
+        if (jsonDirectory.isDirectory()) {
+            // Ottieni un array di file nella directory
+            Array<File> jsonFiles = jsonDirectory.findChildFiles(File::TypesOfFileToFind::findFiles, false, "*.json");
 
-        // Aggiungi i file JSON al vettore jsonFilesGainStable
-        for (const auto& file : filesGainStable) {
-            audioProcessor.jsonFilesGainStable.push_back(file);
+            // Aggiungi i file JSON al vettore corrispondente
+            for (const auto& file : jsonFiles) {
+                if (directory.equalsIgnoreCase("gainStable"))
+                    audioProcessor.jsonFilesGainStable.push_back(file);
+                else if (directory.equalsIgnoreCase("parametrizedGain"))
+                    audioProcessor.jsonFilesParametrizedGain.push_back(file);
+            }
+
+            // Stampa i nomi dei file JSON caricati a scopo di debug
+            for (const auto& file : jsonFiles) {
+                DBG("File JSON trovato (" + directory + "): " + file.getFullPathName());
+            }
         }
-
-        // Stampa i nomi dei file JSON caricati a scopo di debug
-        for (const auto& file : audioProcessor.jsonFilesGainStable) {
-            DBG("File JSON trovato (gainStable): " + file.getFullPathName());
-        }
-    }
-    else {
-        DBG("Errore: la directory gainStable non esiste: " + directoryGainStable.getFullPathName());
-    }
-
-    // Definisci la directory per i file JSON di parametrizedGain
-    File directoryParametrizedGain = projectRoot.getChildFile("train/models/parametrizedGain");
-
-    // Controlla se la directory esiste
-    if (directoryParametrizedGain.isDirectory()) {
-        // Ottieni un array di file nella directory
-        Array<File> filesParametrizedGain = directoryParametrizedGain.findChildFiles(File::TypesOfFileToFind::findFiles, false, "*.json");
-
-        // Aggiungi i file JSON al vettore jsonFilesParametrizedGain
-        for (const auto& file : filesParametrizedGain) {
-            audioProcessor.jsonFilesParametrizedGain.push_back(file);
-        }
-
-        // Stampa i nomi dei file JSON caricati a scopo di debug
-        for (const auto& file : audioProcessor.jsonFilesParametrizedGain) {
-            DBG("File JSON trovato (parametrizedGain): " + file.getFullPathName());
+        else {
+            DBG("Errore: la directory " + directory + " non esiste: " + jsonDirectory.getFullPathName());
         }
     }
-    else {
-        DBG("Errore: la directory parametrizedGain non esiste: " + directoryParametrizedGain.getFullPathName());
-    }
+    orderJsonFiles(audioProcessor.jsonFilesGainStable);
+    orderJsonFiles(audioProcessor.jsonFilesParametrizedGain);
+    audioProcessor.initializeModelTypeAndLoadModel();
 }
 
 void RolandCubeAudioProcessorEditor::orderJsonFiles(std::vector<File>& jsonFiles) {

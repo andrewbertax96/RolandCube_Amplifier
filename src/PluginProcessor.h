@@ -81,6 +81,7 @@ public:
     void applyGainSmoothing(AudioBuffer<float>& buffer, const float masterParam, float& previousMasterValue);
     void smoothPopSound(AudioBuffer<float>& buffer, const float masterParam, int& pauseVolume);
 
+    void initializeModelTypeAndLoadModel();
     bool isValidFormat(File configFile);
     void modelSelect(int modelParam, const std::vector<File>& modelType);
     void loadConfig(File configFile);
@@ -94,7 +95,9 @@ public:
     std::vector<File> jsonFilesGainStable;
     std::vector<File> jsonFilesParametrizedGain;
 
-    std::vector<File> modelType;
+    std::vector<File> modelType = jsonFilesGainStable;
+    int current_model_index = 0;
+    File saved_model;
 
 private:
 
@@ -113,8 +116,7 @@ private:
     int pauseVolume = 3;
     const char* char_filename = "";
 
-    int current_model_index = 0;
-    File saved_model;
+    
 
     float previousGainValue = 0.5;
     float previousMasterValue = 0.5;

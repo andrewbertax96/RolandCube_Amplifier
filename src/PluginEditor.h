@@ -26,6 +26,7 @@ public:
     void resized() override;
 
     void loadJsonFiles();
+    void loadJson();
     void orderJsonFiles(std::vector<File>& jsonFiles);
     void resetImages();
 

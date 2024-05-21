@@ -28,7 +28,7 @@ RolandCubeAudioProcessor::RolandCubeAudioProcessor()
                                             std::make_unique<AudioParameterFloat>(TREBLE_ID, TREBLE_NAME, NormalisableRange<float>(-8.0f, 8.0f, 0.01f), 0.0f),
                                             std::make_unique<AudioParameterFloat>(MASTER_ID, MASTER_NAME, NormalisableRange<float>(0.0f, 1.0f, 0.01f), 0.5),
                                             std::make_unique<AudioParameterFloat>(MODEL_ID, MODEL_NAME, NormalisableRange<float>(0.0f, 8.0f, 1.0f), 0.0),
-                                            std::make_unique<AudioParameterBool>(TYPE_ID, TYPE_NAME, false)
+                                            std::make_unique<AudioParameterBool>(TYPE_ID, TYPE_NAME, gainType_Param.get())
                                         })
 #endif
 {
@@ -38,7 +38,7 @@ RolandCubeAudioProcessor::RolandCubeAudioProcessor()
    treeState.addParameterListener(MID_ID, this);
    treeState.addParameterListener(TREBLE_ID, this);
    treeState.addParameterListener(MODEL_ID, this);
-   //treeState.addParameterListener(TYPE_ID, this);
+   treeState.addParameterListener(TYPE_ID, this);//verificare se ha senso inserire questa riga di codice.
 
    cabSimIRa.load(BinaryData::default_ir_wav, BinaryData::default_ir_wavSize);
    pauseVolume = 3;
@@ -114,6 +114,7 @@ void RolandCubeAudioProcessor::parameterChanged(const String& parameterID, float
 {
     if (parameterID == MODEL_ID) {
         modelParam = static_cast<int>(newValue);
+        modelSelect(modelParam.get(), modelType);
     }
     else if (parameterID == TYPE_ID) {
         gainType_Param = newValue;
@@ -122,9 +123,11 @@ void RolandCubeAudioProcessor::parameterChanged(const String& parameterID, float
             modelType = jsonFilesGainStable;
         }
         else {
-
             modelType = jsonFilesParametrizedGain;
         }
+
+        // Dopo aver cambiato il tipo di gain, selezionare il modello attuale
+        modelSelect(modelParam.get(), modelType);
     }
     else if (parameterID == GAIN_ID) {
         gainParam = newValue;
@@ -142,7 +145,7 @@ void RolandCubeAudioProcessor::parameterChanged(const String& parameterID, float
         trebleParam = newValue;
     }
 
-    modelSelect(modelParam.get(), modelType);
+    // Sempre aggiornare l'EQ
     set_ampEQ(bassParam.get(), midParam.get(), trebleParam.get());
 }
 
@@ -290,6 +293,28 @@ void RolandCubeAudioProcessor::setStateInformation (const void* data, int sizeIn
     }
 }
 
+void RolandCubeAudioProcessor::initializeModelTypeAndLoadModel()
+{
+    // Imposta il modelType iniziale basato su gainType_Param
+    if (gainType_Param.get() == false) {
+        modelType = jsonFilesGainStable;
+    }
+    else {
+        modelType = jsonFilesParametrizedGain;
+    }
+
+    // Prova a caricare il modello salvato o il primo disponibile
+    if (!modelType.empty()) {
+        const File& initialModel = saved_model.existsAsFile() && isValidFormat(saved_model)
+            ? saved_model
+            : modelType[0];
+
+        if (initialModel.existsAsFile() && isValidFormat(initialModel)) {
+            loadConfig(initialModel);
+        }
+    }
+}
+
 bool RolandCubeAudioProcessor::isValidFormat(File configFile)
 {
     // Read in the JSON file
@@ -326,30 +351,21 @@ bool RolandCubeAudioProcessor::isValidFormat(File configFile)
 
 void RolandCubeAudioProcessor::modelSelect(int modelParam, const std::vector<File>& modelType)
 {
-    // Verifica se il vettore dei modelli è vuoto
-    if (modelType.empty()) {
-        DBG("Errore: Il vettore dei modelli è vuoto.");
-        return;
-    }
-
-    // Verifica se l'indice del modello è valido
-    if (modelParam < 0 || modelParam >= modelType.size()) {
-        DBG("Errore: Indice di modello non valido.");
-        return;
-    }
-
-    // Carica il file JSON corrispondente al modello selezionato
-    const File& selectedFile = modelType[modelParam];
-    if (selectedFile.existsAsFile() && isValidFormat(selectedFile)) {
-        loadConfig(selectedFile);
-        current_model_index = modelParam;
-        saved_model = selectedFile;
+    if (modelParam >= 0 && modelParam < modelType.size()) {
+        const File& selectedModel = modelType[modelParam];
+        if (selectedModel.existsAsFile() && isValidFormat(selectedModel)) {
+            loadConfig(selectedModel);
+            current_model_index = modelParam;
+            saved_model = selectedModel;
+        }
+        else {
+            DBG("Errore: Il file JSON selezionato non esiste o non è nel formato corretto.");
+        }
     }
     else {
-        DBG("Errore: Il file JSON selezionato non esiste o non è nel formato corretto.");
+        DBG("Errore: Indice di modello non valido.");
     }
 }
-
 
 void RolandCubeAudioProcessor::loadConfig(File configFile)
 {
