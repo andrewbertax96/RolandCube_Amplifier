@@ -18,16 +18,6 @@ This plugin is designed to emulate the lead channel behavior and sound character
 
 The neural network files required for this plugin were developed using a Colab notebook named `train.ipynb`, which is located in the `train` directory. This notebook includes all the necessary scripts and code to preprocess data, train the neural network, and export the trained model files.
 
-## Future Developments
-
-Future updates for this plugin will aim to expand its functionality by including additional modulation effects and reverb types:
-- **Modulation Effects**: Chorus, Flanger, Phaser, Tremolo.
-- **Reverb Types**: Two different types of reverb to enhance the spatial quality of your sound.
-
-## Support
-
-For support, troubleshooting, and updates, please visit our official website or contact our support team via email. We are committed to providing ongoing support and improvements to ensure the best possible experience with our plugin.
-
 # Installation with Cmake
 First, install CMake from the official website if you don't have it already: [CMake Download](https://cmake.org/download/).
 
@@ -53,6 +43,12 @@ $ cmake --build build --config Release
 
 ## Media
 - **Demo Video**: A demo of the plugin can be seen at [this site](https://www.youtube.com/watch?v=your_demo_video_url).
+
+## Future Developments
+
+Future updates for this plugin will aim to expand its functionality by including additional modulation effects and reverb types:
+- **Modulation Effects**: Chorus, Flanger, Phaser, Tremolo.
+- **Reverb Types**: Two different types of reverb to enhance the spatial quality of your sound.
 
 ## Credits
 
