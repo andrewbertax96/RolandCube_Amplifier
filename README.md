@@ -5,7 +5,7 @@
 This plugin is designed to emulate the lead channel behavior and sound characteristics of the renowned Roland Cube XL amplifier using advanced neural networks. Whether you're looking for the distinct overdriven tones or high-gain distortions that the Cube XL's lead channel is famous for, this plugin faithfully reproduces them, providing a versatile and powerful tool for musicians and audio engineers.
 
 ## Features
-![Plugin Interface](resources/images/plugin_interface.jpg)
+![Plugin Interface](resources/images/plugin_interface.png)
 
 - **Accurate Lead Channel Emulation**: Utilizes state-of-the-art neural network algorithms to capture the distinct tonal qualities of the Roland Cube XL amplifier's lead channel.
 - **Integrated Equalizer**: Includes a built-in equalizer to shape your sound precisely, allowing you to tailor the frequency response to your liking.
