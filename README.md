@@ -52,4 +52,4 @@ Future updates for this plugin will aim to expand its functionality by including
 
 ## Credits
 
-This plugin was developed for the course of Selected Topics under Professor Matthew John Yee-King at Politecnico di Milano by a team of passionate audio engineers and musicians dedicated to bringing the classic sounds of the Roland Cube XL amplifier's lead channel to the digital world.  
+This plugin was developed for the course of Selected Topics under Professor Matthew John Yee-King at [Politecnico di Milano](https://www.polimi.it) (MSc in Music and Acoustic Engineering) by a team of passionate audio engineers and musicians dedicated to bringing the classic sounds of the Roland Cube XL amplifier's lead channel to the digital world.  
