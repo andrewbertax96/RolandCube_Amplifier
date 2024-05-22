@@ -318,15 +318,51 @@ std::vector<File> RolandCubeAudioProcessor::chooseBestModels(const std::vector<F
 {
     std::vector<File> bestModels;
 
-    //bestModels[0] = //scegli uno tra gainStable[0] e parametrizedGain[0]
-    //bestModels[1] = // scegli uno tra gainStable[1] e parametrizedGain[1]
-    //bestModels[2] = // scegli uno tra gainStable[2] e parametrizedGain[2]
-    //bestModels[3] = // scegli uno tra gainStable[3] e parametrizedGain[3]
-    //bestModels[4] = // scegli uno tra gainStable[4] e parametrizedGain[4]
-    //bestModels[5] = // scegli uno tra gainStable[5] e parametrizedGain[5]
-    //bestModels[6] = // scegli uno tra gainStable[6] e parametrizedGain[6]
-    //bestModels[7] = // scegli uno tra gainStable[7] e parametrizedGain[7]
-    //bestModels[8] = // scegli uno tra gainStable[8] e parametrizedGain[8]
+    //Controllare ogni modello direttamente con la chitarra poi 
+    
+    /*
+    //ACOUSTIC
+    //bestModels[0] = jsonFilesGainStable[0];
+    bestModels[0] = jsonFilesParametrizedGain[0];
+    
+    //BLACK PANEL
+    bestModels[1] = jsonFilesGainStable[1];
+    //bestModels[1] = jsonFilesParametrizedGain[1];
+    
+    //BRITISH COMBO
+    //bestModels[2] = jsonFilesGainStable[2];
+    bestModels[2] = jsonFilesParametrizedGain[2];
+
+    //TWEED
+    //bestModels[3] = jsonFilesGainStable[3];
+    bestModels[3] = jsonFilesParametrizedGain[3];
+
+    //CLASSIC
+    //bestModels[4] = jsonFilesGainStable[4];
+    bestModels[4] = jsonFilesParametrizedGain[4];
+
+    //METAL
+    bestModels[5] = jsonFilesGainStable[5];
+    //bestModels[5] = jsonFilesParametrizedGain[5];
+
+    //R-FIER
+    bestModels[6] = jsonFilesGainStable[6];
+    //bestModels[6] = jsonFilesParametrizedGain[6];
+
+    //EXTREME
+    //bestModels[7] = jsonFilesGainStable[7];
+    bestModels[7] = jsonFilesParametrizedGain[7];
+
+    //DYNAMIC AMP
+    //bestModels[8] = jsonFilesGainStable[8];
+    bestModels[8] = jsonFilesParametrizedGain[8];
+    */
+    
+    //Se l'array è totalmente pieno allora setta useFinalModelsArray a true
+    // Verifica se l'array bestModels è completamente popolato
+    useFinalModelsArray = std::all_of(bestModels.begin(), bestModels.end(), [](const File& file) {
+        return !file.getFileName().isEmpty();
+        });
 
     return bestModels;
 }
