@@ -81,12 +81,13 @@ public:
     void applyGainSmoothing(AudioBuffer<float>& buffer, const float masterParam, float& previousMasterValue);
     void smoothPopSound(AudioBuffer<float>& buffer, const float masterParam, int& pauseVolume);
 
-    void loadJsonFiles();
-    void orderJsonFiles(std::vector<File>& jsonFiles);
-    void initializeModelTypeAndLoadModel();
 
     bool isValidFormat(File configFile);
     void loadConfig(File configFile);
+
+    void loadJsonFiles();
+    void orderJsonFiles(std::vector<File>& jsonFiles);
+    void initializeModelTypeAndLoadModel();
 
     void modelSelect(int modelParam, const std::vector<File>& model_gainType);
     std::vector<File> chooseBestModels(const std::vector<File>& gainStableModels, const std::vector<File>& parametrizedGainModels);
