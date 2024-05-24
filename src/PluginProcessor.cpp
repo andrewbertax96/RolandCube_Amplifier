@@ -112,27 +112,31 @@ void RolandCubeAudioProcessor::changeProgramName (int index, const juce::String&
 
 void RolandCubeAudioProcessor::parameterChanged(const String& parameterID, float newValue)
 {
-    if (parameterID == MODEL_ID) {
-        modelParam = static_cast<int>(newValue);
-        if (useFinalModelsArray == true) {
+    if (parameterID == MODEL_ID || parameterID == TYPE_ID) {
+
+        // Aggiorna il modello se il parametro è MODEL_ID
+        if (parameterID == MODEL_ID) {
+            modelParam = static_cast<int>(newValue);
+        }
+
+        // Aggiorna il tipo di gain se il parametro è TYPE_ID
+        if (parameterID == TYPE_ID) {
+            parametrizedGainType_Param = newValue;
+            if (parametrizedGainType_Param.get() == false) {
+                model_gainType = jsonFilesGainStable;
+            }
+            else {
+                model_gainType = jsonFilesParametrizedGain;
+            }
+        }
+
+        // Seleziona il modello appropriato basato su useFinalModelsArray
+        if (useFinalModelsArray) {
             modelSelect(modelParam.get(), best_JsonModels);
         }
         else {
             modelSelect(modelParam.get(), model_gainType);
         }
-    }
-    else if (parameterID == TYPE_ID) {
-        parametrizedGainType_Param = newValue;
-
-        if (parametrizedGainType_Param.get() == false) {
-            model_gainType = jsonFilesGainStable;
-        }
-        else {
-            model_gainType = jsonFilesParametrizedGain;
-        }
-
-        // Dopo aver cambiato il tipo di gain, selezionare il modello attuale
-        modelSelect(modelParam.get(), model_gainType);
     }
     else if (parameterID == GAIN_ID) {
         gainParam = newValue;
@@ -400,18 +404,20 @@ bool RolandCubeAudioProcessor::isValidFormat(File configFile)
         return false;
     }
 }
-
 void RolandCubeAudioProcessor::modelSelect(int modelParam, const std::vector<File>& model_gainType)
 {
     if (modelParam >= 0 && modelParam < model_gainType.size()) {
         const File& selectedModel = model_gainType[modelParam];
-        if (selectedModel.existsAsFile() && isValidFormat(selectedModel)) {
+        if (!selectedModel.existsAsFile()) {
+            DBG("Errore: Il file JSON selezionato non esiste.");
+        }
+        else if (!isValidFormat(selectedModel)) {
+            DBG("Errore: Il file JSON selezionato non è nel formato corretto.");
+        }
+        else {
             loadConfig(selectedModel);
             current_model_index = modelParam;
             saved_model = selectedModel;
-        }
-        else {
-            DBG("Errore: Il file JSON selezionato non esiste o non è nel formato corretto.");
         }
     }
     else {

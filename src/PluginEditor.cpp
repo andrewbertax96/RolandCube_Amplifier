@@ -199,7 +199,7 @@ void RolandCubeAudioProcessorEditor::orderJsonFiles(std::vector<File>& jsonFiles
     std::vector<File> orderedFiles(jsonFiles.size());
 
     // Definisci l'ordine delle caratteristiche
-    std::vector<String> model = { "acoustic", "black panel", "british", "tweed", "classic", "metal", "rfier", "extreme", "dynamic" };
+    std::vector<String> model = { "acoustic", "blackPanel", "britishCombo", "tweed", "classic", "metal", "rFier", "extreme", "dynamicAmp" };
 
     // Itera su ogni file JSON
     for (const auto& file : jsonFiles) {
