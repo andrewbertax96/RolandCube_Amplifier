@@ -75,7 +75,7 @@ RolandCubeAudioProcessorEditor::RolandCubeAudioProcessorEditor(RolandCubeAudioPr
 
     // Size of plugin GUI
     setSize(background.getWidth(), background.getHeight());
-    loadJsonFiles();
+    //loadJsonFiles();
     startTimer(400);
 }
 

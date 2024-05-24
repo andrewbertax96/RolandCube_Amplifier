@@ -32,7 +32,7 @@ RolandCubeAudioProcessor::RolandCubeAudioProcessor()
                                         })
 #endif
 {
-   //loadJsonFiles();
+   loadJsonFiles();
    cabSimIRa.load(BinaryData::default_ir_wav, BinaryData::default_ir_wavSize);
    pauseVolume = 3;
 
