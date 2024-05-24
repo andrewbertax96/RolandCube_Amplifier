@@ -81,12 +81,16 @@ public:
     void applyGainSmoothing(AudioBuffer<float>& buffer, const float masterParam, float& previousMasterValue);
     void smoothPopSound(AudioBuffer<float>& buffer, const float masterParam, int& pauseVolume);
 
+    void loadJsonFiles();
+    void orderJsonFiles(std::vector<File>& jsonFiles);
     void initializeModelTypeAndLoadModel();
-    std::vector<File> chooseBestModels(const std::vector<File>& gainStableModels, const std::vector<File>& parametrizedGainModels);
 
     bool isValidFormat(File configFile);
-    void modelSelect(int modelParam, const std::vector<File>& model_gainType);
     void loadConfig(File configFile);
+
+    void modelSelect(int modelParam, const std::vector<File>& model_gainType);
+    std::vector<File> chooseBestModels(const std::vector<File>& gainStableModels, const std::vector<File>& parametrizedGainModels);
+
     void applyLSTM(AudioBuffer<float>& buffer, dsp::AudioBlock<float>& block, RT_LSTM& LSTM, RT_LSTM& LSTM2, bool conditioned, const float gainParam, float& previousGainValue, chowdsp::ResampledProcess<chowdsp::ResamplingTypes::SRCResampler<>>& resampler);
     void LSTMtoChannels(juce::dsp::AudioBlock<float>& block, RT_LSTM& LSTM, RT_LSTM& LSTM2, bool conditioned, float gainValue);
     
