@@ -75,6 +75,7 @@ RolandCubeAudioProcessorEditor::RolandCubeAudioProcessorEditor(RolandCubeAudioPr
 
     // Size of plugin GUI
     setSize(background.getWidth(), background.getHeight());
+    loadJsonFiles();
     startTimer(400);
 }
 
@@ -147,6 +148,76 @@ void RolandCubeAudioProcessorEditor::resized()
     ampBassKnob.setBounds(275, height, knobWidth, knobHeight);
     ampMidKnob.setBounds(388, height, knobWidth, knobHeight);
     ampTrebleKnob.setBounds(501, height, knobWidth, knobHeight);
+}
+
+void RolandCubeAudioProcessorEditor::loadJsonFiles() {
+    // Ottieni il percorso dell'eseguibile corrente
+    File executableFile = File::getSpecialLocation(File::currentExecutableFile);
+
+    // Risali fino alla cartella principale del progetto `RolandCube_Amplifier`
+    File projectRoot = executableFile;
+    while (!projectRoot.isRoot() && !projectRoot.getFileName().equalsIgnoreCase("RolandCube_Amplifier")) {
+        projectRoot = projectRoot.getParentDirectory();
+    }
+
+    // Definisci le directory per i file JSON
+    StringArray jsonDirectories = { "gainStable", "parametrizedGain" };
+
+    // Carica i file JSON da entrambe le directory
+    for (const auto& directory : jsonDirectories) {
+        File jsonDirectory = projectRoot.getChildFile("train/models/" + directory);
+
+        // Controlla se la directory esiste
+        if (jsonDirectory.isDirectory()) {
+            // Ottieni un array di file nella directory
+            Array<File> jsonFiles = jsonDirectory.findChildFiles(File::TypesOfFileToFind::findFiles, false, "*.json");
+
+            // Aggiungi i file JSON al vettore corrispondente
+            for (const auto& file : jsonFiles) {
+                if (directory.equalsIgnoreCase("gainStable"))
+                    audioProcessor.jsonFilesGainStable.push_back(file);
+                else if (directory.equalsIgnoreCase("parametrizedGain"))
+                    audioProcessor.jsonFilesParametrizedGain.push_back(file);
+            }
+
+            // Stampa i nomi dei file JSON caricati a scopo di debug
+            for (const auto& file : jsonFiles) {
+                DBG("File JSON trovato (" + directory + "): " + file.getFullPathName());
+            }
+        }
+        else {
+            DBG("Errore: la directory " + directory + " non esiste: " + jsonDirectory.getFullPathName());
+        }
+    }
+    orderJsonFiles(audioProcessor.jsonFilesGainStable);
+    orderJsonFiles(audioProcessor.jsonFilesParametrizedGain);
+    audioProcessor.initializeModelTypeAndLoadModel();
+}
+
+void RolandCubeAudioProcessorEditor::orderJsonFiles(std::vector<File>& jsonFiles) {
+    // Crea un vettore temporaneo per memorizzare i file ordinati
+    std::vector<File> orderedFiles(jsonFiles.size());
+
+    // Definisci l'ordine delle caratteristiche
+    std::vector<String> model = { "acoustic", "blackPanel", "britCombo", "tweed", "classic", "metal", "rFier", "extreme", "dynamicAmp" };
+
+    // Itera su ogni file JSON
+    for (const auto& file : jsonFiles) {
+        // Ottieni il nome del file senza estensione
+        String fileName = file.getFileNameWithoutExtension();
+
+        // Itera su ogni caratteristica per trovare la corrispondenza
+        for (size_t i = 0; i < model.size(); ++i) {
+            // Se il nome del file contiene la caratteristica, inseriscilo nella posizione corrispondente
+            if (fileName.containsIgnoreCase(model[i])) {
+                orderedFiles[i] = file;
+                break;
+            }
+        }
+    }
+
+    // Sostituisci il vettore originale con il vettore ordinato
+    jsonFiles = orderedFiles;
 }
 
 void RolandCubeAudioProcessorEditor::timerCallback()

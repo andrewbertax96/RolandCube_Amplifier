@@ -32,7 +32,7 @@ RolandCubeAudioProcessor::RolandCubeAudioProcessor()
                                         })
 #endif
 {
-   loadJsonFiles();
+   //loadJsonFiles();
    cabSimIRa.load(BinaryData::default_ir_wav, BinaryData::default_ir_wavSize);
    pauseVolume = 3;
 
@@ -619,7 +619,6 @@ void RolandCubeAudioProcessor::smoothPopSound(AudioBuffer<float>& buffer, const 
         pauseVolume -= 1;
     }
 }
-
 
 //==============================================================================
 // This creates new instances of the plugin..
