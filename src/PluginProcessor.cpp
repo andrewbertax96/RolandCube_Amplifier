@@ -28,7 +28,7 @@ RolandCubeAudioProcessor::RolandCubeAudioProcessor()
                                             std::make_unique<AudioParameterFloat>(TREBLE_ID, TREBLE_NAME, NormalisableRange<float>(-8.0f, 8.0f, 0.01f), 0.0f),
                                             std::make_unique<AudioParameterFloat>(MASTER_ID, MASTER_NAME, NormalisableRange<float>(0.0f, 1.0f, 0.01f), 0.5),
                                             std::make_unique<AudioParameterFloat>(MODEL_ID, MODEL_NAME, NormalisableRange<float>(0.0f, 8.0f, 1.0f), 0.0),
-                                            std::make_unique<AudioParameterBool>(TYPE_ID, TYPE_NAME, false)
+                                            std::make_unique<AudioParameterBool>(TYPE_ID, TYPE_NAME, true)
                                         })
 #endif
 {
@@ -116,7 +116,7 @@ void RolandCubeAudioProcessor::parameterChanged(const String& parameterID, float
 {
     if (parameterID == MODEL_ID || parameterID == TYPE_ID) {
 
-        // Update gain type if the parameter is TYPE_ID
+        // Aggiorna il tipo di gain se il parametro è TYPE_ID
         if (parameterID == TYPE_ID) {
             parametrizedGainType_Param = newValue;
             if (parametrizedGainType_Param.get() == false) {
@@ -127,19 +127,19 @@ void RolandCubeAudioProcessor::parameterChanged(const String& parameterID, float
             }
         }
 
-        // Update model if the parameter is MODEL_ID
+        // Aggiorna il modello se il parametro è MODEL_ID
         if (parameterID == MODEL_ID) {
             int newModelParam = static_cast<int>(newValue);
             if (newModelParam < 0 || newModelParam >= model_gainType.size()) {
-                DBG("Error: Invalid model index.");
-                return; // Exit the function if the index is invalid
+                DBG("Errore: Indice di modello non valido ancora.");
+                return; // Esci dalla funzione se l'indice non è valido
             }
             else {
                 modelParam = newModelParam;
             }
         }
 
-        // Select the appropriate model based on useFinalModelsArray
+        // Seleziona il modello appropriato basato su useFinalModelsArray
         if (useFinalModelsArray) {
             modelSelect(modelParam.get(), best_JsonModels);
         }
@@ -163,7 +163,7 @@ void RolandCubeAudioProcessor::parameterChanged(const String& parameterID, float
         trebleParam = newValue;
     }
 
-    // Always update the EQ
+    // Sempre aggiornare l'EQ
     set_ampEQ(bassParam.get(), midParam.get(), trebleParam.get());
 }
 
@@ -364,28 +364,28 @@ void RolandCubeAudioProcessor::loadConfig(File configFile)
 
 void RolandCubeAudioProcessor::loadJsonFiles()
 {
-    // Get the path of the current executable
+    // Ottieni il percorso dell'eseguibile corrente
     File executableFile = File::getSpecialLocation(File::currentExecutableFile);
 
-    // Navigate up to the root folder of the `RolandCube_Amplifier` project
+    // Risali fino alla cartella principale del progetto `RolandCube_Amplifier`
     File projectRoot = executableFile;
     while (!projectRoot.isRoot() && !projectRoot.getFileName().equalsIgnoreCase("RolandCube_Amplifier")) {
         projectRoot = projectRoot.getParentDirectory();
     }
 
-    // Define the directories for the JSON files
+    // Definisci le directory per i file JSON
     StringArray jsonDirectories = { "gainStable", "parametrizedGain" };
 
-    // Load the JSON files from both directories
+    // Carica i file JSON da entrambe le directory
     for (const auto& directory : jsonDirectories) {
         File jsonDirectory = projectRoot.getChildFile("train/models/" + directory);
 
-        // Check if the directory exists
+        // Controlla se la directory esiste
         if (jsonDirectory.isDirectory()) {
-            // Get an array of files in the directory
+            // Ottieni un array di file nella directory
             Array<File> jsonFiles = jsonDirectory.findChildFiles(File::TypesOfFileToFind::findFiles, false, "*.json");
 
-            // Add the JSON files to the corresponding vector
+            // Aggiungi i file JSON al vettore corrispondente
             for (const auto& file : jsonFiles) {
                 if (directory.equalsIgnoreCase("gainStable"))
                     jsonFilesGainStable.push_back(file);
@@ -393,13 +393,13 @@ void RolandCubeAudioProcessor::loadJsonFiles()
                     jsonFilesParametrizedGain.push_back(file);
             }
 
-            // Print the names of the loaded JSON files for debugging purposes
+            // Stampa i nomi dei file JSON caricati a scopo di debug
             for (const auto& file : jsonFiles) {
-                DBG("Found JSON file (" + directory + "): " + file.getFullPathName());
+                DBG("File JSON trovato (" + directory + "): " + file.getFullPathName());
             }
         }
         else {
-            DBG("Error: directory " + directory + " does not exist: " + jsonDirectory.getFullPathName());
+            DBG("Errore: la directory " + directory + " non esiste: " + jsonDirectory.getFullPathName());
         }
     }
     orderJsonFiles(jsonFilesGainStable);
@@ -409,20 +409,20 @@ void RolandCubeAudioProcessor::loadJsonFiles()
 
 void RolandCubeAudioProcessor::orderJsonFiles(std::vector<File>& jsonFiles)
 {
-    // Create a temporary vector to store the ordered files
+    // Crea un vettore temporaneo per memorizzare i file ordinati
     std::vector<File> orderedFiles(jsonFiles.size());
 
-    // Define the order of the characteristics
+    // Definisci l'ordine delle caratteristiche
     std::vector<String> model = { "acoustic", "blackPanel", "britCombo", "tweed", "classic", "metal", "rFier", "extreme", "dynamicAmp" };
 
-    // Iterate over each JSON file
+    // Itera su ogni file JSON
     for (const auto& file : jsonFiles) {
-        // Get the file name without the extension
+        // Ottieni il nome del file senza estensione
         String fileName = file.getFileNameWithoutExtension();
 
-        // Iterate over each characteristic to find a match
+        // Itera su ogni caratteristica per trovare la corrispondenza
         for (size_t i = 0; i < model.size(); ++i) {
-            // If the file name contains the characteristic, insert it in the corresponding position
+            // Se il nome del file contiene la caratteristica, inseriscilo nella posizione corrispondente
             if (fileName.containsIgnoreCase(model[i])) {
                 orderedFiles[i] = file;
                 break;
@@ -430,13 +430,13 @@ void RolandCubeAudioProcessor::orderJsonFiles(std::vector<File>& jsonFiles)
         }
     }
 
-    // Replace the original vector with the ordered vector
+    // Sostituisci il vettore originale con il vettore ordinato
     jsonFiles = orderedFiles;
 }
 
 void RolandCubeAudioProcessor::initializeModelTypeAndLoadModel()
 {
-    // Set the initial model_gainType based on parametrizedGainType_Param
+    // Imposta il model_gainType iniziale basato su parametrizedGainType_Param
     if (parametrizedGainType_Param.get() == false) {
         model_gainType = jsonFilesGainStable;
     }
@@ -444,7 +444,7 @@ void RolandCubeAudioProcessor::initializeModelTypeAndLoadModel()
         model_gainType = jsonFilesParametrizedGain;
     }
 
-    // Try to load the saved model or the first available one
+    // Prova a caricare il modello salvato o il primo disponibile
     if (!model_gainType.empty()) {
         const File& initialModel = saved_model.existsAsFile() && isValidFormat(saved_model)
             ? saved_model
@@ -461,10 +461,10 @@ void RolandCubeAudioProcessor::modelSelect(int modelParam, const std::vector<Fil
     if (modelParam >= 0 && modelParam < model_gainType.size()) {
         const File& selectedModel = model_gainType[modelParam];
         if (!selectedModel.existsAsFile()) {
-            DBG("Error: The selected JSON file does not exist.");
+            DBG("Errore: Il file JSON selezionato non esiste.");
         }
         else if (!isValidFormat(selectedModel)) {
-            DBG("Error: The selected JSON file is not in the correct format.");
+            DBG("Errore: Il file JSON selezionato non è nel formato corretto.");
         }
         else {
             loadConfig(selectedModel);
@@ -473,7 +473,7 @@ void RolandCubeAudioProcessor::modelSelect(int modelParam, const std::vector<Fil
         }
     }
     else {
-        DBG("Error: Invalid model index in model Select.");
+        DBG("Errore: Indice di modello non valido nel model Select.");
     }
 }
 
@@ -481,47 +481,48 @@ std::vector<File> RolandCubeAudioProcessor::chooseBestModels(const std::vector<F
 {
     std::vector<File> bestModels;
 
-    // Check each model directly with the guitar then 
-    
-    // ACOUSTIC
+    //Controllare ogni modello direttamente con la chitarra poi 
+
+    /*
+    //ACOUSTIC
     //bestModels[0] = jsonFilesGainStable[0];
     bestModels[0] = jsonFilesParametrizedGain[0];
 
-    // BLACK PANEL
-    // bestModels[1] = jsonFilesGainStable[1];
-    bestModels[1] = jsonFilesParametrizedGain[1];
+    //BLACK PANEL
+    bestModels[1] = jsonFilesGainStable[1];
+    //bestModels[1] = jsonFilesParametrizedGain[1];
 
-    // BRITISH COMBO
+    //BRITISH COMBO
     //bestModels[2] = jsonFilesGainStable[2];
     bestModels[2] = jsonFilesParametrizedGain[2];
 
-    // TWEED
+    //TWEED
     //bestModels[3] = jsonFilesGainStable[3];
     bestModels[3] = jsonFilesParametrizedGain[3];
 
-    // CLASSIC
+    //CLASSIC
     //bestModels[4] = jsonFilesGainStable[4];
     bestModels[4] = jsonFilesParametrizedGain[4];
 
-    // METAL
-    // bestModels[5] = jsonFilesGainStable[5];
-    bestModels[5] = jsonFilesParametrizedGain[5];
+    //METAL
+    bestModels[5] = jsonFilesGainStable[5];
+    //bestModels[5] = jsonFilesParametrizedGain[5];
 
-    // R-FIER
-    // bestModels[6] = jsonFilesGainStable[6];
-    bestModels[6] = jsonFilesParametrizedGain[6];
+    //R-FIER
+    bestModels[6] = jsonFilesGainStable[6];
+    //bestModels[6] = jsonFilesParametrizedGain[6];
 
-    // EXTREME
+    //EXTREME
     //bestModels[7] = jsonFilesGainStable[7];
     bestModels[7] = jsonFilesParametrizedGain[7];
 
-    // DYNAMIC AMP
+    //DYNAMIC AMP
     //bestModels[8] = jsonFilesGainStable[8];
     bestModels[8] = jsonFilesParametrizedGain[8];
-    
+    */
 
-    // If the array is fully populated then set useFinalModelsArray to true
-    // Check if the bestModels array is fully populated
+    //Se l'array è totalmente pieno allora setta useFinalModelsArray a true
+    // Verifica se l'array bestModels è completamente popolato
     useFinalModelsArray = std::all_of(bestModels.begin(), bestModels.end(), [](const File& file) {
         return !file.getFileName().isEmpty();
     });
