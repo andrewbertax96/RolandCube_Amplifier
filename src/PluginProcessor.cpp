@@ -28,7 +28,7 @@ RolandCubeAudioProcessor::RolandCubeAudioProcessor()
                                             std::make_unique<AudioParameterFloat>(TREBLE_ID, TREBLE_NAME, NormalisableRange<float>(-8.0f, 8.0f, 0.01f), 0.0f),
                                             std::make_unique<AudioParameterFloat>(MASTER_ID, MASTER_NAME, NormalisableRange<float>(0.0f, 1.0f, 0.01f), 0.5),
                                             std::make_unique<AudioParameterFloat>(MODEL_ID, MODEL_NAME, NormalisableRange<float>(0.0f, 8.0f, 1.0f), 0.0),
-                                            std::make_unique<AudioParameterBool>(TYPE_ID, TYPE_NAME, true)
+                                            std::make_unique<AudioParameterBool>(TYPE_ID, TYPE_NAME, false)
                                         })
 #endif
 {
@@ -138,14 +138,7 @@ void RolandCubeAudioProcessor::parameterChanged(const String& parameterID, float
                 modelParam = newModelParam;
             }
         }
-
-        // Seleziona il modello appropriato basato su useFinalModelsArray
-        if (useFinalModelsArray) {
-            modelSelect(modelParam.get(), best_JsonModels);
-        }
-        else {
-            modelSelect(modelParam.get(), model_gainType);
-        }
+        modelSelect(modelParam.get(), model_gainType);
     }
     else if (parameterID == GAIN_ID) {
         gainParam = newValue;
@@ -475,59 +468,6 @@ void RolandCubeAudioProcessor::modelSelect(int modelParam, const std::vector<Fil
     else {
         DBG("Errore: Indice di modello non valido nel model Select.");
     }
-}
-
-std::vector<File> RolandCubeAudioProcessor::chooseBestModels(const std::vector<File>& gainStableModels, const std::vector<File>& parametrizedGainModels)
-{
-    std::vector<File> bestModels;
-
-    //Controllare ogni modello direttamente con la chitarra poi 
-
-    /*
-    //ACOUSTIC
-    //bestModels[0] = jsonFilesGainStable[0];
-    bestModels[0] = jsonFilesParametrizedGain[0];
-
-    //BLACK PANEL
-    bestModels[1] = jsonFilesGainStable[1];
-    //bestModels[1] = jsonFilesParametrizedGain[1];
-
-    //BRITISH COMBO
-    //bestModels[2] = jsonFilesGainStable[2];
-    bestModels[2] = jsonFilesParametrizedGain[2];
-
-    //TWEED
-    //bestModels[3] = jsonFilesGainStable[3];
-    bestModels[3] = jsonFilesParametrizedGain[3];
-
-    //CLASSIC
-    //bestModels[4] = jsonFilesGainStable[4];
-    bestModels[4] = jsonFilesParametrizedGain[4];
-
-    //METAL
-    bestModels[5] = jsonFilesGainStable[5];
-    //bestModels[5] = jsonFilesParametrizedGain[5];
-
-    //R-FIER
-    bestModels[6] = jsonFilesGainStable[6];
-    //bestModels[6] = jsonFilesParametrizedGain[6];
-
-    //EXTREME
-    //bestModels[7] = jsonFilesGainStable[7];
-    bestModels[7] = jsonFilesParametrizedGain[7];
-
-    //DYNAMIC AMP
-    //bestModels[8] = jsonFilesGainStable[8];
-    bestModels[8] = jsonFilesParametrizedGain[8];
-    */
-
-    //Se l'array è totalmente pieno allora setta useFinalModelsArray a true
-    // Verifica se l'array bestModels è completamente popolato
-    useFinalModelsArray = std::all_of(bestModels.begin(), bestModels.end(), [](const File& file) {
-        return !file.getFileName().isEmpty();
-    });
-
-    return bestModels;
 }
 
 void RolandCubeAudioProcessor::applyLSTM(AudioBuffer<float>& buffer, dsp::AudioBlock<float>& block, RT_LSTM& LSTM, RT_LSTM& LSTM2, bool conditioned, const float gainParam, float& previousGainValue, chowdsp::ResampledProcess<chowdsp::ResamplingTypes::SRCResampler<>>& resampler)
