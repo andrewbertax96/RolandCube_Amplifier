@@ -28,7 +28,7 @@ RolandCubeAudioProcessor::RolandCubeAudioProcessor()
                                             std::make_unique<AudioParameterFloat>(TREBLE_ID, TREBLE_NAME, NormalisableRange<float>(-8.0f, 8.0f, 0.01f), 0.0f),
                                             std::make_unique<AudioParameterFloat>(MASTER_ID, MASTER_NAME, NormalisableRange<float>(0.0f, 1.0f, 0.01f), 0.5),
                                             std::make_unique<AudioParameterFloat>(MODEL_ID, MODEL_NAME, NormalisableRange<float>(0.0f, 8.0f, 1.0f), 0.0),
-                                            std::make_unique<AudioParameterBool>(TYPE_ID, TYPE_NAME, false)
+                                            std::make_unique<AudioParameterBool>(TYPE_ID, TYPE_NAME, true)
                                         })
 #endif
 {
@@ -248,7 +248,7 @@ void RolandCubeAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, j
     dcBlocker.process(context);
     applyEQ(buffer, equalizer1, equalizer2, midiMessages, totalNumInputChannels, getSampleRate());
 
-    cabSimIRa.process(context); // Process IR a on channel 0
+    //cabSimIRa.process(context); // Process IR a on channel 0
     
     // Master Volume 
     applyGainSmoothing(buffer, masterValue, previousMasterValue); // Apply ramped changes for gain smoothing

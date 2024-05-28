@@ -119,7 +119,7 @@ private:
     Atomic<float> midParam = { 0.0 };
     Atomic<float> trebleParam = { 0.0 };
     Atomic<int> modelParam = { 0 };
-    Atomic<bool> parametrizedGainType_Param = {false};
+    Atomic<bool> parametrizedGainType_Param = {true};
 
     bool conditioned = false;
     int pauseVolume = 3;

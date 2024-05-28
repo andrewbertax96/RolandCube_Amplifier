@@ -71,7 +71,7 @@ RolandCubeAudioProcessorEditor::RolandCubeAudioProcessorEditor(RolandCubeAudioPr
     gainType_Button.setColour(ToggleButton::ColourIds::textColourId, Colours::red);
     gainType_Button.setColour(ToggleButton::ColourIds::tickColourId, Colours::red);
     gainType_Button.setColour(ToggleButton::ColourIds::tickDisabledColourId, Colours::red);
-	addAndMakeVisible(gainType_Button);
+	//addAndMakeVisible(gainType_Button);
 
     // Size of plugin GUI
     setSize(background.getWidth(), background.getHeight());
