@@ -58,3 +58,7 @@ Future updates for this plugin will aim to expand its functionality by including
 ## Credits
 
 This plugin was developed for the course of Selected Topics under Professor Matthew John Yee-King at [Politecnico di Milano](https://www.polimi.it) (MSc in Music and Acoustic Engineering) by a team of passionate audio engineers and musicians dedicated to bringing the classic sounds of the Roland Cube XL amplifier's lead channel to the digital world.  
+<!--
+A brief PDF report of the *SYNTH* is available at this [link](https://github.com/andrewbertax96/ACTAM-Synth/blob/main/presentation/ACTAM___Subtractive_Synthesizer.pdf).
+-->
+
