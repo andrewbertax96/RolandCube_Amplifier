@@ -47,8 +47,9 @@ and also the VST in `C:/Program Files/Common Files/VST3/RolandCube.vst3/Contents
 3. **Play**: Start playing your instrument through the plugin. Experiment with different settings to find the sound that works best for your music.
 
 ## Media
-- **Demo Video**: A demo of the plugin can be seen at [this site](https://www.youtube.com/watch?v=your_demo_video_url).
-
+- **Demo Video**: A fast demo of the plugin used inside a mix can be seen at [this site](https://www.linkedin.com/posts/andres-bertazzi-61952411a_music-coding-engineering-activity-7207376180130316288-_dJX?utm_source=share&utm_medium=member_desktop).
+- **Report**: A brief PDF report of the project with detailed explanations is available at this [link](https://github.com/andrewbertax96/RolandCube_Amplifier/blob/main/Selected_Topics_RolandCubeAmplifier_report.pdf).
+  
 ## Future Developments
 
 Future updates for this plugin will aim to expand its functionality by including additional modulation effects and reverb types:
@@ -56,7 +57,5 @@ Future updates for this plugin will aim to expand its functionality by including
 - **Reverb Types**: Two different types of reverb to enhance the spatial quality of your sound.
 
 ## Credits
-A video demonstration of the *Plugin* is available at this [link](https://www.linkedin.com/posts/andres-bertazzi-61952411a_music-coding-engineering-activity-7207376180130316288-_dJX?utm_source=share&utm_medium=member_desktop).<br>
-A brief PDF report of the project is available at this [link](https://github.com/andrewbertax96/RolandCube_Amplifier/blob/main/Selected_Topics_RolandCubeAmplifier_report.pdf).<br>
 This plugin was developed for the course of Selected Topics under Professor Matthew John Yee-King at [Politecnico di Milano](https://www.polimi.it) (MSc in Music and Acoustic Engineering) by a team of passionate audio engineers and musicians dedicated to bringing the classic sounds of the Roland Cube XL amplifier's lead channel to the digital world.  
 
