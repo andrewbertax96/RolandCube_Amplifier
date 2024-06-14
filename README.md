@@ -38,6 +38,8 @@ $ git submodule update --init --recursive
 $ cmake -Bbuild
 $ cmake --build build --config Release
 ```
+The binaries will be located in `RolandCube_Amplifier/build/Proteus_artefacts/` <br>
+and also the VST in `C:/Program Files/Common Files/VST3/RolandCube.vst3/Contents/x86_64-win`
 ## Usage
 
 1. **Select the Plugin**: In your DAW, create a new audio track and select the Roland Cube XL Lead Channel Emulator Plugin.
