@@ -18,7 +18,7 @@ This plugin is designed to emulate the lead channel behavior and sound character
 - **High-Quality Audio**: Supports high-resolution audio to deliver the best possible sound quality.
 
 ## Training the Neural Network
-
+(This section serves purely academic and illustrative purposes; retraining the model is not required.)
 The neural network files required for this plugin were developed using a Colab notebook named `train.ipynb`, which is located in the `train` directory. This notebook includes all the necessary scripts and code to preprocess data, train the neural network, and export the trained model files.
 
 # Installation with Cmake
